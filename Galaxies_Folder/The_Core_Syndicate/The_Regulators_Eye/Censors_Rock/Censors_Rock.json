@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G1-S3-O2",
+  "Object_Name": "Censors Rock",
+  "Location_Metadata": {
+    "Type": "Penal Colony",
+    "Subtype": "Data-Exile Prison",
+    "Description": "A hollowed asteroid fortress where those who defy the Technocracy of Sol are sent to have their voices erased. Data-disobedience, forbidden speech, and unsanctioned knowledge are punished here by complete erasure of identity.",
+    "System_Theme": "Surveillance, silence, and the crushing weight of compliance"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "Jagged asteroid walls carved into cells of silence." },
+        { "Element": 2, "Lore": "Artificial gravity wells pin prisoners in place during interrogations." },
+        { "Element": 3, "Lore": "Holographic memory erasure chambers shimmer in faint blue light." },
+        { "Element": 4, "Lore": "Every surface is laced with embedded Syndicate listening devices." },
+        { "Element": 5, "Lore": "The prison’s central tower beams data-blackout fields across the system." },
+        { "Element": 6, "Lore": "Hidden catacombs store the discarded remnants of erased identities." },
+        { "Element": 7, "Lore": "Outer hull scars tell of failed rebellions, now memorialized in silence." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Run directly by the **Technocracy of Sol’s Censorship Bureau**." },
+        { "Element": 2, "Lore": "Political dissidents from across the galaxy vanish here without record." },
+        { "Element": 3, "Lore": "Whispers suggest **Neo-Byzantine spies** are embedded as prisoners." },
+        { "Element": 4, "Lore": "The **Free-Market Cartels** bribe guards to smuggle in forbidden infochips." },
+        { "Element": 5, "Lore": "An underground rebellion communicates in silence and gestures." },
+        { "Element": 6, "Lore": "Psychic-resistant prisoners are stored in sealed null-gravity pods." },
+        { "Element": 7, "Lore": "The **Silent Order**, a splinter cult, treats the prison as holy ground." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "The **Erasure Chamber**, where identities are stripped from prisoners." },
+        { "Element": 2, "Lore": "The **Data Blackout Spire**, which suppresses signals in the system." },
+        { "Element": 3, "Lore": "The **Null Pods**, silent tombs of psychic-resistant exiles." },
+        { "Element": 4, "Lore": "The **Whisper Catacombs**, tunnels of forgotten names etched in stone." },
+        { "Element": 5, "Lore": "The **Iron Tribunal**, a mock courtroom where sentences are re-enacted endlessly." },
+        { "Element": 6, "Lore": "The **Signal Graveyard**, filled with fragments of erased transmissions." },
+        { "Element": 7, "Lore": "The **Silent Rebellion’s Refuge**, hidden deep in the asteroid’s crust." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "**Warden Elyra Vox**, a zealot devoted to absolute silence." },
+        { "Element": 2, "Lore": "**Prisoner D-77**, an ex-cartel smuggler who remembers too much." },
+        { "Element": 3, "Lore": "**Magistrate Hurn**, judge of the endless Iron Tribunal trials." },
+        { "Element": 4, "Lore": "**Cipher Whisper**, leader of the Silent Rebellion." },
+        { "Element": 5, "Lore": "**Scribe Nyth**, who records erased names in forbidden glyphs." },
+        { "Element": 6, "Lore": "**The Null-Twin**, psychic siblings immune to memory erasure." },
+        { "Element": 7, "Lore": "**Ghost Vox**, an erased warden who somehow still issues commands." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Warden Elyra refuses to speak, even in command." },
+        { "Element": 2, "Lore": "Prisoner D-77 carves Syndicate secrets into his own skin." },
+        { "Element": 3, "Lore": "Magistrate Hurn repeats the same verdict word-for-word daily." },
+        { "Element": 4, "Lore": "Cipher Whisper can only communicate through eye movements." },
+        { "Element": 5, "Lore": "Scribe Nyth’s glyphs glow faintly, resisting erasure." },
+        { "Element": 6, "Lore": "The Null-Twin finish each other’s thoughts mid-sentence." },
+        { "Element": 7, "Lore": "Ghost Vox’s voice is heard only in broken comms static." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Infiltrate the Erasure Chamber to rescue a prisoner’s lost identity." },
+        { "Element": 2, "Lore": "Disable the Data Blackout Spire for a temporary communication window." },
+        { "Element": 3, "Lore": "Smuggle infochips past Warden Elyra’s absolute surveillance." },
+        { "Element": 4, "Lore": "Uncover the truth of Ghost Vox and whether he truly exists." },
+        { "Element": 5, "Lore": "Decode Scribe Nyth’s glyphs to unlock a hidden archive." },
+        { "Element": 6, "Lore": "Free the Null-Twin, whose immunity could threaten the Syndicate." },
+        { "Element": 7, "Lore": "Assist Cipher Whisper in orchestrating a rebellion of silence." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "Censor’s Rock is the backbone of Syndicate fear—obliteration of memory." },
+        { "Element": 2, "Lore": "Every erased prisoner becomes a fragment in the Whisper Catacombs." },
+        { "Element": 3, "Lore": "The Silent Rebellion grows, unseen, beneath endless surveillance." },
+        { "Element": 4, "Lore": "The Syndicate may be hiding **ancient pre-Sol texts** deep in the Null Pods." },
+        { "Element": 5, "Lore": "The prison’s very architecture is designed to erase hope." },
+        { "Element": 6, "Lore": "Ghost Vox may prove Syndicate erasure is never complete." },
+        { "Element": 7, "Lore": "Breaking the silence could collapse the Syndicate’s grip across galaxies." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Smuggle food and water to hidden rebels in the Whisper Catacombs." },
+        { "Element": 2, "Lore": "Rescue a family member erased from Syndicate records." },
+        { "Element": 3, "Lore": "Expose Magistrate Hurn’s farcical trials to outside factions." },
+        { "Element": 4, "Lore": "Discover whether the Null-Twin were Syndicate experiments." },
+        { "Element": 5, "Lore": "Sabotage guard drones to create pathways of silence." },
+        { "Element": 6, "Lore": "Recover erased transmissions in the Signal Graveyard." },
+        { "Element": 7, "Lore": "Lead Cipher Whisper’s rebellion to its first silent victory." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "The prison represents the ultimate cost of Syndicate order." },
+        { "Element": 2, "Lore": "Voices stripped here could rewrite the galaxy’s history if recovered." },
+        { "Element": 3, "Lore": "Rebellion thrives in silence where sound is forbidden." },
+        { "Element": 4, "Lore": "Censor’s Rock could be the first fracture in the Technocracy’s regime." },
+        { "Element": 5, "Lore": "The very act of speaking becomes resistance." },
+        { "Element": 6, "Lore": "Echoes of erased voices might hold cosmic secrets." },
+        { "Element": 7, "Lore": "The player must decide: preserve silence or break it." }
+      ]
+    }
+  }
+}

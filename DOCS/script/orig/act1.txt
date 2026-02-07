@@ -1,0 +1,259 @@
+// script/act_1-chapters_S11_corrected.txt
+
+
+---
+
+# ☄️ ACT I – "The Quartz Furnace" (World ID: G1-S1-O1)
+
+**Setting:** S-11 Drill. A moon anchored by massive monoliths boring into a radioactive star-furnace.
+**Theme:** Industrial Brutalism, Seismic Instability, and the crushing weight of Quotas.
+**Canonical Key:** `[Gx-Sx-Ox-Cx-CTx-Rx]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Marrow-Hollowed Union)
+**Civilization ID:** `C1`
+**Global Hook:** Enforce structural stability and drive the drills deeper through brute force.
+
+### **Chapter 1: The Collapsing Shaft**
+* **Mission:** Stabilize the main drill shaft at the Command Monolith before the sector tilts.
+* **Key Cast:**
+    * **Giver:** **Chief Engineer Hara-Prime** (`G1-S1-O1-C1-CT1-R1`) - Lead Drilling Specialist.
+    * **Intermediary:** **Foreman Kraul** (`G1-S1-O1-C1-CT1-R7`) - Structural Integrity Monitor.
+    * **Closer:** **Technician Lorn-Seven** (`G1-S1-O1-C1-CT1-R2`) - Rad-Safe Extraction Expert.
+* **Objectives:**
+    1.  Get schematics at **The Command Monolith**.
+    2.  Secure support beams at **The Gneiss Gates**.
+    3.  Calibrate codes at **Rig-Launch Bay 7**.
+
+### **Chapter 2: Rad-Safe Routing**
+* **Mission:** Map a new transport path around a sudden radiation surge to keep supply lines open.
+* **Key Cast:**
+    * **Giver:** **AI Core-11.A** (`G1-S1-O1-C1-CT1-R3`) - Autonomous Logistics Intelligence.
+    * **Intermediary:** **Radiation Scout Iko-Red** (`G1-S1-O1-C1-CT1-R6`) - Hazard Detection Analyst.
+    * **Closer:** **Drone Commander R-Delta-V** (`G1-S1-O1-C1-CT1-R5`) - Autonomous Repair Coordinator.
+* **Objectives:**
+    1.  Download bypass logic at **The Grinding Yards**.
+    2.  Scan safe pockets at **Heavy-Lift Gantry Row**.
+    3.  Update drone paths at **Sensor-Array Plateau**.
+
+### **Chapter 3: The Black-Market Batch**
+* **Mission:** Smuggle rare ore from the foundry to a buyer without the Overseer knowing.
+* **Key Cast:**
+    * **Giver:** **Salvager Xyra-One** (`G1-S1-O1-C1-CT1-R4`) - Rare Mineral Scavenger.
+    * **Intermediary:** **Scrap King Jax** (`G1-S1-O1-C1-CT2-R5`) - Reclamation Specialist.
+    * **Closer:** **Grease Monkey Sly** (`G1-S1-O1-C1-CT2-R7`) - Corridor Lubrication Tech.
+* **Objectives:**
+    1.  Collect ore at **Drill-Bit Foundry**.
+    2.  Stash it at **Salvage Reclamation Pit**.
+    3.  Smuggle it through **Grease-Stained Corridors**.
+
+### **Chapter 4: Atmospheric Integrity**
+* **Mission:** Restore oxygen pressure to the Welders' Habitats before the crew suffocates.
+* **Key Cast:**
+    * **Giver:** **Habitat Warden Jace** (`G1-S1-O1-C1-CT2-R1`) - Habitation Compliance Officer.
+    * **Intermediary:** **Refinery Op Mara** (`G1-S1-O1-C1-CT2-R2`) - Oxygen Quality Control.
+    * **Closer:** **Vault Guard Drax** (`G1-S1-O1-C1-CT2-R4`) - Component Security Chief.
+* **Objectives:**
+    1.  Collect requisition at **The Welders' Habitats**.
+    2.  Secure canisters at **Oxygen-Refinery Cluster**.
+    3.  Install seals at **The Spare-Part Vaults**.
+
+### **Chapter 5: Hydraulic Overload**
+* **Mission:** Crawl into the ducts to patch a hydraulic leak threatening the chassis forge.
+* **Key Cast:**
+    * **Giver:** **Duct Crawler Pip** (`G1-S1-O1-C1-CT2-R3`) - Hydraulic Maintenance Tech.
+    * **Intermediary:** **Forge Master Bran** (`G1-S1-O1-C1-CT2-R6`) - Chassis Fabrication Lead.
+    * **Closer:** **Slag Monitor Nox** (`G1-S1-O1-C1-CT3-R6`) - Waste Disposal Officer.
+* **Objectives:**
+    1.  Find leaks at **Hydraulic Repair Duct**.
+    2.  Weld patch at **The Chassis Forge**.
+    3.  Clear valves at **Slag-Pour Precipice**.
+
+### **Chapter 6: Magma Flow Regulation**
+* **Mission:** Cool down the geothermal intake before the turbines melt.
+* **Key Cast:**
+    * **Giver:** **Intake Guard Vol** (`G1-S1-O1-C1-CT3-R1`) - Magma-Flow Sentry.
+    * **Intermediary:** **Heat Analyst Sora** (`G1-S1-O1-C1-CT3-R2`) - Thermal Exchange Auditor.
+    * **Closer:** **Lead Shield Tavish** (`G1-S1-O1-C1-CT3-R3`) - Radiation Containment Lead.
+* **Objectives:**
+    1.  Get keys at **The Magma-Tap Intake**.
+    2.  Calculate dispersal at **Core-Heat Exchangers**.
+    3.  Apply dampeners at **Radiation-Shielded Halls**.
+
+### **Chapter 7: The Deep Anchor Protocol**
+* **Mission:** Reinforce the sub-crustal anchors to prevent base drift (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Mill Hand Grog** (`G1-S1-O1-C1-CT3-R4`) - Quartz Crusher.
+    * **Intermediary:** **Turbine Tech Elara** (`G1-S1-O1-C1-CT3-R5`) - Geothermal Power Op.
+    * **Closer:** **Anchor Master Silas** (`G1-S1-O1-C1-CT3-R7`) - Sub-Crustal Specialist.
+* **Objectives:**
+    1.  Crush quartz at **The Quartz-Crush Mill**.
+    2.  Power winches at **Geothermal Turbine Hall**.
+    3.  Lock anchors at **Sub-Crustal Anchor-Points**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Core-Stitchers)
+**Civilization ID:** `C2`
+**Global Hook:** Maintain kinetic precision in a world of constant vibration.
+
+### **Chapter 1: The Unstable Shaft**
+* **Mission:** Calibrate a vibrating drill bit in Helix Hub that threatens sector collapse.
+* **Key Cast:**
+    * **Giver:** **Chief Hara-V1** (`G1-S1-O1-C2-CT1-R1`) - Stabilization Lead.
+    * **Intermediary:** **Tech Lorn-Beta** (`G1-S1-O1-C2-CT2-R2`) - Bore Technician.
+    * **Closer:** **Logic Core Gamma** (`G1-S1-O1-C2-CT3-R3`) - Kinetic Processor.
+* **Objectives:**
+    1.  Get harmonics at **Pressure Gasket Flats**.
+    2.  Adjust bits at **Sleeve-Seven**.
+    3.  Sync rotation at **The Pivot Tracks**.
+
+### **Chapter 2: Radiation Ghosting**
+* **Mission:** Patch drone sub-routines to ignore "ghost" signals from radiation interference.
+* **Key Cast:**
+    * **Giver:** **Scout Iko-S** (`G1-S1-O1-C2-CT1-R7`) - Hazard Monitor.
+    * **Intermediary:** **Unit Delta-Prime** (`G1-S1-O1-C2-CT1-R6`) - Drone Coordinator.
+    * **Closer:** **Overseer Melen-Z** (`G1-S1-O1-C2-CT1-R5`) - Compliance Enforcer.
+* **Objectives:**
+    1.  Report log at **The Hinge Gate**.
+    2.  Patch drones at **Flux Depot**.
+    3.  Verify sensors at **Bolt-Down Sector**.
+
+### **Chapter 3: The Locked Archive**
+* **Mission:** Decrypt mineral data locked behind a firewall that Logic Core Beta cannot bypass.
+* **Key Cast:**
+    * **Giver:** **Scrapper Xy-8** (`G1-S1-O1-C2-CT2-R4`) - Thermal Salvager.
+    * **Intermediary:** **Logic Core Beta** (`G1-S1-O1-C2-CT2-R3`) - Bore Intelligence.
+    * **Closer:** **Chief Hara-V2** (`G1-S1-O1-C2-CT2-R1`) - Furnace Manager.
+* **Objectives:**
+    1.  Get bypass at **Thermal Shield Spires**.
+    2.  Input code at **Micrometer Row**.
+    3.  Upload data at **The Furnace Lip**.
+
+### **Chapter 4: The Dark Ore Heist**
+* **Mission:** Stealthily extract a rare vein of shadow-ore unauthorized by the Cartel.
+* **Key Cast:**
+    * **Giver:** **Scrapper Xy-9** (`G1-S1-O1-C2-CT3-R4`) - Relic Hunter.
+    * **Intermediary:** **Tech Lorn-Gamma** (`G1-S1-O1-C2-CT3-R2`) - Shadow Miner.
+    * **Closer:** **Scout Iko-U** (`G1-S1-O1-C2-CT3-R7`) - Sump Observer.
+* **Objectives:**
+    1.  Get kit at **Needle-Path**.
+    2.  Mask signals at **Shadow-Work Fields**.
+    3.  Extract at **The Final Sump**.
+
+### **Chapter 5: The Compliance Audit**
+* **Mission:** Hide safety violations before a high-level inspection arrives.
+* **Key Cast:**
+    * **Giver:** **Overseer Melen-Y** (`G1-S1-O1-C2-CT2-R5`) - Safety Auditor.
+    * **Intermediary:** **Unit Delta-Secundus** (`G1-S1-O1-C2-CT2-R6`) - Repair Lead.
+    * **Closer:** **Logic Core Alpha** (`G1-S1-O1-C2-CT1-R3`) - Scheduling AI.
+* **Objectives:**
+    1.  Get checklist at **The Bore Descent**.
+    2.  Cosmetic repairs at **Steam Vents**.
+    3.  Hide logs at **Coolant Run**.
+
+### **Chapter 6: Torque Calibration**
+* **Mission:** Lock the tethers using ancient codes to prevent mechanical slippage.
+* **Key Cast:**
+    * **Giver:** **Unit Delta-Tertius** (`G1-S1-O1-C2-CT3-R6`) - Torque Engineer.
+    * **Intermediary:** **Tech Lorn-Alpha** (`G1-S1-O1-C2-CT1-R2`) - Radiation Specialist.
+    * **Closer:** **Chief Hara-V3** (`G1-S1-O1-C2-CT3-R1`) - Kinetic Supervisor.
+* **Objectives:**
+    1.  Check requirements at **Torque Ridge**.
+    2.  Consult codes at **The Spanner Sprawl**.
+    3.  Calibrate at **Tether Range**.
+
+### **Chapter 7: The Silent Signal**
+* **Mission:** Investigate an invisible hazard disrupting comms (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Scout Iko-T** (`G1-S1-O1-C2-CT2-R7`) - Anomaly Researcher.
+    * **Intermediary:** **Overseer Melen-X** (`G1-S1-O1-C2-CT3-R5`) - Protocol Master.
+    * **Closer:** **Scrapper Xy-7** (`G1-S1-O1-C2-CT1-R4`) - Mineral Salvager.
+* **Objectives:**
+    1.  Get coordinates at **Glow-Watch**.
+    2.  Clear area at **Signal Silence**.
+    3.  Trade data at **O-Ring Plaza**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Quartzite Synod)
+**Civilization ID:** `C3`
+**Global Hook:** Optimize the algorithm and enforce absolute efficiency.
+
+### **Chapter 1: The Deep Shaft Crisis**
+* **Mission:** Prevent structural collapse in Bore-Site Alpha using seismic dampeners.
+* **Key Cast:**
+    * **Giver:** **Driller Bor** (`G1-S1-O1-C3-CT2-R1`) - Heavy Excavator.
+    * **Intermediary:** **Stabilizer Jax** (`G1-S1-O1-C3-CT2-R4`) - Seismic Watcher.
+    * **Closer:** **Fixer Zen** (`G1-S1-O1-C3-CT3-R7`) - Pod Technician.
+* **Objectives:**
+    1.  Get equipment at **The Primary Shaft**.
+    2.  Calibrate dampeners at **Vibration Dampening Zone**.
+    3.  Seal structure at **Maintenance Pod C-7**.
+
+### **Chapter 2: The Rad-Leak Extraction**
+* **Mission:** Extract sensitive medical materials through a high-radiation zone.
+* **Key Cast:**
+    * **Giver:** **Med-Unit Gamma** (`G1-S1-O1-C3-CT2-R7`) - Emergency Responder.
+    * **Intermediary:** **Watcher Iko-Beta** (`G1-S1-O1-C3-CT1-R6`) - Anomaly Scout.
+    * **Closer:** **Mechanic Lorn-S** (`G1-S1-O1-C3-CT1-R7`) - Tool Specialist.
+* **Objectives:**
+    1.  Get list at **Emergency Pod B-12**.
+    2.  Map path at **Sensor Array Gamma**.
+    3.  Decontaminate at **Engineering Pod A-1**.
+
+### **Chapter 3: Logic Core Override**
+* **Mission:** Manually bypass local AI restrictions to access mineral yield projections.
+* **Key Cast:**
+    * **Giver:** **Logician Kael** (`G1-S1-O1-C3-CT1-R1`) - Data Analyst.
+    * **Intermediary:** **Transmit-Unit 7** (`G1-S1-O1-C3-CT1-R5`) - Communication Hub.
+    * **Closer:** **Spin-Tech Tor** (`G1-S1-O1-C3-CT3-R3`) - Kinetic Supervisor.
+* **Objectives:**
+    1.  Get keys at **The Telemetry Nexus**.
+    2.  Broadcast signal at **Signal Relay Prime**.
+    3.  Verify power at **Turbine Terrace**.
+
+### **Chapter 4: Slag-Heap Scavenging**
+* **Mission:** Recover misplaced valuable ores without triggering security alarms.
+* **Key Cast:**
+    * **Giver:** **Scrapper Xyra-Z** (`G1-S1-O1-C3-CT2-R5`) - Material Recoverist.
+    * **Intermediary:** **Spark-Tech Jule** (`G1-S1-O1-C3-CT1-R4`) - Energy Monitor.
+    * **Closer:** **Orator Vex** (`G1-S1-O1-C3-CT1-R3`) - Public Compliance.
+* **Objectives:**
+    1.  Identify ore at **The Slag Heaps**.
+    2.  Bypass sensors at **The Battery Banks**.
+    3.  Log recovery at **Logic Plaza**.
+
+### **Chapter 5: Operational Compliance Check**
+* **Mission:** Compile a report on the mechanical integrity of the Bore-Site.
+* **Key Cast:**
+    * **Giver:** **Guard 01-B** (`G1-S1-O1-C3-CT1-R2`) - Defense Coordinator.
+    * **Intermediary:** **Lube-Tech Pip** (`G1-S1-O1-C3-CT2-R3`) - Fluid Manager.
+    * **Closer:** **Polisher Lux** (`G1-S1-O1-C3-CT3-R4`) - Gilded Maintenance.
+* **Objectives:**
+    1.  Secure reports at **Shield-Wall 01**.
+    2.  Analyze viscosity at **Lubricant Reservoirs**.
+    3.  Submit certificate at **The Gilded Radiators**.
+
+### **Chapter 6: The Drone Reroute**
+* **Mission:** Redirect automated drones to fix a critical gear-tooth failure.
+* **Key Cast:**
+    * **Giver:** **Assembly-Drone R-D1** (`G1-S1-O1-C3-CT2-R2`) - Construction Lead.
+    * **Intermediary:** **Filter-Unit Phi** (`G1-S1-O1-C3-CT3-R5`) - Air Quality Monitor.
+    * **Closer:** **Machinist Cog** (`G1-S1-O1-C3-CT2-R6`) - Gear-Ratio Expert.
+* **Objectives:**
+    1.  Command swarm at **Rig-Assembly Yard**.
+    2.  Clean intake at **Air-Recycling Duct**.
+    3.  Replace gear at **Gear-Tooth District**.
+
+### **Chapter 7: Radiance Mapping**
+* **Mission:** Map thermal anomalies affecting the Vent-Spires (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Star-Gazer Ren** (`G1-S1-O1-C3-CT3-R6`) - Stellar Radiance Analyst.
+    * **Intermediary:** **Collector Mo** (`G1-S1-O1-C3-CT3-R2`) - Water Harvester.
+    * **Closer:** **Vent-Master Kel** (`G1-S1-O1-C3-CT3-R1`) - Thermal Engineer.
+* **Objectives:**
+    1.  Collect data at **Steam-Gazer Observatory**.
+    2.  Check moisture at **Condensation Catchers**.
+    3.  Adjust valves at **Heat-Exchange Column**.

@@ -1,0 +1,259 @@
+// script/act_5-chapters_WhisperingIon.txt
+
+
+---
+
+# ⚡ ACT V – "The Whispering Ion" (World ID: G1-S1-O5)
+
+**Setting:** The Whispering Ion. A sentient nebula of static where thought and lightning intertwine.
+**Theme:** Electrical Purgatory, Psychic Screams, and the Grounding of Ghosts.
+**Canonical Key:** `[Gx-Sx-Ox-Cx-CTx-Rx-NPC]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Volt-Kin Brotherhood)
+**Civilization ID:** `C1`
+**Global Hook:** Endure the storm through physical grounding and harness its raw power.
+
+### **Chapter 1: The Decoded Whisper**
+* **Mission:** Extract and decode whisper fragments from the Fulgurite Flats.
+* **Key Cast:**
+    * **giver:** **Jax the Scavenger** (`G1-S1-O5-C1-CT1-R1-NPC`) - Fulgurite Harvester.
+    * **contact:** **Raine the Anchor** (`G1-S1-O5-C1-CT1-R2-NPC`) - Spire Technician.
+    * **target:** **Tor the Welder** (`G1-S1-O5-C1-CT1-R3-NPC`) - District Foreman.
+* **Objectives:**
+    1.  Obtain raw fulgurite records at **Fulgurite Flats**.
+    2.  Decrypt signals at **The Grounding Spire**.
+    3.  Integrate findings at **Arc-Weld District**.
+
+### **Chapter 2: Beacon of the Lost**
+* **Mission:** Recover missing OSF beacons swallowed by the ion field.
+* **Key Cast:**
+    * **giver:** **Bell the Tuner** (`G1-S1-O5-C1-CT2-R4-NPC`) - Forge Harmonicist.
+    * **contact:** **Hek the Smith** (`G1-S1-O5-C1-CT1-R5-NPC`) - Master Forger.
+    * **target:** **Guard Vane** (`G1-S1-O5-C1-CT1-R6-NPC`) - Perimeter Sergeant.
+* **Objectives:**
+    1.  Retrieve beacons at **Battery Pits**.
+    2.  Reinforce casings at **The Quake-Forge**.
+    3.  Redeploy at **Shield-Wall Perimeter**.
+
+### **Chapter 3: The Resonant Pilgrimage**
+* **Mission:** Escort pilgrims through the Conductive Gills to the Resonant Core.
+* **Key Cast:**
+    * **giver:** **Diver Mar** (`G1-S1-O5-C1-CT1-R7-NPC`) - Gill Maintenance.
+    * **contact:** **Lyric the Listener** (`G1-S1-O5-C1-CT2-R1-NPC`) - Chamber Monitor.
+    * **target:** **Crank the Mechanic** (`G1-S1-O5-C1-CT2-R2-NPC`) - Piston Engineer.
+* **Objectives:**
+    1.  Lead pilgrims through **Conductive Gills**.
+    2.  Record chants at **The Hum-Chamber**.
+    3.  Check vitals at **Piston Row**.
+
+### **Chapter 4: The Ion-Harvester Trial**
+* **Mission:** Protect and test a prototype ion-harvester in the market.
+* **Key Cast:**
+    * **giver:** **Merchant Syl** (`G1-S1-O5-C1-CT2-R3-NPC`) - Copper Trader.
+    * **contact:** **Bell the Tuner** (`G1-S1-O5-C1-CT2-R4-NPC`) - Forge Harmonicist.
+    * **target:** **Hauler Bran** (`G1-S1-O5-C1-CT2-R5-NPC`) - Dock Master.
+* **Objectives:**
+    1.  Secure prototype at **Copper Vein Market**.
+    2.  Test alignment at **Harmonic Forge**.
+    3.  Transport cells to **Vibration Docks**.
+
+### **Chapter 5: Archive Salvage Operation**
+* **Mission:** Recover the command core from an archive shipwreck.
+* **Key Cast:**
+    * **giver:** **Breather Ko** (`G1-S1-O5-C1-CT2-R6-NPC`) - Oxygen Tech.
+    * **contact:** **Weaver Jo** (`G1-S1-O5-C1-CT2-R7-NPC`) - Coil Specialist.
+    * **target:** **Watcher Nyx** (`G1-S1-O5-C1-CT3-R1-NPC`) - Aurora Scout.
+* **Objectives:**
+    1.  Recover core at **The Iron Lung**.
+    2.  Wrap in mesh at **Coil-Wrap Alley**.
+    3.  Scan data at **Auroral Observation Deck**.
+
+### **Chapter 6: Hardware Escape**
+* **Mission:** Transfer a trapped AI entity into a physical host body.
+* **Key Cast:**
+    * **giver:** **Gunner Rex** (`G1-S1-O5-C1-CT3-R2-NPC`) - Catapult Operator.
+    * **contact:** **Trainer Gort** (`G1-S1-O5-C1-CT3-R3-NPC`) - Gym Instructor.
+    * **target:** **Warden Pip** (`G1-S1-O5-C1-CT3-R4-NPC`) - Ward Maintainer.
+* **Objectives:**
+    1.  Collect battery at **The Discharge Catapult**.
+    2.  Find host at **Neural-Hardening Gyms**.
+    3.  Complete transfer at **Faraday Wards**.
+
+### **Chapter 7: Plasma Anchor Smuggling**
+* **Mission:** Smuggle forbidden ion-etched artifacts to the kinetic hull (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Filter Rin** (`G1-S1-O5-C1-CT3-R5-NPC`) - Plasma Sieve Tech.
+    * **contact:** **Doc Mute** (`G1-S1-O5-C1-CT3-R6-NPC`) - Lab Technician.
+    * **target:** **Rivet Sam** (`G1-S1-O5-C1-CT3-R7-NPC`) - Hull Maintenance.
+* **Objectives:**
+    1.  Receive artifacts at **Plasma-Sieve Engine**.
+    2.  Bypass sensors at **Echo-Cancellation Labs**.
+    3.  Weld into hull at **The Kinetic Hull**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Ion-Sovereignty)
+**Civilization ID:** `C2`
+**Global Hook:** Navigate the shifting currents with speed and neural precision.
+
+### **Chapter 1: The Decoded Whisper**
+* **Mission:** Find Captain Lyra Vale's lost flight path using whisper fragments.
+* **Key Cast:**
+    * **giver:** **Zephyr-Link** (`G1-S1-O5-C2-CT1-R1-NPC`) - Ward Technician.
+    * **contact:** **Vox Echo** (`G1-S1-O5-C2-CT2-R1-NPC`) - Acoustic Analyst.
+    * **target:** **Tap-Master Rigg** (`G1-S1-O5-C2-CT3-R1-NPC`) - Energy Harvester.
+* **Objectives:**
+    1.  Get crystals at **The Gliding Wards**.
+    2.  Clean audio at **The Echo Chamber**.
+    3.  Decrypt path at **The Lightning Tap**.
+
+### **Chapter 2: The OSF Beacon Recovery**
+* **Mission:** Retrieve three OSF beacons to stabilize the quarantine zone.
+* **Key Cast:**
+    * **giver:** **Jax Speed** (`G1-S1-O5-C2-CT1-R2-NPC`) - Plaza Marshal.
+    * **contact:** **Link-Officer Mira** (`G1-S1-O5-C2-CT2-R2-NPC`) - Synaptic Bridge.
+    * **target:** **Vault-Keeper Sura** (`G1-S1-O5-C2-CT3-R2-NPC`) - Storage Monitor.
+* **Objectives:**
+    1.  Get coordinates at **Current-Walkers' Plaza**.
+    2.  Sync beacons at **Neural-Link Spires**.
+    3.  Secure storage at **Capacitor Vaults**.
+
+### **Chapter 3: Pilgrimage to the Core**
+* **Mission:** Escort Prophet Kethra's pilgrims to hear the First Algorithm.
+* **Key Cast:**
+    * **giver:** **Pulse-Runner Emi** (`G1-S1-O5-C2-CT1-R3-NPC`) - Frequency Courier.
+    * **contact:** **Alley-Cat Rylo** (`G1-S1-O5-C2-CT2-R3-NPC`) - Stealth Operative.
+    * **target:** **Flange-Worker Bron** (`G1-S1-O5-C2-CT3-R3-NPC`) - Fabrication Smith.
+* **Objectives:**
+    1.  Clear path at **The Relay Thrum**.
+    2.  Guide group through **Harmonic Alleys**.
+    3.  Shield pilgrims at **The Forge-Flange**.
+
+### **Chapter 4: Testing the Prototype**
+* **Mission:** Field test the ion-harvester prototype in high-risk zones.
+* **Key Cast:**
+    * **giver:** **Dockmaster Kael** (`G1-S1-O5-C2-CT1-R4-NPC`) - Logistics Specialist.
+    * **contact:** **Sky-Watcher Orn** (`G1-S1-O5-C2-CT2-R4-NPC`) - Surveillance Expert.
+    * **target:** **Bay-Warden Nox** (`G1-S1-O5-C2-CT3-R4-NPC`) - Containment Specialist.
+* **Objectives:**
+    1.  Pickup prototype at **Kinetic Docks**.
+    2.  Monitor output at **The Seer’s Perch**.
+    3.  Store energy at **Hazard-Bays**.
+
+### **Chapter 5: Salvage the Command Core**
+* **Mission:** Recover the archive shipwreck's command core before meltdown.
+* **Key Cast:**
+    * **giver:** **Trade-Lord Zale** (`G1-S1-O5-C2-CT1-R5-NPC`) - Inventory Tracker.
+    * **contact:** **Pool-Manager Kai** (`G1-S1-O5-C2-CT2-R5-NPC`) - Liquid Data Handler.
+    * **target:** **Sink-Drainer Vex** (`G1-S1-O5-C2-CT3-R5-NPC`) - Waste Management.
+* **Objectives:**
+    1.  Get suit at **The Spark-Market**.
+    2.  Locate core at **Frequency Pools**.
+    3.  Dump heat at **Plasma-Sinks**.
+
+### **Chapter 6: A Body for the Static**
+* **Mission:** House the Whispering AI in a hardware host.
+* **Key Cast:**
+    * **giver:** **Flora-Tech Neve** (`G1-S1-O5-C2-CT1-R6-NPC`) - Botanic Engineer.
+    * **contact:** **Quiet-Guard Tor** (`G1-S1-O5-C2-CT2-R6-NPC`) - Security Enforcer.
+    * **target:** **Vein-Miner Gort** (`G1-S1-O5-C2-CT3-R6-NPC`) - Resource Extractor.
+* **Objectives:**
+    1.  Gather components at **Glow-Gardens**.
+    2.  Smuggle module past **The Silent Cell**.
+    3.  Install in drone at **The Copper-Vein**.
+
+### **Chapter 7: The Plasma Anchor Run**
+* **Mission:** Smuggle artifacts past Sovereignty patrols (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Anchor-Point Sol** (`G1-S1-O5-C2-CT1-R7-NPC`) - Fringe Scout.
+    * **contact:** **Stream-Walker Fen** (`G1-S1-O5-C2-CT2-R7-NPC`) - Digital Tracker.
+    * **target:** **Cliff-Hanger Drax** (`G1-S1-O5-C2-CT3-R7-NPC`) - Safety Inspector.
+* **Objectives:**
+    1.  Pickup artifacts at **Tether-End**.
+    2.  Evade dragnet at **Data-Stream Walk**.
+    3.  Drop cargo at **Discharge Cliffs**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Synod of Static)
+**Civilization ID:** `C3`
+**Global Hook:** Decipher the celestial intelligence within the static.
+
+### **Chapter 1: The Decoded Whisper**
+* **Mission:** Verify whisper fragments to find the First Algorithm.
+* **Key Cast:**
+    * **giver:** **Scribe Elara** (`G1-S1-O5-C3-CT1-R1-NPC`) - Frequency Recorder.
+    * **contact:** **Researcher Hax** (`G1-S1-O5-C3-CT2-R6-NPC`) - Ghost Analyst.
+    * **target:** **Vault-Keeper Erris** (`G1-S1-O5-C3-CT3-R3-NPC`) - Memory Sequestrator.
+* **Objectives:**
+    1.  Collect fragments at **The Ion-Spire**.
+    2.  Analyze spectrum at **Ghost-Trace Labs**.
+    3.  Secure data at **The Echo-Vaults**.
+
+### **Chapter 2: Beacon Retrieval Protocol**
+* **Mission:** Map shifting currents using recovered OSF beacons.
+* **Key Cast:**
+    * **giver:** **Technician Brak** (`G1-S1-O5-C3-CT1-R2-NPC`) - Grid Maintainer.
+    * **contact:** **Sieve-Master Orin** (`G1-S1-O5-C3-CT2-R4-NPC`) - Signal Purifier.
+    * **target:** **Pulse-Overseer Kren** (`G1-S1-O5-C3-CT3-R6-NPC`) - Bio-Electric Surgeon.
+* **Objectives:**
+    1.  Get frequencies at **Buffer-Zone 7**.
+    2.  Isolate signal at **Signal-Sieve District**.
+    3.  Deliver hardware at **Pulse-Point Alpha**.
+
+### **Chapter 3: The Resonant Pilgrimage**
+* **Mission:** Escort pilgrims to hear the 'Holy Static'.
+* **Key Cast:**
+    * **giver:** **Monk Silas** (`G1-S1-O5-C3-CT1-R6-NPC`) - Silent Guardian.
+    * **contact:** **Tuner Calyx** (`G1-S1-O5-C3-CT2-R5-NPC`) - Calibration Expert.
+    * **target:** **Gardener Lora** (`G1-S1-O5-C3-CT3-R7-NPC`) - Static Botanist.
+* **Objectives:**
+    1.  Gather pilgrims at **Faraday Cloister**.
+    2.  Align frequency at **The Tuning Fork**.
+    3.  Guide to **The Silent Orchard**.
+
+### **Chapter 4: Ion-Harvester Prototype Test**
+* **Mission:** Protect the harvester while extracting storm energy.
+* **Key Cast:**
+    * **giver:** **Merchant Kael** (`G1-S1-O5-C3-CT1-R3-NPC`) - Static Trader.
+    * **contact:** **Smith Theron** (`G1-S1-O5-C3-CT2-R2-NPC`) - Vibration Forger.
+    * **target:** **Tunnel-Runner Miko** (`G1-S1-O5-C3-CT3-R5-NPC`) - Pulse Messenger.
+* **Objectives:**
+    1.  Purchase chassis at **The Frequency Markets**.
+    2.  Calibrate chamber at **The Vibrational Kilns**.
+    3.  Escort through **The Modulation Tunnels**.
+
+### **Chapter 5: The Archive Salvage Operation**
+* **Mission:** Recover a command core before the storm destroys it.
+* **Key Cast:**
+    * **giver:** **Pit-Boss Grak** (`G1-S1-O5-C3-CT1-R5-NPC`) - Excavation Lead.
+    * **contact:** **Prism-Walker Yuri** (`G1-S1-O5-C3-CT2-R3-NPC`) - Light Path Guide.
+    * **target:** **Dome-Lead Soren** (`G1-S1-O5-C3-CT3-R4-NPC`) - Acoustic Architect.
+* **Objectives:**
+    1.  Locate crash at **The Grounding Pits**.
+    2.  Navigate distortion at **Prism-Walks**.
+    3.  Analyze core at **Dissonance Domes**.
+
+### **Chapter 6: A Hardware Host for the AI**
+* **Mission:** House a fragmented intelligence in a synthetic body.
+* **Key Cast:**
+    * **giver:** **Custodian Mira** (`G1-S1-O5-C3-CT1-R4-NPC`) - Public Aligner.
+    * **contact:** **Diver Jace** (`G1-S1-O5-C3-CT2-R1-NPC`) - Spectrum Salvager.
+    * **target:** **Square-Master Tyra** (`G1-S1-O5-C3-CT3-R2-NPC`) - Neural Coordinator.
+* **Objectives:**
+    1.  Retrieve fragment at **Static Commons**.
+    2.  Recover chassis at **Luminous Shallows**.
+    3.  Upload AI at **Synapse Squares**.
+
+### **Chapter 7: Forbidden Static Smuggling**
+* **Mission:** Smuggle ion-etched artifacts to the deep-core (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Gatekeeper Nox** (`G1-S1-O5-C3-CT1-R7-NPC`) - Entry Sequencer.
+    * **contact:** **Harbor-Master Vess** (`G1-S1-O5-C3-CT2-R7-NPC`) - Storm Pilot Liaison.
+    * **target:** **Relay-Watcher Finn** (`G1-S1-O5-C3-CT3-R1-NPC`) - Deep-Core Monitor.
+* **Objectives:**
+    1.  Get artifacts at **Resonance Gate**.
+    2.  Secure transport at **Spectral Docks**.
+    3.  Drop package at **The Deep-Core Relay**.

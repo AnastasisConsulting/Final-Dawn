@@ -1,0 +1,110 @@
+{
+  "levels": {
+    "0": {
+      "xp_to_next": 1574,
+      "total_xp_to_reach": 0
+    },
+    "1": {
+      "xp_to_next": 1638,
+      "total_xp_to_reach": 1574
+    },
+    "2": {
+      "xp_to_next": 1704,
+      "total_xp_to_reach": 3212
+    },
+    "3": {
+      "xp_to_next": 1773,
+      "total_xp_to_reach": 4916
+    },
+    "4": {
+      "xp_to_next": 1845,
+      "total_xp_to_reach": 6689
+    },
+    "5": {
+      "xp_to_next": 1920,
+      "total_xp_to_reach": 8534
+    },
+    "6": {
+      "xp_to_next": 1998,
+      "total_xp_to_reach": 10454
+    },
+    "7": {
+      "xp_to_next": 2097,
+      "total_xp_to_reach": 12452
+    },
+    "8": {
+      "xp_to_next": 2267,
+      "total_xp_to_reach": 14549
+    },
+    "9": {
+      "xp_to_next": 2450,
+      "total_xp_to_reach": 16816
+    },
+    "10": {
+      "xp_to_next": 2647,
+      "total_xp_to_reach": 19266
+    },
+    "11": {
+      "xp_to_next": 2861,
+      "total_xp_to_reach": 21913
+    },
+    "12": {
+      "xp_to_next": 3091,
+      "total_xp_to_reach": 24774
+    },
+    "13": {
+      "xp_to_next": 3340,
+      "total_xp_to_reach": 27865
+    },
+    "14": {
+      "xp_to_next": 3342,
+      "total_xp_to_reach": 31205
+    },
+    "15": {
+      "xp_to_next": 3344,
+      "total_xp_to_reach": 34547
+    },
+    "16": {
+      "xp_to_next": 3794,
+      "total_xp_to_reach": 37891
+    },
+    "17": {
+      "xp_to_next": 4328,
+      "total_xp_to_reach": 41685
+    },
+    "18": {
+      "xp_to_next": 4936,
+      "total_xp_to_reach": 46013
+    },
+    "19": {
+      "xp_to_next": 5630,
+      "total_xp_to_reach": 50949
+    },
+    "20": {
+      "xp_to_next": 6421,
+      "total_xp_to_reach": 56579
+    },
+    "21": {
+      "xp_to_next": null,
+      "total_xp_to_reach": 63000
+    }
+  },
+  "meta": {
+    "level_min": 0,
+    "level_max": 21,
+    "total_xp_to_level_21": 63000,
+    "segments": {
+      "steps_per_segment": 7,
+      "weights": [
+        0.2,
+        0.3,
+        0.5
+      ],
+      "ratios": [
+        1.04,
+        1.08,
+        1.14
+      ]
+    }
+  }
+}

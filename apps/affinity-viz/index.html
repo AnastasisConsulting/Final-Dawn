@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eideus Dawn | System Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'holo-cyan': '#00f0ff',
+              'holo-blue': '#00a8ff',
+              'holo-dark': '#0a0f14',
+              'alert-orange': '#ff9f00',
+              'glass-panel': 'rgba(10, 20, 30, 0.85)',
+            },
+            fontFamily: {
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body { margin: 0; background-color: #050505; color: #e2e8f0; overflow: hidden; }
+      .scanline {
+        width: 100%;
+        height: 100px;
+        z-index: 10;
+        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0, 255, 255, 0.04) 50%, rgba(0,0,0,0) 100%);
+        opacity: 0.1;
+        position: absolute;
+        bottom: 100%;
+        animation: scanline 10s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes scanline {
+        0% { bottom: 100%; }
+        100% { bottom: -100px; }
+      }
+      .holo-text { text-shadow: 0 0 5px rgba(0, 240, 255, 0.7); }
+
+      /* Base Glitch Class */
+      .glitch-text {
+        position: relative;
+        color: #00f0ff;
+      }
+
+      /* Active Glitch State - Aggressive ZigZag */
+      .glitch-active {
+        animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+        color: #fff;
+      }
+      .glitch-active::before,
+      .glitch-active::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+      }
+      .glitch-active::before {
+        color: #ff00c1;
+        z-index: -1;
+        animation: glitch-anim-1 0.4s reverse both infinite;
+      }
+      .glitch-active::after {
+        color: #00fff9;
+        z-index: -2;
+        animation: glitch-anim-2 0.6s both infinite;
+      }
+
+      @keyframes glitch-skew {
+        0% { transform: skew(0deg); }
+        20% { transform: skew(-10deg); }
+        40% { transform: skew(10deg); }
+        60% { transform: skew(-5deg); }
+        80% { transform: skew(5deg); }
+        100% { transform: skew(0deg); }
+      }
+
+      @keyframes glitch-anim-1 {
+        0% { clip-path: inset(20% 0 80% 0); transform: translate(-4px, 0); }
+        20% { clip-path: inset(60% 0 10% 0); transform: translate(4px, 0); }
+        40% { clip-path: inset(40% 0 50% 0); transform: translate(-4px, 0); }
+        60% { clip-path: inset(80% 0 5% 0); transform: translate(4px, 0); }
+        80% { clip-path: inset(10% 0 60% 0); transform: translate(-4px, 0); }
+        100% { clip-path: inset(30% 0 30% 0); transform: translate(4px, 0); }
+      }
+
+      @keyframes glitch-anim-2 {
+        0% { clip-path: inset(10% 0 60% 0); transform: translate(4px, 0); }
+        20% { clip-path: inset(80% 0 5% 0); transform: translate(-4px, 0); }
+        40% { clip-path: inset(30% 0 20% 0); transform: translate(4px, 0); }
+        60% { clip-path: inset(10% 0 80% 0); transform: translate(-4px, 0); }
+        80% { clip-path: inset(50% 0 30% 0); transform: translate(4px, 0); }
+        100% { clip-path: inset(40% 0 40% 0); transform: translate(-4px, 0); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
+    "three": "https://esm.sh/three@^0.182.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

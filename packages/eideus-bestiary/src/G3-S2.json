@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G3-S2",
+    "system_name": "The Great Labyrinth",
+    "theme": "Maze, Gravity Anomalies, Dimensional Traps",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G3S2_LEGENDARY_MINOTAUR",
+    "name": "Minotaur Prime",
+    "description": "A colossal, mechanized warden built by an ancient race to patrol the endless corridors. Its horns are gravity-generators that can crush a starship.",
+    "class": "Boss (Construct)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 650, "Resource": 200, "Strength": 20, "Agility": 8, "Endurance": 25, "Intelligence": 10, "Perception": 15, "Charisma": 0 },
+      "level_21": { "HP": 6500, "Resource": 1000, "Strength": 60, "Agility": 25, "Endurance": 80, "Intelligence": 30, "Perception": 40, "Charisma": 0 }
+    },
+    "actions": ["skill_charge", "skill_pummel", "gravity_crush", "wall_slam"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Maze_Wardens": {
+      "description": "Automated constructs that maintain the labyrinth and purge intruders.",
+      "variants": [
+        {
+          "id": "G3S2_C_01", "name": "Sweeper-Bot", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["cleaning_spray", "ram"]
+        },
+        {
+          "id": "G3S2_C_02", "name": "Corridor-Sentinel", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["halt_command", "stun_baton"]
+        },
+        {
+          "id": "G3S2_C_03", "name": "Wall-Shifter", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["crush", "reconfigure_terrain"]
+        },
+        {
+          "id": "G3S2_C_04", "name": "Gravity-Drone", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["gravity_well", "repulsor_blast"]
+        },
+        {
+          "id": "G3S2_C_05", "name": "Maze-Minotaur (Alpha)", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["charge", "gore", "enrage"]
+        },
+        {
+          "id": "G3S2_C_06", "name": "Tesla-Gatekeeper", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["chain_lightning", "static_shield"]
+        },
+        {
+          "id": "G3S2_C_07", "name": "Omni-Warden", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 220 }, "level_21": { "HP": 2200 } },
+          "actions": ["lockdown", "missile_salvo", "summon_sweepers"]
+        }
+      ]
+    },
+    "Type_2_Lost_Wanderers": {
+      "description": "Scavengers and explorers driven mad by the shifting walls.",
+      "variants": [
+        {
+          "id": "G3S2_H_01", "name": "Starved Scavenger", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["desperate_strike", "beg"]
+        },
+        {
+          "id": "G3S2_H_02", "name": "Crazed Cartographer", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 45 }, "level_21": { "HP": 450 } },
+          "actions": ["blaster_shot", "throw_map_tools"]
+        },
+        {
+          "id": "G3S2_H_03", "name": "Trap-Smith", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["deploy_mine", "snare_trap"]
+        },
+        {
+          "id": "G3S2_H_04", "name": "Rift-Nomad", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 70 }, "level_21": { "HP": 700 } },
+          "actions": ["phase_step", "sniper_shot"]
+        },
+        {
+          "id": "G3S2_H_05", "name": "Cannibal Enforcer", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["heavy_club", "bite", "frenzy"]
+        },
+        {
+          "id": "G3S2_H_06", "name": "Survivor Captain", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 100 }, "level_21": { "HP": 1000 } },
+          "actions": ["command_shout", "tactical_retreat"]
+        },
+        {
+          "id": "G3S2_H_07", "name": "The Forever-Lost", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 160 }, "level_21": { "HP": 1600 } },
+          "actions": ["psychic_wail", "hallucination_grenade", "shadow_meld"]
+        }
+      ]
+    },
+    "Type_3_Dimensional_Anomalies": {
+      "description": "Entities that bleed through the thin walls of reality in the deep maze.",
+      "variants": [
+        {
+          "id": "G3S2_E_01", "name": "Chiral Mote", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 20 }, "level_21": { "HP": 200 } },
+          "actions": ["flicker"]
+        },
+        {
+          "id": "G3S2_E_02", "name": "Shadow-Self", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["mimic_attack", "vanish"]
+        },
+        {
+          "id": "G3S2_E_03", "name": "Geometry-Bender", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["warp_space", "sharp_angle_cut"]
+        },
+        {
+          "id": "G3S2_E_04", "name": "Echo-Warden", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 75 }, "level_21": { "HP": 750 } },
+          "actions": ["sonic_scream", "duplicate"]
+        },
+        {
+          "id": "G3S2_E_05", "name": "Void-Spider", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["web_reality", "venom_bite"]
+        },
+        {
+          "id": "G3S2_E_06", "name": "Non-Euclidean Horror", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 130 }, "level_21": { "HP": 1300 } },
+          "actions": ["mind_break", "impossible_movement"]
+        },
+        {
+          "id": "G3S2_E_07", "name": "Rift-Lord", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["open_rift", "banish", "void_storm"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G3S2_RARE_01", "name": "The Maze-Runner",
+      "description": "A legendary speedster who has mapped the unmappable.",
+      "chance": 0.05,
+      "loot_bonus": "hidden_stash_map",
+      "behavior": "Fleeing_AI"
+    },
+    {
+      "id": "G3S2_RARE_02", "name": "Cube-0",
+      "description": "The prototype of the maze's shifting blocks, now sentient.",
+      "chance": 0.03,
+      "loot_bonus": "Logic Gate",
+      "behavior": "Tank_AI"
+    },
+    {
+      "id": "G3S2_RARE_03", "name": "The Architect's Shadow",
+      "description": "A lingering psychic imprint of the one who built this place.",
+      "chance": 0.02,
+      "loot_bonus": "Algorithm Scroll",
+      "behavior": "Caster_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "CrypC", "min": 60, "max": 400 },
+    "common": [ "Scrap Metal", "Wire Spool", "Broken Watch" ],
+    "uncommon": [ "Lockpick", "Hydraulic Piston", "Sensor Array" ],
+    "rare": [ "Logic Gate", "Paradox Core", "High-Grade Shield" ],
+    "epic": [ "Dimensional Compass (Quest)", "Stealth Field Generator" ],
+    "legendary": [ "Labyrinth Key-Core (Unique)" ]
+  }
+}

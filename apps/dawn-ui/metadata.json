@@ -1,0 +1,7 @@
+{
+  "name": "Eideus Dawn Interface",
+  "description": "A sci-fi tactical interface featuring a glitch-animated header and complex grid layout system.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@eideus/universe-mapper": [
+        "../../packages/eideus-universe-mapper/src"
+      ],
+      "@eideus/universe-mapper/*": [
+        "../../packages/eideus-universe-mapper/src/*"
+      ],
+      "@eideus/world-bundle-binder": [
+        "../../packages/eideus-world-bundle-binder/src"
+      ],
+      "@eideus/world-bundle-binder/*": [
+        "../../packages/eideus-world-bundle-binder/src/*"
+      ],
+      "eideus-xp-system": [
+        "../../packages/eideus-xp-system/src"
+      ],
+      "eideus-bestiary": [
+        "../../packages/eideus-bestiary/src"
+      ],
+      "eideus-combat": [
+        "../../packages/eideus-combat/src"
+      ]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  }
+}

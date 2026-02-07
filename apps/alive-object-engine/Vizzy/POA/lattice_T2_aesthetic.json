@@ -1,0 +1,1722 @@
+{
+    "meta": {
+        "id": "T2",
+        "name": "Dynamic Aesthetics",
+        "vertical_axis": "Y (Spectral/Light)",
+        "horizontal_axes": [
+            "X (Shader/Material)",
+            "Z (Tech/VFX)"
+        ],
+        "node_count": 343
+    },
+    "slices": [
+        {
+            "y_index": 0,
+            "label": "Dark Matter",
+            "description": "Base state. Minimum luminosity, raw wireframes, deep space ambience.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Mat Base",
+                            "action": "Cyan Solid",
+                            "target": "sphere.color",
+                            "val": "#00ffff"
+                        },
+                        {
+                            "x": 1,
+                            "role": "Roughness",
+                            "action": "Matte Finish",
+                            "target": "sphere.roughness",
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "role": "Metalness",
+                            "action": "Non-Metal",
+                            "target": "sphere.metalness",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "role": "Wireframe",
+                            "action": "Force Wire",
+                            "target": "sphere.wireframe",
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "role": "Flat Shade",
+                            "action": "Flat Toggle",
+                            "target": "rings.flatShading",
+                            "val": true
+                        },
+                        {
+                            "x": 5,
+                            "role": "Opacity",
+                            "action": "Ghost Mode",
+                            "target": "sphere.opacity",
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "role": "Blend",
+                            "action": "Add Blend",
+                            "target": "material.blending",
+                            "val": "additive"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Light Key",
+                            "action": "Dim Key",
+                            "target": "directionalLight.intensity",
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "role": "Light Fill",
+                            "action": "Dark Fill",
+                            "target": "ambientLight.intensity",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "role": "Light Rim",
+                            "action": "Soft Rim",
+                            "target": "spotLight.intensity",
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "role": "Shadows",
+                            "action": "Hard Shadow",
+                            "target": "light.castShadow",
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "role": "Decay",
+                            "action": "Fast Decay",
+                            "target": "spotLight.decay",
+                            "val": 2.0
+                        },
+                        {
+                            "x": 5,
+                            "role": "Penumbra",
+                            "action": "Sharp Edge",
+                            "target": "spotLight.penumbra",
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "role": "Bias",
+                            "action": "Fix Acne",
+                            "target": "light.shadow.bias",
+                            "val": -0.001
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 1,
+            "label": "Cold Ignition",
+            "description": "Introduction of cool colors and low-level emission.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "#0088ff"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": true
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": "normal"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 6,
+                            "val": -0.001
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.1
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.1
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.1
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.1
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 2,
+            "label": "Neon Flux",
+            "description": "Cyberpunk palette. High contrast, emissive rings.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "#ff00ff"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": false
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": "additive"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": -0.002
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.3
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.3
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.3
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.3
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 3,
+            "label": "Metallic Sheen",
+            "description": "Gold and Chrome focus. High reflection.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "#ffd700"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": false
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": "normal"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 2,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": -0.003
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.5
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.5
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.5
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.5
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 4,
+            "label": "Prismatic Distortion",
+            "description": "Introduction of noise-based color shifting and glitches.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "rainbow"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": true
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": "subtractive"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 2,
+                            "val": 5.0
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": -0.005
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 5,
+            "label": "Stellar Bloom",
+            "description": "Overdriven lights, maximum glow, soft edges.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "#ffffff"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": true
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": "additive"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 8.0
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": -0.01
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "y_index": 6,
+            "label": "Total Washout",
+            "description": "Blinding light, pure energy state.",
+            "rows": [
+                {
+                    "z": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "#ffffff"
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": true
+                        },
+                        {
+                            "x": 4,
+                            "val": true
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 6,
+                            "val": "additive"
+                        }
+                    ]
+                },
+                {
+                    "z": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 10.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 5.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 20.0
+                        },
+                        {
+                            "x": 3,
+                            "val": false
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.0
+                        }
+                    ]
+                },
+                {
+                    "z": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "z": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "z": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "z": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "z": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

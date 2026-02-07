@@ -1,0 +1,165 @@
+{
+    "system_id": "G1-S1",
+    "name": "Aura-507",
+    "theme": "radiation/industrial decay/mutation",
+    "legendary": {
+        "id": "isotope-king",
+        "name": "The Isotope King",
+        "type": "Legendary",
+        "tier": "Legendary",
+        "xp": 0,
+        "description": "A massive, glowing humanoid fused with reactor shielding."
+    },
+    "archetypes": [
+        {
+            "name": "Beasts",
+            "variants": [
+                {
+                    "id": "rad-hound-v1",
+                    "name": "Rad-Hound (Prowler)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "rad-hound-v2",
+                    "name": "Rad-Hound (Alpha)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "rad-hound-v3",
+                    "name": "Rad-Hound (Blighted)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "glow-bat-v1",
+                    "name": "Glow-Bat (Screecher)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "glow-bat-v2",
+                    "name": "Glow-Bat (Leech)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "cinder-cat-v1",
+                    "name": "Cinder-Cat (Stalker)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "cinder-cat-v2",
+                    "name": "Cinder-Cat (Flame-touched)",
+                    "tier": "Uncommon"
+                }
+            ]
+        },
+        {
+            "name": "Constructs",
+            "variants": [
+                {
+                    "id": "scrap-bot-v1",
+                    "name": "Scrap-Bot (Salvager)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "scrap-bot-v2",
+                    "name": "Scrap-Bot (Guard)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "crane-drone-v1",
+                    "name": "Crane-Drone (Lift)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "crane-drone-v2",
+                    "name": "Crane-Drone (Siege)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "welder-v1",
+                    "name": "Auto-Welder (Precision)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "welder-v2",
+                    "name": "Auto-Welder (Industrial)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "heavy-lifter-v1",
+                    "name": "Heavy Lifter (Titan)",
+                    "tier": "Elite"
+                }
+            ]
+        },
+        {
+            "name": "Humanoids",
+            "variants": [
+                {
+                    "id": "mutant-scav-v1",
+                    "name": "Mutant Scavenger (Knife)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "mutant-scav-v2",
+                    "name": "Mutant Scavenger (Gunner)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "leper-guard-v1",
+                    "name": "Leper Guard (Sentry)",
+                    "tier": "Common"
+                },
+                {
+                    "id": "leper-guard-v2",
+                    "name": "Leper Guard (Sergeant)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "reactor-cult-v1",
+                    "name": "Reactor Cultist (Initiate)",
+                    "tier": "Uncommon"
+                },
+                {
+                    "id": "reactor-cult-v2",
+                    "name": "Reactor Cultist (Zealot)",
+                    "tier": "Elite"
+                },
+                {
+                    "id": "deformed-priest-v1",
+                    "name": "Deformed Priest",
+                    "tier": "Elite"
+                }
+            ]
+        }
+    ],
+    "rares": [
+        {
+            "id": "uranium-ghost",
+            "name": "Uranium Ghost",
+            "tier": "Elite"
+        },
+        {
+            "id": "lead-behemoth",
+            "name": "Lead Behemoth",
+            "tier": "Elite"
+        },
+        {
+            "id": "fission-sprite",
+            "name": "Fission Sprite",
+            "tier": "Elite"
+        }
+    ],
+    "master_loot_table": {
+        "common": [
+            "Scrap Metal",
+            "Radiation Patch"
+        ],
+        "rare": [
+            "Isotope Shard",
+            "Lead Plating"
+        ],
+        "legendary": [
+            "King's Shield Piece"
+        ]
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "level": 12,
+  "base_xp_to_next": 3091,
+  "tiers": {
+    "tier1": {
+      "nominal": 618,
+      "range": [
+        556,
+        680
+      ]
+    },
+    "tier2": {
+      "nominal": 927,
+      "range": [
+        811,
+        1043
+      ]
+    },
+    "tier3": {
+      "nominal": 1546,
+      "range": [
+        1314,
+        1778
+      ]
+    },
+    "legendary": {
+      "nominal": 0,
+      "range": [
+        0,
+        0
+      ]
+    }
+  },
+  "meta": {
+    "legendary_rule": "legendary grants 0 XP; reward via items/flags"
+  }
+}

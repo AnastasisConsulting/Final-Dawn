@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G2-S2-O4",
+  "Object_Name": "Subjective Island (Cygnus Rift-Delta – Perception Experiment Zone)",
+  "Location_Metadata": {
+    "Type": "Island",
+    "Subtype": "Artificial Experiment Zone",
+    "Description": "A floating island in the Rift, created for experimental testing of perception and cognition. The environment constantly shifts based on the emotional and mental state of its visitors.",
+    "System_Theme": "Psychological experimentation, surreal landscapes, unpredictable phenomena"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "The terrain reshapes continuously, making navigation disorienting." },
+        { "Element": 2, "Lore": "Ambient light and colors fluctuate in response to observer mood." },
+        { "Element": 3, "Lore": "Floating rocks drift unpredictably, often forming temporary bridges." },
+        { "Element": 4, "Lore": "Localized weather changes according to collective emotional energy." },
+        { "Element": 5, "Lore": "Gravity varies subtly in different zones, affecting movement and perception." },
+        { "Element": 6, "Lore": "Plant life exhibits unusual intelligence, reacting to observers’ intentions." },
+        { "Element": 7, "Lore": "Illusory landmarks appear, misleading visitors and altering spatial memory." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "The island is under the observation of a secretive research council." },
+        { "Element": 2, "Lore": "Visitors are monitored remotely, with data collected for experimental purposes." },
+        { "Element": 3, "Lore": "Unauthorized exploitation of the island’s phenomena is strictly prohibited." },
+        { "Element": 4, "Lore": "Rogue factions sometimes infiltrate to manipulate the experiments for profit." },
+        { "Element": 5, "Lore": "The island has no permanent inhabitants aside from the monitoring drones." },
+        { "Element": 6, "Lore": "Occasional temporal anomalies appear, possibly linked to cognitive feedback loops." },
+        { "Element": 7, "Lore": "The council enforces strict protocols for visitor engagement with the environment." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "The Central Observation Platform, where visitors’ actions are analyzed in real-time." },
+        { "Element": 2, "Lore": "The Perception Gardens, zones designed to test empathy and cognitive response." },
+        { "Element": 3, "Lore": "Floating Lab Modules, containing experiments that manipulate environmental variables." },
+        { "Element": 4, "Lore": "The Hall of Mirrors, a shifting maze reflecting inner fears and desires." },
+        { "Element": 5, "Lore": "The Gravity Pools, where altered gravity creates unique traversal challenges." },
+        { "Element": 6, "Lore": "The Illusory Archives, storing transient visions experienced by visitors." },
+        { "Element": 7, "Lore": "The Emotional Nexus, a core zone where collective moods shape physical reality." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "Chief Psychologist Arven, overseeing experimental protocols." },
+        { "Element": 2, "Lore": "Cognitive Engineer Lyssa, manipulating environmental feedback systems." },
+        { "Element": 3, "Lore": "Security Coordinator Jorik, ensuring visitor compliance with safety rules." },
+        { "Element": 4, "Lore": "Rogue Observer Nima, studying unmonitored effects for personal research." },
+        { "Element": 5, "Lore": "Drone AI Vex-7, responsible for continuous environmental adjustments." },
+        { "Element": 6, "Lore": "Test Subject Echo, a volunteer whose perception drives significant shifts in reality." },
+        { "Element": 7, "Lore": "Archivist Kiri, recording subjective experiences into permanent memory logs." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Arven insists on meditating before adjusting experimental parameters." },
+        { "Element": 2, "Lore": "Lyssa wears colored lenses that invert perception during tests." },
+        { "Element": 3, "Lore": "Jorik uses sound cues to subtly influence visitor movement." },
+        { "Element": 4, "Lore": "Nima leaves coded messages embedded in the shifting terrain." },
+        { "Element": 5, "Lore": "Vex-7 occasionally introduces unexpected anomalies to gauge reactions." },
+        { "Element": 6, "Lore": "Echo unconsciously alters the island’s layout based on fear levels." },
+        { "Element": 7, "Lore": "Kiri logs experiences in a nonlinear timeline, often causing confusion when reviewed." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Guide Echo through the Hall of Mirrors to stabilize the perception loop." },
+        { "Element": 2, "Lore": "Investigate rogue anomalies introduced by Nima and neutralize disruptive effects." },
+        { "Element": 3, "Lore": "Assist Lyssa in calibrating environmental feedback systems for a new experiment." },
+        { "Element": 4, "Lore": "Recover lost Illusory Archives before transient visions fade permanently." },
+        { "Element": 5, "Lore": "Stabilize Gravity Pools to allow safe traversal for researchers and visitors." },
+        { "Element": 6, "Lore": "Negotiate with emotional feedback zones to prevent destructive surges." },
+        { "Element": 7, "Lore": "Analyze collected data logs to predict next environmental shifts accurately." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "The island’s perception-driven shifts create both exploration challenges and narrative twists." },
+        { "Element": 2, "Lore": "Players’ mental states influence how the island manifests and interacts with them." },
+        { "Element": 3, "Lore": "Key discoveries within the island may reveal hidden conspiracies or anomalies." },
+        { "Element": 4, "Lore": "Faction or NPC interactions can trigger significant environmental changes." },
+        { "Element": 5, "Lore": "Mastering navigation of the island can unlock secret paths or resources." },
+        { "Element": 6, "Lore": "Players may encounter echoes of past visitors, offering guidance or misdirection." },
+        { "Element": 7, "Lore": "The island can serve as a hub for psychological experiments tied to the main narrative." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Map the shifting Perception Gardens to assist researchers." },
+        { "Element": 2, "Lore": "Recover and stabilize lost Illusory Archives before they collapse." },
+        { "Element": 3, "Lore": "Neutralize environmental hazards created by rogue observers like Nima." },
+        { "Element": 4, "Lore": "Assist Echo in understanding and controlling emotional influence over the island." },
+        { "Element": 5, "Lore": "Collect unique cognitive samples from the Hall of Mirrors for experimentation." },
+        { "Element": 6, "Lore": "Protect researchers and visitors from sudden perception-based dangers." },
+        { "Element": 7, "Lore": "Predict environmental changes using collected emotional and cognitive data." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "The island’s manipulation of perception is key to unlocking both narrative and gameplay mysteries." },
+        { "Element": 2, "Lore": "Players’ actions and emotional states have tangible consequences on the environment." },
+        { "Element": 3, "Lore": "Interaction with NPCs and factions influences the unfolding of side quests and main story arcs." },
+        { "Element": 4, "Lore": "Exploring and mastering the island provides advantages in later challenges." },
+        { "Element": 5, "Lore": "Hidden anomalies and data can offer unique rewards or story revelations." },
+        { "Element": 6, "Lore": "The island is a proving ground for perception-based mechanics integrated into the larger game." },
+        { "Element": 7, "Lore": "The outcome of experiments here can ripple into future encounters across the Cygnus Rift-Delta." }
+      ]
+    }
+  }
+}

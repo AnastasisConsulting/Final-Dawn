@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G2-S2-O2",
+  "Object_Name": "Rust Nebula (Cygnus Rift-Delta – Corroded Asteroid Field)",
+  "Location_Metadata": {
+    "Type": "Nebula",
+    "Subtype": "Asteroid Field",
+    "Description": "A dense field of corroded asteroids surrounded by a reddish haze. Magnetic and chemical anomalies make navigation hazardous, while scavengers hunt for valuable materials.",
+    "System_Theme": "Hazardous space, salvaging, rogue factions"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "The asteroids are covered with oxidized metal, giving the field its signature red glow." },
+        { "Element": 2, "Lore": "Magnetic disturbances disrupt navigational instruments and sensors." },
+        { "Element": 3, "Lore": "Occasional chemical eruptions from volatile asteroids create mini-explosions." },
+        { "Element": 4, "Lore": "Hidden tunnels within larger asteroids hold precious salvage but are extremely unstable." },
+        { "Element": 5, "Lore": "Sparse gas clouds in the nebula can obscure vision and communications." },
+        { "Element": 6, "Lore": "The field shifts subtly due to gravitational interactions between the asteroids." },
+        { "Element": 7, "Lore": "Faint energy residues suggest remnants of abandoned mining operations." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Rogue salvage crews constantly compete for the richest asteroids." },
+        { "Element": 2, "Lore": "Small pirate enclaves hide within the denser pockets of the nebula." },
+        { "Element": 3, "Lore": "Corporations occasionally send covert teams to recover high-value materials." },
+        { "Element": 4, "Lore": "Neutral zones are monitored by autonomous drones to prevent large-scale conflict." },
+        { "Element": 5, "Lore": "Smugglers use the nebula to transport illicit goods, exploiting its hazards as cover." },
+        { "Element": 6, "Lore": "Former miners maintain hidden outposts to trade information and supplies." },
+        { "Element": 7, "Lore": "Occasional skirmishes over rich asteroids have caused temporary chain reactions in the field." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "The Red Ring, a circular formation of large asteroids rich in corroded alloys." },
+        { "Element": 2, "Lore": "The Core Fragment, a massive asteroid containing rare salvageable technology." },
+        { "Element": 3, "Lore": "The Gas Pocket, a cloud of reactive gases that can damage ships if disturbed." },
+        { "Element": 4, "Lore": "Hidden Caverns within asteroids, potentially harboring ancient relics or dangers." },
+        { "Element": 5, "Lore": "The Scavenger's Haven, an outpost established on a large, stable asteroid." },
+        { "Element": 6, "Lore": "The Magnetic Chasm, a hazardous gap where navigation systems frequently fail." },
+        { "Element": 7, "Lore": "The Rusted Gate, a derelict docking station with clues to lost mining operations." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "Salvager Jex, expert in navigating the hazardous asteroid field." },
+        { "Element": 2, "Lore": "Rogue Pilot Lira, skilled at evading pirates and magnetic anomalies." },
+        { "Element": 3, "Lore": "Corporate Overseer Tharn, overseeing covert material recovery." },
+        { "Element": 4, "Lore": "Pirate Captain Voss, controls a small fleet hidden in the nebula." },
+        { "Element": 5, "Lore": "Exiled Miner Ral, maintains hidden caches of resources." },
+        { "Element": 6, "Lore": "Autonomous Salvage Drones, left from abandoned operations, sometimes hostile." },
+        { "Element": 7, "Lore": "Ghost Signal, unexplained electromagnetic phenomena that interfere with electronics." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Jex refuses to enter regions with high chemical instability." },
+        { "Element": 2, "Lore": "Lira constantly recalibrates sensors to compensate for magnetic fluctuations." },
+        { "Element": 3, "Lore": "Tharn keeps encrypted logs of all salvage runs and pirate encounters." },
+        { "Element": 4, "Lore": "Voss uses decoys to mislead rivals and automated drones." },
+        { "Element": 5, "Lore": "Ral communicates via hidden beacons, avoiding direct contact." },
+        { "Element": 6, "Lore": "Salvage Drones can misidentify intruders and trigger defensive protocols." },
+        { "Element": 7, "Lore": "Ghost Signal occasionally reveals hidden pathways or triggers malfunctions." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Recover rare corroded alloys from the Red Ring." },
+        { "Element": 2, "Lore": "Investigate the origin of the Ghost Signal." },
+        { "Element": 3, "Lore": "Escort Jex through the Magnetic Chasm safely." },
+        { "Element": 4, "Lore": "Retrieve a lost prototype from Hidden Caverns." },
+        { "Element": 5, "Lore": "Negotiate with Pirate Captain Voss to avoid conflict." },
+        { "Element": 6, "Lore": "Secure Scavenger's Haven from rogue factions." },
+        { "Element": 7, "Lore": "Map the asteroid field for safe navigation routes." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "The Rust Nebula is a key location for lost technological artifacts." },
+        { "Element": 2, "Lore": "Navigational hazards make it a dangerous but rewarding field for explorers." },
+        { "Element": 3, "Lore": "Conflict between factions drives much of the local tension." },
+        { "Element": 4, "Lore": "Understanding the nebula's anomalies is critical for resource exploitation." },
+        { "Element": 5, "Lore": "Players’ choices influence faction relations and access to resources." },
+        { "Element": 6, "Lore": "Recovering lost prototypes can impact technological progress in the region." },
+        { "Element": 7, "Lore": "Mastery over the field provides strategic advantages for controlling trade routes." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Assist Jex in mapping the Red Ring for safe salvage." },
+        { "Element": 2, "Lore": "Investigate anomalies associated with the Ghost Signal." },
+        { "Element": 3, "Lore": "Negotiate or sabotage interactions between rogue factions." },
+        { "Element": 4, "Lore": "Secure Hidden Caverns for rare salvage." },
+        { "Element": 5, "Lore": "Escort miners or salvage crews through hazardous zones." },
+        { "Element": 6, "Lore": "Deactivate rogue salvage drones that endanger crews." },
+        { "Element": 7, "Lore": "Explore the Rusted Gate to uncover the lost history of the nebula." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "The Rust Nebula’s hidden technology drives plotlines across the sector." },
+        { "Element": 2, "Lore": "Faction conflict creates opportunities for player influence." },
+        { "Element": 3, "Lore": "Surviving hazards and mastering navigation is key to progression." },
+        { "Element": 4, "Lore": "Recovering artifacts may unlock powerful tools or weapons." },
+        { "Element": 5, "Lore": "Exploration choices affect access to quests and side missions." },
+        { "Element": 6, "Lore": "Interactions with rogue and corporate factions shape the story." },
+        { "Element": 7, "Lore": "Mastery of Rust Nebula establishes player reputation and resources." }
+      ]
+    }
+  }
+}

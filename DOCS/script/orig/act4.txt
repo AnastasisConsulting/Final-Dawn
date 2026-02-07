@@ -1,0 +1,259 @@
+// script/act_4-chapters_IsotopeGarden.txt
+
+
+---
+
+# ☢️ ACT IV – "The Isotope Garden" (World ID: G1-S1-O4)
+
+**Setting:** The Isotope Garden. A cathedral of toxic beauty where flora feeds on unstable isotopes and the soil glows with a lethal, violet hue.
+**Theme:** Mutation, Radiant Vitalism, and the Harvest of Poison.
+**Canonical Key:** `[Gx-Sx-Ox-Cx-CTx-Rx]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Radian Concordat)
+**Civilization ID:** `C1`
+**Global Hook:** Dominate the mutated wilds and harvest the raw energy of the garden through brute industrial force.
+
+### **Chapter 1: The Isotope Sabotage**
+* **Mission:** Trace a non-accidental leak in the Refinery and recover the stolen isotopes.
+* **Key Cast:**
+    * **Giver:** **Refinery-Sec Drax** (`G1-S1-O4-C1-CT1-R4`) - Security Overseer.
+    * **Contact:** **Watchman Silas** (`G1-S1-O4-C1-CT2-R6`) - Ridge Sentry.
+    * **Target:** **Splicer-Novice Riven** (`G1-S1-O4-C1-CT3-R3`) - Genetic Operative.
+* **Objectives:**
+    1.  Scan for leaks at **Isotope Refinery 09**.
+    2.  Track the thief at **Sentinel Ridge**.
+    3.  Apprehend the target at **The Splicing Chambers**.
+
+### **Chapter 2: The Holy Mutation**
+* **Mission:** Secure a specific strain of lead-resistant flora for a ritual.
+* **Key Cast:**
+    * **Giver:** **Deacon Spore** (`G1-S1-O4-C1-CT3-R1`) - Cult Priestess.
+    * **Contact:** **Gardener Lys** (`G1-S1-O4-C1-CT1-R5`) - Botanical Researcher.
+    * **Target:** **Vault-Keep Tor** (`G1-S1-O4-C1-CT2-R5`) - Obsidian Guardian.
+* **Objectives:**
+    1.  Receive the vessel at **The Neon Cathedral**.
+    2.  Harvest the strain at **The Lead-Glass Canopy**.
+    3.  Secure the sample at **The Obsidian Vaults**.
+
+### **Chapter 3: Crimson Smuggle**
+* **Mission:** Move a shipment of isotopic pollen across borders without Exarch oversight.
+* **Key Cast:**
+    * **Giver:** **Slinker Korr** (`G1-S1-O4-C1-CT1-R6`) - Smuggler.
+    * **Contact:** **Gatekeeper Kragg** (`G1-S1-O4-C1-CT2-R7`) - Entrywarden.
+    * **Target:** **Lume-Stalker Zek** (`G1-S1-O4-C1-CT3-R5`) - Alley Predator.
+* **Objectives:**
+    1.  Collect the stash at **Rad-Worker Shanty**.
+    2.  Bypass the checkpoint at **Tungsten Gate**.
+    3.  Deliver the goods at **Bioluminescent Alleys**.
+
+### **Chapter 4: Grit-Iron Trials**
+* **Mission:** Test a new mutagenic enhancement serum in live combat.
+* **Key Cast:**
+    * **Giver:** **Drillmaster Gort** (`G1-S1-O4-C1-CT2-R4`) - Combat Instructor.
+    * **Contact:** **Trader Jool** (`G1-S1-O4-C1-CT1-R7`) - Market Broker.
+    * **Target:** **Culler-Chief Yorrik** (`G1-S1-O4-C1-CT3-R6`) - Gene Overseer.
+* **Objectives:**
+    1.  Enroll at **Grit-Iron Training Grounds**.
+    2.  Buy the serum at **The Kinetic Market**.
+    3.  Demonstrate power at **Gene-Cullers' Walk**.
+
+### **Chapter 5: Archivist's Preservation**
+* **Mission:** Extract a dying mutation's genetic code before it fades forever.
+* **Key Cast:**
+    * **Giver:** **Scribe Juno** (`G1-S1-O4-C1-CT3-R7`) - Mutation Archivist.
+    * **Contact:** **Scout-Major Nix** (`G1-S1-O4-C1-CT2-R2`) - Aerial Recon.
+    * **Target:** **Dredge-Worker Milo** (`G1-S1-O4-C1-CT1-R1`) - Piston Engineer.
+* **Objectives:**
+    1.  Get the tablets at **The Transmutation Spire**.
+    2.  Locate the beast at **Stinger's Perch**.
+    3.  Extract the sample at **The Piston Groves**.
+
+### **Chapter 6: The Heavy-Water Deal**
+* **Mission:** Resolve a dispute over heavy water rights slowing production.
+* **Key Cast:**
+    * **Giver:** **Dockmaster Vane** (`G1-S1-O4-C1-CT1-R3`) - Liquid Logistics.
+    * **Contact:** **Knight-Captain Harl** (`G1-S1-O4-C1-CT2-R1`) - Bastion Commander.
+    * **Target:** **Font-Guard Kael** (`G1-S1-O4-C1-CT3-R4`) - Isotope Keeper.
+* **Objectives:**
+    1.  Negotiate terms at **The Heavy-Water Docks**.
+    2.  Secure an escort at **The Iron Bastion**.
+    3.  Deliver the shipment to **Isotope Font**.
+
+### **Chapter 7: Mutagen Harvest**
+* **Mission:** Channel excess garden energy into armor plating (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Bloom-Tender Elara** (`G1-S1-O4-C1-CT3-R2`) - Mutagen Gardener.
+    * **Contact:** **Scav-Chief Rek** (`G1-S1-O4-C1-CT1-R2`) - Chemical Scavenger.
+    * **Target:** **Sergeant Brawn** (`G1-S1-O4-C1-CT2-R3`) - Infantry Drill.
+* **Objectives:**
+    1.  Harvest mutagen at **Mutagen Gardens**.
+    2.  Filter sludge at **Sulphur Flats**.
+    3.  Apply coating at **The Shield-Wall Barracks**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Radian Collective)
+**Civilization ID:** `C2`
+**Global Hook:** Navigate the hazardous flora with precision and manipulate the delicate balance of the bloom.
+
+### **Chapter 1: Harvest Crimson Spores**
+* **Mission:** Collect rare Crimson Bloom spores for a weapons experiment.
+* **Key Cast:**
+    * **Giver:** **Dr. Lys Arkan** (`G1-S1-O4-C2-CT1-R3`) - Lead Botanist.
+    * **Contact:** **Mother Spore** (`G1-S1-O4-C2-CT2-R4`) - Fungal Priestess.
+    * **Target:** **Gardener Sol** (`G1-S1-O4-C2-CT3-R3`) - Floral Curator.
+* **Objectives:**
+    1.  Get shielded vials at **The Gilded Petal Lab**.
+    2.  Bless the container at **The Fossil-Fuel Fungi**.
+    3.  Harvest spores at **The Echoing Greenhouse**.
+
+### **Chapter 2: The Isotopic Run**
+* **Mission:** Smuggle a batch of refined isotopic pollen past sentries.
+* **Key Cast:**
+    * **Giver:** **Korr Malek** (`G1-S1-O4-C2-CT2-R6`) - Smuggler.
+    * **Contact:** **Sentry Glass-Eye** (`G1-S1-O4-C2-CT1-R1`) - Security Scout.
+    * **Target:** **Trader Dax** (`G1-S1-O4-C2-CT3-R6`) - Mutation Merchant.
+* **Objectives:**
+    1.  Pickup package at **Scintillation Scrapyard**.
+    2.  Evade detection at **Lead-Glass Atrium**.
+    3.  Sell goods at **Spectral-Cusp Market**.
+
+### **Chapter 3: The Holy Mutation**
+* **Mission:** Facilitate the growth of a new fungal strain mirroring the Bloom Child.
+* **Key Cast:**
+    * **Giver:** **The Bloom Child** (`G1-S1-O4-C2-CT3-R5`) - Mutant Prophet.
+    * **Contact:** **Archivist Juno** (`G1-S1-O4-C2-CT3-R7`) - Holy Scholar.
+    * **Target:** **Harvester Tish** (`G1-S1-O4-C2-CT2-R1`) - Lichen Gatherer.
+* **Objectives:**
+    1.  Commune at **The Soft-Glow Gardens**.
+    2.  Record the prophecy at **The Lead-Lined Cloisters**.
+    3.  Plant the seed at **The Bone-Lichen Fields**.
+
+### **Chapter 4: Sabotage the Reactor**
+* **Mission:** Infiltrate the cooling system to disrupt rival isotope production.
+* **Key Cast:**
+    * **Giver:** **Riven-88** (`G1-S1-O4-C2-CT1-R2`) - Infiltration Specialist.
+    * **Contact:** **Diver Myra** (`G1-S1-O4-C2-CT1-R7`) - Maintenance Specialist.
+    * **Target:** **Loader Brix** (`G1-S1-O4-C2-CT1-R6`) - Logistics Handler.
+* **Objectives:**
+    1.  Plan the route at **Isotope Refinery Alpha**.
+    2.  Plant the device at **The Cooling Canal**.
+    3.  Trigger the alarm at **Gamma-Sift Silos**.
+
+### **Chapter 5: The Child's Shield**
+* **Mission:** Escort a VIP through the gardens under threat from dissenters.
+* **Key Cast:**
+    * **Giver:** **Prism-Guard Val** (`G1-S1-O4-C2-CT3-R2`) - Light Sentinel.
+    * **Contact:** **Tunneler Nox** (`G1-S1-O4-C2-CT2-R5`) - Subterranean Scout.
+    * **Target:** **Glider Pip** (`G1-S1-O4-C2-CT3-R1`) - Aerial Observer.
+* **Objectives:**
+    1.  Secure the perimeter at **Refraction Plaza**.
+    2.  Navigate the tunnels at **Marrow-Root Depths**.
+    3.  Signal the extraction at **The Neon Canopy**.
+
+### **Chapter 6: Yorrik's Salvation**
+* **Mission:** Stabilize a foreman's rapidly mutating body using heavy water.
+* **Key Cast:**
+    * **Giver:** **Foreman Yorrik** (`G1-S1-O4-C2-CT2-R2`) - Excavation Overseer.
+    * **Contact:** **Pumper Finn** (`G1-S1-O4-C2-CT2-R3`) - Fluid Manager.
+    * **Target:** **Carver Rhia** (`G1-S1-O4-C2-CT2-R7`) - Crystal Shaper.
+* **Objectives:**
+    1.  Assess the mutation at **Decay-Point Quarry**.
+    2.  Extract the cure at **Heavy-Water Wells**.
+    3.  Seal the chamber at **The Obsidian Shards**.
+
+### **Chapter 7: The Bone Chronicle**
+* **Mission:** Preserve the memory of a collapsing mutation (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Dredger Kael** (`G1-S1-O4-C2-CT1-R4`) - Resource Extractor.
+    * **Contact:** **Artisan Jory** (`G1-S1-O4-C2-CT1-R5`) - Clockwork Technician.
+    * **Target:** **Weaver Lyss** (`G1-S1-O4-C2-CT3-R4`) - Textile Specialist.
+* **Objectives:**
+    1.  Recover the sample at **Chrono-Silt Reservoirs**.
+    2.  Process the container at **The Precision Terrace**.
+    3.  Weave the record at **Prism-Silk Weaving District**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Isotope Synthesis)
+**Civilization ID:** `C3`
+**Global Hook:** Engineer the ultimate biological reactor through atomic alchemy.
+
+### **Chapter 1: The Isotope Smuggle**
+* **Mission:** Transport illegal isotopic pollen for clandestine study.
+* **Key Cast:**
+    * **Giver:** **Tracker Korr** (`G1-S1-O4-C3-CT2-R2`) - Isotope Scout.
+    * **Contact:** **Docker Jax** (`G1-S1-O4-C3-CT2-R7`) - Lead-Docks Foreman.
+    * **Target:** **Sidera** (`G1-S1-O4-C3-CT1-R1`) - Lead Researcher.
+* **Objectives:**
+    1.  Secure the pollen at **Polonium Flats**.
+    2.  Bypass customs at **The Leaden Docks**.
+    3.  Deliver to **Core Lab Alpha**.
+
+### **Chapter 2: The Holy Mutation**
+* **Mission:** Record the emergence of a new biological strain.
+* **Key Cast:**
+    * **Giver:** **Archivist Juno** (`G1-S1-O4-C3-CT3-R1`) - Sacred Scholar.
+    * **Contact:** **Monk Silas** (`G1-S1-O4-C3-CT3-R2`) - Cloister Guardian.
+    * **Target:** **Bloom Child** (`G1-S1-O4-C3-CT3-R3`) - Spore Manifestation.
+* **Objectives:**
+    1.  Get tablets at **Pharmanon Heights**.
+    2.  Obtain bismuth at **The Bismuth Cloisters**.
+    3.  Observe growth at **Crystal-Ion Gardens**.
+
+### **Chapter 3: Heart-Reactor Sabotage**
+* **Mission:** Disrupt cooling systems to force a grid recalibration.
+* **Key Cast:**
+    * **Giver:** **Sentinel Riven** (`G1-S1-O4-C3-CT3-R4`) - Bunker Guardian.
+    * **Contact:** **Voron** (`G1-S1-O4-C3-CT1-R3`) - Fission Technician.
+    * **Target:** **Elara** (`G1-S1-O4-C3-CT1-R4`) - Cooling Supervisor.
+* **Objectives:**
+    1.  Get codes at **The Gilded Bunkers**.
+    2.  Access controls at **Fission Plaza**.
+    3.  Disable pumps at **The Cooling Terraces**.
+
+### **Chapter 4: Fungal Data Retrieval**
+* **Mission:** Extract raw data from a mutated spore cluster.
+* **Key Cast:**
+    * **Giver:** **Pax** (`G1-S1-O4-C3-CT1-R5`) - Data Scrubber.
+    * **Contact:** **Spore-Warden Mira** (`G1-S1-O4-C3-CT2-R5`) - Enrichment Specialist.
+    * **Target:** **Alchemist Vex** (`G1-S1-O4-C3-CT3-R5`) - Synthesis Specialist.
+* **Objectives:**
+    1.  Prep probes at **Data-Scrub Wards**.
+    2.  Extract samples at **The Enrichment Spines**.
+    3.  Synthesize data at **Synthesis Square**.
+
+### **Chapter 5: The Lead-Glass Catalyst**
+* **Mission:** Craft a reinforced lens to focus gamma rays.
+* **Key Cast:**
+    * **Giver:** **Kaelen** (`G1-S1-O4-C3-CT1-R2`) - Lead-Glass Master.
+    * **Contact:** **Harbormaster Goyle** (`G1-S1-O4-C3-CT2-R3`) - Gamma-Tide Logistics.
+    * **Target:** **Botanist Lys** (`G1-S1-O4-C3-CT2-R1`) - Radiation Botanist.
+* **Objectives:**
+    1.  Cast mold at **The Lead-Glass Atrium**.
+    2.  Harden glass at **Gamma-Tide Harbor**.
+    3.  Install lens at **The Thallium Groves**.
+
+### **Chapter 6: Cure the Veins**
+* **Mission:** Develop a serum to slow lethal radiation poisoning.
+* **Key Cast:**
+    * **Giver:** **Foreman Yorrik** (`G1-S1-O4-C3-CT2-R4`) - Dormitory Overseer.
+    * **Contact:** **Apothecary Zoya** (`G1-S1-O4-C3-CT3-R7`) - Mutagen Chemist.
+    * **Target:** **Dr. Aris** (`G1-S1-O4-C3-CT1-R7`) - Chief Virologist.
+* **Objectives:**
+    1.  Draw blood at **Harvest-Hand Dorms**.
+    2.  Mix serum at **Apothecary Lane**.
+    3.  Administer cure at **Quarantine Sector 9**.
+
+### **Chapter 7: Scintillation Harvesting**
+* **Mission:** Capture pure light-energy for high-density storage (World Boss Trigger).
+* **Key Cast:**
+    * **Giver:** **Scintillator Krell** (`G1-S1-O4-C3-CT2-R6`) - Light Harvester.
+    * **Contact:** **Vane** (`G1-S1-O4-C3-CT1-R6`) - Vault Keeper.
+    * **Target:** **Watcher Sol** (`G1-S1-O4-C3-CT3-R6`) - Observation Specialist.
+* **Objectives:**
+    1.  Calibrate catchers at **Scintillation Fields**.
+    2.  Secure transport at **The Isotope Vaults**.
+    3.  Analyze frequency at **The Observation Spire**.

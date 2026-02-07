@@ -1,0 +1,23 @@
+{
+  "name": "eideus-xp-system",
+  "version": "0.1.0",
+  "description": "Eideus Dawn XP progression and enemy XP ranges (TypeScript)",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "eideus-xp": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --loader ts-node/esm src/cli.ts",
+    "table": "node dist/cli.js table",
+    "enemy-xp": "node dist/cli.js enemy-xp"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

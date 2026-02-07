@@ -1,0 +1,288 @@
+{
+  "Object_Key": "G1-S2-O1",
+  "Object_Name": "Quiet Refuel",
+  "Location_Metadata": {
+    "Type": "Station",
+    "Subtype": "Hidden Fuel Depot",
+    "Description": "A hushed orbital station drifting near the Foundry Core’s industrial belts. Officially decommissioned, it still functions as a black-market fueling and repair hub for smugglers, deserters, and those avoiding Syndicate eyes.",
+    "System_Theme": "Covert logistics, shadow commerce"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        {
+          "Element": 1,
+          "Lore": "The station’s outer shell is patched with mismatched plating, glowing faintly with reactor scars."
+        },
+        {
+          "Element": 2,
+          "Lore": "Interior corridors echo with a constant hum of auxiliary generators, many jury-rigged from ship wreckage."
+        },
+        {
+          "Element": 3,
+          "Lore": "A central docking spindle rotates slowly, allowing multiple ships to tether in microgravity alignment."
+        },
+        {
+          "Element": 4,
+          "Lore": "The entire fuel reserve is stored in massive spherical tanks suspended in vacuum cages."
+        },
+        {
+          "Element": 5,
+          "Lore": "A scrapyard ring encircles the station, filled with stripped wrecks serving as both salvage stock and camouflage."
+        },
+        {
+          "Element": 6,
+          "Lore": "Hydroponic gardens, long abandoned, now act as damp bunkers for hiding fugitives."
+        },
+        {
+          "Element": 7,
+          "Lore": "Every surface is layered in graffiti tags from crews across the galaxy — each marking allegiance or defiance."
+        }
+      ],
+      "Geopolitics": [
+        {
+          "Element": 1,
+          "Lore": "The **Fuel Guild Remnants** maintain semi-official control, selling access to hidden pumps."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Free-Market Cartels** operate unlicensed repair bays for smugglers."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Silent Data Brokers** use the station as a courier relay for encrypted message drops."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Technocracy of Sol** considers the station illegal, but its inspectors are bribed into silence."
+        },
+        {
+          "Element": 5,
+          "Lore": "Independent mercenary crews regularly auction protection contracts inside the docking spindle."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Autonomous Worker Collective** secretly uses the hydroponic bunkers to shelter defectors."
+        },
+        {
+          "Element": 7,
+          "Lore": "The **Radiant Warlords** demand tribute in volatile fuels when passing through."
+        }
+      ],
+      "Quest_Locales": [
+        {
+          "Element": 1,
+          "Lore": "The **Scrapyard Ring**, filled with drifting hulks that double as trap corridors for ambushes."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Docking Spindle Market**, a microgravity bazaar where everything from plasma cells to stolen IDs are traded."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Fuel Tank Array**, volatile and unstable, but concealing hidden caches of smuggled contraband."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Silent Bunkers**, hydroponic ruins turned into shadow dens for runaway crews."
+        },
+        {
+          "Element": 5,
+          "Lore": "The **Guildmaster’s Chamber**, a reinforced command node overlooking the spindle."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Signal Relay Hub**, where encrypted bursts from the Silent Data Brokers are stored before rerouting."
+        },
+        {
+          "Element": 7,
+          "Lore": "The **Warlord Tribute Dock**, marked in crimson, where extortion payments are enforced."
+        }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        {
+          "Element": 1,
+          "Lore": "**Guildmaster Corvess**, the aging Fuel Guild leader, clinging to influence with bribes and secrecy."
+        },
+        {
+          "Element": 2,
+          "Lore": "**Lira Voidhand**, a smuggler queenpin who runs the Docking Spindle Market with ruthless pragmatism."
+        },
+        {
+          "Element": 3,
+          "Lore": "**Brother Hask**, an ex-cultist who now tends the hydroponic bunkers as sanctuaries."
+        },
+        {
+          "Element": 4,
+          "Lore": "**Tovin Grell**, a mercenary captain who sells auctioned contracts to the highest bidder."
+        },
+        {
+          "Element": 5,
+          "Lore": "**Cipher-Iron**, a Collective drone repurposed into a fuel-line monitor and underground resistance courier."
+        },
+        {
+          "Element": 6,
+          "Lore": "**Jax Orlin**, a Free-Market engineer who can rebuild an engine out of scrap and ambition."
+        },
+        {
+          "Element": 7,
+          "Lore": "**The Crimson Herald**, a Radiant Warlord enforcer, who paints fuel tanks with the ashes of enemies."
+        }
+      ],
+      "Quirks": [
+        {
+          "Element": 1,
+          "Lore": "Corvess never speaks above a whisper, forcing others to lean in and concede control."
+        },
+        {
+          "Element": 2,
+          "Lore": "Lira Voidhand insists on a zero-gravity environment for all negotiations, claiming it levels the playing field."
+        },
+        {
+          "Element": 3,
+          "Lore": "Brother Hask decorates hydroponic ruins with glowing fungus patterns he claims are divine messages."
+        },
+        {
+          "Element": 4,
+          "Lore": "Tovin Grell chews reactor wire insulation when stressed."
+        },
+        {
+          "Element": 5,
+          "Lore": "Cipher-Iron twitches whenever it processes forbidden data, releasing sparks from its joints."
+        },
+        {
+          "Element": 6,
+          "Lore": "Jax Orlin replaces his tools with salvaged alien relics, convinced they channel luck."
+        },
+        {
+          "Element": 7,
+          "Lore": "The Crimson Herald communicates only through ritualized blood-markings smeared on walls."
+        }
+      ],
+      "Quests": [
+        {
+          "Element": 1,
+          "Lore": "Corvess requests **forged Syndicate inspection papers** to keep inspectors off the station."
+        },
+        {
+          "Element": 2,
+          "Lore": "Lira Voidhand demands a rare shipment of **quantum plasma rods** be smuggled into her market."
+        },
+        {
+          "Element": 3,
+          "Lore": "Brother Hask begs players to recover a **stolen relic idol** hidden somewhere in the Scrapyard Ring."
+        },
+        {
+          "Element": 4,
+          "Lore": "Tovin Grell offers credits for eliminating a rival mercenary team encroaching on his contracts."
+        },
+        {
+          "Element": 5,
+          "Lore": "Cipher-Iron requires help in delivering a **forbidden data package** past Warlord patrols."
+        },
+        {
+          "Element": 6,
+          "Lore": "Jax Orlin needs scavenged alien tech components to finish his experimental fuel injector."
+        },
+        {
+          "Element": 7,
+          "Lore": "The Crimson Herald demands players sabotage the **Fuel Tank Array** to demonstrate loyalty."
+        }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        {
+          "Element": 1,
+          "Lore": "Quiet Refuel is revealed to be a **keystone logistics hub** for Cartel and resistance fleets."
+        },
+        {
+          "Element": 2,
+          "Lore": "The Fuel Guild secretly collaborates with the Technocracy, feeding intelligence on smugglers."
+        },
+        {
+          "Element": 3,
+          "Lore": "The Silent Data Brokers route high-value Syndicate secrets through the Relay Hub."
+        },
+        {
+          "Element": 4,
+          "Lore": "A hidden cache in the Scrapyard Ring holds a **prototype Syndicate fuel-core** that could power fleets."
+        },
+        {
+          "Element": 5,
+          "Lore": "The Radiant Warlords plan to seize the station outright, risking all-out conflict."
+        },
+        {
+          "Element": 6,
+          "Lore": "The hydroponic bunkers conceal a **Collective sleeper cell** poised to attack the Syndicate."
+        },
+        {
+          "Element": 7,
+          "Lore": "Corvess’s whispering leadership hides the fact that he is already dead — a cloned double runs things."
+        }
+      ],
+      "Side_Quests": [
+        {
+          "Element": 1,
+          "Lore": "Recover missing reactor coils from a wreck drifting near the scrapyard."
+        },
+        {
+          "Element": 2,
+          "Lore": "Guard a smuggler caravan docking under Warlord threat."
+        },
+        {
+          "Element": 3,
+          "Lore": "Deliver encoded messages through the Broker’s relay hub."
+        },
+        {
+          "Element": 4,
+          "Lore": "Steal exotic tech components from rival engineers."
+        },
+        {
+          "Element": 5,
+          "Lore": "Investigate a ghost signal haunting the hydroponic bunkers."
+        },
+        {
+          "Element": 6,
+          "Lore": "Sabotage a mercenary auction by planting counterfeit bids."
+        },
+        {
+          "Element": 7,
+          "Lore": "Sneak forbidden relics past Syndicate customs drones."
+        }
+      ],
+      "Story_Drivers": [
+        {
+          "Element": 1,
+          "Lore": "Quiet Refuel becomes a **power balance fulcrum** for factions in the Foundry Core."
+        },
+        {
+          "Element": 2,
+          "Lore": "The station represents a choice: protect the smugglers’ freedom, or hand them to the Syndicate."
+        },
+        {
+          "Element": 3,
+          "Lore": "The fate of the station decides who controls hidden fuel reserves vital for larger wars."
+        },
+        {
+          "Element": 4,
+          "Lore": "The player can determine whether the Cartels, the Technocracy, or the Collective dominate its future."
+        },
+        {
+          "Element": 5,
+          "Lore": "A mystery of **why the station was ‘decommissioned’** leads to Syndicate betrayal."
+        },
+        {
+          "Element": 6,
+          "Lore": "The Warlords’ ambition pushes the system toward chaotic collapse."
+        },
+        {
+          "Element": 7,
+          "Lore": "Quiet Refuel holds coordinates to **an uncharted Foundry Nexus site**, a hidden anomaly."
+        }
+      ]
+    }
+  }
+}

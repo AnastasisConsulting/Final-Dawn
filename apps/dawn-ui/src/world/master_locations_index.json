@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "description": "Master registry mapping Memetic Keys [Gx-Sx-Ox] to physical file paths for the entire Universe.",
+    "root_directory": "Galaxies_Folder",
+    "standard_file_layout": ["act{N}.json", "lorebook.json", "quests.json", "sector_map.json", "source_seed.json", "texture.png"]
+  },
+  "registry": {
+    "//": "--- GALAXY 1: THE CORE SYNDICATE ---",
+    
+    "//": "SYSTEM 1: AURA-507",
+    "G1-S1-O1": { "name": "S-11 Drill", "directory": "The_Core_Syndicate/Aura-507/S-11_Drill", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O2": { "name": "Sentinel Dome", "directory": "The_Core_Syndicate/Aura-507/Sentinel_Dome", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O3": { "name": "The Gamma Hold", "directory": "The_Core_Syndicate/Aura-507/The_Gamma_Hold", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O4": { "name": "The Isotope Garden", "directory": "The_Core_Syndicate/Aura-507/The_Isotope_Garden", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O5": { "name": "The Quartz Furnace", "directory": "The_Core_Syndicate/Aura-507/The_Quartz_Furnace", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O6": { "name": "The Whispering Ion", "directory": "The_Core_Syndicate/Aura-507/The_Whispering_Ion", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S1-O7": { "name": "Xenon Scar", "directory": "The_Core_Syndicate/Aura-507/Xenon_Scar", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 2: THE REGULATORS EYE",
+    "G1-S2-O1": { "name": "Vigilance Platform-7", "directory": "The_Core_Syndicate/The_Regulators_Eye/Vigilance_Platform-7", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O2": { "name": "The Zero-G Court", "directory": "The_Core_Syndicate/The_Regulators_Eye/The_Zero-G_Court", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O3": { "name": "The Silent Witness", "directory": "The_Core_Syndicate/The_Regulators_Eye/The_Silent_Witness", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O4": { "name": "The Gilded Cage", "directory": "The_Core_Syndicate/The_Regulators_Eye/The_Gilded_Cage", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O5": { "name": "The Compliance Matrix", "directory": "The_Core_Syndicate/The_Regulators_Eye/The_Compliance_Matrix", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O6": { "name": "Censors Rock", "directory": "The_Core_Syndicate/The_Regulators_Eye/Censors_Rock", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S2-O7": { "name": "Aegis-1", "directory": "The_Core_Syndicate/The_Regulators_Eye/Aegis-1", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 3: THE FOUNDRY CORE",
+    "G1-S3-O1": { "name": "The Waste Compactor", "directory": "The_Core_Syndicate/The_Foundry_Core/The_Waste_Compactor", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O2": { "name": "The Torque Belt", "directory": "The_Core_Syndicate/The_Foundry_Core/The_Torque_Belt", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O3": { "name": "The Scavengers Nest", "directory": "The_Core_Syndicate/The_Foundry_Core/The_Scavengers_Nest", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O4": { "name": "The Hearth Forge", "directory": "The_Core_Syndicate/The_Foundry_Core/The_Hearth_Forge", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O5": { "name": "Syncline", "directory": "The_Core_Syndicate/The_Foundry_Core/Syncline", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O6": { "name": "Smelters Dusk", "directory": "The_Core_Syndicate/The_Foundry_Core/Smelters_Dusk", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G1-S3-O7": { "name": "Quiet Refuel", "directory": "The_Core_Syndicate/The_Foundry_Core/Quiet_Refuel", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "--- GALAXY 2: THE FADING ECHO ---",
+
+    "//": "SYSTEM 1: THE SHARD VERGE",
+    "G2-S1-O1": { "name": "The Quiet Vault", "directory": "The_Fading_Echo/The_Shard_Verge/The_Quiet_Vault", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O2": { "name": "The Glitch Forge", "directory": "The_Fading_Echo/The_Shard_Verge/The_Glitch_Forge", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O3": { "name": "The Chronometer", "directory": "The_Fading_Echo/The_Shard_Verge/The_Chronometer", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O4": { "name": "Rogues Anchor", "directory": "The_Fading_Echo/The_Shard_Verge/Rogues_Anchor", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O5": { "name": "Quantum Dust", "directory": "The_Fading_Echo/The_Shard_Verge/Quantum_Dust", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O6": { "name": "Nexus Zero", "directory": "The_Fading_Echo/The_Shard_Verge/Nexus_Zero", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S1-O7": { "name": "Axe Head", "directory": "The_Fading_Echo/The_Shard_Verge/Axe_Head", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 2: CYGNUS RIFT-DELTA",
+    "G2-S2-O1": { "name": "The Void Mirror", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/The_Void_Mirror", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O2": { "name": "The Lag Gate", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/The_Lag_Gate", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O3": { "name": "The Chronal Glacier", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/The_Chronal_Glacier", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O4": { "name": "Subjective Island", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/Subjective_Island", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O5": { "name": "Slipstream Node", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/Slipstream_Node", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O6": { "name": "Rust Nebula", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/Rust_Nebula", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S2-O7": { "name": "Ophidian Scar", "directory": "The_Fading_Echo/Cygnus_Rift-Delta/Ophidian_Scar", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 3: AETHEL-PRIME",
+    "G2-S3-O1": { "name": "Xylos-Prime", "directory": "The_Fading_Echo/Aethel-Prime/Xylos-Prime", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O2": { "name": "The Frozen Crypt", "directory": "The_Fading_Echo/Aethel-Prime/The_Frozen_Crypt", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O3": { "name": "The Chronos Nexus", "directory": "The_Fading_Echo/Aethel-Prime/The_Chronos_Nexus", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O4": { "name": "Silent Shroud", "directory": "The_Fading_Echo/Aethel-Prime/Silent_Shroud", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O5": { "name": "Iron Fang", "directory": "The_Fading_Echo/Aethel-Prime/Iron_Fang", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O6": { "name": "Echoes Deep", "directory": "The_Fading_Echo/Aethel-Prime/Echoes_Deep", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G2-S3-O7": { "name": "A-31 Reclaimer", "directory": "The_Fading_Echo/Aethel-Prime/A-31_Reclaimer", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "--- GALAXY 3: THE VOID SEA ---",
+
+    "//": "SYSTEM 1: THE WHISPER ZONE",
+    "G3-S1-O1": { "name": "The Unspoken", "directory": "The_Void_Sea/The_Whisper_Zone/The_Unspoken", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O2": { "name": "The Mute World", "directory": "The_Void_Sea/The_Whisper_Zone/The_Mute_World", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O3": { "name": "The Ghost Ship", "directory": "The_Void_Sea/The_Whisper_Zone/The_Ghost_Ship", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O4": { "name": "The Comm Null", "directory": "The_Void_Sea/The_Whisper_Zone/The_Comm_Null", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O5": { "name": "The Cold Heart", "directory": "The_Void_Sea/The_Whisper_Zone/The_Cold_Heart", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O6": { "name": "Stasis Shore", "directory": "The_Void_Sea/The_Whisper_Zone/Stasis_Shore", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S1-O7": { "name": "Signal Tomb", "directory": "The_Void_Sea/The_Whisper_Zone/Signal_Tomb", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 2: THE GREAT LABYRINTH",
+    "G3-S2-O1": { "name": "The Transit Nexus", "directory": "The_Void_Sea/The_Great_Labyrinth/The_Transit_Nexus", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O2": { "name": "The Scrambler", "directory": "The_Void_Sea/The_Great_Labyrinth/The_Scrambler", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O3": { "name": "The Rift Runner", "directory": "The_Void_Sea/The_Great_Labyrinth/The_Rift_Runner", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O4": { "name": "The Maze World", "directory": "The_Void_Sea/The_Great_Labyrinth/The_Maze_World", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O5": { "name": "The Black Star", "directory": "The_Void_Sea/The_Great_Labyrinth/The_Black_Star", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O6": { "name": "Refugee Veil", "directory": "The_Void_Sea/The_Great_Labyrinth/Refugee_Veil", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S2-O7": { "name": "Chiral Abyss", "directory": "The_Void_Sea/The_Great_Labyrinth/Chiral_Abyss", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+
+    "//": "SYSTEM 3: KORETHS VEIL",
+    "G3-S3-O1": { "name": "The Stillness", "directory": "The_Void_Sea/Koreths_Veil/The_Stillness", "files": { "act": "act1.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O2": { "name": "The Shadow Core", "directory": "The_Void_Sea/Koreths_Veil/The_Shadow_Core", "files": { "act": "act2.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O3": { "name": "The Relic Cache", "directory": "The_Void_Sea/Koreths_Veil/The_Relic_Cache", "files": { "act": "act3.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O4": { "name": "The Prophets Eye", "directory": "The_Void_Sea/Koreths_Veil/The_Prophets_Eye", "files": { "act": "act4.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O5": { "name": "The Oracles Pedestal", "directory": "The_Void_Sea/Koreths_Veil/The_Oracles_Pedestal", "files": { "act": "act5.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O6": { "name": "The Crystal Quarry", "directory": "The_Void_Sea/Koreths_Veil/The_Crystal_Quarry", "files": { "act": "act6.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } },
+    "G3-S3-O7": { "name": "The Anomaly Bloom", "directory": "The_Void_Sea/Koreths_Veil/The_Anomaly_Bloom", "files": { "act": "act7.json", "lorebook": "lorebook.json", "quests": "quests.json", "sector_map": "sector_map.json" } }
+  }
+}

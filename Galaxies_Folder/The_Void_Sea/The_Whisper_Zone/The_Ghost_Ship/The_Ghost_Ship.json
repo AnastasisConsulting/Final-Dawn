@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G3-S3-O5",
+  "Object_Name": "The_Ghost_Ship",
+  "Location_Metadata": {
+    "Type": "Vessel",
+    "Subtype": "Derelict Ship",
+    "Description": "An abandoned starship drifting silently through the Whisper Zone. Its hull is scarred and its internal systems flicker with intermittent power. Rumors suggest it carries spectral echoes of its lost crew.",
+    "System_Theme": "Isolation, haunting, lost technology"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "Hull plating is partially fused with void residue from prolonged exposure." },
+        { "Element": 2, "Lore": "Internal corridors are labyrinthine, with sections collapsed or blocked." },
+        { "Element": 3, "Lore": "Dim emergency lights create a haunting, fluctuating ambience." },
+        { "Element": 4, "Lore": "Engine bay contains ancient fusion cores, barely stable." },
+        { "Element": 5, "Lore": "Bridge displays ghostly holographic logs of the final moments." },
+        { "Element": 6, "Lore": "Cargo holds contain remnants of unknown expeditions and experiments." },
+        { "Element": 7, "Lore": "Airlocks creak and hiss, echoing through empty decks." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "No faction officially claims the ship, though scavengers occasionally board it." },
+        { "Element": 2, "Lore": "Ancient security protocols occasionally trigger, repelling intruders." },
+        { "Element": 3, "Lore": "The ship's spectral systems have been studied by rogue AI enthusiasts." },
+        { "Element": 4, "Lore": "Information recovered here may be sold to the highest bidder." },
+        { "Element": 5, "Lore": "Boarding the ship can attract hostile encounters from other explorers." },
+        { "Element": 6, "Lore": "Some factions believe the ship carries clues to lost Whisper Zone secrets." },
+        { "Element": 7, "Lore": "Its wandering path through the zone is unpredictable, affecting navigation." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "Bridge: access to logs and navigation systems." },
+        { "Element": 2, "Lore": "Engine Bay: stabilize or salvage fusion cores." },
+        { "Element": 3, "Lore": "Cargo Holds: recover experimental artifacts." },
+        { "Element": 4, "Lore": "Crew Quarters: haunted echoes of former inhabitants." },
+        { "Element": 5, "Lore": "Medical Bay: find clues about the crew’s fate." },
+        { "Element": 6, "Lore": "Airlocks: risk entry/exit hazards." },
+        { "Element": 7, "Lore": "Observation Deck: spectral projections of the ship’s final trajectory." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "**Captain Pharos**, ghostly projection of the ship’s former commander." },
+        { "Element": 2, "Lore": "**Navigator Sira**, AI fragment maintaining partial star maps." },
+        { "Element": 3, "Lore": "**Engineer Trel**, spectral figure attempting repairs." },
+        { "Element": 4, "Lore": "**Cargo Custodian**, autonomous drone preserving cargo integrity." },
+        { "Element": 5, "Lore": "**Echo AI**, residual consciousness from crew interactions." },
+        { "Element": 6, "Lore": "**Silent Watcher**, unseen entity observing intruders." },
+        { "Element": 7, "Lore": "**Temporal Drift**, a phenomenon causing time distortions aboard." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Captain Pharos communicates only in fragmented logs." },
+        { "Element": 2, "Lore": "Navigator Sira occasionally replays impossible star charts." },
+        { "Element": 3, "Lore": "Engineer Trel leaves spectral tools that fade after use." },
+        { "Element": 4, "Lore": "Cargo Custodian can activate traps to prevent looting." },
+        { "Element": 5, "Lore": "Echo AI repeats prior events unpredictably." },
+        { "Element": 6, "Lore": "Silent Watcher creates fleeting visual anomalies." },
+        { "Element": 7, "Lore": "Temporal Drift alters perceived duration of exploration." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Recover logs from Bridge to understand ship’s final mission." },
+        { "Element": 2, "Lore": "Stabilize fusion cores in Engine Bay to prevent collapse." },
+        { "Element": 3, "Lore": "Retrieve artifacts from Cargo Holds." },
+        { "Element": 4, "Lore": "Interact with spectral crew for hidden insights." },
+        { "Element": 5, "Lore": "Investigate Medical Bay for cause of crew disappearance." },
+        { "Element": 6, "Lore": "Safely traverse hazardous Airlocks." },
+        { "Element": 7, "Lore": "Use Observation Deck to predict ship’s erratic path." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "The Ghost Ship’s trajectory may intersect key Whisper Zone locations." },
+        { "Element": 2, "Lore": "Recovered logs provide critical intelligence for main quests." },
+        { "Element": 3, "Lore": "Temporal anomalies aboard influence nearby missions." },
+        { "Element": 4, "Lore": "Players can learn about lost technology and faction secrets." },
+        { "Element": 5, "Lore": "Encounters with spectral crew reveal hidden plotlines." },
+        { "Element": 6, "Lore": "Stabilizing the ship can unlock a rare resource node." },
+        { "Element": 7, "Lore": "Boarding decisions impact faction reputations and story outcomes." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Map the Ghost Ship’s internal maze for safe traversal." },
+        { "Element": 2, "Lore": "Recover personal items of crew members for lore context." },
+        { "Element": 3, "Lore": "Interact with Echo AI for side intelligence tasks." },
+        { "Element": 4, "Lore": "Neutralize hazardous energy fields." },
+        { "Element": 5, "Lore": "Investigate hidden compartments in cargo holds." },
+        { "Element": 6, "Lore": "Track time distortions for optional narrative rewards." },
+        { "Element": 7, "Lore": "Assist or redirect spectral crew activities." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "Understanding the Ghost Ship expands the Whisper Zone narrative depth." },
+        { "Element": 2, "Lore": "Mastery of spectral anomalies enhances exploration rewards." },
+        { "Element": 3, "Lore": "Recovered logs connect to broader faction plotlines." },
+        { "Element": 4, "Lore": "Temporal Drift affects pacing of main and side quests." },
+        { "Element": 5, "Lore": "Player choices influence spectral interactions and outcomes." },
+        { "Element": 6, "Lore": "Unlocks strategic information for Whisper Zone operations." },
+        { "Element": 7, "Lore": "Provides critical context for final narrative arcs in the region." }
+      ]
+    }
+  }
+}

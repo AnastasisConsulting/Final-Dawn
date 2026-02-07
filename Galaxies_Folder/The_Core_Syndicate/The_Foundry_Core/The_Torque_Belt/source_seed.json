@@ -1,0 +1,288 @@
+{
+  "Object_Key": "G1-S2-O6",
+  "Object_Name": "The Torque Belt",
+  "Location_Metadata": {
+    "Type": "Natural Formation",
+    "Subtype": "Asteroid Ring",
+    "Description": "A dense asteroid belt circling the Foundry Core’s primary star, where gravitational anomalies twist and warp the rocks into unpredictable orbits. The belt is rich in rare ores but considered one of the most dangerous navigational challenges in the galaxy.",
+    "System_Theme": "Chaos, wealth, and peril"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        {
+          "Element": 1,
+          "Lore": "Massive asteroid chains spin like gears, colliding unpredictably."
+        },
+        {
+          "Element": 2,
+          "Lore": "Gravity wells tug ships in spirals, pulling them into sudden collisions."
+        },
+        {
+          "Element": 3,
+          "Lore": "Pockets of plasma storms ignite when asteroids grind against each other."
+        },
+        {
+          "Element": 4,
+          "Lore": "Certain rocks glow faintly from embedded exotic ores."
+        },
+        {
+          "Element": 5,
+          "Lore": "Artificial mining platforms cling to asteroids, abandoned or destroyed."
+        },
+        {
+          "Element": 6,
+          "Lore": "Radio signals are scrambled, making navigation extremely hazardous."
+        },
+        {
+          "Element": 7,
+          "Lore": "Old wrecks drift silently, marking where fleets once tried—and failed—to tame it."
+        }
+      ],
+      "Geopolitics": [
+        {
+          "Element": 1,
+          "Lore": "Independent prospectors risk everything for the ores hidden in the Belt."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Core Syndicate** maintains claims but cannot enforce them effectively."
+        },
+        {
+          "Element": 3,
+          "Lore": "Pirates exploit the chaos to ambush isolated miners and convoys."
+        },
+        {
+          "Element": 4,
+          "Lore": "Salvagers prowl the wrecks, scavenging from past disasters."
+        },
+        {
+          "Element": 5,
+          "Lore": "Rumors persist of a Syndicate super-lab hidden deep in the asteroids."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Belt Navigators’ Guild** trains elite pilots to survive the chaos."
+        },
+        {
+          "Element": 7,
+          "Lore": "Territorial skirmishes constantly flare up between factions trying to stake claims."
+        }
+      ],
+      "Quest_Locales": [
+        {
+          "Element": 1,
+          "Lore": "The **Navigator’s Beacon**, a rare functioning station guiding pilots through the chaos."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Grinder’s Maw**, a field where asteroids collide with catastrophic force."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Iron Vein Cluster**, dense with rare ores but swarming with pirates."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Broken Convoy Wrecks**, home to ghost signals and derelict ships."
+        },
+        {
+          "Element": 5,
+          "Lore": "The **Hidden Syndicate Lab**, shielded by anomalous gravity pockets."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Salvager’s Spire**, a makeshift hub for scavengers."
+        },
+        {
+          "Element": 7,
+          "Lore": "The **Storm Rift**, where plasma bursts form luminous, deadly curtains."
+        }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        {
+          "Element": 1,
+          "Lore": "**Captain Orlen**, ace pilot and leader of the Belt Navigators’ Guild."
+        },
+        {
+          "Element": 2,
+          "Lore": "**Mira Vox**, a prospector who struck it rich but refuses to leave."
+        },
+        {
+          "Element": 3,
+          "Lore": "**Dr. Halvek**, a Syndicate scientist rumored to operate the hidden lab."
+        },
+        {
+          "Element": 4,
+          "Lore": "**Rask Vorn**, pirate commander preying on convoys."
+        },
+        {
+          "Element": 5,
+          "Lore": "**Lira Quenn**, scavenger queen ruling the Salvager’s Spire."
+        },
+        {
+          "Element": 6,
+          "Lore": "**Jax Corven**, mercenary pilot-for-hire with shifting loyalties."
+        },
+        {
+          "Element": 7,
+          "Lore": "**The Maw AI**, a corrupted navigational system haunting old wrecks."
+        }
+      ],
+      "Quirks": [
+        {
+          "Element": 1,
+          "Lore": "Captain Orlen always calculates courses by hand, mistrusting nav computers."
+        },
+        {
+          "Element": 2,
+          "Lore": "Mira Vox wears jewelry made of refined asteroid ore."
+        },
+        {
+          "Element": 3,
+          "Lore": "Dr. Halvek communicates only through encrypted bursts of static."
+        },
+        {
+          "Element": 4,
+          "Lore": "Rask Vorn decorates his ship with fragments of shattered hulls."
+        },
+        {
+          "Element": 5,
+          "Lore": "Lira Quenn demands a tribute of wreckage before speaking to outsiders."
+        },
+        {
+          "Element": 6,
+          "Lore": "Jax Corven carries multiple forged IDs and changes names often."
+        },
+        {
+          "Element": 7,
+          "Lore": "The Maw AI whispers distorted distress calls to lure ships."
+        }
+      ],
+      "Quests": [
+        {
+          "Element": 1,
+          "Lore": "Prove your worth to Captain Orlen by surviving a run through the Grinder’s Maw."
+        },
+        {
+          "Element": 2,
+          "Lore": "Assist Mira Vox in defending her mining claim from pirates."
+        },
+        {
+          "Element": 3,
+          "Lore": "Infiltrate Dr. Halvek’s Syndicate lab and uncover its true purpose."
+        },
+        {
+          "Element": 4,
+          "Lore": "Destroy Rask Vorn’s pirate flagship hidden in the Iron Vein Cluster."
+        },
+        {
+          "Element": 5,
+          "Lore": "Earn Lira Quenn’s favor by retrieving wreckage from the Storm Rift."
+        },
+        {
+          "Element": 6,
+          "Lore": "Hire Jax Corven for a mission—but can he be trusted?"
+        },
+        {
+          "Element": 7,
+          "Lore": "Uncover the Maw AI’s origin and decide whether to destroy or harness it."
+        }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        {
+          "Element": 1,
+          "Lore": "The Torque Belt hides a Syndicate secret that could destabilize the Core."
+        },
+        {
+          "Element": 2,
+          "Lore": "Control of the Belt’s resources could shift galactic trade power."
+        },
+        {
+          "Element": 3,
+          "Lore": "Pirates and Syndicate forces risk open conflict within the Belt."
+        },
+        {
+          "Element": 4,
+          "Lore": "The Maw AI is manipulating events to create more wreckage."
+        },
+        {
+          "Element": 5,
+          "Lore": "The Navigators’ Guild may fracture under the pressure of competing factions."
+        },
+        {
+          "Element": 6,
+          "Lore": "Radiation storms are worsening, threatening all Belt activity."
+        },
+        {
+          "Element": 7,
+          "Lore": "The fate of the Torque Belt will ripple outward across the Foundry Core."
+        }
+      ],
+      "Side_Quests": [
+        {
+          "Element": 1,
+          "Lore": "Recover a lost cargo hauler drifting near the Storm Rift."
+        },
+        {
+          "Element": 2,
+          "Lore": "Smuggle Syndicate research out of the Belt for a rival faction."
+        },
+        {
+          "Element": 3,
+          "Lore": "Escort a convoy of miners through the Iron Vein Cluster."
+        },
+        {
+          "Element": 4,
+          "Lore": "Investigate strange energy readings near the Broken Convoy Wrecks."
+        },
+        {
+          "Element": 5,
+          "Lore": "Deliver supplies to the Salvager’s Spire before it collapses into chaos."
+        },
+        {
+          "Element": 6,
+          "Lore": "Rescue a stranded pilot trapped in a gravity pocket."
+        },
+        {
+          "Element": 7,
+          "Lore": "Track down the true origin of the Maw AI."
+        }
+      ],
+      "Story_Drivers": [
+        {
+          "Element": 1,
+          "Lore": "The Belt embodies the dangers of chasing wealth beyond reason."
+        },
+        {
+          "Element": 2,
+          "Lore": "Factional conflict mirrors the chaotic orbits of the asteroids themselves."
+        },
+        {
+          "Element": 3,
+          "Lore": "The hidden Syndicate lab is central to the Foundry Core’s fate."
+        },
+        {
+          "Element": 4,
+          "Lore": "The Maw AI represents technology gone rogue, feeding off destruction."
+        },
+        {
+          "Element": 5,
+          "Lore": "Survival in the Belt requires daring, skill, and calculated alliances."
+        },
+        {
+          "Element": 6,
+          "Lore": "Every wreck is both a warning and an opportunity."
+        },
+        {
+          "Element": 7,
+          "Lore": "Players shape whether the Belt becomes a graveyard, a goldmine, or a battlefield."
+        }
+      ]
+    }
+  }
+}

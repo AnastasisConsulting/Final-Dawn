@@ -1,0 +1,315 @@
+
+Memories are voxel cubes in Eideus Dawn. They are found at coordinate locations whe3re they were recorded. They follow a strict key format of location [gX.sX.oXcX.ctX.rX] for (G)alaxy.(S)tar system.explorable (O)bject_(C)ivilization.(C)i(T)y.(R)egional location
+
+Memories are also encoded with a temporal key [s(0-6).b.(0-6)c(0-6).p(0-oo)] where,
+s= Saga = Player save file with 6 availabkle slots for different characters in the same universe seed
+b= Book = Which world you are essential on
+c= Chapter = One gaming session 
+p = Page = The actual memories 
+
+Each memory is a voxel at that coordinate location in that frame of time. Each memory voxel maps its 6 faces to a different mode of memory.
+
+x+= The summed input of the game turn
+x-= The summed output of the game turn
+y+= Up to 7 embeddings from the I/O of the game turn
+y-= Up to 7 associative tags from the I/O of the game turn
+z+= Any entities character cards
+z-= The lorekey for that locations address in the per world lorebook
+
+We udse a LLM/Embeddings pair to determine user intent and choose from among a handful of toolcalls to determine our entry point into the memory
+
+
+
+ 
+Direct Voxel Read
+Input: exact [g.s.o.c.ct.r] + [s.b.c.p]
+Output: the single voxel + all 6 faces
+
+Direct Spatial Slice
+Input: exact [g.s.o.c.ct.r] (no time)
+Output: all pages at that location (optionally filtered by saga/book/chapter)
+
+Direct Temporal Slice
+Input: exact [s.b.c.p] (no location)
+Output: voxel(s) at that time across locations (usually bounded to saga + book)
+
+Range Read (Temporal)
+Input: [s.b.c.p0…pN] or [s.b.c0…cN.*]
+Output: ordered voxel list
+
+Range Read (Spatial Hierarchy)
+Input: prefix keys like:
+gX.*
+gX.sX.*
+gX.sX.oX.*
+gX.sX.oX.cX.*
+gX.sX.oX.cX.ctX.*
+Output: all voxels under that subtree (time-filter optional)
+
+Latest-at-Location
+Input: [g.s.o.c.ct.r]
+Output: newest voxel(s) at that location (by max temporal key)
+
+First-at-Location
+Input: [g.s.o.c.ct.r]
+Output: oldest voxel(s) at that location
+
+
+
+
+
+These return coordinate candidates (spatial keys, sometimes paired with time bounds).
+
+Location Index Lookup
+Query: keywords
+Index: Location Entity Index
+Output: [g.s.o.c.ct.r] candidates
+
+Personage Index Lookup
+Query: person name / alias / handle
+Index: Personage Entity Index
+Output: coordinates where that entity appears
+
+Proper Noun (Thing) Index Lookup
+Query: item/ship/place artifact name
+Index: ProperNouns Index
+Output: coordinates where mentioned/used/seen
+
+Associative Tag Index Lookup
+Query: tag(s)
+Index: AssociativeTags Index
+Output: coordinates where those tags occur (optionally tag-intersection)
+
+Lore Key Lookup
+Query: lorekey or lorekey prefix
+Index: LoreKey → Spatial map
+Output: all coordinates attached to that lore address
+
+Entity-ID Lookup
+Query: entity unique id (if you have them)
+Index: Entities registry
+Output: coordinates + temporal spans where the entity exists/acts
+
+Entity-Class Lookup
+Query: “governor”, “pirate”, “medic”, “augmented”, etc.
+Index: entity cards by class/type
+Output: coordinate clusters + pages
+
+
+
+
+
+Temporal Window (Standard)
+Rule: entry voxel ±3 pages
+Output: up to 7 voxels
+
+Temporal Window (Configurable)
+Rule: ±N pages
+
+Chapter Window
+Rule: all pages within [s.b.c.*]
+Session-to-Session Window
+Rule: [s.b.c-1.*] + [s.b.c.*] + [s.b.c+1.*]
+
+Book Window
+Rule: [s.b.*.*] bounded by world/book
+
+Saga Window
+Rule: all memories in [s.*.*.*]
+
+Time-First then Spatial Filter
+Rule: pick time window → filter by coordinate prefix or entity presence
+
+
+
+
+
+
+Given an entry voxel (same time unless stated):
+2D Neighbor Lookup (4-neighbor)
+N/S/E/W on the map plane
+
+2D Neighbor Lookup (8-neighbor)
+includes diagonals (if you allow it; still implied by grid logic)
+
+3D Sparse Neighbor Lookup (6-neighbor)
+±X, ±Y, ±Z adjacencies
+
+3D Full Neighbor Lookup (26-neighbor)
+Moore neighborhood in 3D
+
+Multi-Ring Spatial Expansion
+Rule: k-hop BFS over 4/6/26 neighbors
+
+Spatial Prefix Expansion
+Rule: expand from region → city → civ → object → system → galaxy
+Output: “nearby by hierarchy” rather than grid adjacency
+
+
+
+Place + Time Query (your rule)
+After any location resolution, apply Temporal Window (±3 or configurable)
+
+Time + Place Query
+After temporal resolution, constrain to spatial subtree
+
+Spacetime Neighborhood
+Combine: spatial neighbor set (4/6/26) at time t, then apply ±N time
+Output: a small “block” of voxels in spacetime
+
+Spacetime Path Walk
+Rule: alternate steps: temporal neighbor then spatial neighbor (or vice versa)
+Useful for “what led here?” / “what spread from here?”
+
+
+
+Entity Timeline
+Input: entity id/name
+Output: all voxels containing entity, ordered by temporal key
+
+Entity Local Timeline
+Input: entity + location prefix
+Output: entity voxels within that place
+
+Entity Encounter Window
+Input: entity + a specific encounter voxel
+Output: that voxel ±3 pages + any neighboring voxels where entity persists
+
+Co-Presence Graph
+Input: entity A
+Output: entities most often co-occurring with A + example voxels
+
+First Seen / Last Seen
+Input: entity
+Output: earliest voxel, latest voxel
+
+Entity Migration Trace
+Input: entity
+Output: ordered list of spatial coordinates over time (movement path)
+
+
+
+Turn-Type Lookup
+Query: “combat”, “dialogue”, “trade”, “travel”, “craft”, etc.
+Mechanism: classifier over x±
+Output: voxels of that class
+Causal Delta Lookup
+Query: “reputation decreased”, “faction hostility increased”, “inventory gained”
+Mechanism: search output face (x−) deltas
+Output: voxels where that delta occurred
+
+Trigger-Like Lookup
+Query: “first time landing”, “boss defeated”, “quest accepted”
+Mechanism: structured markers in x− or tags
+Output: event voxels + expansions
+
+Goal/Quest Path Lookup
+Query: quest id/path + index
+Output: all voxels attached to that quest progression
+
+
+
+
+Associative Jump
+Entry: voxel
+Rule: follow one of its y− tags → retrieve other voxels sharing it
+
+Tag-to-Embedding Bridge
+Entry: tag result set
+Rule: rerank by y+ similarity to user intent
+
+Embedding-to-Tag Bridge
+Entry: embedding results
+Rule: extract dominant y− tags from top-k → expand by those tags
+
+Concept Cluster Lookup
+Query: semantic intent
+Rule: y+ top-k → cluster → return cluster centroids + representative voxels
+
+Semantic Within Entity
+Query: “about X” where X is entity
+Rule: entity timeline filtered/reranked by y+ similarity
+
+
+
+
+Face Integrity Read
+Verify voxel has all required faces populated (x+, x−, y+, y−, z+, z−)
+
+Index Backtrace
+Input: a voxel id
+Output: all index entries that point to it (who/what indexes think it is)
+Index Drift Detection
+Query: entity/tag points to voxel but voxel missing corresponding face entry
+Output: inconsistencies
+Determinism Audit Window
+Input: voxel + replay seed/tick reference (if you store it)
+Output: compare expected x− vs stored x−
+
+
+
+
+ResolveCoordinatesByIndex (location/person/thing/tag/lore/entity)
+
+SearchFacesByKeyword (x+/x−/z+/z−/y−)
+
+SearchEmbeddings (y+ with optional spatial/temporal constraints)
+
+ReadVoxel (exact)
+
+ExpandTemporal (±N, chapter/book/saga)
+
+ExpandSpatial (4/6/26, k-hop)
+
+JoinAndRerank (tag↔embedding↔entity joins)
+
+
+
+
+These search the faces themselves, either at a location or globally.
+X Faces: I/O
+Input-Face Keyword Search (x+)
+Query: text keywords
+Scope: global or spatial subtree
+Output: voxel coordinates ranked by match
+Output-Face Keyword Search (x−)
+Input/Output Combined Keyword Search (x±)
+I/O Pattern Lookup
+Query: structured pattern (“attack → flee”, “trade → dispute”, etc.)
+Output: voxels where that transition signature appears
+Y Faces: Embeddings + Tags
+Embedding Similarity Search (y+)
+Query: embedding of user intent
+Output: voxel coordinates by cosine similarity (top-k)
+Embedding Search Constrained to Location
+Query: embedding + [g.s.o...] prefix
+Output: top-k within that spatial scope
+Embedding Search Constrained to Time
+Query: embedding + [s.b.c...] bounds
+Output: top-k within that temporal scope
+Tag Keyword Search (y−)
+Tag Intersection Lookup
+Query: tags A ∩ B ∩ C
+Output: voxels that contain all tags
+Tag Union Lookup
+Query: tags A ∪ B ∪ C
+Output: voxels containing any
+Tag Exclusion Lookup
+Query: include A, exclude B
+Output: voxels containing A but not B
+Tag Co-occurrence Lookup
+Query: “what tags commonly appear with X?”
+Output: ranked tags + pointers to representative voxels
+Z Faces: Entities + Lore
+Entities Face Search (z+)
+Query: entity name/type/id
+Output: voxels containing matching entity cards
+Entities Relationship Lookup
+Query: entity A + entity B
+Output: voxels where both appear (co-presence)
+Lore Face Lookup (z−)
+Query: lorekey exact or prefix
+Output: voxels referencing that lore address
+Lore-to-Entity Join
+Query: lorekey → which entities most present here?
+Output: entity list + voxel pointers

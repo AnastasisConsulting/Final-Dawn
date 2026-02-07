@@ -1,0 +1,607 @@
+[
+  {
+    "type": "function",
+    "name": "sc_awaken",
+    "description": "Bring Sentient Core from idle/ambient into attentive state.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["focus", "alert"] },
+          "minItems": 1,
+          "maxItems": 2
+        }
+      },
+      "required": ["actions"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_rest",
+    "description": "Return Sentient Core to baseline motion profile; enable decay/smoothing toward default.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["idle", "decay"] },
+          "minItems": 1,
+          "maxItems": 2
+        }
+      },
+      "required": ["actions"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_pause",
+    "description": "Soft pause: pause animation tick (visual pause) without clearing state.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["freeze", "hold"] },
+          "minItems": 1,
+          "maxItems": 2
+        }
+      },
+      "required": ["actions"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_resume",
+    "description": "Resume from paused/frozen state without reseeding.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_stop",
+    "description": "Developer hard-freeze: halts animation tick and motion synthesis immediately; state remains intact for inspection.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_step",
+    "description": "Developer stepping while frozen: advance motion by N frames deterministically.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "frames": { "type": "integer", "minimum": 1, "maximum": 100000 }
+      },
+      "required": ["frames"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_focus",
+    "description": "Bias attention toward an anchor (player/object/memory/event).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["player", "object", "memory", "event"] }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_ignore",
+    "description": "Suppress salience for a target without deleting memory.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["player", "object", "stimulus"] }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_emote",
+    "description": "Bias motion generator toward an affective manifold.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["curious", "excited", "calm", "alert", "playful", "hostile"]
+        }
+      },
+      "required": ["mode"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_curiosity",
+    "description": "Adjust exploration vs exploitation bias.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": { "type": "string", "enum": ["increase", "decrease"] }
+      },
+      "required": ["action"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_discipline",
+    "description": "Tighten/loosen motion variance and reaction latency bias.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "action": { "type": "string", "enum": ["increase", "decrease"] }
+      },
+      "required": ["action"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_approach",
+    "description": "Apply attraction toward a target anchor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["player", "object"] }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_retreat",
+    "description": "Apply repulsion away from a target anchor.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["player", "object"] }
+      },
+      "required": ["target"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_orbit",
+    "description": "Maintain bounded orbital motion around a target with axis hint.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string", "enum": ["player", "object"] },
+        "axis": { "type": "string", "enum": ["x", "y", "z", "xy", "xz", "yz", "free"] }
+      },
+      "required": ["target", "axis"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_tag",
+    "description": "Attach up to 7 semantic keys to the current state (for later retrieval).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_save",
+    "description": "Commit current state snapshot to memory lattice (embeddings + tags).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string", "enum": ["animation", "state"] },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      },
+      "required": ["kind"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_recall",
+    "description": "Request retrieval of stored motion/state by tag similarity.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "top_k": { "type": "integer", "minimum": 1, "maximum": 50 }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_new",
+    "description": "Developer: create a brand-new motion primitive from current manual override panel state; tag and embed it. Non-destructive.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_snapshot",
+    "description": "Developer: capture current manual override panel state as a new motion primitive (adds to library).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_replace",
+    "description": "Developer: capture current manual override panel state and overwrite the currently active motion primitive (destructive). Re-embeds with provided tags.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_apply",
+    "description": "Developer: load a stored motion primitive by tag similarity and apply it as active (non-destructive).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "match": { "type": "string", "enum": ["best", "exact"] }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_list",
+    "description": "Developer: print the motion library (optionally filtered by up to 7 tags).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 0,
+          "maxItems": 7
+        },
+        "format": { "type": "string", "enum": ["table", "json"] },
+        "top_k": { "type": "integer", "minimum": 1, "maximum": 500 }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_accept",
+    "description": "Developer: accept the last AI-generated motion and commit it into the library/index.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_reject",
+    "description": "Developer: reject (discard) the last AI-generated motion entirely.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_quarantine",
+    "description": "Developer: store the last AI-generated motion but prevent autonomous use until manually applied.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_replace_last",
+    "description": "Developer: replace the last AI-generated motion using current manual override panel snapshot, tagging and re-embedding.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_delete",
+    "description": "Developer: delete motion primitive(s) matching tags (removes embeddings + tag associations).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "mode": { "type": "string", "enum": ["best", "all_matches"] }
+      },
+      "required": ["tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_clone",
+    "description": "Developer: clone a motion matched by tags into a new motion with optional extra tags.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "source_tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "new_tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 0,
+          "maxItems": 7
+        }
+      },
+      "required": ["source_tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_retag",
+    "description": "Developer: retag motion matched by old_tags with new_tags; forces re-embedding; motion data unchanged.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "old_tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "new_tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 64 },
+          "minItems": 1,
+          "maxItems": 7
+        },
+        "mode": { "type": "string", "enum": ["best", "all_matches"] }
+      },
+      "required": ["old_tags", "new_tags"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_lock_knob",
+    "description": "Developer: prevent AI from modifying a knob/control.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "knob_id": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "required": ["knob_id"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_unlock_knob",
+    "description": "Developer: restore AI access to a knob/control.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "knob_id": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "required": ["knob_id"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_clamp",
+    "description": "Developer: hard-bound a knob/control to [min,max] for safety or style control.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "knob_id": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "min": { "type": "number" },
+        "max": { "type": "number" }
+      },
+      "required": ["knob_id", "min", "max"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_zero",
+    "description": "Developer: force a knob/control to zero and lock it for the current session.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "knob_id": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "required": ["knob_id"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_dump",
+    "description": "Developer: dump debug information (knobs or motion).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "what": { "type": "string", "enum": ["knobs", "motion"] },
+        "format": { "type": "string", "enum": ["json", "text"] }
+      },
+      "required": ["what"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_trace",
+    "description": "Developer: trace recent motion/toolcall provenance.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "what": { "type": "string", "enum": ["motion", "last", "chain"] },
+        "depth": { "type": "integer", "minimum": 1, "maximum": 500 }
+      },
+      "required": ["what"],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_panic",
+    "description": "Developer escape hatch: stop motion, clear pending AI outputs, reset constraints; leaves memory untouched.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_reset_dev",
+    "description": "Developer: clear manual overrides and restore default ranges/constraints; does not delete saved motions.",
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  {
+    "type": "function",
+    "name": "sc_reset",
+    "description": "Developer factory reset: prompts for confirmation then wipes saved motions, control overrides, and tag/embedding indexes; restores defaults.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "confirmation": {
+          "type": "object",
+          "properties": {
+            "ack": { "type": "boolean" },
+            "token": { "type": "string", "minLength": 1, "maxLength": 256 }
+          },
+          "required": ["ack"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["prompt", "confirmation"],
+      "additionalProperties": false
+    }
+  }
+]

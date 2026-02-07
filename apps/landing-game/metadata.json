@@ -1,0 +1,5 @@
+{
+  "name": "Orbital Drop: Atmosphere",
+  "description": "A 3D space flight simulator where you pilot a fighter craft from orbit through atmospheric re-entry to a planetary landing.",
+  "requestFramePermissions": []
+}

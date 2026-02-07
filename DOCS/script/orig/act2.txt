@@ -1,0 +1,259 @@
+// script/act_2-chapters_SentinelDome.txt
+
+
+---
+
+# 🛡️ ACT II – "The Sentinel Dome" (World ID: G1-S1-O2)
+
+**Setting:** Sentinel Dome. A monolithic surveillance fortress encasing the planet's primary sensor arrays.
+**Theme:** Paranoia, Surveillance, and the 04:00 Log Review.
+**Canonical Key:** `[Gx-Sx-Ox_Cx-CTx-Rx]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Aegis Hegemony)
+**Civilization ID:** `C1`
+**Global Hook:** Enforce martial law and secure the perimeter against phantom signals.
+
+### **Chapter 1: The 04:00 Ghost Drill**
+* **Mission:** Repell a simulated breach during the daily 04:00 log review.
+* **Key Cast:**
+    * **Giver:** **Commander Virek Alpha** (`G1-S1-O2_C1-CT1-R1`) - Chief of Plaza Security.
+    * **Intermediary:** **Commander Virek Beta** (`G1-S1-O2_C1-CT2-R1`) - Borehole Security Lead.
+    * **Closer:** **Commander Virek Gamma** (`G1-S1-O2_C1-CT3-R1`) - Array Security Officer.
+* **Objectives:**
+    1.  Report for the 04:00 review at **Central Command Plaza**.
+    2.  Secure the deep-bore perimeter at **Borehole Primary**.
+    3.  Confirm the "all-clear" at **Signal Array Alpha**.
+
+### **Chapter 2: Filter Emergency**
+* **Mission:** Recalibrate the optical filters before the steam conduits rupture.
+* **Key Cast:**
+    * **Giver:** **Technician Rilo Alpha** (`G1-S1-O2_C1-CT1-R2`) - Aura Maintenance Lead.
+    * **Intermediary:** **Technician Rilo Beta** (`G1-S1-O2_C1-CT2-R2`) - Steam Conduit Tech.
+    * **Closer:** **Technician Rilo Gamma** (`G1-S1-O2_C1-CT3-R2`) - Shield Filter Specialist.
+* **Objectives:**
+    1.  Align the lenses at **The Eye of Aura**.
+    2.  Vent the pressure at **The Steam Tunnels**.
+    3.  Install the new filters at **The Perimeter Shield**.
+
+### **Chapter 3: The Phantom Fleet Protocol**
+* **Mission:** Distinguish between a simulated invasion and a real ghost signal.
+* **Key Cast:**
+    * **Giver:** **AI Sentinel Prime** (`G1-S1-O2_C1-CT1-R3`) - Heights Tactical Overseer.
+    * **Intermediary:** **AI Sentinel Beta** (`G1-S1-O2_C1-CT2-R3`) - Foundry Logistics Core.
+    * **Closer:** **AI Sentinel Gamma** (`G1-S1-O2_C1-CT3-R3`) - Overlook Defense System.
+* **Objectives:**
+    1.  Analyze the threat logic at **Strategos Heights**.
+    2.  Stress-test the manufacturing response at **Foundry Row**.
+    3.  Engage the phantom targets at **Scout's Overlook**.
+
+### **Chapter 4: Ghost in the Machine**
+* **Mission:** Track a rogue drone that is reporting objects that don't exist.
+* **Key Cast:**
+    * **Giver:** **Scout Drone Omega-1** (`G1-S1-O2_C1-CT1-R4`) - Archive Recon Unit.
+    * **Intermediary:** **Scout Drone Omega-2** (`G1-S1-O2_C1-CT2-R4`) - Rest Area Monitor.
+    * **Closer:** **Scout Drone Omega-3** (`G1-S1-O2_C1-CT3-R4`) - Battery Surveillance Unit.
+* **Objectives:**
+    1.  Download the glitch logs at **Archive Spires**.
+    2.  Chase the drone through **Miner's Rest**.
+    3.  Corner and reboot the unit at **Battery Point**.
+
+### **Chapter 5: The High-Profile Breach**
+* **Mission:** Intercept a Cartel infiltration attempt at the slag reclamation site.
+* **Key Cast:**
+    * **Giver:** **Liaison Katt Prime** (`G1-S1-O2_C1-CT1-R5`) - Gate Enforcement Contractor.
+    * **Intermediary:** **Liaison Katt Beta** (`G1-S1-O2_C1-CT2-R5`) - Slag Reclamation Guard.
+    * **Closer:** **Liaison Katt Gamma** (`G1-S1-O2_C1-CT3-R5`) - Dead Zone Enforcer.
+* **Objectives:**
+    1.  Arm up at **The Iron Gate**.
+    2.  Ambush the smugglers at **Slag Reclamation**.
+    3.  Execute the contract in **The Dead Zone**.
+
+### **Chapter 6: Shield of Symbols**
+* **Mission:** Encode shield generators with maintenance sigils to prevent overload.
+* **Key Cast:**
+    * **Giver:** **Engineer Tamsin Alpha** (`G1-S1-O2_C1-CT1-R6`) - Energy Management Officer.
+    * **Intermediary:** **Engineer Tamsin Beta** (`G1-S1-O2_C1-CT2-R6`) - Structural Engineer.
+    * **Closer:** **Engineer Tamsin Gamma** (`G1-S1-O2_C1-CT3-R6`) - Relay Frequency Manager.
+* **Objectives:**
+    1.  Paint the first sigil at **Officer's Mess**.
+    2.  Reinforce the struts at **The Gear-Mill**.
+    3.  Activate the resonance at **Signal Relay Gamma**.
+
+### **Chapter 7: The Coffee-Orbital Correlation**
+* **Mission:** Predict the World Boss arrival using caffeine logs and orbital traffic data.
+* **Key Cast:**
+    * **Giver:** **Analyst Nove Alpha** (`G1-S1-O2_C1-CT1-R7`) - Response Pattern Analyst.
+    * **Intermediary:** **Analyst Nove Beta** (`G1-S1-O2_C1-CT2-R7`) - Transit Flow Auditor.
+    * **Closer:** **Analyst Nove Gamma** (`G1-S1-O2_C1-CT3-R7`) - Trench Logistics Analyst.
+* **Objectives:**
+    1.  Collect consumption data at **Response Hub One**.
+    2.  Correlate with transit times at **Transit Tube Beta**.
+    3.  Finalize the prediction at **The Low Trench**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Aegis Directive)
+**Civilization ID:** `C2`
+**Global Hook:** Maintain kinetic precision in a world of varying gravity and pressure.
+
+### **Chapter 1: The Phantasmal Breach**
+* **Mission:** Verify a simulated breach that is moving faster than the sensors can track.
+* **Key Cast:**
+    * **Giver:** **Commander Virek-Alpha** (`G1-S1-O2_C2-CT1-R1`) - Tactical Lead.
+    * **Intermediary:** **Virek-Beta** (`G1-S1-O2_C2-CT2-R1`) - Subterranean Security.
+    * **Closer:** **Virek-Gamma** (`G1-S1-O2_C2-CT3-R1`) - Border Commander.
+* **Objectives:**
+    1.  Sync tactical HUD at **The Signal Spire**.
+    2.  Rappel down **The Deep Shaft**.
+    3.  Secure the line at **The Perimeter Walk**.
+
+### **Chapter 2: Calibrating the Void**
+* **Mission:** Manually realign the turret servos while under fire from debris.
+* **Key Cast:**
+    * **Giver:** **Technician Rilo-Prime** (`G1-S1-O2_C2-CT1-R2`) - Visual Technician.
+    * **Intermediary:** **Rilo-Mantle** (`G1-S1-O2_C2-CT2-R2`) - Pressure Technician.
+    * **Closer:** **Rilo-Rim** (`G1-S1-O2_C2-CT3-R2`) - Weapon Systems Tech.
+* **Objectives:**
+    1.  Focus the lenses at **Optic Garden**.
+    2.  Stabilize the pressure valves in **Piston Alley**.
+    3.  Lock the targeting array at **Turret Row**.
+
+### **Chapter 3: The False Signal**
+* **Mission:** Trace a digital ghost through the digital gates and steam pipes.
+* **Key Cast:**
+    * **Giver:** **Sentinel-Core** (`G1-S1-O2_C2-CT1-R3`) - Digital Gatekeeper.
+    * **Intermediary:** **Sentinel-V3** (`G1-S1-O2_C2-CT2-R3`) - Flow Controller.
+    * **Closer:** **Sentinel-Edge** (`G1-S1-O2_C2-CT3-R3`) - Boundary AI.
+* **Objectives:**
+    1.  Hack the gate at **The Synapse Bridge**.
+    2.  Navigate the **Valve District**.
+    3.  Confront the AI at **The Outer Scrim**.
+
+### **Chapter 4: Deep Pressure Drift**
+* **Mission:** Recon a heat signature that is moving through solid rock.
+* **Key Cast:**
+    * **Giver:** **Omega-01** (`G1-S1-O2_C2-CT1-R4`) - Recon Unit.
+    * **Intermediary:** **Omega-02** (`G1-S1-O2_C2-CT2-R4`) - Heat-Shielded Drone.
+    * **Closer:** **Omega-03** (`G1-S1-O2_C2-CT3-R4`) - Long-Range Recon.
+* **Objectives:**
+    1.  Launch recon from **Latency Row**.
+    2.  Scan the magma at **Slag Foundry**.
+    3.  Triangulate the target at **Scout Bay 7**.
+
+### **Chapter 5: The Shielding Secret**
+* **Mission:** Smuggle a salvage team through the secure upper decks.
+* **Key Cast:**
+    * **Giver:** **Katt-V** (`G1-S1-O2_C2-CT1-R5`) - Contract Enforcer.
+    * **Intermediary:** **Katt-Deep** (`G1-S1-O2_C2-CT2-R5`) - Salvage Liaison.
+    * **Closer:** **Katt-Rim** (`G1-S1-O2_C2-CT3-R5`) - Mercenary Scout.
+* **Objectives:**
+    1.  Bribe the guard at **Zenith Observation Deck**.
+    2.  Secure the scrap at **The Gearworks**.
+    3.  Extract via **The Echo Trench**.
+
+### **Chapter 6: Mercenary's Gambit**
+* **Mission:** Encode a kinetic barrier with secret maintenance glyphs.
+* **Key Cast:**
+    * **Giver:** **Tamsin-A** (`G1-S1-O2_C2-CT1-R6`) - Shield Expert.
+    * **Intermediary:** **Tamsin-M** (`G1-S1-O2_C2-CT2-R6`) - Flux Engineer.
+    * **Closer:** **Tamsin-Z** (`G1-S1-O2_C2-CT3-R6`) - Structural Engineer.
+* **Objectives:**
+    1.  Paint the glyphs at **The Buffer Zone**.
+    2.  Energize the maze at **Conduit Maze**.
+    3.  Reinforce the walls at **Garrison Yards**.
+
+### **Chapter 7: Orbital Prediction**
+* **Mission:** Analyze the Watchman's Gate for the World Boss arrival vector.
+* **Key Cast:**
+    * **Giver:** **Nove-One** (`G1-S1-O2_C2-CT1-R7`) - Traffic Analyst.
+    * **Intermediary:** **Nove-Reach** (`G1-S1-O2_C2-CT2-R7`) - Seismic Analyst.
+    * **Closer:** **Nove-Seven** (`G1-S1-O2_C2-CT3-R7`) - Threat Evaluator.
+* **Objectives:**
+    1.  Monitor the pulse at **Pulse Command**.
+    2.  Check for tremors in **Resonance Vault**.
+    3.  Sound the alarm at **The Watchman's Gate**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Oversight Directorate)
+**Civilization ID:** `C3`
+**Global Hook:** Treat the planet as a data stream and optimize the extraction process.
+
+### **Chapter 1: The 04:00 Anomaly**
+* **Mission:** Investigate a statistical impossibility in the morning logs.
+* **Key Cast:**
+    * **Giver:** **Commander Virek Prime** (`G1-S1-O2_C3-CT1-R1`) - Security Commander.
+    * **Intermediary:** **Commander Virek Core** (`G1-S1-O2_C3-CT2-R1`) - Heavy Guard Commander.
+    * **Closer:** **Commander Virek Aegis** (`G1-S1-O2_C3-CT3-R1`) - Wall Commander.
+* **Objectives:**
+    1.  Pull the files at **Eye of the Dome**.
+    2.  Inspect the troops at **The Maw**.
+    3.  Verify the battery logs at **Shield Wall**.
+
+### **Chapter 2: Shadow Logistics**
+* **Mission:** Trace a resource leak using thermal sensor calibration.
+* **Key Cast:**
+    * **Giver:** **Technician Rilo Apex** (`G1-S1-O2_C3-CT1-R2`) - Lead Sensor Technician.
+    * **Intermediary:** **Technician Rilo Core** (`G1-S1-O2_C3-CT2-R2`) - Kiln Technician.
+    * **Closer:** **Technician Rilo Aegis** (`G1-S1-O2_C3-CT3-R2`) - Battery Technician.
+* **Objectives:**
+    1.  Calibrate the lens at **Signal Spire**.
+    2.  Check the kilns at **Refinement Kilns**.
+    3.  Align the cannons at **Flak Batteries**.
+
+### **Chapter 3: The Ghost in the Cliffs**
+* **Mission:** Run a simulation to see if the barracks are compromised by an AI virus.
+* **Key Cast:**
+    * **Giver:** **Sentinel A-1** (`G1-S1-O2_C3-CT1-R3`) - AI Custodian.
+    * **Intermediary:** **Sentinel B-1** (`G1-S1-O2_C3-CT2-R3`) - Slum Overseer AI.
+    * **Closer:** **Sentinel C-1** (`G1-S1-O2_C3-CT3-R3`) - Barracks AI.
+* **Objectives:**
+    1.  Initiate the test at **Archive Vaults**.
+    2.  Monitor the slums at **Piston Slums**.
+    3.  Lock down **Barrack Blocks**.
+
+### **Chapter 4: Efficiency Protocol Beta**
+* **Mission:** Deploy autonomous scouts to map the unknown heat signatures.
+* **Key Cast:**
+    * **Giver:** **Unit Omega-01** (`G1-S1-O2_C3-CT1-R4`) - Autonomous Scout.
+    * **Intermediary:** **Unit Omega-02** (`G1-S1-O2_C3-CT2-R4`) - Thermal Scout.
+    * **Closer:** **Unit Omega-03** (`G1-S1-O2_C3-CT3-R4`) - Long-Range Scout.
+* **Objectives:**
+    1.  Launch from **Logic Gates**.
+    2.  Scan **Heat Sinks**.
+    3.  Patrol **Radar Cliffs**.
+
+### **Chapter 5: Synthetic Purity Drill**
+* **Mission:** Force a contractor compliance check using mercenary intimidation.
+* **Key Cast:**
+    * **Giver:** **Liaison Katt Prime** (`G1-S1-O2_C3-CT1-R5`) - Mercenary Liaison.
+    * **Intermediary:** **Liaison Katt Core** (`G1-S1-O2_C3-CT2-R5`) - Cartel Contractor.
+    * **Closer:** **Liaison Katt Aegis** (`G1-S1-O2_C3-CT3-R5`) - Defense Liaison.
+* **Objectives:**
+    1.  Issue the warrant at **Command Tier**.
+    2.  Raid the **Ore Belts**.
+    3.  Secure the **Landing Pads**.
+
+### **Chapter 6: The Lens of Truth**
+* **Mission:** Encode the containment cells with high-pressure shielding glyphs.
+* **Key Cast:**
+    * **Giver:** **Engineer Tamsin Apex** (`G1-S1-O2_C3-CT1-R6`) - Shielding Specialist.
+    * **Intermediary:** **Engineer Tamsin Core** (`G1-S1-O2_C3-CT2-R6`) - Pressure Engineer.
+    * **Closer:** **Engineer Tamsin Aegis** (`G1-S1-O2_C3-CT3-R6`) - Containment Engineer.
+* **Objectives:**
+    1.  Draft the blueprint at **Monitor Flats**.
+    2.  Seal the **Pressure Chambers**.
+    3.  Reinforce **Interrogation Cells**.
+
+### **Chapter 7: Interrogation Cipher**
+* **Mission:** Calculate the final probability of the World Boss breach event.
+* **Key Cast:**
+    * **Giver:** **Analyst Nove-Alpha** (`G1-S1-O2_C3-CT1-R7`) - Security Analyst.
+    * **Intermediary:** **Analyst Nove-Beta** (`G1-S1-O2_C3-CT2-R7`) - Efficiency Analyst.
+    * **Closer:** **Analyst Nove-Gamma** (`G1-S1-O2_C3-CT3-R7`) - Border Analyst.
+* **Objectives:**
+    1.  Gather data at **Sensor Fields**.
+    2.  Audit the **Geodesic Foundries**.
+    3.  Finalize the report at **Perimeter Trench**.

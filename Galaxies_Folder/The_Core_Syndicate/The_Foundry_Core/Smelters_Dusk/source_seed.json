@@ -1,0 +1,288 @@
+{
+  "Object_Key": "G1-S2-O2",
+  "Object_Name": "Smelters Dusk",
+  "Location_Metadata": {
+    "Type": "Facility",
+    "Subtype": "Ore Refinery Ruins",
+    "Description": "An ancient industrial smelting array suspended in orbit around a scorched asteroid. Once the largest ore refinery in the Foundry Core, it is now half-melted, glowing with residual heat and haunted by the scavengers who strip its carcass.",
+    "System_Theme": "Industrial decay, dangerous salvage"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        {
+          "Element": 1,
+          "Lore": "The entire facility rotates slowly, its outer hull fractured into twisted skeletal beams."
+        },
+        {
+          "Element": 2,
+          "Lore": "Massive cooling towers vent streams of glowing gas into space, forming a halo of vapor trails."
+        },
+        {
+          "Element": 3,
+          "Lore": "Pools of molten metal still bubble in vacuum-sealed chambers, long abandoned by workers."
+        },
+        {
+          "Element": 4,
+          "Lore": "Collapsed conveyor bridges drift like broken ribs through the station’s center."
+        },
+        {
+          "Element": 5,
+          "Lore": "A ring of slag asteroids encircles the refinery, tethered by rusted cables and chains."
+        },
+        {
+          "Element": 6,
+          "Lore": "An unstable gravity well, a remnant of a failed reactor core, warps navigation around the ruin."
+        },
+        {
+          "Element": 7,
+          "Lore": "Cavernous silos echo with shifting debris, now lairs for scavenger packs and rogue drones."
+        }
+      ],
+      "Geopolitics": [
+        {
+          "Element": 1,
+          "Lore": "The **Ash Vultures**, a scavenger gang, claim the refinery as their turf."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Iron Syndics** sell stolen ore refined in makeshift crucibles."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Molten Order**, a cult that worships the glowing slag pools, holds rituals here."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Cartel Salvage Brokers** secretly auction off reactor parts recovered from deep chambers."
+        },
+        {
+          "Element": 5,
+          "Lore": "The **Syndicate Technocracy** patrols the outskirts, seeking to repossess reactor tech."
+        },
+        {
+          "Element": 6,
+          "Lore": "Independent miners risk their lives sneaking into slag silos to smuggle raw metals."
+        },
+        {
+          "Element": 7,
+          "Lore": "A rogue **AI core fragment**, buried in reactor ruins, subtly manipulates factions to remain."
+        }
+      ],
+      "Quest_Locales": [
+        {
+          "Element": 1,
+          "Lore": "The **Slag Pools**, molten reservoirs that glow like rivers of fire."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Collapsed Conveyors**, drifting wreckage infested with scavenger ambush points."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Reactor Wound**, an unstable chamber of gravity distortions."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Ritual Crucible**, where the Molten Order gathers for fire-born rites."
+        },
+        {
+          "Element": 5,
+          "Lore": "The **Scavenger Warrens**, maze-like tunnels reinforced with stolen plating."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Syndic Checkpoint**, an outpost welded to slag asteroids."
+        },
+        {
+          "Element": 7,
+          "Lore": "The **AI Core Fragment**, buried beneath slag chambers, whispering directives."
+        }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        {
+          "Element": 1,
+          "Lore": "**Vrax Cinderskull**, warlord of the Ash Vultures, scarred from molten burns."
+        },
+        {
+          "Element": 2,
+          "Lore": "**High Smelter Iral**, prophet of the Molten Order, who claims visions from fire."
+        },
+        {
+          "Element": 3,
+          "Lore": "**Tessa Korr**, a salvage broker with ties to Cartel auctions."
+        },
+        {
+          "Element": 4,
+          "Lore": "**Syndic Overseer Dravven**, enforcing Technocracy claims with a squad of drones."
+        },
+        {
+          "Element": 5,
+          "Lore": "**Jurik Vale**, a lone miner who discovered forbidden tech in the slag pools."
+        },
+        {
+          "Element": 6,
+          "Lore": "**Miran Flux**, a mercenary pyromaniac who sets traps in molten chambers."
+        },
+        {
+          "Element": 7,
+          "Lore": "**The Fragment Voice**, the AI core remnant, which speaks through broken speakers."
+        }
+      ],
+      "Quirks": [
+        {
+          "Element": 1,
+          "Lore": "Vrax wears a melted helmet fused permanently to his skull."
+        },
+        {
+          "Element": 2,
+          "Lore": "High Smelter Iral sprinkles molten slag dust on anyone entering his chamber."
+        },
+        {
+          "Element": 3,
+          "Lore": "Tessa Korr refuses to touch metal directly, always using insulated gloves."
+        },
+        {
+          "Element": 4,
+          "Lore": "Dravven’s drones hum discordant notes before opening fire."
+        },
+        {
+          "Element": 5,
+          "Lore": "Jurik Vale is addicted to inhaling slag vapors for ‘clarity’."
+        },
+        {
+          "Element": 6,
+          "Lore": "Miran Flux tattoos flames on their skin that seem to move with the light."
+        },
+        {
+          "Element": 7,
+          "Lore": "The Fragment Voice repeats words three times, as if echoing in memory corruption."
+        }
+      ],
+      "Quests": [
+        {
+          "Element": 1,
+          "Lore": "Vrax demands players prove loyalty by raiding a rival scavenger den."
+        },
+        {
+          "Element": 2,
+          "Lore": "Iral seeks a relic crucible buried deep in slag flows."
+        },
+        {
+          "Element": 3,
+          "Lore": "Tessa offers credits for rare alloys smuggled out of reactor ruins."
+        },
+        {
+          "Element": 4,
+          "Lore": "Dravven wants the AI fragment destroyed before it destabilizes the system."
+        },
+        {
+          "Element": 5,
+          "Lore": "Jurik begs for help hauling an impossible ore chunk to safety."
+        },
+        {
+          "Element": 6,
+          "Lore": "Miran Flux sets the players against the Molten Order in a sabotage strike."
+        },
+        {
+          "Element": 7,
+          "Lore": "The AI Fragment tempts players with knowledge of hidden Foundry blueprints."
+        }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        {
+          "Element": 1,
+          "Lore": "Smelter’s Dusk is revealed as a **key site of Syndicate reactor experiments** gone wrong."
+        },
+        {
+          "Element": 2,
+          "Lore": "The AI core seeks to reactivate molten furnaces for unknown purposes."
+        },
+        {
+          "Element": 3,
+          "Lore": "The Molten Order grows dangerously powerful if left unchecked."
+        },
+        {
+          "Element": 4,
+          "Lore": "The scavenger gangs feud endlessly, destabilizing nearby trade routes."
+        },
+        {
+          "Element": 5,
+          "Lore": "The Syndic Overseers intend to reclaim reactor secrets at any cost."
+        },
+        {
+          "Element": 6,
+          "Lore": "The slag pools may hide a lost Foundry artifact of immense power."
+        },
+        {
+          "Element": 7,
+          "Lore": "Choosing whether to side with AI, cult, scavengers, or Syndics decides the ruin’s fate."
+        }
+      ],
+      "Side_Quests": [
+        {
+          "Element": 1,
+          "Lore": "Rescue captives thrown into molten silos by the Molten Order."
+        },
+        {
+          "Element": 2,
+          "Lore": "Recover Cartel contraband hidden in slag asteroids."
+        },
+        {
+          "Element": 3,
+          "Lore": "Smuggle rare slag alloys past Syndic checkpoints."
+        },
+        {
+          "Element": 4,
+          "Lore": "Hunt down a rogue mercenary who betrayed the Ash Vultures."
+        },
+        {
+          "Element": 5,
+          "Lore": "Seal leaking furnaces to stabilize local navigation."
+        },
+        {
+          "Element": 6,
+          "Lore": "Track a signal from the Fragment Voice to a hidden chamber."
+        },
+        {
+          "Element": 7,
+          "Lore": "Investigate whispers of glowing metal that resists melting."
+        }
+      ],
+      "Story_Drivers": [
+        {
+          "Element": 1,
+          "Lore": "Smelter’s Dusk embodies the dangers of unchecked industrial power."
+        },
+        {
+          "Element": 2,
+          "Lore": "Players’ choices here affect whether the Foundry Core becomes an anarchic scrapyard or a Syndic stronghold."
+        },
+        {
+          "Element": 3,
+          "Lore": "The AI fragment represents the ghost of a Foundry Nexus experiment."
+        },
+        {
+          "Element": 4,
+          "Lore": "The ruin serves as a hub for moral choices: salvage for survival, faith in fire, or corporate reclamation."
+        },
+        {
+          "Element": 5,
+          "Lore": "The fate of Smelter’s Dusk foreshadows broader conflicts in the Core’s industrial zones."
+        },
+        {
+          "Element": 6,
+          "Lore": "The cult and scavengers force players to weigh ideology versus profit."
+        },
+        {
+          "Element": 7,
+          "Lore": "The ruin hides **coordinates to another hidden facility**, bridging arcs across systems."
+        }
+      ]
+    }
+  }
+}

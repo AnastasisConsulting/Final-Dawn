@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G1-S3",
+    "system_name": "The Regulator's Eye",
+    "theme": "Bureaucracy, Surveillance, Absolute Law",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G1S3_LEGENDARY_ADJUDICATOR",
+    "name": "Prime Adjudicator 0-1",
+    "description": "A towering, four-armed golden construct that acts as the supreme judge of the sector. It speaks in verdict codes and wields a gavel that shatters gravity.",
+    "class": "Boss (Construct)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 700, "Resource": 300, "Strength": 12, "Agility": 8, "Endurance": 20, "Intelligence": 20, "Perception": 20, "Charisma": 10 },
+      "level_21": { "HP": 7000, "Resource": 1500, "Strength": 40, "Agility": 15, "Endurance": 60, "Intelligence": 60, "Perception": 50, "Charisma": 30 }
+    },
+    "actions": ["skill_overrule", "skill_final_verdict", "summon_bailiffs"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Constructs": {
+      "description": "The 'Clerk Swarm' and automated enforcement drones.",
+      "variants": [
+        {
+          "id": "G1S3_C_01", "name": "Filer-Drone", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["paperwork_blizzard"]
+        },
+        {
+          "id": "G1S3_C_02", "name": "Audit-Bot", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["audit_scan", "taser_shock"]
+        },
+        {
+          "id": "G1S3_C_03", "name": "Sentry-Sphere", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["flash_scan", "alarm_siren"]
+        },
+        {
+          "id": "G1S3_C_04", "name": "Riot-Suppressor", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["tear_gas", "shield_wall"]
+        },
+        {
+          "id": "G1S3_C_05", "name": "Warden-Frame", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 130 }, "level_21": { "HP": 1300 } },
+          "actions": ["detain", "power_baton"]
+        },
+        {
+          "id": "G1S3_C_06", "name": "Surveillance-Apex", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["orbital_laser_tag", "omni_scan"]
+        },
+        {
+          "id": "G1S3_C_07", "name": "Executioner-Model", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["monoblade_sever", "execute_protocol", "fear_aura"]
+        }
+      ]
+    },
+    "Type_2_Enforcers": {
+      "description": "Humanoid officers and Justicars of the Syndicate.",
+      "variants": [
+        {
+          "id": "G1S3_E_01", "name": "Bailiff Initiate", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["action_attack_basic"]
+        },
+        {
+          "id": "G1S3_E_02", "name": "Court Guard", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["skill_guard", "stun_baton"]
+        },
+        {
+          "id": "G1S3_E_03", "name": "Sector Marshal", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 70 }, "level_21": { "HP": 700 } },
+          "actions": ["blaster_pistol", "skill_shout"]
+        },
+        {
+          "id": "G1S3_E_04", "name": "Syndicate Justicar", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 100 }, "level_21": { "HP": 1000 } },
+          "actions": ["skill_challenge", "heavy_strike"]
+        },
+        {
+          "id": "G1S3_E_05", "name": "High-Justicar", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 140 }, "level_21": { "HP": 1400 } },
+          "actions": ["skill_command", "verdict_smash"]
+        },
+        {
+          "id": "G1S3_E_06", "name": "Null-Trooper", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["anti_magic_grenade", "silencing_shot"]
+        },
+        {
+          "id": "G1S3_E_07", "name": "Arbiter of Truth", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 180 }, "level_21": { "HP": 1800 } },
+          "actions": ["skill_shield_ally", "absolute_defense", "judgement"]
+        }
+      ]
+    },
+    "Type_3_Censors": {
+      "description": "Bureaucratic Mages who use law as magic to debuff and silence.",
+      "variants": [
+        {
+          "id": "G1S3_M_01", "name": "Junior Notary", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["red_tape_bind"]
+        },
+        {
+          "id": "G1S3_M_02", "name": "Information Censor", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["skill_silence", "redact_vision"]
+        },
+        {
+          "id": "G1S3_M_03", "name": "Data-Siphon", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 45 }, "level_21": { "HP": 450 } },
+          "actions": ["skill_mana_drain", "skill_slow"]
+        },
+        {
+          "id": "G1S3_M_04", "name": "Redactor Adept", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 75 }, "level_21": { "HP": 750 } },
+          "actions": ["skill_dispel", "memory_hole"]
+        },
+        {
+          "id": "G1S3_M_05", "name": "Null-Mage", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["skill_magic_dampen", "void_bolt"]
+        },
+        {
+          "id": "G1S3_M_06", "name": "Truth-Seer", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 100 }, "level_21": { "HP": 1000 } },
+          "actions": ["skill_scan", "precognitive_dodge", "mind_blast"]
+        },
+        {
+          "id": "G1S3_M_07", "name": "Grand Inquisitor", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["skill_dominate", "word_of_power", "mass_silence"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G1S3_RARE_01", "name": "The Golden Gavel",
+      "description": "A rogue drone obsessed with carrying a solid gold hammer.",
+      "chance": 0.05,
+      "loot_bonus": "Golden Gavel",
+      "behavior": "Aggressive_AI"
+    },
+    {
+      "id": "G1S3_RARE_02", "name": "The Glitch-Lawyer",
+      "description": "An AI fragment that argues you to death.",
+      "chance": 0.03,
+      "loot_bonus": "Law Codex",
+      "behavior": "Caster_AI"
+    },
+    {
+      "id": "G1S3_RARE_03", "name": "Prisoner 000",
+      "description": "The first prisoner, erased but still fighting.",
+      "chance": 0.02,
+      "loot_bonus": "Null-Cuffs",
+      "behavior": "Berserker_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "CrypC", "min": 50, "max": 300 },
+    "common": [ "Ink Cartridge", "Legal Form 88-E", "Burned-Out Circuit" ],
+    "uncommon": [ "Red Pen", "Verdict Token", "Spy-Eye Lens" ],
+    "rare": [ "Juror Badge", "Null-Cuffs", "Weapon License" ],
+    "epic": [ "High-Grade Shield", "Execution Hood" ],
+    "legendary": [ "Gavel of Absolute Order (Unique)" ]
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G1-S1",
+    "system_name": "Aura-507",
+    "theme": "Radiation, Industrial Decay, Mutation",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G1S1_LEGENDARY_ISOTOPE_KING",
+    "name": "The Isotope King",
+    "description": "A colossal, mutated rad-bear fused with mining equipment. It radiates a constant damaging aura.",
+    "class": "Boss (Beast/Construct)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 500, "Resource": 100, "Strength": 15, "Agility": 5, "Endurance": 15, "Intelligence": 3, "Perception": 5, "Charisma": 0 },
+      "level_21": { "HP": 5000, "Resource": 500, "Strength": 40, "Agility": 15, "Endurance": 50, "Intelligence": 10, "Perception": 15, "Charisma": 0 }
+    },
+    "actions": ["skill_ground_slam", "skill_radioactive_roar", "skill_overload"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Beasts": {
+      "description": "Mutated fauna adapted to high radiation.",
+      "variants": [
+        {
+          "id": "G1S1_B_01", "name": "Glow-Mite", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 20 }, "level_21": { "HP": 200 } },
+          "actions": ["action_bite"]
+        },
+        {
+          "id": "G1S1_B_02", "name": "Rad-Rat", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["action_bite", "gnaw_cable"]
+        },
+        {
+          "id": "G1S1_B_03", "name": "Spine-Lizard", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["acid_spit", "action_claw"]
+        },
+        {
+          "id": "G1S1_B_04", "name": "Gamma-Wolf", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["pack_howl", "rending_bite"]
+        },
+        {
+          "id": "G1S1_B_05", "name": "Crystal-Hide Bear", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 100 }, "level_21": { "HP": 1000 } },
+          "actions": ["skill_harden", "maul"]
+        },
+        {
+          "id": "G1S1_B_06", "name": "Flux-Serpent", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["constrict", "venom_spray"]
+        },
+        {
+          "id": "G1S1_B_07", "name": "Apex Stalker", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["skill_vanish", "skill_backstab", "terrify"]
+        }
+      ]
+    },
+    "Type_2_Constructs": {
+      "description": "Malfunctioning mining equipment and rogue security.",
+      "variants": [
+        {
+          "id": "G1S1_C_01", "name": "Rusted Servo-Drone", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["spark_shock"]
+        },
+        {
+          "id": "G1S1_C_02", "name": "Autoloader Mk.I", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["heavy_lift_slam"]
+        },
+        {
+          "id": "G1S1_C_03", "name": "Survey Bot", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["flash_scan", "call_reinforcements"]
+        },
+        {
+          "id": "G1S1_C_04", "name": "Core-Dredge Unit", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["drill_arm_thrust", "vent_coolant"]
+        },
+        {
+          "id": "G1S1_C_05", "name": "Security Turret (Mobile)", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 70 }, "level_21": { "HP": 700 } },
+          "actions": ["suppressing_fire", "target_lock"]
+        },
+        {
+          "id": "G1S1_C_06", "name": "Hazard-Exo Suit (Rogue)", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["hydraulic_punch", "chem_spray"]
+        },
+        {
+          "id": "G1S1_C_07", "name": "Furnace Sentinel", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["flamethrower", "self_destruct_sequence", "iron_curtain"]
+        }
+      ]
+    },
+    "Type_3_Humanoids": {
+      "description": "Scavengers, criminals, and desperate miners.",
+      "variants": [
+        {
+          "id": "G1S1_H_01", "name": "Desperate Prospector", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 35 }, "level_21": { "HP": 350 } },
+          "actions": ["pickaxe_swing"]
+        },
+        {
+          "id": "G1S1_H_02", "name": "Tunnel Rat", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 45 }, "level_21": { "HP": 450 } },
+          "actions": ["shiv_shank", "hide_in_shadows"]
+        },
+        {
+          "id": "G1S1_H_03", "name": "Claim Jumper", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 55 }, "level_21": { "HP": 550 } },
+          "actions": ["blaster_shot", "throw_dirt"]
+        },
+        {
+          "id": "G1S1_H_04", "name": "Cartel Enforcer", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["shotgun_blast", "intimidate"]
+        },
+        {
+          "id": "G1S1_H_05", "name": "Rad-Suit Heavy", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["heavy_machine_gun", "tank_forward"]
+        },
+        {
+          "id": "G1S1_H_06", "name": "Chem-Thrower Specialist", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["toxic_stream", "gas_grenade"]
+        },
+        {
+          "id": "G1S1_H_07", "name": "Site Overseer", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 140 }, "level_21": { "HP": 1400 } },
+          "actions": ["command_aura", "executioner_shot", "call_guards"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G1S1_RARE_01", "name": "Golden Loot-Mite",
+      "description": "A slag mite with a carapace made of pure gold.",
+      "chance": 0.05,
+      "loot_bonus": "guaranteed_luxury_item",
+      "behavior": "Fleeing_AI"
+    },
+    {
+      "id": "G1S1_RARE_02", "name": "Prototype X-99",
+      "description": "An experimental combat droid that went rogue.",
+      "chance": 0.03,
+      "loot_bonus": "high_tech_blueprint",
+      "behavior": "Hunter_AI"
+    },
+    {
+      "id": "G1S1_RARE_03", "name": "The Lost Geologist",
+      "description": "A mutated human who controls earth and stone.",
+      "chance": 0.02,
+      "loot_bonus": "rare_mineral_cache",
+      "behavior": "Caster_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "Slag", "min": 10, "max": 100 },
+    "common": [ "Junk Parts", "Biowaste", "Scrap Metal" ],
+    "uncommon": [ "Fungal Sample", "Mite Carapace", "Small Battery", "Copper Wire" ],
+    "rare": [ "Isotopic Fuel", "Hydraulic Piston", "Laser Cutter Lens" ],
+    "epic": [ "Pristine Pre-War Tech", "Encrypted Data Stick" ],
+    "legendary": [ "The King's Core (Unique)" ]
+  }
+}

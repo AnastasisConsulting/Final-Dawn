@@ -1,0 +1,12 @@
+packages:
+  - packages/*
+  - apps/*
+  - apps/affinity-viz
+  - apps/alive-object-engine
+  - apps/character-creation
+  - apps/memory-viz
+  - apps/landing-game
+
+ignoredBuiltDependencies:
+  - esbuild
+  - protobufjs

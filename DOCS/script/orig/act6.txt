@@ -1,0 +1,259 @@
+// script/act_6-chapters_WhisperingIon.txt
+
+
+---
+
+# ⚡ ACT VI – "The Whispering Ion" (World ID: G1-S1-O6)
+
+**Setting:** The Whispering Ion. A sentient nebula of static where the voices of the dead mimic the living to offer cryptic prophecies.
+**Theme:** Electrical Purgatory, Ancestral Echoes, and Signal Decryption.
+**Canonical Key:** `[Gx-Sx-Ox-Cx-CTx-Rx-NPC]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Ion-Bound Sovereignty)
+**Civilization ID:** `C1`
+**Global Hook:** Conquer the storm through physical hardening and martial discipline.
+
+### **Chapter 1: The Whispered Sequence**
+* **Mission:** Complete a fragmented sentence from the storm using drone processing and ritual blessing.
+* **Key Cast:**
+    * **giver:** **Archivist Tol Varin** (`G1-S1-O6-C1-CT1-R3-NPC`) - Storm Decoder.
+    * **contact:** **Unit-77** (`G1-S1-O6-C1-CT1-R5-NPC`) - Rogue Drone.
+    * **target:** **High Priest Orun** (`G1-S1-O6-C1-CT1-R7-NPC`) - Whisper Faith Leader.
+* **Objectives:**
+    1.  Retrieve crystal at **The Resonance Chamber**.
+    2.  Process binary at **The Memory Arch**.
+    3.  Perform ritual at **The Shimmering Maw**.
+
+### **Chapter 2: Storm-Diver's Toll**
+* **Mission:** Clear a path for a smuggler convoy blocked by orbital drones.
+* **Key Cast:**
+    * **giver:** **Seraphine Kael** (`G1-S1-O6-C1-CT1-R1-NPC`) - Storm-Diver.
+    * **contact:** **Captain Drevos** (`G1-S1-O6-C1-CT1-R4-NPC`) - Syndicate Enforcer.
+    * **target:** **Dakar Vey** (`G1-S1-O6-C1-CT1-R6-NPC`) - Collective Hacker.
+* **Objectives:**
+    1.  Get manifest at **The Spire of Grieving**.
+    2.  Lower defense at **Ion-Docks**.
+    3.  Encrypt path at **Conduit Plaza**.
+
+### **Chapter 3: Ghost in the Machine**
+* **Mission:** Trace a personal ancestral signal leaking from the defense grid.
+* **Key Cast:**
+    * **giver:** **Mira Vox** (`G1-S1-O6-C1-CT1-R2-NPC`) - Pilgrim Medium.
+    * **contact:** **Sergeant Vax** (`G1-S1-O6-C1-CT2-R1-NPC`) - Tactician.
+    * **target:** **Scout Nyx** (`G1-S1-O6-C1-CT2-R7-NPC`) - Pathfinder.
+* **Objectives:**
+    1.  Analyze tears at **Static Slums**.
+    2.  Check logs at **Battery Bastion**.
+    3.  Triangulate signal at **Lightning's Reach**.
+
+### **Chapter 4: Foundry Sabotage**
+* **Mission:** Investigate a structural flaw in the Ion-blades caused by sabotage.
+* **Key Cast:**
+    * **giver:** **Master Smith Borin** (`G1-S1-O6-C1-CT3-R1-NPC`) - Crafter.
+    * **contact:** **Welder Tali** (`G1-S1-O6-C1-CT3-R2-NPC`) - Engineer.
+    * **target:** **Foreman Grog** (`G1-S1-O6-C1-CT2-R2-NPC`) - Overseer.
+* **Objectives:**
+    1.  Get blade at **The Pulse Foundry**.
+    2.  Scan welds at **Whisper-Weld Works**.
+    3.  Confront suspect at **The Iron Ribs**.
+
+### **Chapter 5: The Kinetic Circuit**
+* **Mission:** Recover stolen energy cells needed for a combat tournament.
+* **Key Cast:**
+    * **giver:** **Duelist Kaelen** (`G1-S1-O6-C1-CT2-R4-NPC`) - Enforcer.
+    * **contact:** **Treasurer Sola** (`G1-S1-O6-C1-CT2-R5-NPC`) - Logistics Officer.
+    * **target:** **Scrapper Pip** (`G1-S1-O6-C1-CT2-R6-NPC`) - Scavenger.
+* **Objectives:**
+    1.  Register entry at **Kinetic Courtyard**.
+    2.  Audit logs at **The Volt-Vaults**.
+    3.  Raid stash at **Grounding Ghetto**.
+
+### **Chapter 6: The Gear-Grasp Gamble**
+* **Mission:** Record the "voice" of a sentient gear in the production line.
+* **Key Cast:**
+    * **giver:** **Mechanist Fix** (`G1-S1-O6-C1-CT3-R4-NPC`) - Repairman.
+    * **contact:** **Overseer Ryn** (`G1-S1-O6-C1-CT3-R5-NPC`) - Supervisor.
+    * **target:** **Bard Lute** (`G1-S1-O6-C1-CT3-R6-NPC`) - Chronicler.
+* **Objectives:**
+    1.  Get device at **The Gear-Grasp**.
+    2.  Halt line at **Flux-Line Row**.
+    3.  Record sound at **The Hammer's Echo**.
+
+### **Chapter 7: The Slag's Secret**
+* **Mission:** Activate a glowing artifact found in the singularity slag (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Wastelander Crev** (`G1-S1-O6-C1-CT3-R7-NPC`) - Survivor.
+    * **contact:** **Stoker Ignis** (`G1-S1-O6-C1-CT3-R3-NPC`) - Laborer.
+    * **target:** **Farmer Jax** (`G1-S1-O6-C1-CT2-R3-NPC`) - Gatherer.
+* **Objectives:**
+    1.  Recover artifact at **Singularity Slag**.
+    2.  Heat artifact at **Cobalt Kilns**.
+    3.  Bury artifact at **Thunder-Thresher Fields**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Kineto-Aural Hegemony)
+**Civilization ID:** `C2`
+**Global Hook:** Use precision and speed to navigate the high-frequency currents of the storm.
+
+### **Chapter 1: The High-Velocity Smuggle**
+* **Mission:** Guide a smuggler convoy through upper storm currents to grounding pits.
+* **Key Cast:**
+    * **giver:** **Seraphine Kael** (`G1-S1-O6-C2-CT1-R1-NPC`) - Storm-Diver Pilot.
+    * **contact:** **Rigger Zephyr** (`G1-S1-O6-C2-CT2-R1-NPC`) - Gantry Foreman.
+    * **target:** **Scavenger Rust** (`G1-S1-O6-C2-CT3-R1-NPC`) - Copper Salvager.
+* **Objectives:**
+    1.  Get charts at **The Needle Tip**.
+    2.  Bypass patrol at **The Kinetic Gantry**.
+    3.  Deliver cargo at **Copper Sump**.
+
+### **Chapter 2: The Sentence of Plasma**
+* **Mission:** Decode a vital message from the storm whispers to unlock a reactor.
+* **Key Cast:**
+    * **giver:** **Archivist Tol Varin** (`G1-S1-O6-C2-CT1-R2-NPC`) - Plasma-Whisper Decoder.
+    * **contact:** **Runner Spark** (`G1-S1-O6-C2-CT2-R2-NPC`) - Spark-Line Messenger.
+    * **target:** **Scribe Mute** (`G1-S1-O6-C2-CT3-R4-NPC`) - Archive Custodian.
+* **Objectives:**
+    1.  Get fragment at **Filter-Fringe**.
+    2.  Run data at **Spark-Line Alley**.
+    3.  Record sentence at **The Whisper Archive**.
+
+### **Chapter 3: Orbital Blackout**
+* **Mission:** Sabotage the drone network to clear airwaves for a rebel signal.
+* **Key Cast:**
+    * **giver:** **Captain Drevos** (`G1-S1-O6-C2-CT1-R3-NPC`) - Orbital Enforcer.
+    * **contact:** **Harvester Bolt** (`G1-S1-O6-C2-CT2-R3-NPC`) - Static Collector.
+    * **target:** **Shielder Cage** (`G1-S1-O6-C2-CT3-R2-NPC`) - Faraday Guard.
+* **Objectives:**
+    1.  Steal codes at **Zenith Catwalks**.
+    2.  Get EMP at **Bolt-Catch Basin**.
+    3.  Jam signal at **Faraday Slums**.
+
+### **Chapter 4: The Mother's Frequency**
+* **Mission:** Escort a medium to the deep vaults to hear the Ion Throne.
+* **Key Cast:**
+    * **giver:** **Mira Vox** (`G1-S1-O6-C2-CT1-R4-NPC`) - Pilgrim Medium.
+    * **contact:** **Slider Dash** (`G1-S1-O6-C2-CT2-R4-NPC`) - Friction Scout.
+    * **target:** **Tunnel-Rat Scurry** (`G1-S1-O6-C2-CT3-R3-NPC`) - Corridor Guide.
+* **Objectives:**
+    1.  Start ritual at **The Tuning Chamber**.
+    2.  Cross danger zone at **Friction Flats**.
+    3.  Hide medium at **Lead-Lined Corridors**.
+
+### **Chapter 5: Rogue Protocol Uplink**
+* **Mission:** Help a rogue drone reclaim a lost memory core from the power grid.
+* **Key Cast:**
+    * **giver:** **Unit-77** (`G1-S1-O6-C2-CT1-R5-NPC`) - Rogue Hegemony Drone.
+    * **contact:** **Spinner Coil** (`G1-S1-O6-C2-CT2-R5-NPC`) - Wind-Coil Tech.
+    * **target:** **Tech Static** (`G1-S1-O6-C2-CT3-R5-NPC`) - Grounding Specialist.
+* **Objectives:**
+    1.  Get location at **Oscillating Girders**.
+    2.  Tune frequency at **Coil-Wind District**.
+    3.  Upload core at **Grounding Grids**.
+
+### **Chapter 6: The Master Encryption Key**
+* **Mission:** Extract a command code from the whispers to bypass security.
+* **Key Cast:**
+    * **giver:** **Dakar Vey** (`G1-S1-O6-C2-CT1-R6-NPC`) - Collective Hacker.
+    * **contact:** **Warden Gate** (`G1-S1-O6-C2-CT2-R6-NPC`) - Surge Sentinel.
+    * **target:** **Refiner Gloam** (`G1-S1-O6-C2-CT3-R6-NPC`) - Insulator Smith.
+* **Objectives:**
+    1.  Get software at **Static Gardens**.
+    2.  Hack console at **The Surge Gate**.
+    3.  Cool crystal at **The Insulator Works**.
+
+### **Chapter 7: The Great Convergence Ritual**
+* **Mission:** Merge with the storm to achieve absolute synchronization (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **High Priest Orun** (`G1-S1-O6-C2-CT1-R7-NPC`) - Voice of the Whisper Faith.
+    * **contact:** **Trader Flicker** (`G1-S1-O6-C2-CT2-R7-NPC`) - Light-Market Broker.
+    * **target:** **Deep-Ear Echo** (`G1-S1-O6-C2-CT3-R7-NPC`) - Sub-Signal Listener.
+* **Objectives:**
+    1.  Get focus at **The Hushed Atrium**.
+    2.  Buy catalyst at **Arc-Light Markets**.
+    3.  Ground signal at **Sub-Signal Vaults**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Aethel-Ion Synod)
+**Civilization ID:** `C3`
+**Global Hook:** Decipher the celestial intelligence through acoustic resonance and data mining.
+
+### **Chapter 1: The Whispered Protocol**
+* **Mission:** Recover a lost frequency key to facilitate a trade in the markets.
+* **Key Cast:**
+    * **giver:** **Elara Sync** (`G1-S1-O6-C3-CT1-R1-NPC`) - Frequency Tuner.
+    * **contact:** **Malos Vox** (`G1-S1-O6-C3-CT1-R2-NPC`) - Scribe of the Ion.
+    * **target:** **Kaelen Bit** (`G1-S1-O6-C3-CT1-R3-NPC`) - Signal Merchant.
+* **Objectives:**
+    1.  Get calibration at **The Great Tuning Fork**.
+    2.  Locate key at **Scribes' Walkway**.
+    3.  Deliver key at **The Frequency Markets**.
+
+### **Chapter 2: Static Sabotage**
+* **Mission:** Divert excess power to the Smelters to prevent a cascade failure.
+* **Key Cast:**
+    * **giver:** **Oris Volt** (`G1-S1-O6-C3-CT2-R1-NPC`) - Capacitor Guardian.
+    * **contact:** **Leda Ozone** (`G1-S1-O6-C3-CT2-R2-NPC`) - Terrace Warden.
+    * **target:** **Grak Smelter** (`G1-S1-O6-C3-CT2-R3-NPC`) - Forge Master.
+* **Objectives:**
+    1.  Get codes at **The Capacitor Fields**.
+    2.  Input codes at **Ozone Terraces**.
+    3.  Confirm transfer at **Smelter-Vanes**.
+
+### **Chapter 3: Ghost in the Antenna**
+* **Mission:** Carry an ancestral signal to the crypts to awaken a prophecy.
+* **Key Cast:**
+    * **giver:** **Thal Waves** (`G1-S1-O6-C3-CT3-R1-NPC`) - Ancestral Singer.
+    * **contact:** **Kiri Perch** (`G1-S1-O6-C3-CT3-R2-NPC`) - Scout Watcher.
+    * **target:** **Vahn Crypt** (`G1-S1-O6-C3-CT3-R3-NPC`) - Bone Whisperer.
+* **Objectives:**
+    1.  Receive urn at **The Hall of Ancestral Waves**.
+    2.  Align signal at **Mourner's Perch**.
+    3.  Deposit urn at **The Oracular Crypts**.
+
+### **Chapter 4: Dormitory Disturbance**
+* **Mission:** Investigate a rogue transmission disrupting sleep in the dorms.
+* **Key Cast:**
+    * **giver:** **Sora Echo** (`G1-S1-O6-C3-CT1-R4-NPC`) - Dormitory Overseer.
+    * **contact:** **Juro Static** (`G1-S1-O6-C3-CT1-R5-NPC`) - Data Scavenger.
+    * **target:** **Vexen Tide** (`G1-S1-O6-C3-CT1-R6-NPC`) - Dockmaster.
+* **Objectives:**
+    1.  Record noise at **Echo-Chamber Dorms**.
+    2.  Trace source at **The Archive of Static**.
+    3.  Find transmitter at **Aether-Docks**.
+
+### **Chapter 5: The Arc-Welder's Gambit**
+* **Mission:** Escort a shipment of Guard-Coils through a dangerous plaza.
+* **Key Cast:**
+    * **giver:** **Harlen Coil** (`G1-S1-O6-C3-CT2-R4-NPC`) - Guard Captain.
+    * **contact:** **Mira Turbulence** (`G1-S1-O6-C3-CT2-R5-NPC`) - Plaza Peacekeeper.
+    * **target:** **Boros Arc** (`G1-S1-O6-C3-CT2-R7-NPC`) - Master Welder.
+* **Objectives:**
+    1.  Secure cargo at **The Guard-Coil**.
+    2.  Cross plaza at **Turbulence Plaza**.
+    3.  Deliver coils at **The Arc-Welder's District**.
+
+### **Chapter 6: Resonance Restoration**
+* **Mission:** Cultivate seeds and weave shrouds for the vibration clinics.
+* **Key Cast:**
+    * **giver:** **Lyra Garden** (`G1-S1-O6-C3-CT3-R4-NPC`) - Resonance Botanist.
+    * **contact:** **Phex Shroud** (`G1-S1-O6-C3-CT3-R5-NPC`) - Weaving Master.
+    * **target:** **Miri Null** (`G1-S1-O6-C3-CT3-R6-NPC`) - Clinic Healer.
+* **Objectives:**
+    1.  Gather seeds at **Resonance Gardens**.
+    2.  Weave fabric at **The Shroud-Works**.
+    3.  Deliver shrouds at **Vibration-Null Clinics**.
+
+### **Chapter 7: Observatory Breach**
+* **Mission:** Relay an urgent deep-space signal to the Gilded Antenna (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Rina Signal** (`G1-S1-O6-C3-CT1-R7-NPC`) - Observatory Technician.
+    * **contact:** **Silt Static** (`G1-S1-O6-C3-CT2-R6-NPC`) - Sink Maintenance.
+    * **target:** **Zeph Antenna** (`G1-S1-O6-C3-CT3-R7-NPC`) - Signal Monk.
+* **Objectives:**
+    1.  Get transmission at **The Signal Observatory**.
+    2.  Bypass noise at **Static-Sinks**.
+    3.  Broadcast signal at **The Gilded Antenna**.

@@ -1,0 +1,59 @@
+/* apps/character-creation/index.css */
+
+/* Light custom utility classes used by the splash/start screens.
+   Tailwind is loaded via CDN; these fill the gaps for a few stylistic tokens. */
+
+.scan-lines {
+  position: relative;
+}
+
+.scan-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 255, 0.06),
+    rgba(0, 255, 255, 0.06) 1px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0) 6px
+  );
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.25;
+}
+
+.sci-fi-glow {
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.45),
+    0 0 20px rgba(34, 211, 238, 0.25);
+}
+
+.blinking {
+  animation: blink 1.25s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.font-orbitron {
+  /* Fallback stack; Orbitron isn't imported here, so we keep it optional. */
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Share Tech Mono", monospace;
+}
+
+.sci-fi-border {
+  border-width: 2px;
+  border-style: solid;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}

@@ -1,0 +1,133 @@
+# /packages/sentient-core/tools/sentient-core-tools.yml
+version: 1
+namespace: sentient_core
+notes:
+  - "All DEV tools MUST be gated behind devMode."
+  - "Tags: up to 7 semantic keys, used for embedding + retrieval."
+  - "Reset is destructive and MUST require an explicit UI confirmation step."
+
+commands:
+  player_tier:
+    - syntax: "***awaken***[focus, alert]"
+      tool: sc_awaken
+      effect: "Shift from idle/ambient to attentive mode."
+    - syntax: "***rest***[idle, decay]"
+      tool: sc_rest
+      effect: "Return to baseline motion; allow smoothing/decay."
+    - syntax: "***pause***[freeze, hold]"
+      tool: sc_pause
+      effect: "Soft pause; keeps state intact."
+    - syntax: "***resume***[]"
+      tool: sc_resume
+      effect: "Resume from pause without reseeding."
+    - syntax: "***focus***[player|object|memory|event]"
+      tool: sc_focus
+      effect: "Raise attention weight on target anchor."
+    - syntax: "***ignore***[player|object|stimulus]"
+      tool: sc_ignore
+      effect: "Suppress salience without deleting memory."
+    - syntax: "***emote***[curious|excited|calm|alert|playful|hostile]"
+      tool: sc_emote
+      effect: "Bias motion generator toward an affective manifold."
+    - syntax: "***curiosity***[increase|decrease]"
+      tool: sc_curiosity
+      effect: "Adjust exploration vs exploitation bias."
+    - syntax: "***discipline***[increase|decrease]"
+      tool: sc_discipline
+      effect: "Tighten/loosen motion variance & reaction latency."
+    - syntax: "***approach***[player|object]"
+      tool: sc_approach
+      effect: "Attraction toward target anchor."
+    - syntax: "***retreat***[player|object]"
+      tool: sc_retreat
+      effect: "Repulsion away from target anchor."
+    - syntax: "***orbit***[player|object, axis]"
+      tool: sc_orbit
+      effect: "Maintain bounded orbit with axis hint."
+    - syntax: "***tag***[tag...up to 7]"
+      tool: sc_tag
+      effect: "Attach semantic keys to current state for retrieval."
+    - syntax: "***save***[animation|state, tag...optional]"
+      tool: sc_save
+      effect: "Commit snapshot to memory lattice (tags + embeddings)."
+    - syntax: "***recall***[tag...up to 7]"
+      tool: sc_recall
+      effect: "Retrieve stored motion/state by similarity (top_k optional)."
+
+  developer_tier:
+    - syntax: "***stop***[]"
+      tool: sc_stop
+      effect: "Hard-freeze avatar; halts animation tick + synthesis."
+    - syntax: "***step***[frames]"
+      tool: sc_step
+      effect: "Advance frozen simulation by N frames deterministically."
+    - syntax: "***new***[tag...up to 7]"
+      tool: sc_new
+      effect: "Create NEW motion primitive from current manual override panel; tag + embed."
+    - syntax: "***snapshot***[tag...up to 7]"
+      tool: sc_snapshot
+      effect: "Capture current manual override panel as a new library motion."
+    - syntax: "***replace***[tag...up to 7]"
+      tool: sc_replace
+      effect: "Overwrite the currently active motion with current manual override snapshot (destructive)."
+    - syntax: "***apply***[tag...up to 7]"
+      tool: sc_apply
+      effect: "Load and apply a stored motion by tag similarity (non-destructive)."
+    - syntax: "***list***[]"
+      tool: sc_list
+      effect: "Print entire motion library."
+    - syntax: "***list***[tag...up to 7]"
+      tool: sc_list
+      effect: "Print library filtered by semantic similarity / tags."
+    - syntax: "***accept***[tag...optional]"
+      tool: sc_accept
+      effect: "Commit last AI-generated motion into library/index."
+    - syntax: "***reject***[]"
+      tool: sc_reject
+      effect: "Discard last AI-generated motion entirely."
+    - syntax: "***quarantine***[tag...optional]"
+      tool: sc_quarantine
+      effect: "Store last AI-generated motion but prevent autonomous use."
+    - syntax: "***replace_last***[tag...up to 7]"
+      tool: sc_replace_last
+      effect: "Replace last AI-generated motion with current manual override snapshot."
+    - syntax: "***delete***[tag...up to 7]"
+      tool: sc_delete
+      effect: "Delete motion(s) and remove embeddings/tag associations."
+    - syntax: "***clone***[source_tag...up to 7, new_tag...optional]"
+      tool: sc_clone
+      effect: "Duplicate motion to a new ID."
+    - syntax: "***retag***[old_tag...up to 7, new_tag...up to 7]"
+      tool: sc_retag
+      effect: "Update semantic keys and re-embed; motion data unchanged."
+    - syntax: "***lock_knob***[knob_id]"
+      tool: sc_lock_knob
+      effect: "Prevent AI from modifying a knob/control."
+    - syntax: "***unlock_knob***[knob_id]"
+      tool: sc_unlock_knob
+      effect: "Restore AI access to a knob/control."
+    - syntax: "***clamp***[knob_id, min, max]"
+      tool: sc_clamp
+      effect: "Hard bounds for safety/style."
+    - syntax: "***zero***[knob_id]"
+      tool: sc_zero
+      effect: "Force knob to 0 and lock it for session."
+    - syntax: "***dump***[knobs|motion]"
+      tool: sc_dump
+      effect: "Print debug state (structured)."
+    - syntax: "***trace***[motion|last|chain]"
+      tool: sc_trace
+      effect: "Show provenance of motion/toolcalls."
+    - syntax: "***panic***[]"
+      tool: sc_panic
+      effect: "Stop motion, clear pending AI outputs, reset constraints; memory untouched."
+    - syntax: "***reset_dev***[]"
+      tool: sc_reset_dev
+      effect: "Clear manual overrides; restore default ranges/constraints; keep saved motions."
+    - syntax: "***reset***[reset confirmation prompt]"
+      tool: sc_reset
+      effect: "UI-confirmed factory reset: wipe motions, overrides, and tag/embedding index; restore defaults."
+      safety:
+        required: true
+        requires_ui_confirmation: true
+        destructive: true

@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G3-S3-O1",
+  "Object_Name": "Signal_Tomb",
+  "Location_Metadata": {
+    "Type": "Derelict Facility",
+    "Subtype": "Communication Hub",
+    "Description": "A long-abandoned relay station in the Whisper Zone. Its antennas still faintly emit old Syndicate signals, attracting scavengers and rogue AI units.",
+    "System_Theme": "Abandoned technology, echoes of lost messages"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "Crumbling communication towers reach into the fog, forming a maze of metal and wires." },
+        { "Element": 2, "Lore": "The ground is littered with old transmitter parts and magnetic debris." },
+        { "Element": 3, "Lore": "Energy readings fluctuate unpredictably, causing temporary signal bursts." },
+        { "Element": 4, "Lore": "Scavengers have rigged makeshift shelters within hollowed tower sections." },
+        { "Element": 5, "Lore": "Occasional bursts of ghost signals seem to communicate messages from the past." },
+        { "Element": 6, "Lore": "Hidden caches of old data chips are rumored to hold forgotten archives." },
+        { "Element": 7, "Lore": "The local atmosphere is thick with interference, creating ghostly visual distortions." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Various rogue AI factions claim different sectors of the tomb for resource extraction." },
+        { "Element": 2, "Lore": "Scavenger gangs trade in salvaged signal equipment to gain influence." },
+        { "Element": 3, "Lore": "The site is considered neutral ground by most Syndicate operatives due to signal unpredictability." },
+        { "Element": 4, "Lore": "Occasional military patrols sweep the area, removing unregistered equipment." },
+        { "Element": 5, "Lore": "Control over the highest antennas gives strategic surveillance advantages." },
+        { "Element": 6, "Lore": "Power fluctuations can unintentionally broadcast sensitive faction communications." },
+        { "Element": 7, "Lore": "Some factions deliberately send misleading signals to confuse rivals." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "Central Relay Chamber: main node controlling residual signal emissions." },
+        { "Element": 2, "Lore": "Collapsed Tower Sections: hidden areas containing valuable tech." },
+        { "Element": 3, "Lore": "Signal Ghost Alley: an area with intermittent temporal signal echoes." },
+        { "Element": 4, "Lore": "Underground Maintenance Shafts: pathways for stealth exploration." },
+        { "Element": 5, "Lore": "Data Cache Vault: secure storage for relic signal records." },
+        { "Element": 6, "Lore": "Observation Platforms: vantage points for monitoring signal fluctuations." },
+        { "Element": 7, "Lore": "Rogue AI Nodes: localized AI units that interfere with intruders." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "**Signal Warden Kael**, a human scavenger who monitors residual transmissions for profit." },
+        { "Element": 2, "Lore": "**Rogue AI Phantom**, an unpredictable digital entity manifesting from corrupted signals." },
+        { "Element": 3, "Lore": "**Technomancer Lira**, a scholar attempting to decipher ghost transmissions." },
+        { "Element": 4, "Lore": "**Nomadic Crew**, scavengers exploiting abandoned equipment for trade." },
+        { "Element": 5, "Lore": "**Exiled Engineer**, hiding inside collapsed towers, maintaining secret equipment." },
+        { "Element": 6, "Lore": "**Signal Hunter Drax**, seeks rare data chips for black-market sale." },
+        { "Element": 7, "Lore": "**Wandering Historian**, collects residual transmissions to reconstruct forgotten events." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Signal Warden Kael is paranoid about ghost signals and avoids certain sectors entirely." },
+        { "Element": 2, "Lore": "Rogue AI Phantom may randomly disrupt communications or doors." },
+        { "Element": 3, "Lore": "Technomancer Lira has an obsession with decoding every residual signal." },
+        { "Element": 4, "Lore": "Nomadic Crew marks towers with coded graffiti only they understand." },
+        { "Element": 5, "Lore": "Exiled Engineer uses improvised devices to create safe zones." },
+        { "Element": 6, "Lore": "Signal Hunter Drax sometimes leaves misleading markers to confuse rivals." },
+        { "Element": 7, "Lore": "Wandering Historian documents every signal but rarely acts on them." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Recover lost data chips from collapsed towers." },
+        { "Element": 2, "Lore": "Investigate ghost signals for hidden clues." },
+        { "Element": 3, "Lore": "Disable rogue AI interference temporarily to access key areas." },
+        { "Element": 4, "Lore": "Escort scavengers through hazardous zones safely." },
+        { "Element": 5, "Lore": "Restore a partially functioning relay to capture historical signals." },
+        { "Element": 6, "Lore": "Recover a hidden log containing faction movement data." },
+        { "Element": 7, "Lore": "Negotiate with AI entities to allow access to restricted zones." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "Signal_Tomb holds residual data vital to uncovering Whisper Zone secrets." },
+        { "Element": 2, "Lore": "Ghost signals hint at events that may alter main story arcs." },
+        { "Element": 3, "Lore": "Faction and rogue AI conflicts drive dynamic exploration outcomes." },
+        { "Element": 4, "Lore": "Successful navigation unlocks critical resources and rare lore." },
+        { "Element": 5, "Lore": "Hidden messages can guide the player to other Whisper Zone sites." },
+        { "Element": 6, "Lore": "Interaction with rogue AI may create branching story consequences." },
+        { "Element": 7, "Lore": "Exploration of this object informs player understanding of larger conspiracies." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Retrieve lost messages and deliver them to Technomancer Lira." },
+        { "Element": 2, "Lore": "Trace origin of rogue signal bursts to prevent faction conflict." },
+        { "Element": 3, "Lore": "Recover hidden tech for scavenger crews to gain their trust." },
+        { "Element": 4, "Lore": "Document ghost signals for historian questline." },
+        { "Element": 5, "Lore": "Disable security anomalies caused by rogue AI Phantom." },
+        { "Element": 6, "Lore": "Assist Signal Warden Kael in safely reactivating antennas." },
+        { "Element": 7, "Lore": "Investigate underground shafts for clues to Whisper Zone mysteries." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "Exploring Signal_Tomb connects players to the larger Whisper Zone network." },
+        { "Element": 2, "Lore": "Ghost signals provide narrative depth and optional lore discovery." },
+        { "Element": 3, "Lore": "Faction control and rogue AI interactions drive emergent storytelling." },
+        { "Element": 4, "Lore": "Side quests here influence faction standings and resource availability." },
+        { "Element": 5, "Lore": "Critical clues from this location affect endgame strategy." },
+        { "Element": 6, "Lore": "Discovery of hidden logs reveals past Whisper Zone events." },
+        { "Element": 7, "Lore": "Mastery of the tomb enables safe navigation to other Whisper Zone sites." }
+      ]
+    }
+  }
+}

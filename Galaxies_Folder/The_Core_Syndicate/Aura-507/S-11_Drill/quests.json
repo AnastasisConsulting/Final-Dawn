@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Marrow-Hollowed Union",
+      "civilization_id": "G1-S1-O1-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Collapsing Shaft",
+            "narrative_guidance": "The main drill shaft at the Command Monolith is buckling. You must stabilize it before the whole city tilts.",
+            "improvisation_points": [
+              "Consult Chief Engineer Hara-Prime for the stabilization schematics.",
+              "Secure the support beams from Foreman Kraul at the Gneiss Gates.",
+              "Deliver the final calibration codes to Technician Lorn-Seven to seal the shaft."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Chief Engineer Hara-Prime",
+                "id": "G1-S1-O1-C1-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Foreman Kraul",
+                "id": "G1-S1-O1-C1-CT1-R7-NPC"
+              },
+              "target": {
+                "name": "Technician Lorn-Seven",
+                "id": "G1-S1-O1-C1-CT1-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "Rad-Safe Routing",
+            "narrative_guidance": "A surge of radiation has blocked the transport lines. A new path must be mapped using secure codes.",
+            "improvisation_points": [
+              "Obtain the encrypted bypass logic from AI Core-11.A.",
+              "Scan for safe pockets with Radiation Scout Iko-Red in the Gantry Row.",
+              "Hand the verified coordinates to Drone Commander R-Delta-V to update the drone paths."
+            ],
+            "cast": {
+              "giver": {
+                "name": "AI Core-11.A",
+                "id": "G1-S1-O1-C1-CT1-R3-NPC"
+              },
+              "contact": {
+                "name": "Radiation Scout Iko-Red",
+                "id": "G1-S1-O1-C1-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Drone Commander R-Delta-V",
+                "id": "G1-S1-O1-C1-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Black-Market Batch",
+            "narrative_guidance": "Rare ore has gone missing from the foundry. It needs to be moved to a buyer without the Overseer knowing.",
+            "improvisation_points": [
+              "Accept the hidden stash from Salvager Xyra-One.",
+              "Stash the ore in the reclamation pit with Scrap King Jax.",
+              "Bribe Grease Monkey Sly to smuggle it through the corridors."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Salvager Xyra-One",
+                "id": "G1-S1-O1-C1-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Scrap King Jax",
+                "id": "G1-S1-O1-C1-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Grease Monkey Sly",
+                "id": "G1-S1-O1-C1-CT2-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Atmospheric Integrity",
+            "narrative_guidance": "The Welders' Habitats are losing oxygen pressure. Repairs must be expedited.",
+            "improvisation_points": [
+              "Collect a requisition order from Habitat Warden Jace.",
+              "Secure the refined gas canisters from Refinery Op Mara.",
+              "Install the seals at the spare-part vaults under the eye of Vault Guard Drax."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Habitat Warden Jace",
+                "id": "G1-S1-O1-C1-CT2-R1-NPC"
+              },
+              "contact": {
+                "name": "Refinery Op Mara",
+                "id": "G1-S1-O1-C1-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Vault Guard Drax",
+                "id": "G1-S1-O1-C1-CT2-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Hydraulic Overload",
+            "narrative_guidance": "A hydraulic leak is threatening the chassis forge. Someone needs to crawl into the ducts.",
+            "improvisation_points": [
+              "Get the leak locations from Duct Crawler Pip.",
+              "Acquire the custom-welded patch from Forge Master Bran.",
+              "Ensure the waste valves are cleared by Slag Monitor Nox."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Duct Crawler Pip",
+                "id": "G1-S1-O1-C1-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Forge Master Bran",
+                "id": "G1-S1-O1-C1-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Slag Monitor Nox",
+                "id": "G1-S1-O1-C1-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Magma Flow Regulation",
+            "narrative_guidance": "The geothermal intake is running too hot. The turbines are at risk of melting.",
+            "improvisation_points": [
+              "Receive the flow-gate keys from Intake Guard Vol.",
+              "Calculate the cooling dispersal with Heat Analyst Sora.",
+              "Apply the radiation dampeners with Lead Shield Tavish."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Intake Guard Vol",
+                "id": "G1-S1-O1-C1-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Heat Analyst Sora",
+                "id": "G1-S1-O1-C1-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Lead Shield Tavish",
+                "id": "G1-S1-O1-C1-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Deep Anchor Protocol",
+            "narrative_guidance": "The base is shifting on the sub-crustal plates. The anchors must be reinforced with crushed quartz.",
+            "improvisation_points": [
+              "Collect the heavy material from Mill Hand Grog.",
+              "Power up the anchor-winches with Turbine Tech Elara.",
+              "Deliver the status report to Anchor Master Silas at the anchor points."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Mill Hand Grog",
+                "id": "G1-S1-O1-C1-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Turbine Tech Elara",
+                "id": "G1-S1-O1-C1-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Anchor Master Silas",
+                "id": "G1-S1-O1-C1-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Core-Stitchers of S-11",
+      "civilization_id": "G1-S1-O1-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Unstable Shaft",
+            "narrative_guidance": "A primary drill shaft in Helix Hub is vibrating out of tolerance, threatening a sector-wide collapse.",
+            "improvisation_points": [
+              "Obtain the stabilization harmonics from Chief Hara-V1.",
+              "Take the harmonics to Tech Lorn-Beta in Caliper Reach to calibrate the drill bits.",
+              "Upload the final calibration to Logic Core Gamma at Vector Point to synchronize the planetary rotation."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Chief Hara-V1",
+                "id": "G1-S1-O1-C2-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Tech Lorn-Beta",
+                "id": "G1-S1-O1-C2-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Logic Core Gamma",
+                "id": "G1-S1-O1-C2-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Radiation Ghosting",
+            "narrative_guidance": "Ghost signals in the radiation sensors are causing drones to malfunction and attack personnel.",
+            "improvisation_points": [
+              "Receive the anomalous sensor logs from Scout Iko-S.",
+              "Deliver the logs to Unit Delta-Prime to patch the drone sub-routines.",
+              "Present the success report to Overseer Melen-Z to avoid a sector lockdown."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scout Iko-S",
+                "id": "G1-S1-O1-C2-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Unit Delta-Prime",
+                "id": "G1-S1-O1-C2-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Overseer Melen-Z",
+                "id": "G1-S1-O1-C2-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Locked Archive",
+            "narrative_guidance": "Valuable mineral data has been locked behind a security firewall that Logic Core Beta cannot bypass alone.",
+            "improvisation_points": [
+              "Acquire the decryption bypass from Scrapper Xy-8 in the Thermal Shield Spires.",
+              "Interface with Logic Core Beta to input the bypass code.",
+              "Deliver the decrypted data to Chief Hara-V2 to optimize furnace output."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scrapper Xy-8",
+                "id": "G1-S1-O1-C2-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Logic Core Beta",
+                "id": "G1-S1-O1-C2-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Chief Hara-V2",
+                "id": "G1-S1-O1-C2-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Dark Ore Heist",
+            "narrative_guidance": "A rare vein of shadow-ore has been found, but the Cartel hasn't authorized its extraction.",
+            "improvisation_points": [
+              "Meet Scrapper Xy-9 to receive the stealth extraction kit.",
+              "Have Tech Lorn-Gamma mask the seismic signatures during the dig.",
+              "Hand off the ore to Scout Iko-U at the Final Sump for smuggling."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scrapper Xy-9",
+                "id": "G1-S1-O1-C2-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Tech Lorn-Gamma",
+                "id": "G1-S1-O1-C2-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Scout Iko-U",
+                "id": "G1-S1-O1-C2-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Compliance Audit",
+            "narrative_guidance": "A high-level inspection is coming, and several safety violations need to be 'corrected' or hidden.",
+            "improvisation_points": [
+              "Collect the violation list from Overseer Melen-Y.",
+              "Task Unit Delta-Secundus with emergency cosmetic repairs to the steam vents.",
+              "Submit the falsified safety logs to Logic Core Alpha for archiving."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Overseer Melen-Y",
+                "id": "G1-S1-O1-C2-CT2-R5-NPC"
+              },
+              "contact": {
+                "name": "Unit Delta-Secundus",
+                "id": "G1-S1-O1-C2-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Logic Core Alpha",
+                "id": "G1-S1-O1-C2-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Torque Calibration",
+            "narrative_guidance": "The torque ridge is slipping, and the mechanical drones are failing to maintain the grip.",
+            "improvisation_points": [
+              "Receive the torque requirements from Unit Delta-Tertius.",
+              "Consult Tech Lorn-Alpha for the ancient drilling codes required for the override.",
+              "Deliver the override confirmation to Chief Hara-V3 to lock the tethers."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Unit Delta-Tertius",
+                "id": "G1-S1-O1-C2-CT3-R6-NPC"
+              },
+              "contact": {
+                "name": "Tech Lorn-Alpha",
+                "id": "G1-S1-O1-C2-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Chief Hara-V3",
+                "id": "G1-S1-O1-C2-CT3-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Silent Signal",
+            "narrative_guidance": "An invisible hazard has been detected in the Signal Silence region that is disrupting communications.",
+            "improvisation_points": [
+              "Get the hazard coordinates from Scout Iko-T.",
+              "Use Overseer Melen-X's authority to clear the area of unauthorized personnel.",
+              "Trade the recovered hazard data to Scrapper Xy-7 for tech upgrades."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scout Iko-T",
+                "id": "G1-S1-O1-C2-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Overseer Melen-X",
+                "id": "G1-S1-O1-C2-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Scrapper Xy-7",
+                "id": "G1-S1-O1-C2-CT1-R4-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Quartzite Synod",
+      "civilization_id": "G1-S1-O1-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Deep Shaft Crisis",
+            "narrative_guidance": "A major drill shaft in Bore-Site Alpha is nearing structural collapse due to unforeseen seismic activity.",
+            "improvisation_points": [
+              "Obtain heavy drilling equipment from Driller Bor.",
+              "Calibrate the seismic dampeners with Stabilizer Jax to halt the tremors.",
+              "Finalize the structural seal at Maintenance Pod C-7 with Fixer Zen."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Driller Bor",
+                "id": "G1-S1-O1-C3-CT2-R1-NPC"
+              },
+              "contact": {
+                "name": "Stabilizer Jax",
+                "id": "G1-S1-O1-C3-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Fixer Zen",
+                "id": "G1-S1-O1-C3-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Rad-Leak Extraction",
+            "narrative_guidance": "An emergency in the pods requires an immediate extraction of sensitive materials through a high-radiation zone.",
+            "improvisation_points": [
+              "Retrieve the medical hazard list from Med-Unit Gamma.",
+              "Use the sensor array to map the safest path with Watcher Iko-Beta.",
+              "Deliver the protected materials to Mechanic Lorn-S for decontamination."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Med-Unit Gamma",
+                "id": "G1-S1-O1-C3-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Watcher Iko-Beta",
+                "id": "G1-S1-O1-C3-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Mechanic Lorn-S",
+                "id": "G1-S1-O1-C3-CT1-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Logic Core Override",
+            "narrative_guidance": "The Synod requires a manual bypass of local AI restrictions to access mineral yield projections.",
+            "improvisation_points": [
+              "Acquire the decryption keys from Logician Kael.",
+              "Broadcast the bypass signal through Transmit-Unit 7's relay.",
+              "Verify the kinetic power draw with Spin-Tech Tor to hide the data surge."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Logician Kael",
+                "id": "G1-S1-O1-C3-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Transmit-Unit 7",
+                "id": "G1-S1-O1-C3-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Spin-Tech Tor",
+                "id": "G1-S1-O1-C3-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Slag-Heap Scavenging",
+            "narrative_guidance": "Valuable ores have been misplaced in the waste piles, and they must be recovered without triggering alarms.",
+            "improvisation_points": [
+              "Identify the missing ore signatures with Scrapper Xyra-Z.",
+              "Bypass the power grid sensors with Spark-Tech Jule.",
+              "Record the recovery as 'logistical error' with Orator Vex."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scrapper Xyra-Z",
+                "id": "G1-S1-O1-C3-CT2-R5-NPC"
+              },
+              "contact": {
+                "name": "Spark-Tech Jule",
+                "id": "G1-S1-O1-C3-CT1-R4-NPC"
+              },
+              "target": {
+                "name": "Orator Vex",
+                "id": "G1-S1-O1-C3-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Operational Compliance Check",
+            "narrative_guidance": "The Synod demands a full report on the mechanical integrity of the Bore-Site's primary systems.",
+            "improvisation_points": [
+              "Secure the perimeter reports from Guard 01-B.",
+              "Analyze the lubrication viscosity data with Lube-Tech Pip.",
+              "Submit the final compliance certificate to Polisher Lux for archiving."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Guard 01-B",
+                "id": "G1-S1-O1-C3-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Lube-Tech Pip",
+                "id": "G1-S1-O1-C3-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Polisher Lux",
+                "id": "G1-S1-O1-C3-CT3-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Drone Reroute",
+            "narrative_guidance": "Automated maintenance drones are ignoring a critical gear-tooth failure that could stall the entire site.",
+            "improvisation_points": [
+              "Redirect the assembly drone swarm via Assembly-Drone R-D1.",
+              "Clean the air intake pathways with Filter-Unit Phi to prevent drone overheating.",
+              "Coordinate the final gear replacement with Machinist Cog."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Assembly-Drone R-D1",
+                "id": "G1-S1-O1-C3-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Filter-Unit Phi",
+                "id": "G1-S1-O1-C3-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Machinist Cog",
+                "id": "G1-S1-O1-C3-CT2-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Radiance Mapping",
+            "narrative_guidance": "Anomalies in the stellar thermal radiation are affecting the Vent-Spires' energy absorption.",
+            "improvisation_points": [
+              "Collect initial anomaly data from Watcher Iko-Beta.",
+              "Cross-reference the stellar coordinates with Star-Gazer Ren.",
+              "Adjust the heat-exchange valves with Vent-Master Kel to compensate."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Watcher Iko-Beta",
+                "id": "G1-S1-O1-C3-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Star-Gazer Ren",
+                "id": "G1-S1-O1-C3-CT3-R6-NPC"
+              },
+              "target": {
+                "name": "Vent-Master Kel",
+                "id": "G1-S1-O1-C3-CT3-R1-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

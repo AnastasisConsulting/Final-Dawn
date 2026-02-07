@@ -1,0 +1,5 @@
+{
+  "name": "flight-one-weapons",
+  "description": "A true 3D space flight simulator with 6DOF controls and a celestial backdrop.",
+  "requestFramePermissions": []
+}

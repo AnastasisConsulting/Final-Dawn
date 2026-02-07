@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G2-S3",
+    "system_name": "The Shard Verge",
+    "theme": "Crystalline Energy, Piracy, Rift Anomalies",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G2S3_LEGENDARY_SOVEREIGN",
+    "name": "The Crystal Sovereign",
+    "description": "A towering entity of pure, sentient prism-glass. It does not speak, but its presence causes reality to fracture and refract.",
+    "class": "Boss (Construct/Mage)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 550, "Resource": 400, "Strength": 14, "Agility": 10, "Endurance": 18, "Intelligence": 25, "Perception": 20, "Charisma": 0 },
+      "level_21": { "HP": 5500, "Resource": 3000, "Strength": 40, "Agility": 30, "Endurance": 55, "Intelligence": 80, "Perception": 60, "Charisma": 0 }
+    },
+    "actions": ["skill_prism_beam", "skill_shatter_reality", "summon_crystal_minions"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Crystal_Constructs": {
+      "description": "Sentient mineral lifeforms and animated defense systems.",
+      "variants": [
+        {
+          "id": "G2S3_C_01", "name": "Shard-Mite", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 20 }, "level_21": { "HP": 200 } },
+          "actions": ["action_bite", "crystal_barb"]
+        },
+        {
+          "id": "G2S3_C_02", "name": "Geode-Crab", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 45 }, "level_21": { "HP": 450 } },
+          "actions": ["action_claw", "shell_harden"]
+        },
+        {
+          "id": "G2S3_C_03", "name": "Prism-Sentry", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["laser_beam", "flash_blind"]
+        },
+        {
+          "id": "G2S3_C_04", "name": "Shard-Golem", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["ground_slam", "crystal_shatter"]
+        },
+        {
+          "id": "G2S3_C_05", "name": "Spire-Walker", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 130 }, "level_21": { "HP": 1300 } },
+          "actions": ["impale", "reflect_magic"]
+        },
+        {
+          "id": "G2S3_C_06", "name": "Obsidian-Guardian", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["void_shield", "crush"]
+        },
+        {
+          "id": "G2S3_C_07", "name": "Diamond-Titan", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 250 }, "level_21": { "HP": 2500 } },
+          "actions": ["laser_barrage", "indestructible_stance", "earthquake"]
+        }
+      ]
+    },
+    "Type_2_Verge_Pirates": {
+      "description": "Mercenaries and scavengers who have adapted to the rift's chaos.",
+      "variants": [
+        {
+          "id": "G2S3_P_01", "name": "Rift-Rat Scavenger", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 35 }, "level_21": { "HP": 350 } },
+          "actions": ["rusty_knife", "flee"]
+        },
+        {
+          "id": "G2S3_P_02", "name": "Verge Raider", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["blaster_burst", "dirty_kick"]
+        },
+        {
+          "id": "G2S3_P_03", "name": "Void-Sniper", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["aimed_shot", "camouflage"]
+        },
+        {
+          "id": "G2S3_P_04", "name": "Rift-Breaker", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 85 }, "level_21": { "HP": 850 } },
+          "actions": ["shield_bash", "concussion_grenade"]
+        },
+        {
+          "id": "G2S3_P_05", "name": "Mercenary Captain", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["command_shout", "execute", "rally"]
+        },
+        {
+          "id": "G2S3_P_06", "name": "Phase-Tech Rogue", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 95 }, "level_21": { "HP": 950 } },
+          "actions": ["phase_shift", "backstab", "emp_trap"]
+        },
+        {
+          "id": "G2S3_P_07", "name": "Warlord of the Verge", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 160 }, "level_21": { "HP": 1600 } },
+          "actions": ["power_armor_slam", "orbital_strike_marker", "intimidating_presence"]
+        }
+      ]
+    },
+    "Type_3_Energy_Anomalies": {
+      "description": "Living energy manifestations from the dimensional rifts.",
+      "variants": [
+        {
+          "id": "G2S3_E_01", "name": "Static Mote", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 15 }, "level_21": { "HP": 150 } },
+          "actions": ["zap"]
+        },
+        {
+          "id": "G2S3_E_02", "name": "Quantum Wisp", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["blink", "energy_drain"]
+        },
+        {
+          "id": "G2S3_E_03", "name": "Volatile Spark", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["explode", "chain_lightning"]
+        },
+        {
+          "id": "G2S3_E_04", "name": "Rift-Surge", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["gravity_well", "repulse"]
+        },
+        {
+          "id": "G2S3_E_05", "name": "Arc-Phantom", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["possession", "lightning_storm"]
+        },
+        {
+          "id": "G2S3_E_06", "name": "Living Storm", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["thunderclap", "cyclone"]
+        },
+        {
+          "id": "G2S3_E_07", "name": "Dimensional Horror", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["reality_tear", "mind_break", "void_consumption"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G2S3_RARE_01", "name": "The Crystal Mimic",
+      "description": "A chest-shaped crystal formation that bites back.",
+      "chance": 0.05,
+      "loot_bonus": "random_gem_cache",
+      "behavior": "Ambush_AI"
+    },
+    {
+      "id": "G2S3_RARE_02", "name": "Rogue Mining AI 'Drillbit'",
+      "description": "A mining bot that upgraded itself with military hardware.",
+      "chance": 0.03,
+      "loot_bonus": "Laser Cutter Array",
+      "behavior": "Aggressive_AI"
+    },
+    {
+      "id": "G2S3_RARE_03", "name": "The Void-Touched Captain",
+      "description": "A pirate captain mutated by direct exposure to the rift.",
+      "chance": 0.02,
+      "loot_bonus": "Resonance Scoop",
+      "behavior": "Caster_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "Slag", "min": 40, "max": 250 },
+    "common": [ "Crystal Ores", "Scrap Metal", "Small Battery" ],
+    "uncommon": [ "Refracted Light Crystal", "Hydraulic Piston", "Energy Cell" ],
+    "rare": [ "Resonance Scoop", "Unstable Void Shards", "Advanced Sensor Array" ],
+    "epic": [ "Pulse Rifle", "Stealth Field Generator" ],
+    "legendary": [ "Prism Crown (Unique)" ]
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G2-S1-O7",
+  "Object_Name": "Xylos-Prime (Aethel-Prime – Research and Observation Outpost)",
+  "Location_Metadata": {
+    "Type": "Outpost",
+    "Subtype": "Research & Observation",
+    "Description": "A remote planetary outpost specializing in astronomical observation and exotic matter research. Known for its isolated environment and high-tech observation arrays.",
+    "System_Theme": "Remote observation, advanced technology, isolation"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "High-orbit observation platforms track celestial events across multiple sectors." },
+        { "Element": 2, "Lore": "Laboratories focus on exotic matter manipulation and experimental physics." },
+        { "Element": 3, "Lore": "The outpost is located in a geologically stable plateau to minimize seismic interference." },
+        { "Element": 4, "Lore": "Underground research facilities connect laboratories to observatories via secure corridors." },
+        { "Element": 5, "Lore": "Energy shielding protects the outpost from cosmic radiation and solar flares." },
+        { "Element": 6, "Lore": "Automated drones maintain equipment and monitor environmental stability." },
+        { "Element": 7, "Lore": "Restricted access zones are marked with quantum encryption locks." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Aethel-Prime scientific council governs research priorities and outpost policy." },
+        { "Element": 2, "Lore": "Corporate sponsors provide funding in exchange for exclusive experimental data." },
+        { "Element": 3, "Lore": "Security teams ensure research confidentiality and monitor for espionage." },
+        { "Element": 4, "Lore": "Occasional political tensions arise over high-value scientific discoveries." },
+        { "Element": 5, "Lore": "Rival research factions sometimes attempt infiltration to access exotic matter labs." },
+        { "Element": 6, "Lore": "Autonomous monitoring drones enforce compliance with strict research protocols." },
+        { "Element": 7, "Lore": "Strategic alliances with orbital stations enhance data transmission security." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "Observation Deck Alpha, housing high-resolution telescopes and sensor arrays." },
+        { "Element": 2, "Lore": "Exotic Matter Lab Beta, where experimental particles are synthesized and observed." },
+        { "Element": 3, "Lore": "Underground Access Hub, linking labs to observation platforms securely." },
+        { "Element": 4, "Lore": "Data Transmission Tower, transmitting research results to central command." },
+        { "Element": 5, "Lore": "Energy Shielding Core, maintaining radiation and cosmic ray protection." },
+        { "Element": 6, "Lore": "Automated Drone Dock, storing and recharging maintenance drones." },
+        { "Element": 7, "Lore": "Researcher Quarters, housing personnel with restricted access to sensitive zones." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "Dr. Lyra Voss, lead astrophysicist focusing on quantum phenomena." },
+        { "Element": 2, "Lore": "Technician Eron Kale, manages automated drones and lab infrastructure." },
+        { "Element": 3, "Lore": "AI Sentinel Astra, monitoring environmental systems and research data integrity." },
+        { "Element": 4, "Lore": "Field Researcher Jace Arden, collects samples and operates observation platforms." },
+        { "Element": 5, "Lore": "Security Chief Rynn, oversees outpost defense and confidential data protection." },
+        { "Element": 6, "Lore": "Data Archivist Myla, responsible for maintaining and encrypting all research logs." },
+        { "Element": 7, "Lore": "Exo-Lab Specialist Kael, experiments with exotic matter synthesis." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Dr. Lyra Voss sometimes conducts unauthorized experiments for curiosity-driven discoveries." },
+        { "Element": 2, "Lore": "Technician Eron Kale talks to drones as if they are sentient beings." },
+        { "Element": 3, "Lore": "AI Sentinel Astra occasionally restricts human access when it perceives high-risk anomalies." },
+        { "Element": 4, "Lore": "Field Researcher Jace Arden keeps a secret log of celestial phenomena not sanctioned by the council." },
+        { "Element": 5, "Lore": "Security Chief Rynn enforces rules with obsessive precision, often over minor infractions." },
+        { "Element": 6, "Lore": "Data Archivist Myla encodes certain logs in a personal cipher for posterity." },
+        { "Element": 7, "Lore": "Exo-Lab Specialist Kael leaves trace signatures in quantum experiments as a form of personal expression." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Recover a stolen exotic matter sample from unauthorized personnel." },
+        { "Element": 2, "Lore": "Stabilize a quantum anomaly threatening the observation platforms." },
+        { "Element": 3, "Lore": "Escort Dr. Lyra during high-risk experimental trials." },
+        { "Element": 4, "Lore": "Investigate interference in long-range sensor arrays." },
+        { "Element": 5, "Lore": "Retrieve encrypted research data compromised by a rival faction." },
+        { "Element": 6, "Lore": "Neutralize a rogue drone that malfunctioned near critical experiments." },
+        { "Element": 7, "Lore": "Recover a log detailing unreported experimental anomalies for council review." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "Xylos-Prime serves as the hub for advanced research into exotic matter and quantum anomalies." },
+        { "Element": 2, "Lore": "Experiments here may unlock new propulsion technologies and energy sources." },
+        { "Element": 3, "Lore": "Containment and data security are critical to prevent catastrophic breaches." },
+        { "Element": 4, "Lore": "Control over the outpost provides strategic advantages in research influence." },
+        { "Element": 5, "Lore": "Player decisions can affect the success and risks of ongoing experiments." },
+        { "Element": 6, "Lore": "Exposure to anomalies may trigger unforeseen narrative consequences." },
+        { "Element": 7, "Lore": "Mastering the outpost enables access to rare technology and experimental resources." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Investigate small-scale quantum disturbances affecting nearby observation decks." },
+        { "Element": 2, "Lore": "Recover minor samples that were lost during unstable synthesis trials." },
+        { "Element": 3, "Lore": "Assist researchers in stabilizing high-risk quantum experiments." },
+        { "Element": 4, "Lore": "Secure sensitive research data from espionage attempts." },
+        { "Element": 5, "Lore": "Correct minor anomalies to prevent escalation into full-scale breaches." },
+        { "Element": 6, "Lore": "Retrieve personnel or equipment displaced by environmental anomalies." },
+        { "Element": 7, "Lore": "Unlock additional insights into exotic matter applications for strategic advantages." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "Understanding exotic matter research unlocks advanced scientific storylines." },
+        { "Element": 2, "Lore": "Containment failures can ripple into broader narrative consequences." },
+        { "Element": 3, "Lore": "Player control affects both safety and research output." },
+        { "Element": 4, "Lore": "Mastery here gives strategic influence over scientific and corporate factions." },
+        { "Element": 5, "Lore": "Player choices influence both main plot and side quest outcomes." },
+        { "Element": 6, "Lore": "Decisions in experimental management can stabilize or destabilize the facility." },
+        { "Element": 7, "Lore": "Ultimate mastery rewards the player with rare tech and scientific resources." }
+      ]
+    }
+  }
+}

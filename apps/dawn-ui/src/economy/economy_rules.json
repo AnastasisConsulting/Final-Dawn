@@ -1,0 +1,121 @@
+{
+  "name": "Standard Economy Rules",
+  "description": "Defines the CPU-executed formulas for economy and market mechanics. [cite: user]",
+  "transforms": {
+    "Transactions": {
+      "description": "Rules governing the act of buying and selling.",
+      "subdivisions": {
+        "Player_Context": {
+          "roles": [
+            { "id": "Buy_Price_Modifier_Formula", "value": "1.5 * (1.0 - (actor.charisma * 0.005))" },
+            { "id": "Sell_Price_Modifier_Formula", "value": "0.5 * (1.0 + (actor.charisma * 0.01))" },
+            { "id": "Haggle_Success_Chance", "value": "0.1 + (actor.charisma * 0.01)" },
+            { "id": "Haggle_Price_Improvement", "value": "0.15" },
+            { "id": "Bulk_Discount_Threshold", "value": "10" },
+            { "id": "Bulk_Discount_Amount", "value": "0.05" },
+            { "id": "Stolen_Item_Sell_Modifier", "value": "0.25" }
+          ]
+        },
+        "Faction_Context": {
+          "roles": [
+            { "id": "Faction_Buy_Discount_Formula", "value": "1.0 - (faction_standing[market.faction] * 0.1)" },
+            { "id": "Faction_Sell_Bonus_Formula", "value": "1.0 + (faction_standing[market.faction] * 0.05)" },
+            { "id": "Embargo_Check_Formula", "value": "faction_standing[market.faction] < -50" },
+            { "id": "Preferred_Partner_Discount", "value": "faction_standing[market.faction] > 90 ? 0.1 : 0.0" },
+            { "id": "Faction_Tariff_Formula", "value": "item.is_foreign ? 0.15 : 0.0" },
+            { "id": "Contraband_Market_Access_Check", "value": "market.is_black_market && actor.reputation_thieves > 50" },
+            { "id": "Contraband_Price_Markup", "value": "2.5" }
+          ]
+        },
+        "Global_Context": {
+          "roles": [
+            { "id": "Global_Tax_Rate", "value": "0.05" },
+            { "id": "Global_Event_Inflation_Modifier", "value": "global_flags['war_active'] ? 1.5 : (global_flags['festival'] ? 1.2 : 1.0)" },
+            { "id": "Global_Event_Recession_Modifier", "value": "global_flags['blight_active'] ? 0.7 : 1.0" },
+            { "id": "Investment_Level_Modifier", "value": "1.0 - (market.investment_level * 0.01)" },
+            { "id": "Prosperity_Price_Modifier", "value": "1.0 + (market.prosperity * 0.05)" },
+            { "id": "Security_Price_Modifier", "value": "1.0 - (market.security * 0.05)" },
+            { "id": "Market_Fee_Base", "value": "5" }
+          ]
+        }
+      }
+    },
+    "Valuation": {
+      "description": "Rules governing the base price of items.",
+      "subdivisions": {
+        "Item_Base_Value": {
+          "roles": [
+            { "id": "Base_Value_Formula", "value": "item.base_price" },
+            { "id": "Rarity_Value_Modifier_Common", "value": "1.0" },
+            { "id": "Rarity_Value_Modifier_Uncommon", "value": "2.5" },
+            { "id": "Rarity_Value_Modifier_Rare", "value": "10.0" },
+            { "id": "Rarity_Value_Modifier_Epic", "value": "50.0" },
+            { "id": "Rarity_Value_Modifier_Legendary", "value": "200.0" },
+            { "id": "Item_Level_Value_Modifier", "value": "1.0 + (item.level * 0.1)" }
+          ]
+        },
+        "Item_Durability": {
+          "roles": [
+            { "id": "Durability_Price_Modifier", "value": "item.current_durability / item.max_durability" },
+            { "id": "Broken_Item_Sell_Value", "value": "item.current_durability <= 0 ? 0.1 : 1.0" },
+            { "id": "Repair_Cost_Per_Point_Formula", "value": "(item.base_price * 0.01) * (1.0 - (actor.skill_blacksmith * 0.005))" },
+            { "id": "Masterwork_Repair_Cost_Multiplier", "value": "item.rarity > 3 ? 2.0 : 1.0" },
+            { "id": "Field_Repair_Kit_Effectiveness", "value": "0.25" },
+            { "id": "Vendor_Repair_Cost_Multiplier", "value": "1.5" },
+            { "id": "Durability_Damage_On_Crit_Fail", "value": "item.max_durability * 0.05" }
+          ]
+        },
+        "Item_Enchantment": {
+          "roles": [
+            { "id": "Enchantment_Value_Bonus_Formula", "value": "item.enchantment_level * 50" },
+            { "id": "Cursed_Item_Value_Modifier", "value": "item.is_cursed ? 0.1 : 1.0" },
+            { "id": "Socket_Value_Bonus_Formula", "value": "item.sockets * 25" },
+            { "id": "Filled_Socket_Value_Bonus_Formula", "value": "item.gems_socketed * 75" },
+            { "id": "Enchantment_Cost_Formula", "value": "item.base_price * 0.5 * (1 + item.enchantment_level)" },
+            { "id": "Disenchant_Return_Percent", "value": "0.25" },
+            { "id": "Unique_Item_Value_Multiplier", "value": "item.is_unique ? 3.0 : 1.0" }
+          ]
+        }
+      }
+    },
+    "Supply": {
+      "description": "Rules governing item availability and restocking.",
+      "subdivisions": {
+        "Market_Supply": {
+          "roles": [
+            { "id": "Item_Availability_Check", "value": "market.inventory[item.id].quantity > 0" },
+            { "id": "Market_Restock_Rule_Check", "value": "game.time % 168 == 0" },
+            { "id": "Market_Restock_Amount_Formula", "value": "item.base_stock * (0.5 + (market.prosperity * 0.1))" },
+            { "id": "Demand_Price_Modifier_High", "value": "market.demand[item.category] > 1.5 ? 1.5 : 1.0" },
+            { "id": "Demand_Price_Modifier_Low", "value": "market.demand[item.category] < 0.5 ? 0.7 : 1.0" },
+            { "id": "Consume_Supply_On_Buy", "value": "market.inventory[item.id].quantity -= 1" },
+            { "id": "Add_Supply_On_Sell", "value": "market.inventory[item.id].quantity += 1" }
+          ]
+        },
+        "Global_Events": {
+          "roles": [
+            { "id": "War_Supply_Modifier", "value": "global_flags['war_active'] ? 0.2 : 1.0" },
+            { "id": "Plague_Supply_Modifier", "value": "global_flags['plague'] ? 0.1 : 1.0" },
+            { "id": "Festival_Supply_Modifier", "value": "global_flags['festival'] ? 1.5 : 1.0" },
+            { "id": "Bounty_Demand_Modifier", "value": "global_flags['bounty_active'] ? 2.0 : 1.0" },
+            { "id": "Disaster_Supply_Modifier", "value": "global_flags['disaster_zone'] ? 0.05 : 1.0" },
+            { "id": "Trade_Boom_Modifier", "value": "global_flags['trade_boom'] ? 1.8 : 1.0" },
+            { "id": "Famine_Supply_Modifier", "value": "global_flags['famine'] ? 0.1 : 1.0" }
+          ]
+        },
+        "Trade_Routes": {
+          "roles": [
+            { "id": "Trade_Route_Demand_Modifier", "value": "market.trade_routes_open ? 1.2 : 0.8" },
+            { "id": "Trade_Route_Supply_Modifier", "value": "market.trade_routes_open ? 1.5 : 1.0" },
+            { "id": "Blocked_Route_Supply_Modifier", "value": "market.trade_routes_blocked ? 0.1 : 1.0" },
+            { "id": "Exotic_Good_Availability_Check", "value": "item.is_exotic && market.trade_routes_open" },
+            { "id": "Piracy_Risk_Price_Modifier", "value": "market.piracy_risk * 0.1" },
+            { "id": "Smuggling_Route_Access_Check", "value": "actor.reputation_smugglers > 30" },
+            { "id": "Local_Resource_Surplus_Modifier", "value": "item.is_local_resource ? 0.7 : 1.0" }
+          ]
+        }
+      }
+    }
+  }
+}
+

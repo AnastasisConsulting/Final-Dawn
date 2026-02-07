@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G2-S2",
+    "system_name": "Cygnus Rift-Delta",
+    "theme": "Time Glitches, Mirror Reality, Paradox",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G2S2_LEGENDARY_CHRONOEATER",
+    "name": "The Chrono-Eater",
+    "description": "A cosmic entity existing in three time periods simultaneously. It consumes the seconds you waste hesitating.",
+    "class": "Boss (Eldritch/Mage)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 500, "Resource": 300, "Strength": 10, "Agility": 25, "Endurance": 10, "Intelligence": 25, "Perception": 30, "Charisma": 0 },
+      "level_21": { "HP": 5000, "Resource": 2000, "Strength": 30, "Agility": 80, "Endurance": 40, "Intelligence": 80, "Perception": 100, "Charisma": 0 }
+    },
+    "actions": ["skill_time_warp", "skill_entropy_wave", "skill_slow"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Chrono_Echoes": {
+      "description": "Spectral remnants of pilots and soldiers lost in the timeline.",
+      "variants": [
+        {
+          "id": "G2S2_E_01", "name": "Fading Wisp", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 20 }, "level_21": { "HP": 200 } },
+          "actions": ["static_shock"]
+        },
+        {
+          "id": "G2S2_E_02", "name": "Lost Pilot", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["action_attack_basic", "desperate_flail"]
+        },
+        {
+          "id": "G2S2_E_03", "name": "Static Shade", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 35 }, "level_21": { "HP": 350 } },
+          "actions": ["skill_fear", "phase_out"]
+        },
+        {
+          "id": "G2S2_E_04", "name": "Retro-Caster", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["skill_slow", "rewind_wound"]
+        },
+        {
+          "id": "G2S2_E_05", "name": "Time-Warped Soldier", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["antique_rifle_shot", "skill_haste"]
+        },
+        {
+          "id": "G2S2_E_06", "name": "Entropy Mage", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["skill_magic_dampen", "age_accelerate"]
+        },
+        {
+          "id": "G2S2_E_07", "name": "Grand Paradox", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["skill_time_warp", "reality_break", "summon_echo"]
+        }
+      ]
+    },
+    "Type_2_Reflections": {
+      "description": "Glass-like constructs that mimic and shatter reality.",
+      "variants": [
+        {
+          "id": "G2S2_R_01", "name": "Shattered Shard", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["cut", "break"]
+        },
+        {
+          "id": "G2S2_R_02", "name": "Glass-Walker", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["reflect_damage", "jagged_stab"]
+        },
+        {
+          "id": "G2S2_R_03", "name": "Mimic-Drone", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 45 }, "level_21": { "HP": 450 } },
+          "actions": ["copy_cat_strike", "scan_weakness"]
+        },
+        {
+          "id": "G2S2_R_04", "name": "Prism-Guard", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 85 }, "level_21": { "HP": 850 } },
+          "actions": ["refract_beam", "skill_shield_ally"]
+        },
+        {
+          "id": "G2S2_R_05", "name": "Mirror-Duelist", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["skill_parry", "skill_riposte", "flash_step"]
+        },
+        {
+          "id": "G2S2_R_06", "name": "Shard-Assassin", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 95 }, "level_21": { "HP": 950 } },
+          "actions": ["skill_backstab", "invisible_strike"]
+        },
+        {
+          "id": "G2S2_R_07", "name": "Mirror-Master", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 160 }, "level_21": { "HP": 1600 } },
+          "actions": ["hall_of_mirrors", "shatter_self", "illusion_army"]
+        }
+      ]
+    },
+    "Type_3_Phase_Beasts": {
+      "description": "Predators that naturally teleport and phase through matter.",
+      "variants": [
+        {
+          "id": "G2S2_P_01", "name": "Blink-Rat", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["teleport_bite"]
+        },
+        {
+          "id": "G2S2_P_02", "name": "Phase-Hound", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 55 }, "level_21": { "HP": 550 } },
+          "actions": ["action_bite", "skill_blink"]
+        },
+        {
+          "id": "G2S2_P_03", "name": "Warp-Stalker", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["ambush_from_nowhere", "action_claw"]
+        },
+        {
+          "id": "G2S2_P_04", "name": "Displacer-Cat", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 70 }, "level_21": { "HP": 700 } },
+          "actions": ["illusion_decoy", "skill_evade"]
+        },
+        {
+          "id": "G2S2_P_05", "name": "Void-Tiger", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["maul", "phase_shift"]
+        },
+        {
+          "id": "G2S2_P_06", "name": "Rift-Leviathan Spawn", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 140 }, "level_21": { "HP": 1400 } },
+          "actions": ["gravity_crush", "swallow_whole"]
+        },
+        {
+          "id": "G2S2_P_07", "name": "Chrono-Devourer", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["eat_time", "aging_bite", "temporal_roar"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G2S2_RARE_01", "name": "The Glitch-Merchant",
+      "description": "A humanoid entity that flickers between existence. Drops rare tech if caught.",
+      "chance": 0.05,
+      "loot_bonus": "Future Tech",
+      "behavior": "Fleeing_AI"
+    },
+    {
+      "id": "G2S2_RARE_02", "name": "Paradox-9",
+      "description": "A machine built to solve a math problem that destroyed its creators.",
+      "chance": 0.03,
+      "loot_bonus": "Paradox Core",
+      "behavior": "Caster_AI"
+    },
+    {
+      "id": "G2S2_RARE_03", "name": "Ancient Chrononaut",
+      "description": "An explorer from the distant past, driven mad by the rift.",
+      "chance": 0.02,
+      "loot_bonus": "Time-Lost Coin",
+      "behavior": "Hunter_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "CrypC", "min": 50, "max": 300 },
+    "common": [ "Chronal Dust", "Clock Gear", "Broken Watch" ],
+    "uncommon": [ "Hourglass Sand", "Refracted Light Crystal", "Static Charge" ],
+    "rare": [ "Time-Lost Coin", "Silver Glass", "Personal Diary" ],
+    "epic": [ "Mirror Fragment", "Future Tech" ],
+    "legendary": [ "Sands of the Rift (Unique)" ]
+  }
+}

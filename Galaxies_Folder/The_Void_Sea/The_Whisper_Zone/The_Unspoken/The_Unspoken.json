@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G3-S3-O7",
+  "Object_Name": "The_Unspoken",
+  "Location_Metadata": {
+    "Type": "Planet",
+    "Subtype": "Forbidden Archive",
+    "Description": "A planet shrouded in perpetual mist, home to ancient ruins and forbidden knowledge. Access is heavily restricted due to the dangerous information it holds.",
+    "System_Theme": "Mystery, secrecy, danger"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "Craggy cliffs rise through the mist, revealing faint, ancient carvings." },
+        { "Element": 2, "Lore": "Hidden valleys house the ruins of civilizations that predate current records." },
+        { "Element": 3, "Lore": "Mist-filled canyons distort navigation instruments." },
+        { "Element": 4, "Lore": "The terrain is littered with natural traps and unstable rock formations." },
+        { "Element": 5, "Lore": "Ruined towers emit residual energy fields that interfere with electronics." },
+        { "Element": 6, "Lore": "Occasional geysers release toxic, hallucinogenic vapors." },
+        { "Element": 7, "Lore": "Deep underground archives hold encrypted data crystals." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Few factions dare to send personnel; most rely on remote probes." },
+        { "Element": 2, "Lore": "The planet is claimed by multiple clandestine groups, each seeking control of its archives." },
+        { "Element": 3, "Lore": "Access restrictions are enforced by automated defense systems." },
+        { "Element": 4, "Lore": "Illegal excavation attempts are met with lethal force." },
+        { "Element": 5, "Lore": "Diplomatic channels exist only for rare, high-level negotiations." },
+        { "Element": 6, "Lore": "Information about the planet is heavily censored in all official records." },
+        { "Element": 7, "Lore": "Those who return from the planet often bring fragmented or corrupted knowledge." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "The Mistbound Spire: explore ruins for forgotten lore." },
+        { "Element": 2, "Lore": "Gloomfall Canyon: recover lost artifacts from dangerous terrain." },
+        { "Element": 3, "Lore": "Crystalline Archive: access encrypted data crystals hidden underground." },
+        { "Element": 4, "Lore": "Forgotten Vaults: decrypt ancient storage nodes." },
+        { "Element": 5, "Lore": "Toxic Geyser Fields: navigate hazards to retrieve rare resources." },
+        { "Element": 6, "Lore": "Shattered Tower: investigate residual energy fields." },
+        { "Element": 7, "Lore": "Hidden Sanctum: discover clandestine faction outposts." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "**Archivist Kael**, a scholar risking everything for forbidden knowledge." },
+        { "Element": 2, "Lore": "**Phantom Drone**, semi-autonomous unit monitoring forbidden zones." },
+        { "Element": 3, "Lore": "**Mist Warden**, enigmatic guardian of the archives." },
+        { "Element": 4, "Lore": "**Seeker Initiate**, novice attempting to unlock lost secrets." },
+        { "Element": 5, "Lore": "**Shadow Broker Envoy**, negotiator for covert factions." },
+        { "Element": 6, "Lore": "**Toxic Revenant**, a mutated entity born from the geyser fields." },
+        { "Element": 7, "Lore": "**Luminal Echo**, rare bioluminescent guide organism." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Archivist Kael speaks only in codes derived from ancient glyphs." },
+        { "Element": 2, "Lore": "Phantom Drone records events without alerting intruders." },
+        { "Element": 3, "Lore": "Mist Warden appears and disappears unpredictably." },
+        { "Element": 4, "Lore": "Seeker Initiate often misinterprets visual cues in the mist." },
+        { "Element": 5, "Lore": "Shadow Broker Envoy leaves encrypted messages in hidden caches." },
+        { "Element": 6, "Lore": "Toxic Revenant reacts violently to untrained explorers." },
+        { "Element": 7, "Lore": "Luminal Echo pulses patterns that indicate nearby hazards." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Assist Archivist Kael in decrypting a lost data crystal." },
+        { "Element": 2, "Lore": "Navigate Gloomfall Canyon to recover a hidden relic." },
+        { "Element": 3, "Lore": "Escort Seeker Initiate through hazardous areas." },
+        { "Element": 4, "Lore": "Disable defensive systems protecting the Crystalline Archive." },
+        { "Element": 5, "Lore": "Investigate Shattered Tower for residual energy anomalies." },
+        { "Element": 6, "Lore": "Collect samples from toxic geysers for research." },
+        { "Element": 7, "Lore": "Map Hidden Sanctum and document faction activity." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "The Unspoken contains knowledge capable of altering power dynamics across the galaxy." },
+        { "Element": 2, "Lore": "Survival depends on careful navigation and interpreting environmental clues." },
+        { "Element": 3, "Lore": "Faction alliances may shift based on recovered information." },
+        { "Element": 4, "Lore": "Secrets in the archives can unlock new exploration technology." },
+        { "Element": 5, "Lore": "Uncovering Mist Warden’s origins provides hidden narrative threads." },
+        { "Element": 6, "Lore": "The planet’s hazards are key challenges to test player strategy." },
+        { "Element": 7, "Lore": "Successfully extracting forbidden knowledge affects Whisper Zone political outcomes." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Repair Phantom Drones for extended surveillance." },
+        { "Element": 2, "Lore": "Study Luminal Echo patterns to anticipate environmental threats." },
+        { "Element": 3, "Lore": "Rescue Seeker Initiate from a collapsed ruin." },
+        { "Element": 4, "Lore": "Document toxic geyser emissions for scientific purposes." },
+        { "Element": 5, "Lore": "Retrieve encrypted faction messages for negotiation leverage." },
+        { "Element": 6, "Lore": "Explore Hidden Sanctum for optional narrative content." },
+        { "Element": 7, "Lore": "Collect rare artifacts from Crystalline Archive for faction rewards." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "Mastering the planet’s conditions grants access to forbidden archives." },
+        { "Element": 2, "Lore": "Recovered knowledge can shift factional dominance." },
+        { "Element": 3, "Lore": "Understanding Mist Warden behavior unlocks hidden content." },
+        { "Element": 4, "Lore": "Player choices in hazards affect future mission availability." },
+        { "Element": 5, "Lore": "Exploration uncovers secret alliances and betrayals." },
+        { "Element": 6, "Lore": "Strategic use of drones and AI enhances success." },
+        { "Element": 7, "Lore": "The ultimate reward is control of critical galactic intelligence." }
+      ]
+    }
+  }
+}

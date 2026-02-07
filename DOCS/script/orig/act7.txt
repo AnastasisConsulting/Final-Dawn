@@ -1,0 +1,259 @@
+// script/act_7-chapters_XenonScar.txt
+
+
+---
+
+# ☣️ ACT VII – "The Xenon Scar" (World ID: G1-S1-O7)
+
+**Setting:** The Xenon Scar. A jagged, thousand-mile trench bleeding perpetual blue-white radiation, where the planet's marrow is harvested by the desperate.
+**Theme:** Radioactive Evolution, Survivalist Might, and The Eideus Merger.
+**Canonical Key:** `[Gx-Sx-Ox-Cx-CTx-Rx-NPC]`
+
+---
+
+## ⚔️ PATH A: STRENGTH (The Ionized Syndicates)
+**Civilization ID:** `C1`
+**Global Hook:** Dominate the Scar through brute force and stabilized xenon weaponry.
+
+### **Chapter 1: Xenon Core Heist**
+* **Mission:** Recover and stabilize stolen xenon cores to power the syndicate's grid.
+* **Key Cast:**
+    * **giver:** **Jakk the Grinder** (`G1-S1-O7-C1-CT1-R1-NPC`) - Enforcer.
+    * **contact:** **Researcher Kael** (`G1-S1-O7-C1-CT2-R2-NPC`) - Technician.
+    * **target:** **Vex the Lookout** (`G1-S1-O7-C1-CT1-R6-NPC`) - Scout.
+* **Objectives:**
+    1.  Seize cores at **The Iron Lip**.
+    2.  Stabilize energy at **Ionization Chambers**.
+    3.  Distribute supply at **Outcast's Perch**.
+
+### **Chapter 2: The Splicer’s Gambit**
+* **Mission:** Create a hybrid xenon-fungal strain to enhance soldiers.
+* **Key Cast:**
+    * **giver:** **Surgeon Vahn** (`G1-S1-O7-C1-CT2-R3-NPC`) - Bio-Engineer.
+    * **contact:** **Tangle-Twitch** (`G1-S1-O7-C1-CT3-R4-NPC`) - Vine Harvester.
+    * **target:** **Fungal-Sage Mo** (`G1-S1-O7-C1-CT3-R3-NPC`) - Alchemist.
+* **Objectives:**
+    1.  Get bio-samples at **Gene-Splicer’s Ward**.
+    2.  Harvest vines at **Nerve-Vine Gardens**.
+    3.  Brew serum at **Spore-Cloud Grotto**.
+
+### **Chapter 3: Bazaar Blackmail**
+* **Mission:** Clean up a smuggling deal gone wrong to secure market loyalty.
+* **Key Cast:**
+    * **giver:** **Lyla the Lush** (`G1-S1-O7-C1-CT1-R4-NPC`) - Fence.
+    * **contact:** **Unit 702** (`G1-S1-O7-C1-CT2-R1-NPC`) - Sentry.
+    * **target:** **Scrap-Heap Sam** (`G1-S1-O7-C1-CT1-R3-NPC`) - Quartermaster.
+* **Objectives:**
+    1.  Get ledger at **The Blue-Mist Bazaar**.
+    2.  Bypass security at **The Sterile Hallways**.
+    3.  Stash evidence at **Scrap-Yard Plaza**.
+
+### **Chapter 4: Pit Fight Rigging**
+* **Mission:** Ensure a high-stakes fight result to fund the war effort.
+* **Key Cast:**
+    * **giver:** **Gnasher** (`G1-S1-O7-C1-CT1-R7-NPC`) - Pit Boss.
+    * **contact:** **Sergeant Surge** (`G1-S1-O7-C1-CT1-R5-NPC`) - Drillmaster.
+    * **target:** **Mira the Hollow** (`G1-S1-O7-C1-CT1-R2-NPC`) - Mercenary Liaison.
+* **Objectives:**
+    1.  Get chemicals at **Spark-Gap Pit**.
+    2.  Dose fighters at **Battery Barracks**.
+    3.  Collect payout at **Rust-Fall Plunge**.
+
+### **Chapter 5: The Digital Ghost**
+* **Mission:** Infiltrate the Nexus network to weaponize a rogue AI.
+* **Key Cast:**
+    * **giver:** **Cipher-Jade** (`G1-S1-O7-C1-CT2-R4-NPC`) - Data Operative.
+    * **contact:** **Root-Walker Rin** (`G1-S1-O7-C1-CT3-R1-NPC`) - Pathfinder.
+    * **target:** **The Luminous Shade** (`G1-S1-O7-C1-CT2-R7-NPC`) - Digital Entity.
+* **Objectives:**
+    1.  Get virus shard at **Data-Hive Core**.
+    2.  Navigate **Mycelium Bridges**.
+    3.  Upload virus at **Neural-Link Linkage**.
+
+### **Chapter 6: The Prototype Test**
+* **Mission:** Field test a weapon powered by the canyon’s heartbeat.
+* **Key Cast:**
+    * **giver:** **Blast-Master Bo** (`G1-S1-O7-C1-CT2-R6-NPC`) - Weapon Tester.
+    * **contact:** **Heart-Guard Horg** (`G1-S1-O7-C1-CT3-R2-NPC`) - Holy Sentinel.
+    * **target:** **Frost-Bit** (`G1-S1-O7-C1-CT2-R5-NPC`) - Containment Officer.
+* **Objectives:**
+    1.  Equip weapon at **Prototype Range**.
+    2.  Charge energy at **The Thumping Heart**.
+    3.  Secure data at **The Cryo-Vaults**.
+
+### **Chapter 7: The Deep Maw Sacrifice**
+* **Mission:** Clear the path for a holy ritual to awaken the Planet’s Marrow (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Burrower Bill** (`G1-S1-O7-C1-CT3-R5-NPC`) - Excavator.
+    * **contact:** **Glow-Watcher Nia** (`G1-S1-O7-C1-CT3-R6-NPC`) - Acolyte.
+    * **target:** **Silence-Bringer Sol** (`G1-S1-O7-C1-CT3-R7-NPC`) - Executioner.
+* **Objectives:**
+    1.  Clear tunnels at **Vein-Tunnel Alpha**.
+    2.  Purify water at **Chlorophyll-Ion Pools**.
+    3.  Begin ritual at **The Deep Maw**.
+
+---
+
+## ⚡ PATH B: DEXTERITY (The Ion-Drifters)
+**Civilization ID:** `C2`
+**Global Hook:** Navigate the vertical scar with speed and neural precision.
+
+### **Chapter 1: The Crystallized Equation**
+* **Mission:** Recover a rare xenon growth before ion-storms wipe its data.
+* **Key Cast:**
+    * **giver:** **Aris Thorne** (`G1-S1-O7-C2-CT1-R1-NPC`) - Energy Harvester.
+    * **contact:** **Root-Tender Silas** (`G1-S1-O7-C2-CT2-R1-NPC`) - Botano-Technician.
+    * **target:** **Seer Lyra** (`G1-S1-O7-C2-CT1-R4-NPC`) - Star-Gazer.
+* **Objectives:**
+    1.  Extract crystal at **Siphon Spines**.
+    2.  Decrypt bio-data at **The Neural Grove**.
+    3.  Deliver to **Ion-Gaze Observatory**.
+
+### **Chapter 2: The Silent Pulse**
+* **Mission:** Synchronize the city's pulse to prevent a grid overload.
+* **Key Cast:**
+    * **giver:** **Pulse-Master Rez** (`G1-S1-O7-C2-CT2-R3-NPC`) - Frequency Tuner.
+    * **contact:** **Volt-Runner Mika** (`G1-S1-O7-C2-CT1-R6-NPC`) - Grid Maintenance.
+    * **target:** **Dr. Hekt** (`G1-S1-O7-C2-CT2-R5-NPC`) - Bone-Grafter.
+* **Objectives:**
+    1.  Get tuner at **Xenon Pulse Chamber**.
+    2.  Calibrate at **Capacitor Plaza**.
+    3.  Stabilize at **Marrow Labs**.
+
+### **Chapter 3: Smuggler's Run**
+* **Mission:** Transport illicit energy cells across the vertical expanse.
+* **Key Cast:**
+    * **giver:** **Slick Corin** (`G1-S1-O7-C2-CT3-R1-NPC`) - Trade Negotiator.
+    * **contact:** **Captain Vane** (`G1-S1-O7-C2-CT1-R2-NPC`) - Wing-Commander.
+    * **target:** **Dockmaster Kael** (`G1-S1-O7-C2-CT3-R6-NPC`) - Smuggling Liaison.
+* **Objectives:**
+    1.  Pickup at **Black-Market Bay**.
+    2.  Fly from **Glider Launchpads**.
+    3.  Drop off at **Outlaw’s Anchor**.
+
+### **Chapter 4: The Marrow Graft**
+* **Mission:** Integrate void-scavenged marrow into the city's infrastructure.
+* **Key Cast:**
+    * **giver:** **Vora the Carver** (`G1-S1-O7-C2-CT2-R2-NPC`) - Flesh-Sculptor.
+    * **contact:** **Jumper Nix** (`G1-S1-O7-C2-CT3-R7-NPC`) - High-Altitude Scavenger.
+    * **target:** **Linker Gantz** (`G1-S1-O7-C2-CT2-R4-NPC`) - Neural Liaison.
+* **Objectives:**
+    1.  Consult at **Flesh-Forge Vats**.
+    2.  Dive **The Void-Drop**.
+    3.  Install graft at **Synapse Bridge**.
+
+### **Chapter 5: Static Interference**
+* **Mission:** Neutralize a military jammer disrupting trade routes.
+* **Key Cast:**
+    * **giver:** **Rat-King Rolo** (`G1-S1-O7-C2-CT3-R2-NPC`) - Slum Overseer.
+    * **contact:** **Sergeant Flux** (`G1-S1-O7-C2-CT1-R7-NPC`) - Battery Guard.
+    * **target:** **Trader Ma** (`G1-S1-O7-C2-CT3-R5-NPC`) - Scrap Dealer.
+* **Objectives:**
+    1.  Locate jammer in **Rust-Spire Slums**.
+    2.  Override codes at **Wind-Shear Defensive Battery**.
+    3.  Report to **The Junk-Bazaar**.
+
+### **Chapter 6: Gantry Sabotage**
+* **Mission:** Weaken a rival platform using organic corrosives.
+* **Key Cast:**
+    * **giver:** **Foreman Jax** (`G1-S1-O7-C2-CT1-R5-NPC`) - Structural Engineer.
+    * **contact:** **Drip-Watcher Mara** (`G1-S1-O7-C2-CT2-R6-NPC`) - Fluid Dynamics Specialist.
+    * **target:** **Kelso** (`G1-S1-O7-C2-CT1-R3-NPC`) - Refinery Overseer.
+* **Objectives:**
+    1.  Steal plans from **The Silvered Gantry**.
+    2.  Mix acid at **The Weeping Tubules**.
+    3.  Sabotage **The Refined Vein**.
+
+### **Chapter 7: The Synapse Circuit**
+* **Mission:** Install a neural relay to monitor the underworld flow (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Warden Orl** (`G1-S1-O7-C2-CT2-R7-NPC`) - Bio-Structure Guardian.
+    * **contact:** **Neon-Fixer Pip** (`G1-S1-O7-C2-CT3-R4-NPC`) - Illumination Tech.
+    * **target:** **Brawler Brigg** (`G1-S1-O7-C2-CT3-R3-NPC`) - Arena Master.
+* **Objectives:**
+    1.  Retrieve relay from **The Living Mantel**.
+    2.  Hack grid at **Flicker-Light District**.
+    3.  Trigger event at **The Scrapper’s Gauntlet**.
+
+---
+
+## 🧠 PATH C: INTELLIGENCE (The Ion-Shriven Hegemony)
+**Civilization ID:** `C3`
+**Global Hook:** Calculate the perfect energy harvest through ruthless logic.
+
+### **Chapter 1: The Xenon Core Heist**
+* **Mission:** Reclaim stolen cores from unauthorized scavengers.
+* **Key Cast:**
+    * **giver:** **Warden Vax** (`G1-S1-O7-C3-CT1-R1-NPC`) - Security Chief.
+    * **contact:** **Foreman Grog** (`G1-S1-O7-C3-CT2-R2-NPC`) - Salvage Master.
+    * **target:** **Guard-Captain Jory** (`G1-S1-O7-C3-CT1-R7-NPC`) - Isotope Sentinel.
+* **Objectives:**
+    1.  Tactical raid on **Scrapper's Gulch**.
+    2.  Secure containment at **High-Flux Plaza**.
+    3.  Deposit at **Vault of Unstable Isotopes**.
+
+### **Chapter 2: The Crystal Equation**
+* **Mission:** Solve the Prime-Flux equation using raw accelerator data.
+* **Key Cast:**
+    * **giver:** **Researcher Nox** (`G1-S1-O7-C3-CT1-R6-NPC`) - Particle Physicist.
+    * **contact:** **Analyst Miri** (`G1-S1-O7-C3-CT1-R2-NPC`) - Data Processor.
+    * **target:** **Archivist Thal** (`G1-S1-O7-C3-CT1-R5-NPC`) - Historical Record Keeper.
+* **Objectives:**
+    1.  Collect data at **Particle Accelerator Ring**.
+    2.  Process at **Synaptic Corridors**.
+    3.  Archive solution at **Archive of the Blue Pulse**.
+
+### **Chapter 3: The Smuggler's Run**
+* **Mission:** Transport experimental blue-drip for testing.
+* **Key Cast:**
+    * **giver:** **Merchant Jax** (`G1-S1-O7-C3-CT2-R1-NPC`) - Trade Facilitator.
+    * **contact:** **Runner Kess** (`G1-S1-O7-C3-CT2-R5-NPC`) - Courier.
+    * **target:** **Brewer Hobb** (`G1-S1-O7-C3-CT2-R6-NPC`) - Chemical Alchemist.
+* **Objectives:**
+    1.  Secure cargo at **Blue-Drip Distillery**.
+    2.  Traverse **Smuggler's Rift**.
+    3.  Complete transaction at **The Neon Bazaar**.
+
+### **Chapter 4: Flesh-Suture Breach**
+* **Mission:** Eliminate mercenaries threatening biological integration.
+* **Key Cast:**
+    * **giver:** **Scout Rinn** (`G1-S1-O7-C3-CT2-R7-NPC`) - Perimeter Guard.
+    * **contact:** **Bridge-Keep Zof** (`G1-S1-O7-C3-CT3-R2-NPC`) - Transit Sentinel.
+    * **target:** **Pit-Boss Krag** (`G1-S1-O7-C3-CT3-R7-NPC`) - Waste Reclamation.
+* **Objectives:**
+    1.  Track targets at **The Dead-Zone Perimeter**.
+    2.  Defend **Tendril Bridges**.
+    3.  Purge **Suture Maw**.
+
+### **Chapter 5: The Isotope Transit**
+* **Mission:** Transport unstable isotopes through a high-interference zone.
+* **Key Cast:**
+    * **giver:** **Technician Rez** (`G1-S1-O7-C3-CT1-R4-NPC`) - Cooling Engineer.
+    * **contact:** **Operator Silas** (`G1-S1-O7-C3-CT2-R4-NPC`) - Communications Technician.
+    * **target:** **Curator Elen** (`G1-S1-O7-C3-CT1-R3-NPC`) - Logistics Coordinator.
+* **Objectives:**
+    1.  Extract isotopes at **The Cooling Spines**.
+    2.  Mask signal at **The Signal Jammer Spire**.
+    3.  Deliver to **Lead-Glass Habitats**.
+
+### **Chapter 6: Mycelial Mutation**
+* **Mission:** Harvest mutated samples to improve neural linking.
+* **Key Cast:**
+    * **giver:** **Botanist Fenn** (`G1-S1-O7-C3-CT3-R1-NPC`) - Growth Supervisor.
+    * **contact:** **Neural-Linker Osi** (`G1-S1-O7-C3-CT3-R4-NPC`) - Synapse Connector.
+    * **target:** **Watcher Bree** (`G1-S1-O7-C3-CT3-R6-NPC`) - Canopy Observer.
+* **Objectives:**
+    1.  Harvest at **Mycelial Lab-Farms**.
+    2.  Process at **Nerve-Root Junctions**.
+    3.  Monitor results at **The Calcified Canopy**.
+
+### **Chapter 7: Static Whispers**
+* **Mission:** Decrypt a ghost signal to locate the final coordinate (World Boss Trigger).
+* **Key Cast:**
+    * **giver:** **Elder Pim** (`G1-S1-O7-C3-CT2-R3-NPC`) - Static Prophet.
+    * **contact:** **Vapor-Smith Urn** (`G1-S1-O7-C3-CT3-R3-NPC`) - Atmospheric Specialist.
+    * **target:** **Harvester Ty** (`G1-S1-O7-C3-CT3-R5-NPC`) - Production Manager.
+* **Objectives:**
+    1.  Record signal at **Static Shanty Town**.
+    2.  Purify data at **The Spore-Mist Chambers**.
+    3.  Initiate sequence at **Cultivator's Basin**.

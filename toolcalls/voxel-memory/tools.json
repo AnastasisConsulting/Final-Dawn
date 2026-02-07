@@ -1,0 +1,100 @@
+[
+  {
+    "type": "function",
+    "name": "vmr_read_voxel",
+    "description": "Retrieve a single memory voxel by its exact 6-dimensional spatial and 4-dimensional temporal coordinates.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "spatial": {
+          "type": "object",
+          "properties": {
+            "g": { "type": "integer" },
+            "s": { "type": "integer" },
+            "o": { "type": "integer" },
+            "c": { "type": "integer" },
+            "ct": { "type": "integer" },
+            "r": { "type": "integer" }
+          },
+          "required": ["g", "s", "o", "c", "ct", "r"]
+        },
+        "temporal": {
+          "type": "object",
+          "properties": {
+            "saga": { "type": "integer" },
+            "book": { "type": "integer" },
+            "chapter": { "type": "integer" },
+            "page": { "type": "integer" }
+          },
+          "required": ["saga", "book", "chapter", "page"]
+        }
+      },
+      "required": ["spatial", "temporal"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "vmr_search_text",
+    "description": "Search for keywords or phrases within specific faces of the memory lattice.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string", "description": "The text to search for." },
+        "faces": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["x+", "x-", "y+", "y-", "z+", "z-"] },
+          "description": "Which faces to search. x=IO, y=Tags, z=Lore/Entities"
+        },
+        "limit": { "type": "integer", "description": "Max results to return." }
+      },
+      "required": ["query", "faces"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "vmr_search_semantic",
+    "description": "Find memories conceptually related to the user's intent using vector similarity.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "intent_query": { "type": "string", "description": "Natural language description of the memory you need." },
+        "limit": { "type": "integer" }
+      },
+      "required": ["intent_query"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "vmr_resolve_index",
+    "description": "Lookup memory coordinates by indexed metadata like Tags, Entity IDs, or Lore Keys.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string", "enum": ["AssociativeTags", "EntityId", "LoreKey", "LocationEntity"] },
+        "query": { 
+          "anyOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }],
+          "description": "The tag, entity name, or lore key to resolve." 
+        },
+        "limit": { "type": "integer" }
+      },
+      "required": ["kind", "query"]
+    }
+  },
+  {
+    "type": "function",
+    "name": "vmr_commit_turn",
+    "description": "Save the current turn's narrative and state to the memory lattice.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "spatial": { "type": "object", "description": "Current location key" },
+        "temporal": { "type": "object", "description": "Current time key" },
+        "input_summary": { "type": "string", "description": "Summary of user input (x+)" },
+        "output_summary": { "type": "string", "description": "Summary of AI response (x-)" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Associative tags (y-)" },
+        "entity_ids": { "type": "array", "items": { "type": "string" }, "description": "Active entities (z+)" }
+      },
+      "required": ["spatial", "temporal", "input_summary", "output_summary", "tags"]
+    }
+  }
+]

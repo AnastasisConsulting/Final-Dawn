@@ -1,0 +1,282 @@
+{
+  "main": {
+    "id": "5297cdb4d14b02a4",
+    "type": "split",
+    "children": [
+      {
+        "id": "84c6dda5831835ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e29d3490ac4f9fd4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Final Dawn of Eideus/Backend/Player/Exp and Leveling/XP SYSTEM PACKET.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
+              "icon": "lucide-file",
+              "title": "XP SYSTEM PACKET"
+            }
+          },
+          {
+            "id": "7b5b797b95a772b8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c2f8b028431c3f56",
+    "type": "split",
+    "children": [
+      {
+        "id": "7bd70cbbab1b911d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ad959e8a68ac73b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "1a4dddf0f696d604",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ac2fadca14fef8a1",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "5c53fa69a87652be",
+            "type": "leaf",
+            "state": {
+              "type": "book-smith-view",
+              "state": {},
+              "icon": "book",
+              "title": "Book manager"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 480.50513076782227
+  },
+  "right": {
+    "id": "e16e1bb3d87cb529",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6edcb5ce01b56d5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "40caed141b3ab7b8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Final Dawn of Eideus/Final Dawn of Eideus.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Final Dawn of Eideus"
+            }
+          },
+          {
+            "id": "57120ebe19fbe969",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Untitled.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "6ac4f51693f207f9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0780b78530b5f761",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "e32bb9f3f3c1619d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Untitled.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          },
+          {
+            "id": "ab4c88cc1fc6d2d8",
+            "type": "leaf",
+            "state": {
+              "type": "book-smith-tool",
+              "state": {},
+              "icon": "wrench",
+              "title": "Writing toolbox"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "workspaces:Manage workspace layouts": false,
+      "book-smith:Open book panel": false
+    }
+  },
+  "active": "7b5b797b95a772b8",
+  "lastOpenFiles": [
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling/Core-Sub-Cross-Mastery Classes.md",
+    "Final Dawn of Eideus/Backend/Player/INTERNAL SPECS.md",
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling/XP SYSTEM PACKET.md",
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling/Tables.md",
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling/Fractal Template.md",
+    "Final Dawn of Eideus/Frontend/Main UI.md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Visualizer.md",
+    "Final Dawn of Eideus/Backend/Affinity/The Bolts.md",
+    "Final Dawn of Eideus/Backend/Affinity/Fractal Affinity.md",
+    "Final Dawn of Eideus/Backend/Affinity/Affinity.md",
+    "Final Dawn of Eideus/Final Dawn of Eideus.md",
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling/Skills.md",
+    "Final Dawn of Eideus/Frontend/Cast/Main Cast/Vizzy.md",
+    "Final Dawn of Eideus/Frontend/Cast/Main Cast/NavBot.md",
+    "Final Dawn of Eideus/Frontend/Cast/Main Cast/Lyra.md",
+    "Final Dawn of Eideus/Frontend/Cast/Main Cast/Game Master Avatar.md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memories.md",
+    "Pasted image 20260203182658.png",
+    "Pasted image 20260203183055.png",
+    "Pasted image 20260203182641.png",
+    "Pasted image 20260203180736.png",
+    "Pasted image 20260203180650.png",
+    "Pasted image 20260203180540.png",
+    "Final Dawn of Eideus/Backend.zip",
+    "Final Dawn of Eideus/Frontend.zip",
+    "Final Dawn of Eideus/Backend/Persistence.zip",
+    "Final Dawn of Eideus/Backend/Affinity.zip",
+    "Final Dawn of Eideus/Backend/Player.zip",
+    "Pasted image 20260131230929.png",
+    "Pasted image 20260131230907.png",
+    "Pasted image 20260131230837.png",
+    "Pasted image 20260131230803.png",
+    "Final Dawn of Eideus/Backend/Player/Exp and Leveling",
+    "Final Dawn of Eideus/Backend/Player",
+    "Untitled.canvas",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Temporal Expansion Lookups.md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Associative and Semantic “Cognitive” Lookups.md",
+    "Untitled.base",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Addressing and Direct Access Lookups.md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Index-Based Coordinate Resolution Lookups.md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Face-Specific Content Lookups (Within Voxels).md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Practical “Toolcall Set” Summary (what your LLM picks from).md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Sanity Debug Audit Lookups (for “truth as structure”).md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Narrative and  Event Signature Lookups (derived from In Out).md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms/Entity-Centric Lookups (Graph-ish behavior).md",
+    "Final Dawn of Eideus/Backend/Persistence/Memory/Memory Algorithms",
+    "Final Dawn of Eideus/Backend/Persistence"
+  ]
+}

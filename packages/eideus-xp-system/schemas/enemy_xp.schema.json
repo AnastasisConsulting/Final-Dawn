@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Eideus Enemy XP Ranges",
+  "type": "object",
+  "required": [
+    "level",
+    "base_xp_to_next",
+    "tiers",
+    "meta"
+  ],
+  "properties": {
+    "level": {
+      "type": "integer"
+    },
+    "base_xp_to_next": {
+      "type": "integer"
+    },
+    "tiers": {
+      "type": "object"
+    },
+    "meta": {
+      "type": "object"
+    }
+  }
+}

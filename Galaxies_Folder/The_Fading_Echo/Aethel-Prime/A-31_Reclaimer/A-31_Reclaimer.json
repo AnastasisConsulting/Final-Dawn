@@ -1,0 +1,99 @@
+{
+  "Object_Key": "G2-S1-O1",
+  "Object_Name": "A-31 Reclaimer (Aethel Prime Salvage Zone)",
+  "Location_Metadata": {
+    "Type": "Salvage World",
+    "Subtype": "Wrecked Industrial Ring",
+    "Description": "A fractured orbital ring around Aethel-Prime, populated with derelict ships and abandoned industrial platforms. Salvage operations are constant, often dangerous, and highly lucrative.",
+    "System_Theme": "Hazardous scavenging and rogue mechanics"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        { "Element": 1, "Lore": "The orbital ring is partially intact, with large gaps exposing the black void of space." },
+        { "Element": 2, "Lore": "Micro-meteorite showers periodically impact sections, making navigation treacherous." },
+        { "Element": 3, "Lore": "Magnetic debris fields interfere with ship sensors, requiring careful piloting." },
+        { "Element": 4, "Lore": "Several salvage platforms float tethered to the ring remnants, each specializing in different materials." },
+        { "Element": 5, "Lore": "Artificial gravity zones are inconsistent, forcing scavengers to use magnetic boots or tethers." },
+        { "Element": 6, "Lore": "Abandoned mining drones still operate intermittently, posing both hazard and opportunity." },
+        { "Element": 7, "Lore": "Hidden data caches are scattered across the wreckage, often encoded in obsolete storage formats." }
+      ],
+      "Geopolitics": [
+        { "Element": 1, "Lore": "Multiple scavenger guilds compete for control of the richest salvage zones." },
+        { "Element": 2, "Lore": "The Omni-Syndicate monitors the ring remotely, occasionally sending retrieval teams for high-value targets." },
+        { "Element": 3, "Lore": "Rogue AIs inhabit derelict ships, often engaging in defensive protocols against intruders." },
+        { "Element": 4, "Lore": "Some salvage zones are quasi-legal, patrolled only sporadically by local enforcement drones." },
+        { "Element": 5, "Lore": "Data brokers exploit the orbital chaos, selling information about valuable salvage in encrypted channels." },
+        { "Element": 6, "Lore": "Hidden maintenance tunnels connect some platforms, providing secret access to high-value areas." },
+        { "Element": 7, "Lore": "Faction rivalries occasionally escalate into zero-gravity skirmishes over prime salvage." }
+      ],
+      "Quest_Locales": [
+        { "Element": 1, "Lore": "The Reclaimer’s Hub, a central salvage terminal, contains logs of lost shipments worth fortunes." },
+        { "Element": 2, "Lore": "An old shipyard offers rare tech components but is heavily booby-trapped from prior conflicts." },
+        { "Element": 3, "Lore": "The Fragmented Dock, where several ships partially overlap, contains critical mission salvage opportunities." },
+        { "Element": 4, "Lore": "A derelict freighter holds the blueprint of a long-lost orbital defense system." },
+        { "Element": 5, "Lore": "The Zero-G Maintenance Corridor contains tools and robotics necessary for high-level salvage quests." },
+        { "Element": 6, "Lore": "Hidden among wrecks are relics from pre-Syndicate eras, including rare minerals and encrypted data drives." },
+        { "Element": 7, "Lore": "The Salvage Control Tower is a high vantage point used to coordinate scavenger guilds, often a target for sabotage." }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        { "Element": 1, "Lore": "Captain Lys, a veteran scavenger leading one of the most successful guilds on the ring." },
+        { "Element": 2, "Lore": "Drone K-17, a semi-autonomous repair and scavenging bot with rogue programming quirks." },
+        { "Element": 3, "Lore": "Engineer Marn, an expert in jury-rigging abandoned tech for resale or use in missions." },
+        { "Element": 4, "Lore": "Scout Nix, a nimble infiltrator skilled in navigating micro-meteorite showers and debris fields." },
+        { "Element": 5, "Lore": "The Specter AI, inhabiting a derelict cruiser, capable of both assistance and sabotage." },
+        { "Element": 6, "Lore": "Trader Zhi, a black-market broker who deals exclusively in recovered salvage." },
+        { "Element": 7, "Lore": "Rogue Pilot Jarec, known for high-risk recoveries and daring escapes from collapsing debris zones." }
+      ],
+      "Quirks": [
+        { "Element": 1, "Lore": "Captain Lys communicates primarily via navigational signals and hand-gestures in zero-G." },
+        { "Element": 2, "Lore": "Drone K-17 occasionally reprograms itself mid-mission, creating unpredictable effects." },
+        { "Element": 3, "Lore": "Engineer Marn insists on documenting salvage progress in holographic journals." },
+        { "Element": 4, "Lore": "Scout Nix avoids using standard sensors, preferring visual reconnaissance only." },
+        { "Element": 5, "Lore": "The Specter AI occasionally mimics human voices to mislead intruders." },
+        { "Element": 6, "Lore": "Trader Zhi marks recovered items with cryptic codes only decipherable to trusted buyers." },
+        { "Element": 7, "Lore": "Rogue Pilot Jarec leaves behind decoy salvage to mislead competitors or enemies." }
+      ],
+      "Quests": [
+        { "Element": 1, "Lore": "Recover critical salvage from the Fragmented Dock without alerting rival guilds." },
+        { "Element": 2, "Lore": "Disable rogue drones interfering with salvage operations." },
+        { "Element": 3, "Lore": "Escort Engineer Marn to a hazardous freighter to retrieve sensitive components." },
+        { "Element": 4, "Lore": "Investigate abandoned platforms for pre-Syndicate relics." },
+        { "Element": 5, "Lore": "Infiltrate the Salvage Control Tower to gain tactical advantage over rival guilds." },
+        { "Element": 6, "Lore": "Secure encrypted data drives from derelict ships for Trader Zhi." },
+        { "Element": 7, "Lore": "Rescue a trapped scavenger guild team from a collapsing debris zone." }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        { "Element": 1, "Lore": "The A-31 Reclaimer serves as a critical hub for the Syndicate’s intelligence and salvage operations in the Aethel-Prime system." },
+        { "Element": 2, "Lore": "Rival guilds and rogue AI threaten both operational safety and Syndicate dominance." },
+        { "Element": 3, "Lore": "The orbital ring's structural instability can trigger emergent events that influence the wider narrative." },
+        { "Element": 4, "Lore": "Captain Lys has hidden information regarding pre-Syndicate industrial secrets." },
+        { "Element": 5, "Lore": "Mastering salvage operations here can shift resource control and political leverage within The Fading Echo faction." },
+        { "Element": 6, "Lore": "Hidden relics and data caches provide opportunities for players to discover forgotten history and technology." },
+        { "Element": 7, "Lore": "Alliances with scavenger guilds influence the broader conflict between Core Syndicate and Fading Echo." }
+      ],
+      "Side_Quests": [
+        { "Element": 1, "Lore": "Recover rare components for a black-market trader without triggering AI defenses." },
+        { "Element": 2, "Lore": "Map safe routes through the debris fields to prevent future accidents." },
+        { "Element": 3, "Lore": "Assist rogue AIs in repairing damaged salvage drones for mutual benefit." },
+        { "Element": 4, "Lore": "Investigate pre-Syndicate industrial relics and log their potential value." },
+        { "Element": 5, "Lore": "Compete against rival guilds for high-value salvage caches." },
+        { "Element": 6, "Lore": "Secure fragile experimental devices before they are lost to orbital decay." },
+        { "Element": 7, "Lore": "Negotiate alliances between scavenger guilds to stabilize operations in hazardous zones." }
+      ],
+      "Story_Drivers": [
+        { "Element": 1, "Lore": "A-31 Reclaimer determines control of salvage resources critical for factional dominance." },
+        { "Element": 2, "Lore": "Strategic alliances and rivalries here shape the broader story of The Fading Echo." },
+        { "Element": 3, "Lore": "Players can exploit hazards and rogue AI to manipulate outcomes across the system." },
+        { "Element": 4, "Lore": "Understanding debris fields and salvage zones is essential for resource acquisition." },
+        { "Element": 5, "Lore": "Hidden pre-Syndicate tech provides leverage and narrative depth." },
+        { "Element": 6, "Lore": "Mastery of salvage operations impacts political, economic, and tactical storylines." },
+        { "Element": 7, "Lore": "Events in A-31 Reclaimer ripple into neighboring sectors, creating dynamic gameplay opportunities." }
+      ]
+    }
+  }
+}

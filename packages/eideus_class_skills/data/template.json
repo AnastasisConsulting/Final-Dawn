@@ -1,0 +1,671 @@
+{
+  "domain": "eideus.class_skills.fractal",
+  "version": "1.0.0",
+  "tier_descriptions": {
+    "core": "Your archetype. Defines your baseline approach to problems and sets your primary affinity.",
+    "sub": "Your specialization. Adds variety and balance by introducing a secondary affinity expression.",
+    "cross": "Your evolution. The core+sub identity collapses into a single cross class at level 14 (auto-derived).",
+    "mastery": "Your capstone. At level 21 your cross becomes mastery and gains one ultimate with no affinity."
+  },
+  "skill_tier_rules": {
+    "core_skills": {
+      "count": 2,
+      "E1": "Basic attack skill. Must share affinity with core class.",
+      "E2": "Basic buff skill. Must share affinity with core class. Should protect against the core's weak matchup."
+    },
+    "sub_skills": {
+      "count": 2,
+      "E3": "Sub skill whose affinity is neutral against the sub affinity.",
+      "E4": "Sub skill whose affinity is weak against the sub affinity."
+    },
+    "cross_skills": {
+      "count": 2,
+      "E5": "Cross skill with neutral affinity (relative to dominant expression).",
+      "E6": "Cross skill with strong affinity (relative to dominant expression)."
+    },
+    "mastery_skill": {
+      "count": 1,
+      "E7": "Ultimate skill. No affinity."
+    }
+  },
+  "affinity_matrix": {
+    "str": {
+      "str": 1,
+      "dex": 0,
+      "int": -1
+    },
+    "dex": {
+      "str": -1,
+      "dex": 1,
+      "int": 0
+    },
+    "int": {
+      "str": 0,
+      "dex": -1,
+      "int": 1
+    }
+  },
+  "cores": {
+    "Rebel": {
+      "affinity": "str",
+      "description": "Disgruntled citizen looking to make some changes"
+    },
+    "Acolyte": {
+      "affinity": "int",
+      "description": "An augment seeking induction into the ranks of the Church of the Ascension"
+    },
+    "Hacker": {
+      "affinity": "dex",
+      "description": "A systems specialist who gets off on the fact no doors are going to hold their secrets long if they want to peek inside"
+    }
+  },
+  "subs": {
+    "Rebel": {
+      "Merc": {
+        "affinity": "dex",
+        "description": "A freelance Rebel fighter for hire. Set out for fame and fortune"
+      },
+      "Specialist": {
+        "affinity": "int",
+        "description": "A highly specialized Rebel fighter who has settled into a niche slot on a team of Rebel insurgents"
+      },
+      "Recruit": {
+        "affinity": "str",
+        "description": "A prospect rebel for an unnamed insurgency ring that has been recruited for special assignments"
+      }
+    },
+    "Acolyte": {
+      "Convert": {
+        "affinity": "str",
+        "description": "An Acolyte that has been initiated into the technocracy's Church of Ascension"
+      },
+      "Priest": {
+        "affinity": "int",
+        "description": "A lifelong member of the Church of Ascension who has progressed through the ranks to achieve the title of a Priest"
+      },
+      "Parishioner": {
+        "affinity": "dex",
+        "description": "A valuable preferential member of the flock of the Church of Ascension"
+      }
+    },
+    "Hacker": {
+      "Insurgent": {
+        "affinity": "str",
+        "description": "A specialized tech support agent for the local insurgency."
+      },
+      "Zealot": {
+        "affinity": "int",
+        "description": "An extremely passionate Hacker who is more extremist than insurgent. Has their own agenda although will partner up if it aligns with the current goals"
+      },
+      "Cipher": {
+        "affinity": "dex",
+        "description": "An encryption expert who works for the bureaucracy. A \"good guy\" by their own estimation and would be considered an ethical hacker."
+      }
+    }
+  },
+  "crosses": {
+    "Rebel": {
+      "Soldier of Fortune": {
+        "core_sub_key": "str/dex",
+        "description": "A famous well paid eagerly sought after mercenary rebel"
+      },
+      "False Prophet": {
+        "core_sub_key": "str/int",
+        "description": "An apostate priest from the church of ascension who has been branded a false prophet by the leadership"
+      },
+      "Sleeper Cell": {
+        "core_sub_key": "str/str",
+        "description": "A Rebel/Recruit who has now earned enough trust and progressed far enough in their training to become a Sleeper Cell"
+      }
+    },
+    "Acolyte": {
+      "The Un-made": {
+        "core_sub_key": "int/str",
+        "description": "A disillusioned rebel warrior turned acolyte for the Church of Ascension. Rejected duty, excommunicated, doomed to wander without the church’s benefits."
+      },
+      "True Believer": {
+        "core_sub_key": "int/int",
+        "description": "A senior faithful member of the Church of Ascension who has risen into trusted rank."
+      },
+      "Cyber Heretic": {
+        "core_sub_key": "int/dex",
+        "description": "A hacker turned acolyte who later fell out with the church and is now branded a heretic with a bounty."
+      }
+    },
+    "Hacker": {
+      "Hacktivist": {
+        "core_sub_key": "dex/str",
+        "description": "A political and bold hacker drawn to rallies, protests, and occasional destruction of corporate property."
+      },
+      "Null Apostle": {
+        "core_sub_key": "dex/int",
+        "description": "A high-ranking church operator isolated from the flock to covertly surveil and enforce leadership will."
+      },
+      "Cryptocrat": {
+        "core_sub_key": "dex/dex",
+        "description": "A hacker recruited by the \"9\" cartel overlords—being groomed for a hidden AI-led power structure."
+      }
+    }
+  },
+  "elements_E1_to_E7": {
+    "E1": "Core Attack",
+    "E2": "Core Buff",
+    "E3": "Sub Skill (Neutral vs sub affinity)",
+    "E4": "Sub Skill (Weak vs sub affinity)",
+    "E5": "Cross Skill (Neutral)",
+    "E6": "Cross Skill (Strong)",
+    "E7": "Mastery Ultimate (No affinity)"
+  },
+  "skill_access_by_level": [
+    {
+      "level_min": 0,
+      "level_max": 6,
+      "slots": [
+        "E1",
+        "E2"
+      ]
+    },
+    {
+      "level_min": 7,
+      "level_max": 13,
+      "slots": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    },
+    {
+      "level_min": 14,
+      "level_max": 20,
+      "slots": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6"
+      ]
+    },
+    {
+      "level_min": 21,
+      "level_max": null,
+      "slots": [
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "E6",
+        "E7"
+      ]
+    }
+  ],
+  "builds": {
+    "Rebel": {
+      "Merc -> Soldier of Fortune": {
+        "E1": {
+          "name": "Rend Slash",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A basic close-range strike that commits to force."
+        },
+        "E2": {
+          "name": "Iron Stance",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "buff",
+          "desc": "A grounded guard posture tuned to resist int-type threats."
+        },
+        "E3": {
+          "name": "Bayonet Rush",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "utility",
+          "desc": "A forward burst used to close distance or break a line."
+        },
+        "E4": {
+          "name": "Flashbang Feint",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "trick",
+          "desc": "A risky misdirection tool that can backfire under pressure."
+        },
+        "E5": {
+          "name": "Contract Killer",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "precision",
+          "desc": "A clean professional move—fast, economical, and practiced."
+        },
+        "E6": {
+          "name": "Warpath",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A decisive surge that turns momentum into dominance."
+        },
+        "E7": {
+          "name": "Cash & Thunder",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A legendary act of violence and swagger with no affinity alignment."
+        }
+      },
+      "Specialist -> False Prophet": {
+        "E1": {
+          "name": "Rend Slash",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A basic close-range strike that commits to force."
+        },
+        "E2": {
+          "name": "Iron Stance",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "buff",
+          "desc": "A grounded guard posture tuned to resist int-type threats."
+        },
+        "E3": {
+          "name": "Precision Tap",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "utility",
+          "desc": "A controlled, measured hit that exploits timing."
+        },
+        "E4": {
+          "name": "Overcommit Strike",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "risk",
+          "desc": "A heavy commitment attack that leaves you open."
+        },
+        "E5": {
+          "name": "Blasphemy Tactics",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "trick",
+          "desc": "A tactical deception learned from watching zealots up close."
+        },
+        "E6": {
+          "name": "Censure Strike",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A punishing blow aimed at breaking faith and posture."
+        },
+        "E7": {
+          "name": "Schism Event",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A rupture move—turns the whole scene in your favor."
+        }
+      },
+      "Recruit -> Sleeper Cell": {
+        "E1": {
+          "name": "Rend Slash",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A basic close-range strike that commits to force."
+        },
+        "E2": {
+          "name": "Iron Stance",
+          "tier": "core",
+          "affinity": "str",
+          "kind": "buff",
+          "desc": "A grounded guard posture tuned to resist int-type threats."
+        },
+        "E3": {
+          "name": "Adrenal Drill",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A disciplined routine that steadies decisions under fire."
+        },
+        "E4": {
+          "name": "Clumsy Lunge",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "risk",
+          "desc": "A reckless attempt—effective when lucky, ugly when not."
+        },
+        "E5": {
+          "name": "Silent Breach",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "stealth",
+          "desc": "A quiet entry that avoids the obvious doors."
+        },
+        "E6": {
+          "name": "Execution Order",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "attack",
+          "desc": "A trained, irreversible commitment to the objective."
+        },
+        "E7": {
+          "name": "Deep Cover Awakening",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "The moment the mask drops and the mission begins."
+        }
+      }
+    },
+    "Acolyte": {
+      "Convert -> The Un-made": {
+        "E1": {
+          "name": "Shock Pulse",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A basic directed burst—clean, technical, unavoidable."
+        },
+        "E2": {
+          "name": "Sanctified Circuit",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "buff",
+          "desc": "A protective rite tuned to resist dex-type threats."
+        },
+        "E3": {
+          "name": "Commandment Link",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A stabilizing link—orders the mind and the moment."
+        },
+        "E4": {
+          "name": "Awkward Swipe",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "risk",
+          "desc": "A shaky physical attempt—effective only if it surprises."
+        },
+        "E5": {
+          "name": "Exile Guard",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "defense",
+          "desc": "A stubborn protection learned without institutional support."
+        },
+        "E6": {
+          "name": "Heretic Current",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A forbidden surge—knowledge used without permission."
+        },
+        "E7": {
+          "name": "Excommunication Protocol",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A final severing—no blessing, no leash, no return."
+        }
+      },
+      "Priest -> True Believer": {
+        "E1": {
+          "name": "Shock Pulse",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A basic directed burst—clean, technical, unavoidable."
+        },
+        "E2": {
+          "name": "Sanctified Circuit",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "buff",
+          "desc": "A protective rite tuned to resist dex-type threats."
+        },
+        "E3": {
+          "name": "Votive Mark",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "utility",
+          "desc": "A quick mark that guides attention and intent."
+        },
+        "E4": {
+          "name": "Burdened Strike",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "risk",
+          "desc": "A heavy-handed act—powerful, but blunt."
+        },
+        "E5": {
+          "name": "Doctrine Barrier",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "defense",
+          "desc": "Protection through structure—belief hardened into armor."
+        },
+        "E6": {
+          "name": "Ascension Surge",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A sanctioned burst—precision with authority behind it."
+        },
+        "E7": {
+          "name": "Radiant Ascension",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A blinding climax—belief weaponized into inevitability."
+        }
+      },
+      "Parishioner -> Cyber Heretic": {
+        "E1": {
+          "name": "Shock Pulse",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A basic directed burst—clean, technical, unavoidable."
+        },
+        "E2": {
+          "name": "Sanctified Circuit",
+          "tier": "core",
+          "affinity": "int",
+          "kind": "buff",
+          "desc": "A protective rite tuned to resist dex-type threats."
+        },
+        "E3": {
+          "name": "Flock Shield",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "defense",
+          "desc": "Protection through collective posture—standing with the flock."
+        },
+        "E4": {
+          "name": "Miscast Surge",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "risk",
+          "desc": "A dangerous overcharge that can spill outside control."
+        },
+        "E5": {
+          "name": "Purge Firewall",
+          "tier": "cross",
+          "affinity": "str",
+          "kind": "defense",
+          "desc": "A brutal safeguard—cuts off contamination by force."
+        },
+        "E6": {
+          "name": "Forbidden Upload",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "attack",
+          "desc": "A weaponized secret—knowledge that burns the hand holding it."
+        },
+        "E7": {
+          "name": "Saintbreaker Override",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A total override—sanctity revoked, systems rewritten."
+        }
+      }
+    },
+    "Hacker": {
+      "Insurgent -> Hacktivist": {
+        "E1": {
+          "name": "System Pierce",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A basic intrusion strike—fast, clean, precise."
+        },
+        "E2": {
+          "name": "Ghost Protocol",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "buff",
+          "desc": "A defensive protocol tuned to resist str-type threats."
+        },
+        "E3": {
+          "name": "Signal Jam",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A disruption move—noise where clarity should be."
+        },
+        "E4": {
+          "name": "Fumbled Hack",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "risk",
+          "desc": "A rushed attempt—sometimes speed beats elegance."
+        },
+        "E5": {
+          "name": "Signal Manifesto",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A broadcast act—turns information into movement."
+        },
+        "E6": {
+          "name": "Chain Exploit",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A cascading breach—one weakness becomes many."
+        },
+        "E7": {
+          "name": "Citywide Uprising",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "An irreversible spark—systems and crowds shift at once."
+        }
+      },
+      "Zealot -> Null Apostle": {
+        "E1": {
+          "name": "System Pierce",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A basic intrusion strike—fast, clean, precise."
+        },
+        "E2": {
+          "name": "Ghost Protocol",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "buff",
+          "desc": "A defensive protocol tuned to resist str-type threats."
+        },
+        "E3": {
+          "name": "Radical Exploit",
+          "tier": "sub",
+          "affinity": "dex",
+          "kind": "utility",
+          "desc": "A bold exploit—uncomfortable, effective, uncompromising."
+        },
+        "E4": {
+          "name": "Reckless Charge",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "risk",
+          "desc": "A physical overreach—useful when subtlety is dead."
+        },
+        "E5": {
+          "name": "Surveillance Hymn",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A quiet pattern—watching is a kind of control."
+        },
+        "E6": {
+          "name": "Black Operation",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A covert execution—done before anyone knows it began."
+        },
+        "E7": {
+          "name": "Silent Inquisition",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A total sweep—truth extracted, resistance erased."
+        }
+      },
+      "Cipher -> Cryptocrat": {
+        "E1": {
+          "name": "System Pierce",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A basic intrusion strike—fast, clean, precise."
+        },
+        "E2": {
+          "name": "Ghost Protocol",
+          "tier": "core",
+          "affinity": "dex",
+          "kind": "buff",
+          "desc": "A defensive protocol tuned to resist str-type threats."
+        },
+        "E3": {
+          "name": "Cipher Cut",
+          "tier": "sub",
+          "affinity": "str",
+          "kind": "utility",
+          "desc": "A blunt shortcut—cutting through with forceful clarity."
+        },
+        "E4": {
+          "name": "Logic Loop",
+          "tier": "sub",
+          "affinity": "int",
+          "kind": "risk",
+          "desc": "A brittle recursion—powerful if it holds, disastrous if it breaks."
+        },
+        "E5": {
+          "name": "Market Probe",
+          "tier": "cross",
+          "affinity": "int",
+          "kind": "utility",
+          "desc": "A cold read—numbers confess what people hide."
+        },
+        "E6": {
+          "name": "Ledger Break",
+          "tier": "cross",
+          "affinity": "dex",
+          "kind": "attack",
+          "desc": "A surgical theft—wealth and leverage rerouted instantly."
+        },
+        "E7": {
+          "name": "Total System Capture",
+          "tier": "mastery",
+          "affinity": null,
+          "kind": "ultimate",
+          "desc": "A full takeover—nothing local remains private."
+        }
+      }
+    }
+  }
+}

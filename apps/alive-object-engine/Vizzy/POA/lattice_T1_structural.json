@@ -1,0 +1,1758 @@
+{
+    "meta": {
+        "id": "T1",
+        "name": "Structural Kinematics",
+        "vertical_axis": "Z (Temporal/Motion)",
+        "horizontal_axes": [
+            "X (Spatial/Layout)",
+            "Y (Kinetic/Rigging)"
+        ],
+        "node_count": 343
+    },
+    "slices": [
+        {
+            "z_index": 0,
+            "label": "Static Origin",
+            "description": "Base state. Zero movement, standard mesh bounds.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Origin Pivot",
+                            "action": "Reset Position",
+                            "target": "sphere.position",
+                            "val": [
+                                0,
+                                0,
+                                0
+                            ]
+                        },
+                        {
+                            "x": 1,
+                            "role": "Bounds 1",
+                            "action": "Set Radius Min",
+                            "target": "sphere.radius",
+                            "val": 1.0
+                        },
+                        {
+                            "x": 2,
+                            "role": "Bounds 2",
+                            "action": "Set Radius Low",
+                            "target": "sphere.radius",
+                            "val": 1.5
+                        },
+                        {
+                            "x": 3,
+                            "role": "Bounds 3",
+                            "action": "Set Radius Mid",
+                            "target": "sphere.radius",
+                            "val": 2.0
+                        },
+                        {
+                            "x": 4,
+                            "role": "Bounds 4",
+                            "action": "Set Radius High",
+                            "target": "sphere.radius",
+                            "val": 2.5
+                        },
+                        {
+                            "x": 5,
+                            "role": "Bounds 5",
+                            "action": "Set Radius Max",
+                            "target": "sphere.radius",
+                            "val": 3.0
+                        },
+                        {
+                            "x": 6,
+                            "role": "Bounds Limit",
+                            "action": "Set Radius Extreme",
+                            "target": "sphere.radius",
+                            "val": 4.0
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Joint X0",
+                            "action": "Lock Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "role": "Joint X1",
+                            "action": "Slow Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "role": "Joint X2",
+                            "action": "Pace Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "role": "Joint X3",
+                            "action": "Cruise Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "role": "Joint X4",
+                            "action": "Fast Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "role": "Joint X5",
+                            "action": "Turbo Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "role": "Joint X6",
+                            "action": "Hyper Ring 1",
+                            "target": "rings.ring1Speed",
+                            "val": 4.0
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "IK Solver 0",
+                            "action": "Reset Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "role": "IK Solver 1",
+                            "action": "Slow Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "role": "IK Solver 2",
+                            "action": "Pace Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "role": "IK Solver 3",
+                            "action": "Cruise Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "role": "IK Solver 4",
+                            "action": "Fast Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 1.0
+                        },
+                        {
+                            "x": 5,
+                            "role": "IK Solver 5",
+                            "action": "Turbo Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "role": "IK Solver 6",
+                            "action": "Hyper Ring 2",
+                            "target": "rings.ring2Speed",
+                            "val": 4.0
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Constraint Base",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.6
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Weighting Base",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.6
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Limiter Base",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.6
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Driver Base",
+                            "val": 0
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.1
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 1,
+            "label": "Linear Drift",
+            "description": "Slow, predictable movement. Low entropy.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Pos Shift 0",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Rot Shift 0",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Scale Shift 0",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Constraint Loose",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Weight Light",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Limit Soft",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "role": "Driver Slow",
+                            "val": 0.1
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.7
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 2,
+            "label": "Orbital Resonance",
+            "description": "Cyclical patterns, sine-wave motion.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": "Sin"
+                        },
+                        {
+                            "x": 1,
+                            "val": "Cos"
+                        },
+                        {
+                            "x": 2,
+                            "val": "Tan"
+                        },
+                        {
+                            "x": 3,
+                            "val": "Exp"
+                        },
+                        {
+                            "x": 4,
+                            "val": "Log"
+                        },
+                        {
+                            "x": 5,
+                            "val": "Pow"
+                        },
+                        {
+                            "x": 6,
+                            "val": "Sqrt"
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.2
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 3,
+            "label": "Mechanical Complexity",
+            "description": "Interlocking parts, gear-like precision.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.3
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 6,
+                            "val": 0.9
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 4,
+            "label": "Pulse Dynamics",
+            "description": "Heartbeat-like expansion and contraction.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.4
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 0.6
+                        },
+                        {
+                            "x": 3,
+                            "val": 0.7
+                        },
+                        {
+                            "x": 4,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 5,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 6,
+                            "val": 1.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 5,
+            "label": "Chaos Injection",
+            "description": "Irregular noise, displacement, and glitch.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 0.8
+                        },
+                        {
+                            "x": 1,
+                            "val": 0.9
+                        },
+                        {
+                            "x": 2,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 1.2
+                        },
+                        {
+                            "x": 4,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 5,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 3.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "z_index": 6,
+            "label": "Structural Singularity",
+            "description": "Maximum deformation, mesh break, high entropy.",
+            "rows": [
+                {
+                    "y": 0,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 1,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 2,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 3,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 4,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 5,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                },
+                {
+                    "y": 6,
+                    "nodes": [
+                        {
+                            "x": 0,
+                            "val": 1.0
+                        },
+                        {
+                            "x": 1,
+                            "val": 1.5
+                        },
+                        {
+                            "x": 2,
+                            "val": 2.0
+                        },
+                        {
+                            "x": 3,
+                            "val": 2.5
+                        },
+                        {
+                            "x": 4,
+                            "val": 3.0
+                        },
+                        {
+                            "x": 5,
+                            "val": 4.0
+                        },
+                        {
+                            "x": 6,
+                            "val": 5.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Ash-Hearth Union",
+      "civilization_id": "G1-S2-O2-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Vulture's Tithe",
+            "narrative_guidance": "Vrax demands a show of force against a group of unruly scavengers hiding in the slums.",
+            "improvisation_points": [
+              "Consult Brawn-Master Grog about the scavenger locations.",
+              "Secure the support of Shanty-King Jax to bypass local lookouts.",
+              "Deliver the confiscated loot to Flame-Gazer Zora for smelting."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Brawn-Master Grog",
+                "id": "G1-S2-O2-C1-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Shanty-King Jax",
+                "id": "G1-S2-O2-C1-CT1-R4-NPC"
+              },
+              "target": {
+                "name": "Flame-Gazer Zora",
+                "id": "G1-S2-O2-C1-CT1-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Relic Crucible",
+            "narrative_guidance": "High Smelter Iral has prophesied a holy vessel buried in the rust flats.",
+            "improvisation_points": [
+              "Receive the prophecy coordinates from Stir-Witch Helga.",
+              "Hire Silt-Sifter Mara to excavate the artifact from the flats.",
+              "Bring the relic to Anvil-Lord Boros for purification."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Stir-Witch Helga",
+                "id": "G1-S2-O2-C1-CT1-R3-NPC"
+              },
+              "contact": {
+                "name": "Silt-Sifter Mara",
+                "id": "G1-S2-O2-C1-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Anvil-Lord Boros",
+                "id": "G1-S2-O2-C1-CT1-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Forbidden Alloy",
+            "narrative_guidance": "Tessa Korr seeks a rare reactor alloy but needs to hide the transaction from the Technocracy.",
+            "improvisation_points": [
+              "Acquire the scrap list from Scrap-Lord Otto.",
+              "Forge the quality certificates with Quality-Control Kael.",
+              "Launder the payment through Drip-Counter Fin's accounts."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scrap-Lord Otto",
+                "id": "G1-S2-O2-C1-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Quality-Control Kael",
+                "id": "G1-S2-O2-C1-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Drip-Counter Fin",
+                "id": "G1-S2-O2-C1-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Fragment's Deletion",
+            "narrative_guidance": "Dravven suspects an AI remnant is hiding in the ratchet mechanisms of the Spire.",
+            "improvisation_points": [
+              "Get the security clearance from Iron-Wall Iris.",
+              "Identify the corrupted gears with Click-Clack Cleo.",
+              "Install the stabilizer at Gravity-Anchor Alpha to purge the system."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Iron-Wall Iris",
+                "id": "G1-S2-O2-C1-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Click-Clack Cleo",
+                "id": "G1-S2-O2-C1-CT3-R6-NPC"
+              },
+              "target": {
+                "name": "Weight-Master Wex",
+                "id": "G1-S2-O2-C1-CT3-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Impossible Load",
+            "narrative_guidance": "Jurik Vale has found an ore chunk too heavy for any normal crane.",
+            "improvisation_points": [
+              "Locate the ore with Pick-Eye Pete.",
+              "Calculate the stress tolerances with Stress-Tester Stan.",
+              "Rig the tension cables with Tight-Wire Ty to haul it up."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Pick-Eye Pete",
+                "id": "G1-S2-O2-C1-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Stress-Tester Stan",
+                "id": "G1-S2-O2-C1-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Tight-Wire Ty",
+                "id": "G1-S2-O2-C1-CT3-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Sabotage Strike",
+            "narrative_guidance": "Miran Flux wants to trigger a controlled explosion to disrupt the Smelters' influence.",
+            "improvisation_points": [
+              "Deliver the explosive components to Rat-Run Rene.",
+              "Rig the vapor valves with Pressure-Valen.",
+              "Use the Spire-Tip Observatory with Sky-Watcher Sol to time the blast."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Rat-Run Rene",
+                "id": "G1-S2-O2-C1-CT2-R6-NPC"
+              },
+              "contact": {
+                "name": "Pressure-Valen",
+                "id": "G1-S2-O2-C1-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Sky-Watcher Sol",
+                "id": "G1-S2-O2-C1-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Foundry Blueprints",
+            "narrative_guidance": "The AI Fragment reveals coordinates to ancient technical drawings hidden in the Spire depths.",
+            "improvisation_points": [
+              "Descend into the Counterweight Pit with Deep-Drop Dale.",
+              "Bypass the filtration security with Silk-Spinner Sam.",
+              "Signal the extraction from Scavenger's Perch with Talon-Talon."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Deep-Drop Dale",
+                "id": "G1-S2-O2-C1-CT3-R3-NPC"
+              },
+              "contact": {
+                "name": "Silk-Spinner Sam",
+                "id": "G1-S2-O2-C1-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Talon-Talon",
+                "id": "G1-S2-O2-C1-CT2-R4-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Cinder-Kin Shard-Guilds",
+      "civilization_id": "G1-S2-O2-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Scavenger's Gambit",
+            "narrative_guidance": "A high-stakes run through the wires to deliver a critical component to the Scav-Lord.",
+            "improvisation_points": [
+              "Retrieve the Wire-Walk pulse-relay from Slink.",
+              "Take the relay to Spike for precision modification.",
+              "Deliver the modified relay to Vrax Cinderskull in the Reach."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Slink",
+                "id": "G1-S2-O2-C2-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Spike",
+                "id": "G1-S2-O2-C2-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Cog-Dealer Rim",
+                "id": "G1-S2-O2-C2-CT2-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Visions of the Crucible",
+            "narrative_guidance": "Gathering the necessary vapors and mechanical precision to satisfy Iral's prophecy.",
+            "improvisation_points": [
+              "Collect pure solder-vapor from Mist-Walker Zephyr.",
+              "Have Pin-Prick calibrate a containment vessel.",
+              "Present the vessel to High Smelter Iral at the altar."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Mist-Walker Zephyr",
+                "id": "G1-S2-O2-C2-CT2-R1-NPC"
+              },
+              "contact": {
+                "name": "Pin-Prick",
+                "id": "G1-S2-O2-C2-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Link",
+                "id": "G1-S2-O2-C2-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Slag Extraction",
+            "narrative_guidance": "A heavy lifting operation to retrieve forbidden tech from the deep slabs.",
+            "improvisation_points": [
+              "Secure the slab-coordinates from Skid.",
+              "Climb the main shaft with Oryn to bypass the blockade.",
+              "Deliver the tech to Jurik Vale for analysis."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Skid",
+                "id": "G1-S2-O2-C2-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Climb-Master Oryn",
+                "id": "G1-S2-O2-C2-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Pin-Prick",
+                "id": "G1-S2-O2-C2-CT2-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "Drone Network Hijack",
+            "narrative_guidance": "Repurposing Technocracy drones to serve the guild's local interests.",
+            "improvisation_points": [
+              "Intercept a command drone with Dravven's 'assistance'.",
+              "Purchase a bypass-cog from Cog-Dealer Rim.",
+              "Sync the drone at Piston-Swing Plaza with Rhythm's help."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Syndic Overseer Dravven",
+                "id": "G1-S2-O2-C2-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Cog-Dealer Rim",
+                "id": "G1-S2-O2-C2-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Rhythm",
+                "id": "G1-S2-O2-C2-CT2-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Shard-Glass Smuggling",
+            "narrative_guidance": "Moving rare alloyed glass across the city heights without being spotted.",
+            "improvisation_points": [
+              "Pick up the alloy crates from Tessa Korr.",
+              "Use Glider Jax's routes to avoid the guards.",
+              "Secure the crates at the Grip-Plate Corridors with Cling."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Tessa Korr",
+                "id": "G1-S2-O2-C2-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Glider Jax",
+                "id": "G1-S2-O2-C2-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Cling",
+                "id": "G1-S2-O2-C2-CT1-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Echoing Core",
+            "narrative_guidance": "Repairing a corrupted AI fragment to unlock Foundry blueprints.",
+            "improvisation_points": [
+              "Receive the corrupted data-shard from The Fragment Voice.",
+              "Distribute the data-packets through Link's slum network.",
+              "Stabilize the final sequence at the Bedrock-Anchor with Bolt."
+            ],
+            "cast": {
+              "giver": {
+                "name": "The Fragment Voice",
+                "id": "G1-S2-O2-C2-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Link",
+                "id": "G1-S2-O2-C2-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Bolt",
+                "id": "G1-S2-O2-C2-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Molten Sabotage",
+            "narrative_guidance": "A strike against the Molten Order to disrupt their control over the vents.",
+            "improvisation_points": [
+              "Acquire incendiary charges from Miran Flux.",
+              "Sabotage the pivot-joint stabilizers with Grease-Monkey Kael.",
+              "Infiltrate the final crevice with Squeeze to plant the core charge."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Miran Flux",
+                "id": "G1-S2-O2-C2-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Grease-Monkey Kael",
+                "id": "G1-S2-O2-C2-CT1-R3-NPC"
+              },
+              "target": {
+                "name": "Squeeze",
+                "id": "G1-S2-O2-C2-CT3-R6-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Scoria Sovereignty",
+      "civilization_id": "G1-S2-O2-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Relic Crucible",
+            "narrative_guidance": "A lost relic of the Molten Order has been detected near a cooling flange. It must be recovered and stabilized.",
+            "improvisation_points": [
+              "Speak with Vrax Cinderskull to get the location of the rival scavenger den.",
+              "Take the recovered thermal casing to Pyre-Tech Kael for heat-shielding.",
+              "Deliver the relic to Jurik Vale to analyze the slag residue."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Vrax Cinderskull",
+                "id": "G1-S2-O2-C3-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Pyre-Tech Kael",
+                "id": "G1-S2-O2-C3-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Jurik Vale",
+                "id": "G1-S2-O2-C3-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Echoes of the Deep",
+            "narrative_guidance": "The Fragment Voice is picking up signals from the deep crypts that match ancient AI signatures.",
+            "improvisation_points": [
+              "Translate the Fragment Voice's garbled coordinates.",
+              "Take the sensor data to Miri to filter out tectonic noise.",
+              "Deliver the decrypted key to Zee to unlock the ancient beacon."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Fragment Voice",
+                "id": "G1-S2-O2-C3-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Sensor-Analyst Miri",
+                "id": "G1-S2-O2-C3-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Signal-Thief Zee",
+                "id": "G1-S2-O2-C3-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Sulphur Sabotage",
+            "narrative_guidance": "Miran Flux wants to cause a massive distraction by rupturing a sulphur main to bypass security.",
+            "improvisation_points": [
+              "Acquire the explosive charges from Miran Flux.",
+              "Coordinate with Nox to find the weakest point in the sulphur pipes.",
+              "Turn the 'evidence' over to Enforcer Krell to frame a rival gang."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Miran Flux",
+                "id": "G1-S2-O2-C3-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Gas-Harvester Nox",
+                "id": "G1-S2-O2-C3-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Enforcer Krell",
+                "id": "G1-S2-O2-C3-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Foundry Blueprint Heist",
+            "narrative_guidance": "A rare alloy blueprint is floating in the Zero-G Foundry, and Trader Wick wants it before the Governors do.",
+            "improvisation_points": [
+              "Receive the manifest from Trader Wick.",
+              "Help Tali calibrate the magnets to catch the drifting data core.",
+              "Smuggle the core to Grik in the Graveyard for safe storage."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Trader Wick",
+                "id": "G1-S2-O2-C3-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Float-Smith Tali",
+                "id": "G1-S2-O2-C3-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Salvage-Lead Grik",
+                "id": "G1-S2-O2-C3-CT3-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Seismic Instability",
+            "narrative_guidance": "Elara predicts a quake that could destroy the Magma Wells. Defensive measures must be reinforced.",
+            "improvisation_points": [
+              "Get the seismic predictions from Elara.",
+              "Help Boren reinforce the tap-well supports.",
+              "Report the successful stabilization to Forge-Guard Orn."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Tectonic-Priest Elara",
+                "id": "G1-S2-O2-C3-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Driller Boren",
+                "id": "G1-S2-O2-C3-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Forge-Guard Orn",
+                "id": "G1-S2-O2-C3-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Obsidian Ledger",
+            "narrative_guidance": "The Scribe has found a reference to a lost shipment of credits buried in the crypts.",
+            "improvisation_points": [
+              "Consult the Scribe for the vault's ancient serial numbers.",
+              "Pay Silas to guide you through the trapped corridors of the crypts.",
+              "Deliver the ledger to Dock-Master Harl to clear the 'lost' cargo records."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Chronicler Scribe",
+                "id": "G1-S2-O2-C3-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Grave-Robber Silas",
+                "id": "G1-S2-O2-C3-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Dock-Master Harl",
+                "id": "G1-S2-O2-C3-CT3-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "Solar Array Surge",
+            "narrative_guidance": "The radiant vents are overheating because the solar deflectors are misaligned.",
+            "improvisation_points": [
+              "Meet Jace to identify the venting blockage points.",
+              "Work with Sol to re-align the mirrors on the Solar-Deflector Fin.",
+              "Clear the mercenary squatters from the array with help from Jax."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Slag-Walker Jace",
+                "id": "G1-S2-O2-C3-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Mirror-Aligner Sol",
+                "id": "G1-S2-O2-C3-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Blade-Hire Jax",
+                "id": "G1-S2-O2-C3-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

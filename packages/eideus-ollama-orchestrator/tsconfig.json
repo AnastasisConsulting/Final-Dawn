@@ -1,0 +1,52 @@
+// Final_Dawn_of_Eideus/packages/eideus-ollama-orchestrator/tsconfig.json
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "incremental": true,
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "composite": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "types": [
+      "node"
+    ],
+    "strict": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleDetection": "force"
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "references": [
+    {
+      "path": "../eideus-universe-mapper"
+    },
+    {
+      "path": "../eideus-world-bundle-binder"
+    },
+    {
+      "path": "../eideus-affinity-system"
+    },
+    {
+      "path": "../eideus-memory-lattice-api"
+    }
+  ]
+}

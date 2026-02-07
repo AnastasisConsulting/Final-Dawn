@@ -1,0 +1,36 @@
+FINAL DAWN OF EIDEUS - LICENSE AGREEMENT
+
+This project is dual-licensed based on the component and intended use.
+
+1. "THE GAME" (Interface, Visual Assets, and Client-Side Logic)
+   Permission is hereby granted, free of charge, to any person obtaining a copy 
+   of this software and associated documentation files (the "Game"), to use, copy, 
+   modify, and create derivative works (mods) of the Game for PERSONAL, NON-COMMERCIAL 
+   purposes only.
+
+   - You MAY modify the code for private use and community modding.
+   - You MAY NOT share, distribute, or sell the Game or its derivatives for commercial gain.
+   - You MAY NOT use the Game for any revenue-generating activity without a separate commercial license.
+
+2. "THE FRACTAL TEMPLATE SYSTEM" (The Proprietary Architecture)
+   The "Fractal Template System" refers to the core Recursive Systems Architecture, including but not limited to:
+   - The **3x3x7** data structuring methodology (e.g., `Galaxies_Folder`).
+   - The Hypercube Lattice Simulation logic (`apps/Vizzy`).
+   - The Memory Lattice Contracts and API (`packages/eideus-memory-lattice-api`).
+   - The Recursive Systems Integration patterns.
+   
+   This System is PROPRIETARY and constitutes the exclusive intellectual property of the Author.
+
+   - You MAY NOT copy, extract, reverse engineer, or implement this specific 
+     architectural pattern (3x3x7 Recursive Fractal) in other projects.
+   - You MAY NOT distribute the `Galaxies_Folder` structure or its logic separate 
+     from the authorized Game client.
+   - All rights to the Fractal Template System architecture are reserved.
+
+3. COMMERCIAL USE
+   Any commercial use of "The Game" or "The Fractal System" requires a negotiated 
+   license. Only the Copyright Holder may grant commercial rights on a case-by-case basis.
+
+   For commercial licensing inquiries, please contact the Author.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.

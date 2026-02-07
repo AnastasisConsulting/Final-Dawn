@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "system_id": "G3-S3",
+    "system_name": "The Whisper Zone",
+    "theme": "Entropy, Silence, Void Decay",
+    "fractal_structure": "1 Legendary, 3 Archetypes x 7 Variants, 3 Rares, 1 Master Table"
+  },
+  "legendary": {
+    "id": "G3S3_LEGENDARY_SILENTKING",
+    "name": "The Silent King",
+    "description": "A being of pure negative space, wearing a mask that absorbs all sound and hope. To face him is to face the end of your own story.",
+    "class": "Boss (Eldritch/Mage)",
+    "spawn_condition": "quest_active_or_very_rare",
+    "stats_scaling": {
+      "level_1": { "HP": 800, "Resource": 600, "Strength": 15, "Agility": 15, "Endurance": 20, "Intelligence": 40, "Perception": 40, "Charisma": 0 },
+      "level_21": { "HP": 8000, "Resource": 4000, "Strength": 45, "Agility": 45, "Endurance": 70, "Intelligence": 120, "Perception": 120, "Charisma": 0 }
+    },
+    "actions": ["skill_obliterate", "skill_silence", "void_prison", "entropy_wave"],
+    "aiProfile": "Boss_AI"
+  },
+  "archetypes": {
+    "Type_1_Entropy_Manifestations": {
+      "description": "Raw void energy given form, seeking to unravel existence.",
+      "variants": [
+        {
+          "id": "G3S3_E_01", "name": "Null-Mote", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 15 }, "level_21": { "HP": 150 } },
+          "actions": ["energy_drain"]
+        },
+        {
+          "id": "G3S3_E_02", "name": "Void-Wisp", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["static_shock", "flicker"]
+        },
+        {
+          "id": "G3S3_E_03", "name": "Entropy-Spark", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 35 }, "level_21": { "HP": 350 } },
+          "actions": ["decay_touch", "skill_blind"]
+        },
+        {
+          "id": "G3S3_E_04", "name": "Hollow-Walker", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 70 }, "level_21": { "HP": 700 } },
+          "actions": ["phase_step", "life_leech"]
+        },
+        {
+          "id": "G3S3_E_05", "name": "Void-Caller", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["summon_wisp", "skill_fear"]
+        },
+        {
+          "id": "G3S3_E_06", "name": "Unmaker", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 110 }, "level_21": { "HP": 1100 } },
+          "actions": ["disintegrate", "armor_break"]
+        },
+        {
+          "id": "G3S3_E_07", "name": "Avatar of Nothing", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 200 }, "level_21": { "HP": 2000 } },
+          "actions": ["black_hole", "reality_tear", "silence_aura"]
+        }
+      ]
+    },
+    "Type_2_The_Lost": {
+      "description": "Scrubbers, explorers, and pilots who lost their minds and identities to the zone.",
+      "variants": [
+        {
+          "id": "G3S3_L_01", "name": "Drifting Husk", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 30 }, "level_21": { "HP": 300 } },
+          "actions": ["flail", "weep"]
+        },
+        {
+          "id": "G3S3_L_02", "name": "Forgotten Scrubber", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 50 }, "level_21": { "HP": 500 } },
+          "actions": ["rusty_shiv", "skill_desperate_flail"]
+        },
+        {
+          "id": "G3S3_L_03", "name": "Silent Pilot", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 55 }, "level_21": { "HP": 550 } },
+          "actions": ["blaster_shot", "evasive_maneuver"]
+        },
+        {
+          "id": "G3S3_L_04", "name": "Crazed Survivor", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 80 }, "level_21": { "HP": 800 } },
+          "actions": ["improvised_trap", "frenzied_strike"]
+        },
+        {
+          "id": "G3S3_L_05", "name": "Hollow Captain", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 120 }, "level_21": { "HP": 1200 } },
+          "actions": ["command_ghosts", "precision_shot"]
+        },
+        {
+          "id": "G3S3_L_06", "name": "Void-Touched Monk", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 100 }, "level_21": { "HP": 1000 } },
+          "actions": ["meditate_heal", "psychic_palm"]
+        },
+        {
+          "id": "G3S3_L_07", "name": "The Faceless", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 160 }, "level_21": { "HP": 1600 } },
+          "actions": ["steal_identity", "vanish", "backstab"]
+        }
+      ]
+    },
+    "Type_3_Sound_Eaters": {
+      "description": "Predators that hunt by sound and consume sonic energy.",
+      "variants": [
+        {
+          "id": "G3S3_S_01", "name": "Ear-Wig Swarm", "tier": "Fodder",
+          "stats_scaling": { "level_1": { "HP": 25 }, "level_21": { "HP": 250 } },
+          "actions": ["action_bite"]
+        },
+        {
+          "id": "G3S3_S_02", "name": "Silence-Stalker", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 60 }, "level_21": { "HP": 600 } },
+          "actions": ["pounce", "throat_rip"]
+        },
+        {
+          "id": "G3S3_S_03", "name": "Echo-Bat", "tier": "Common",
+          "stats_scaling": { "level_1": { "HP": 40 }, "level_21": { "HP": 400 } },
+          "actions": ["sonic_screech", "swoop"]
+        },
+        {
+          "id": "G3S3_S_04", "name": "Hush-Beast", "tier": "Uncommon",
+          "stats_scaling": { "level_1": { "HP": 90 }, "level_21": { "HP": 900 } },
+          "actions": ["dampen_sound", "action_claw"]
+        },
+        {
+          "id": "G3S3_S_05", "name": "Void-Screech", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 130 }, "level_21": { "HP": 1300 } },
+          "actions": ["skill_sonic_blast", "skill_deafen"]
+        },
+        {
+          "id": "G3S3_S_06", "name": "Resonance-Devourer", "tier": "Strong",
+          "stats_scaling": { "level_1": { "HP": 150 }, "level_21": { "HP": 1500 } },
+          "actions": ["absorb_magic", "tremor_slam"]
+        },
+        {
+          "id": "G3S3_S_07", "name": "Siren of the Void", "tier": "Elite",
+          "stats_scaling": { "level_1": { "HP": 220 }, "level_21": { "HP": 2200 } },
+          "actions": ["lure", "mind_control", "shatter_glass"]
+        }
+      ]
+    }
+  },
+  "rares": [
+    {
+      "id": "G3S3_RARE_01", "name": "The Mute Merchant",
+      "description": "A vendor who turned into a monster. Still carries his inventory.",
+      "chance": 0.05,
+      "loot_bonus": "high_value_commodities",
+      "behavior": "Fleeing_AI"
+    },
+    {
+      "id": "G3S3_RARE_02", "name": "Glitch-Ghost 404",
+      "description": "A recurring error in reality.",
+      "chance": 0.03,
+      "loot_bonus": "System Code",
+      "behavior": "Tricky_AI"
+    },
+    {
+      "id": "G3S3_RARE_03", "name": "The Last Broadcast",
+      "description": "A sentient radio signal that possesses machinery.",
+      "chance": 0.02,
+      "loot_bonus": "Final Words",
+      "behavior": "Caster_AI"
+    }
+  ],
+  "master_loot_table": {
+    "currency": { "type": "CrypC", "min": 0, "max": 1000 },
+    "common": [ "Essence of Nothing", "Black Hole Mote", "Empty Vial" ],
+    "uncommon": [ "Dark Matter", "Muted Bell", "Spare Oxygen" ],
+    "rare": [ "Final Words", "System Code", "Void Meat" ],
+    "epic": [ "Algorithm Scroll", "Infinite Energy" ],
+    "legendary": [ "Mask of Silence (Unique)" ]
+  }
+}
