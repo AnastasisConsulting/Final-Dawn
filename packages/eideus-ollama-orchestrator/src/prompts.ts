@@ -274,8 +274,48 @@ function renderImmutableContext(lore: any, quests: any[]): string {
   }
 
   if (quests && quests.length > 0) {
-    lines.push(" [ACTIVE QUEST ANCHORS]:");
-    quests.forEach(q => lines.push(`  - Entity ${q.entityId}: ${JSON.stringify(q.bio)} | Objectives: ${JSON.stringify(q.quests)}`));
+    lines.push("[ACTIVE QUEST ANCHORS]:");
+    for (const q of quests) {
+      lines.push(`  - Entity: ${q.entityId}`);
+      if (q.bio) {
+        lines.push(`    Name: ${q.bio.name ?? "Unknown"}`);
+        lines.push(`    Role: ${q.bio.role ?? "Unknown"}`);
+      }
+
+      // Render quest data (may be array or object with rich fields)
+      if (Array.isArray(q.quests) && q.quests.length > 0) {
+        for (const quest of q.quests) {
+          if (quest.mission) {
+            lines.push(`    [MISSION]: ${quest.mission}`);
+          } else if (quest.title) {
+            lines.push(`    [QUEST]: ${quest.title}`);
+          }
+
+          if (quest.objectives && quest.objectives.length > 0) {
+            lines.push(`    OBJECTIVES:`);
+            for (const obj of quest.objectives) {
+              lines.push(`      • ${obj}`);
+            }
+          }
+
+          if (quest.keyCast) {
+            lines.push(`    KEY NPCs:`);
+            if (quest.keyCast.giver) {
+              lines.push(`      - GIVER: ${quest.keyCast.giver.name} (${quest.keyCast.giver.role}) [${quest.keyCast.giver.npcKey}]`);
+            }
+            if (quest.keyCast.intermediary) {
+              lines.push(`      - CONTACT: ${quest.keyCast.intermediary.name} (${quest.keyCast.intermediary.role}) [${quest.keyCast.intermediary.npcKey}]`);
+            }
+            if (quest.keyCast.closer) {
+              lines.push(`      - TARGET: ${quest.keyCast.closer.name} (${quest.keyCast.closer.role}) [${quest.keyCast.closer.npcKey}]`);
+            }
+          }
+        }
+      } else if (q.quests && typeof q.quests === 'object') {
+        // Legacy format: single quest object
+        lines.push(`    Quest Data: ${JSON.stringify(q.quests)}`);
+      }
+    }
   }
 
   return lines.join("\n");

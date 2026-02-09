@@ -13,7 +13,8 @@
     "@react-three/fiber": "^8.15.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.182.0"
+    "three": "^0.182.0",
+    "eideus-routers": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

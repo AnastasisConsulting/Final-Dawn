@@ -1,7 +1,7 @@
 // Final_Dawn_of_Eideus/apps/dawn-ui/components/Panels/RightPanel.tsx
 
 import React from 'react';
-import { JunkScatter } from '../Features/Vizzy/JunkScatter';
+
 import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 
 interface RightPanelProps {
@@ -10,26 +10,24 @@ interface RightPanelProps {
   // REMOVED: onFlightMode prop as it is now handled via Kernel SET_WARP_STATE in NavBot
 }
 
-const BUTTONS = [
-  { id: 'UNIT', label: 'UNIT' },
-  { id: 'GEAR', label: 'GEAR' },
-  { id: 'NET', label: 'NET' },
-  { id: 'DATA', label: 'DATA' },
-  { id: 'SIM', label: 'SIM' }, // Combat
-  { id: 'MEM', label: 'MEM' },
-  { id: 'BIO', label: 'BIO' },
-  { id: 'PROG', label: 'PROG' }, // Character Progression
-  { id: 'OPT', label: 'OPT' },
-];
+import { useGame } from '../../src/context/GameContext';
 
-/**
- * RightPanel: Systems Control Interface
- * CLEANED: Legacy Flight Launch Button removed.
- * Trigger for space flight has been relocated to NavBot.tsx (Upper Left Planet Button).
- */
+// ...
+
 export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSelect }) => {
+  const { state: gameState } = useGame();
   const { panelColors } = useColorStealing();
   const rightColor = panelColors.right;
+
+  const charName = gameState.identity.name || 'UNKNOWN'; // Assuming name exists in identity or we need to add it
+
+  const BUTTONS = [
+    { id: 'UNIT', label: charName.toUpperCase() }, // Dynamic Character Name
+    { id: 'SKILLS', label: 'SKILLS' },
+    { id: 'PROG', label: 'PROG' },
+    { id: 'INV', label: 'INV' },
+    { id: 'OPT', label: 'CONFIG' }, // Renamed from OPT
+  ];
 
   return (
     <div className={`
@@ -40,7 +38,7 @@ export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSele
       }
     `}>
       {/* Space Junk Decorations */}
-      <JunkScatter panelId="right" />
+
 
       {/* CLEANUP: The "FLIGHT" button was removed from this stack to prevent redundant UI triggers.
           Immersion is now driven by the Nav_Implant terminal.

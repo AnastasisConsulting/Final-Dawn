@@ -9,7 +9,7 @@ import { useGame } from '../../src/context/GameContext';
 const TITLE_GAME = "EIDEUS DAWN";
 const TITLE_LOC = "SECTOR: NULL";
 
-export const Header: React.FC<{ onLaunchFlight?: () => void }> = ({ onLaunchFlight }) => {
+export const Header: React.FC<{ onLaunchFlight?: () => void; onToggleDev?: () => void }> = ({ onLaunchFlight, onToggleDev }) => {
   const { state: kernelState, hydrate, loadLocationFromAddress } = useKernel();
   const { state: gameState, actions: gameActions } = useGame();
   const isWarping = kernelState.isWarping;
@@ -91,6 +91,13 @@ export const Header: React.FC<{ onLaunchFlight?: () => void }> = ({ onLaunchFlig
       {/* Right decorative bits & Save/Load */}
       <div className="flex items-center gap-6">
         <div className="flex gap-2">
+          {/* DEV Button */}
+          <button
+            onClick={onToggleDev}
+            className="px-2 py-1 border border-neutral-800 text-[9px] uppercase tracking-widest text-yellow-600 hover:border-yellow-500/50 hover:text-yellow-400 transition-all bg-black/20"
+          >
+            CMD
+          </button>
           <button
             onClick={handleSave}
             className="px-2 py-1 border border-neutral-800 text-[9px] uppercase tracking-widest text-neutral-500 hover:border-cyan-500/50 hover:text-cyan-400 transition-all bg-black/20"
@@ -103,16 +110,9 @@ export const Header: React.FC<{ onLaunchFlight?: () => void }> = ({ onLaunchFlig
           >
             Load_State
           </button>
-          <button
-            onClick={onLaunchFlight}
-            disabled={!onLaunchFlight}
-            className="px-3 py-1 border border-amber-900/50 text-[10px] uppercase tracking-widest text-amber-500 hover:border-amber-500 hover:text-amber-300 hover:shadow-[0_0_12px_rgba(251,191,36,0.3)] transition-all bg-amber-950/20 disabled:opacity-30 disabled:cursor-not-allowed font-bold"
-          >
-            ✦ LAUNCH
-          </button>
         </div>
         <div className="text-[9px] text-neutral-700 font-mono text-right leading-tight">
-          SYS_VER: 0.9.4<br />
+          SYS_VER: 0.9.4 // <span className="text-cyan-600">TURN: {gameState.turnCount || 0}</span><br />
           <span className={`${isWarping ? 'text-cyan-900' : 'text-red-900/50'}`}>
             {isWarping ? "STABILIZING_FLIGHT_ONE" : "UNAUTHORIZED_ACCESS"}
           </span>

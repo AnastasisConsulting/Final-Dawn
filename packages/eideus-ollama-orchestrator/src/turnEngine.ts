@@ -9,6 +9,47 @@ import { buildMultiRecipientPrompt, parseLabeledSections, TurnRecipient } from "
 import type { RecipientMode } from "./prompts";
 
 /**
+ * Auto-resolve entities (NPCs) that should be at a given spatial location.
+ * Scans the cast cache for entity IDs matching the spatial key pattern.
+ */
+function resolveEntitiesFromLocation(
+  spatial: SpatialKey,
+  caches: { cast: Map<string, any>; quests: Map<string, any> }
+): EntityCard[] {
+  const entities: EntityCard[] = [];
+
+  // Build spatial pattern to match: G{g}-S{s}-O{o}-C{c}-CT{ct}-R{r}
+  const spatialPattern = `G${spatial.g}-S${spatial.s}-O${spatial.o}-C${spatial.c}-CT${spatial.ct}-R${spatial.r}`;
+
+  // Scan cast cache for entities at this location
+  for (const [entityId, entityData] of caches.cast.entries()) {
+    if (entityId.startsWith(spatialPattern)) {
+      entities.push({
+        id: entityId,
+        name: entityData?.name ?? entityId,
+        class: entityData?.role ?? "NPC",
+        aliases: [],
+      });
+    }
+  }
+
+  // Also check quests cache for quest-giver NPCs at this location
+  for (const [npcId, _questList] of caches.quests.entries()) {
+    if (npcId.startsWith(spatialPattern) && !entities.some(e => e.id === npcId)) {
+      const entityData = caches.cast.get(npcId);
+      entities.push({
+        id: npcId,
+        name: entityData?.name ?? npcId,
+        class: entityData?.role ?? "Quest Giver",
+        aliases: [],
+      });
+    }
+  }
+
+  return entities;
+}
+
+/**
  * Deterministic Context Resolver
  * Injects only the specific data requested by the coordinate keys.
  */
@@ -29,12 +70,25 @@ async function resolveDeterministicContext(args: {
     expansion: { mode: "plusMinusPages", n: CONFIG.TEMPORAL_WINDOW_PAGES || 3 }
   });
 
-  // 3. Resolve Immutable Entity Facts & Quest State via NPC Keys (z+)
-  const activeQuests = args.entitiesPresent.flatMap(ent => {
+  // 3. Auto-resolve entities if not provided
+  let entities = args.entitiesPresent;
+  if (!entities || entities.length === 0) {
+    entities = resolveEntitiesFromLocation(args.spatial, args.caches);
+    if (entities.length > 0) {
+      console.log(`[TurnEngine] Auto-resolved ${entities.length} entities at location:`, entities.map(e => e.name).join(', '));
+    }
+  }
+
+  // 4. Resolve Immutable Entity Facts & Quest State via NPC Keys (z+)
+  const activeQuests = entities.flatMap(ent => {
     const quests = args.caches.quests.get(ent.id) || [];
     const bio = args.caches.cast.get(ent.id) || null;
     return { entityId: ent.id, bio, quests };
   });
+
+  if (activeQuests.length > 0) {
+    console.log(`[TurnEngine] Injecting activeQuests:`, JSON.stringify(activeQuests.slice(0, 3)));
+  }
 
   return { loreEntry, history: history.voxels, activeQuests };
 }

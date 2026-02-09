@@ -6,6 +6,7 @@ import { NavBot } from './panels/Navbot';
 import { InventoryPanel } from './panels/InventoryPanel';
 import { SettingsPanel } from './panels/SettingsPanel';
 import { MemoryPanel } from './panels/MemoryPanel';
+import { LorePanel } from './panels/LorePanel';
 
 import { Vizzy } from './panels/Vizzy';
 // New right-rail slide panels
@@ -15,63 +16,59 @@ import { NpcPanel } from './panels/NpcPanel';
 import { CombatWheelPanel } from './panels/CombatWheelPanel';
 import { CharacterProgressionPanel } from './CharacterProgressionPanel';
 import { AffinityVizPanel } from './panels/AffinityVizPanel';
+import { MissionLogPanel } from './panels/MissionLogPanel';
 
 interface PanelContentProps {
   panelId?: string | null;
   onFlightMode?: () => void;
+  onPanelChange?: (panelId: string) => void;
 }
 
-export const PanelContent: React.FC<PanelContentProps> = ({ panelId, onFlightMode }) => {
+export const PanelContent: React.FC<PanelContentProps> = ({ panelId, onFlightMode, onPanelChange }) => {
   const id = (panelId || '').toUpperCase();
 
   const content = (() => {
     switch (id) {
-      case 'NAV':
-        return <NavBot />;
-      case 'DEX':
-        return <Vizzy />;
-      case 'UNIT':
-        // UNIT = Player Operator Profile / Character Sheet
-        return <CharacterSheetPanel />;
-      case 'GEAR':
-        return <InventoryPanel />;
-      case 'NET':
-        // NET = NPC comms + lorebook
-        return <NpcPanel />;
-      case 'DATA':
-        // DATA = market / trade (placeholder implementation)
-        return <MarketPanel />;
-      case 'MEM':
-        // MEM = Memory visualization
-        return <MemoryPanel />;
+      // --- LEFT DOCK ---
       case 'SIM':
-        // SIM = Affinity system visualizer
-        return <AffinityVizPanel />;
-
+        return <AffinityVizPanel onPanelChange={onPanelChange} />;
+      case 'MEM':
+        return <MemoryPanel />;
+      case 'SHOP':
+        return <MarketPanel />;
       case 'BIO':
-        // BIO = combat wheel (replaces buggy legacy CombatPanel)
         return <CombatWheelPanel />;
+      case 'FLIGHT':
+        // Flight triggered via button but maybe show status here? 
+        return <div className="p-8 text-cyan-500 font-mono text-center">FLIGHT SYSTEMS ENGAGED VIA NAV LINK</div>;
+
+      // --- RIGHT DOCK ---
+      case 'UNIT': // 'PROFILE' button
+      case 'PROFILE': // Just in case
+        return <CharacterSheetPanel />;
+      case 'SKILLS':
+        // Placeholder
+        return <div className="p-8 text-cyan-500 font-mono text-center">SKILLS MATRIX OFFLINE</div>;
       case 'PROG':
         return <CharacterProgressionPanel />;
+      case 'INV': // 'INV' button
+      case 'GEAR': // Legacy ID
+        return <InventoryPanel />;
       case 'OPT':
         return <SettingsPanel />;
-      case 'INT':
-        return (
-          <div className="flex items-center justify-center h-full p-6 text-center">
-            <div className="space-y-2">
-              <div className="text-cyan-500/50 text-[10px] font-mono animate-pulse uppercase tracking-[0.2em]">
-                Signal Found: Internal Lattice Origin
-              </div>
-              <div className="text-neutral-500 text-xs font-mono italic">
-                "There is no terminal for the voice within."
-              </div>
-            </div>
-          </div>
-        );
+
+      // --- OTHERS ---
+      case 'NET':
+        return <NpcPanel />;
+      case 'LOGS':
+        return <MissionLogPanel />;
+      case 'DATA':
+        return <MarketPanel />; // Legacy fallback
+
       default:
         return (
           <div className="text-neutral-400 text-sm font-mono p-4">
-            Select a terminal from the right rail to initialize interface.
+            PANEL_OFFLINE: {id}
           </div>
         );
     }

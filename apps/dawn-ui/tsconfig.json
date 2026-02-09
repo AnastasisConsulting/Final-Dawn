@@ -18,10 +18,17 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "allowJs": true,
+    "resolveJsonModule": true,
     "jsx": "react-jsx",
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@eideus/class-skills": [
+        "../../packages/eideus_class_skills/src"
+      ],
+      "@eideus/class-skills/*": [
+        "../../packages/eideus_class_skills/src/*"
       ],
       "@eideus/universe-mapper": [
         "../../packages/eideus-universe-mapper/src"
@@ -43,6 +50,12 @@
       ],
       "eideus-combat": [
         "../../packages/eideus-combat/src"
+      ],
+      "eideus-routers": [
+        "../../packages/eideus-routers/src"
+      ],
+      "memory-viz": [
+        "../../apps/memory-viz/components/Visualizer.tsx"
       ]
     },
     "allowImportingTsExtensions": true,

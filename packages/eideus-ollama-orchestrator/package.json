@@ -20,6 +20,8 @@
     "cors": "^2.8.5",
     "eideus-affinity-system": "workspace:*",
     "eideus-memory-lattice-api": "workspace:*",
+    "eideus-universe-mapper": "workspace:*",
+    "eideus-world-bundle-binder": "workspace:*",
     "express": "^4.19.2"
   },
   "devDependencies": {

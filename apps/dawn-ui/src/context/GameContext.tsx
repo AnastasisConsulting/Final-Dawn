@@ -40,6 +40,7 @@ export interface GameState {
         sub: string | null;
         cross: string | null;
         master: string | null;
+        name?: string; // Player Name
     };
     ledger: XpLedger;
     inventory: Item[];
@@ -56,6 +57,7 @@ export interface GameState {
         maxHull: number;
         maxShield: number;
     };
+    credits: number; // Added credits to state
     settings: {
         autoSaveInterval: number;
         autoSaveEnabled: boolean;
@@ -76,10 +78,13 @@ export interface GameState {
         vizzy: number;
         navbot: number;
     };
+    quests: Record<string, any>; // Placeholder for quests
+    turnCount: number;
 }
 
 type Action =
     | { type: 'ADD_XP'; amount: number }
+    | { type: 'INCREMENT_TURN' }
     | { type: 'RECORD_KILL'; mode: LedgerMode; tier: LedgerTier; enemyTypeId: string; systemId: string }
     | { type: 'SET_IDENTITY'; core?: string; sub?: string; cross?: string }
     | { type: 'ADD_ITEM'; item: Item }
@@ -89,7 +94,6 @@ type Action =
     | { type: 'RECORD_COMBAT_RESULT'; win: boolean }
     | { type: 'LOAD_GAME'; state: GameState }
     | { type: 'BUY_ATTRIBUTE'; attribute: string; cost: number }
-    | { type: 'BUY_SKILL_LEVEL'; skill: string; cost: number }
     | { type: 'BUY_SKILL_LEVEL'; skill: string; cost: number }
     | { type: 'LEVEL_UP'; cost: number }
     | { type: 'UPGRADE_SHIP'; stat: 'weaponLevel' | 'armorLevel' | 'maxHull' | 'maxShield'; value?: number }
@@ -102,6 +106,7 @@ type Action =
 const initialState: GameState = {
     xp: 0,
     level: 1,
+    turnCount: 0,
     identity: {
         core: null,
         sub: null,
@@ -126,6 +131,7 @@ const initialState: GameState = {
         maxHull: 100,
         maxShield: 100
     },
+    credits: 1000,
     settings: {
         autoSaveInterval: 10,
         autoSaveEnabled: true,
@@ -145,13 +151,19 @@ const initialState: GameState = {
         lyra: 50,
         vizzy: 50,
         navbot: 50
-    }
+    },
+    quests: {}
 };
 
 // --- Reducer ---
 
 const gameReducer = (state: GameState, action: Action): GameState => {
     switch (action.type) {
+        case 'INCREMENT_TURN':
+            return {
+                ...state,
+                turnCount: (state.turnCount || 0) + 1
+            };
         case 'ADD_XP': {
             const newXp = state.xp + action.amount;
             const newLevel = calculateLevelFromXp(newXp);
@@ -345,6 +357,7 @@ const GameContext = createContext<{
     state: GameState;
     dispatch: React.Dispatch<Action>;
     actions: {
+        incrementTurn: () => void;
         gainXp: (amount: number) => void;
         recordKill: (mode: LedgerMode, tier: LedgerTier, enemyTypeId: string, systemId: string) => void;
         setIdentity: (core?: string, sub?: string, cross?: string) => void;
@@ -366,6 +379,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Helper actions for cleaner usage
     const actions = {
+        incrementTurn: () => dispatch({ type: 'INCREMENT_TURN' }),
         gainXp: (amount: number) => dispatch({ type: 'ADD_XP', amount }),
         recordKill: (mode: LedgerMode, tier: LedgerTier, enemyTypeId: string, systemId: string) =>
             dispatch({ type: 'RECORD_KILL', mode, tier, enemyTypeId, systemId }),

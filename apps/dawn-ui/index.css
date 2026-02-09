@@ -7,7 +7,9 @@
   color-scheme: dark;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -15,16 +17,33 @@ body {
   margin: 0;
 }
 
+/* Global Thin Scrollbar - Forced */
+::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 204, 0.5) !important;
+  border-radius: 2px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 204, 0.8) !important;
+}
+
 .scanline {
   width: 100%;
   height: 100px;
   z-index: 10;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 255, 255, 0.04) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient(0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 255, 255, 0.04) 50%,
+      rgba(0, 0, 0, 0) 100%);
   opacity: 0.1;
   position: absolute;
   bottom: 100%;
@@ -36,6 +55,7 @@ body {
   0% {
     bottom: 100%;
   }
+
   100% {
     bottom: -100px;
   }
@@ -78,18 +98,23 @@ body {
   0% {
     transform: skew(0deg);
   }
+
   20% {
     transform: skew(-10deg);
   }
+
   40% {
     transform: skew(10deg);
   }
+
   60% {
     transform: skew(-5deg);
   }
+
   80% {
     transform: skew(5deg);
   }
+
   100% {
     transform: skew(0deg);
   }
@@ -100,22 +125,27 @@ body {
     clip-path: inset(20% 0 80% 0);
     transform: translate(-4px, 0);
   }
+
   20% {
     clip-path: inset(60% 0 10% 0);
     transform: translate(4px, 0);
   }
+
   40% {
     clip-path: inset(40% 0 50% 0);
     transform: translate(-4px, 0);
   }
+
   60% {
     clip-path: inset(80% 0 5% 0);
     transform: translate(4px, 0);
   }
+
   80% {
     clip-path: inset(10% 0 60% 0);
     transform: translate(-4px, 0);
   }
+
   100% {
     clip-path: inset(30% 0 30% 0);
     transform: translate(4px, 0);
@@ -127,22 +157,27 @@ body {
     clip-path: inset(10% 0 60% 0);
     transform: translate(4px, 0);
   }
+
   20% {
     clip-path: inset(80% 0 5% 0);
     transform: translate(-4px, 0);
   }
+
   40% {
     clip-path: inset(30% 0 20% 0);
     transform: translate(4px, 0);
   }
+
   60% {
     clip-path: inset(10% 0 80% 0);
     transform: translate(-4px, 0);
   }
+
   80% {
     clip-path: inset(50% 0 30% 0);
     transform: translate(4px, 0);
   }
+
   100% {
     clip-path: inset(40% 0 40% 0);
     transform: translate(-4px, 0);

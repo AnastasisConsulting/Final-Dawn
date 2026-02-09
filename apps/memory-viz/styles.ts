@@ -96,12 +96,6 @@ export const getStyles = (embedded: boolean) => `
     cursor: pointer; color: #ccc; transition: all 0.2s; font-size: 14px;
   }
   .list-item:hover { border-color: #00ffcc; color: #fff; background: rgba(0, 255, 204, 0.05); }
-  .list-item.active { border-color: #00ffcc; background: rgba(0, 255, 204, 0.1); color: #fff; box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.1); }
-
-  .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-  .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #00ffcc; }
 
   /* Detail View Styles */
   .detail-view { display: flex; flex-direction: column; gap: 20px; animation: fadeIn 0.3s ease; }

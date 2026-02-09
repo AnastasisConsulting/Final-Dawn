@@ -1,10 +1,9 @@
-// memory-viz/ThreeScene.ts
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { ISceneState, SpatialKey, TemporalKey, StackData, FocusedLayerState, HoverState, HeroLayerData, CivSelection } from './types';
+import { ISceneState, SpatialKey, TemporalKey, StackData, FocusedLayerState, HoverState, HeroLayerData } from './types';
 import { CONFIG } from './config';
 import { createHighlightMesh, createHeroLayer, createVoxelGroup, initVoxelGrid, createInteractiveGrid } from './scene/objects';
 import { initStacks, updateLayout } from './scene/stacks';
@@ -16,12 +15,14 @@ export class ThreeScene implements ISceneState {
   onPanelUpdate?: (open: boolean, faceInfo: string, coords: string) => void;
   onSelectCallback?: (payload: any) => void;
   onLayerSelect?: (indices: { cube: number, stack: number, layer: number } | null) => void;
-  onCivSelect?: (civ: CivSelection | null) => void;
+  onCivSelect?: (civ: { name: string; id: string } | null) => void;
   onCivHover?: (civName: string | null) => void;
-  onVoxelSelect?: (index: number | null, civId: string) => void;
+  onVoxelSelect?: (index: number | null, layerId: string) => void;
   onStackHover?: (cubeIndex: number, stackIndex: number, layerIndex: number, active: boolean) => void;
   onExpand?: (expanded: boolean) => void;
-  gridHoverLabel?: (index: number, civId: string | null) => string | null;
+
+  // Changed from method to property to allow assignment
+  gridHoverLabel?: (index: number, civId: string) => string;
 
   currentSpatial: SpatialKey = { g: 1, s: 1, o: 1, c: 1, ct: 1, r: 1 };
   currentTemporal: TemporalKey = { saga: 1, book: 1, chapter: 1, page: 123456 };
@@ -47,9 +48,8 @@ export class ThreeScene implements ISceneState {
   selectedLayerId: string | null = null;
   selectedCivId: string | null = null;
   selectedVoxelIndex: number | null = null;
-  voxelHighlights: Set<number> = new Set();
 
-  spreadFactor = 0.0; targetSpread: number | null = null; opacityMultiplier = 1.0;
+  spreadFactor = 0.0; targetSpread: number | null = null; opacityMultiplier = 0.5;
 
   heroAnimProgress = 1.0; heroAnimStartPos = new THREE.Vector3(); heroAnimTargetPos = new THREE.Vector3();
   heroAnimStartRot = new THREE.Quaternion(); heroAnimTargetRot = new THREE.Quaternion();
@@ -64,11 +64,8 @@ export class ThreeScene implements ISceneState {
     if (initialSpatial) this.currentSpatial = { ...initialSpatial };
     if (initialTemporal) this.currentTemporal = { ...initialTemporal };
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'default' });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); this.renderer.setSize(container.clientWidth, container.clientHeight);
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.1;
+    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'high-performance' });
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); this.renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(this.renderer.domElement);
 
     this.scene = new THREE.Scene(); this.scene.fog = new THREE.FogExp2(0x000000, 0.02); this.scene.add(this.contentGroup);
@@ -76,8 +73,7 @@ export class ThreeScene implements ISceneState {
 
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    // Reduced Bloom Resolution for Performance
-    this.composer.addPass(new UnrealBloomPass(new THREE.Vector2(container.clientWidth / 2, container.clientHeight / 2), 1.5, 0.4, 0.98));
+    this.composer.addPass(new UnrealBloomPass(new THREE.Vector2(container.clientWidth, container.clientHeight), 1.5, 0.4, 0.85));
 
     this.highlightMesh = createHighlightMesh(); this.scene.add(this.highlightMesh);
     const hero = createHeroLayer(); this.heroGroup = hero.group; this.heroLayers = hero.layers; this.scene.add(this.heroGroup);
@@ -109,38 +105,33 @@ export class ThreeScene implements ISceneState {
     this.animate();
   }
 
-  setHeroCivs(civs: CivSelection[]) {
-    const fallback: CivSelection[] = [
-      { id: 'CIV_1', name: 'Civilization 1', index: 0 },
-      { id: 'CIV_2', name: 'Civilization 2', index: 1 },
-      { id: 'CIV_3', name: 'Civilization 3', index: 2 }
-    ];
-    const resolved = civs.length ? civs : fallback;
-    this.heroLayers.forEach((layer, idx) => {
-      const civ = resolved[idx] || resolved[0];
-      layer.civName = civ.name;
-      layer.civId = civ.id;
-      layer.civIndex = civ.index;
-    });
-  }
-
   startCameraAnim(targetPos: THREE.Vector3, targetLookAt: THREE.Vector3) {
     this.camAnim.active = true; this.camAnim.progress = 0;
     this.camAnim.startPos.copy(this.camera.position); this.camAnim.targetPos.copy(targetPos);
     this.camAnim.startTarget.copy(this.controls.target); this.camAnim.targetTarget.copy(targetLookAt);
   }
 
+  // Calculate an offset position and target to center the object in the remaining space (Window - Panel)
   getOffsetCameraState(targetPos: THREE.Vector3, targetLookAt: THREE.Vector3) {
     const width = this.container.clientWidth;
     const height = this.container.clientHeight;
     const PANEL_WIDTH = 350;
+
+    // We shift the camera RIGHT so the target object appears LEFT in the view.
+    // The amount to shift is exactly half the panel width.
+    // Explanation: 
+    // Screen Center = W/2. 
+    // Visual Center (left of panel) = (W - Panel)/2.
+    // Difference = W/2 - (W/2 - P/2) = P/2.
     const pixelShift = PANEL_WIDTH / 2;
 
     const forward = new THREE.Vector3().subVectors(targetLookAt, targetPos).normalize();
     let up = new THREE.Vector3(0, 1, 0);
+    // Correct up vector for top-down views
     if (Math.abs(forward.y) > 0.95) up.set(0, 0, -1);
 
     const right = new THREE.Vector3().crossVectors(forward, up).normalize();
+
     const dist = targetPos.distanceTo(targetLookAt);
     const fov = this.camera.fov * (Math.PI / 180);
     const aspect = width / height;
@@ -157,6 +148,7 @@ export class ThreeScene implements ISceneState {
     };
   }
 
+  // Level 0 -> Level 1 (Hero View)
   openHeroLayer(stackIndex: number, instanceId: number) {
     const stack = this.stacks[stackIndex];
     stack.mesh.getMatrixAt(instanceId, this.tempMatrix);
@@ -173,6 +165,7 @@ export class ThreeScene implements ISceneState {
 
     this.heroAnimTargetPos.set(0, 0, 0); this.heroAnimTargetRot.setFromEuler(new THREE.Euler(0, 0, 0));
 
+    // Panel opens. Use (8,6,8) for a nice isometric overview that fits comfortably
     const camState = this.getOffsetCameraState(new THREE.Vector3(8, 6, 8), new THREE.Vector3(0, 0, 0));
     this.startCameraAnim(camState.pos, camState.target);
 
@@ -193,37 +186,25 @@ export class ThreeScene implements ISceneState {
     if (this.onLayerSelect) this.onLayerSelect({ cube: cubeIndex, stack: stackSubIndex, layer: instanceId });
   }
 
+  // Level 1 -> Level 2 (Grid View)
   selectCivilization(layer: HeroLayerData) {
-    this.selectedCivId = layer.civId;
-
+    this.selectedCivId = layer.civName;
     this.heroLayers.forEach(l => {
-      l.group.visible = false;
+      if (l === layer) {
+        this.interactiveGrid.visible = true;
+        (this.interactiveGrid.material as THREE.MeshBasicMaterial).color.setHex(l.color);
+        this.interactiveGrid.position.copy(l.group.position);
+        this.interactiveGrid.position.y = 0;
+        l.group.visible = false;
+      } else {
+        l.group.visible = false;
+      }
     });
-
-    // CRITICAL FIX: Reset transformations to prevent visual desync in real browsers
-    this.heroGroup.position.set(0, 0, 0);
-    this.heroGroup.rotation.set(0, 0, 0);
-    this.heroGroup.scale.set(1, 1, 1);
-    this.heroGroup.updateMatrixWorld(true);
-
-    this.interactiveGrid.visible = true;
-    this.interactiveGrid.position.set(0, 0, 0);
-    this.interactiveGrid.scale.set(1, 1, 1);
-
-    const gridMat = this.interactiveGrid.material as THREE.MeshBasicMaterial;
-    gridMat.color.setHex(0xffffff);
-    gridMat.transparent = false;
-    gridMat.opacity = 1.0;
-    gridMat.blending = THREE.NormalBlending;
-    gridMat.depthTest = true;
-    gridMat.depthWrite = true;
-    gridMat.needsUpdate = true;
-
-    // Center view on origin with panel offset
-    const camState = this.getOffsetCameraState(new THREE.Vector3(0, 6, 0.05), new THREE.Vector3(0, 0, 0));
+    // Panel Open. Zoom in top-down.
+    const camState = this.getOffsetCameraState(new THREE.Vector3(0, 4.2, 0), new THREE.Vector3(0, 0, 0.5));
     this.startCameraAnim(camState.pos, camState.target);
 
-    if (this.onCivSelect) this.onCivSelect({ id: layer.civId, name: layer.civName, index: layer.civIndex });
+    if (this.onCivSelect) this.onCivSelect({ name: layer.civName, id: layer.id });
   }
 
   exitCivilization() {
@@ -234,12 +215,14 @@ export class ThreeScene implements ISceneState {
       l.group.position.y = l.originalY;
       l.group.scale.set(1, 1, 1);
     });
+    // Return to Level 1
     const camState = this.getOffsetCameraState(new THREE.Vector3(8, 6, 8), new THREE.Vector3(0, 0, 0));
     this.startCameraAnim(camState.pos, camState.target);
 
     if (this.onCivSelect) this.onCivSelect(null);
   }
 
+  // Level 2 -> Level 3 (Voxel Detail)
   selectVoxel(index: number) {
     this.selectedVoxelIndex = index;
     const size = CONFIG.gridSize;
@@ -248,17 +231,12 @@ export class ThreeScene implements ISceneState {
     const half = size / 2;
     const offset = step / 2;
     const dummy = new THREE.Object3D();
-
-    let targetX = 0, targetZ = 0;
     let i = 0;
     for (let z = 0; z < res; z++) {
       for (let x = 0; x < res; x++) {
-        const posX = -half + x * step + offset;
-        const posZ = -half + z * step + offset;
         if (i === index) {
-          dummy.position.set(posX, 0, posZ);
+          dummy.position.set(-half + x * step + offset, 0, -half + z * step + offset);
           dummy.scale.set(1, 1, 1);
-          targetX = posX; targetZ = posZ;
         } else {
           dummy.position.set(0, 0, 0);
           dummy.scale.set(0, 0, 0);
@@ -268,8 +246,12 @@ export class ThreeScene implements ISceneState {
       }
     }
     this.interactiveGrid.instanceMatrix.needsUpdate = true;
+    const row = Math.floor(index / res);
+    const col = index % res;
+    const vX = -half + col * step + offset;
+    const vZ = -half + row * step + offset;
 
-    const camState = this.getOffsetCameraState(new THREE.Vector3(targetX, 4, targetZ + 1), new THREE.Vector3(targetX, 0, targetZ));
+    const camState = this.getOffsetCameraState(new THREE.Vector3(vX, 4, vZ + 2), new THREE.Vector3(vX, 0, vZ));
     this.startCameraAnim(camState.pos, camState.target);
 
     if (this.onVoxelSelect && this.selectedCivId) this.onVoxelSelect(index, this.selectedCivId);
@@ -294,12 +276,15 @@ export class ThreeScene implements ISceneState {
       }
     }
     this.interactiveGrid.instanceMatrix.needsUpdate = true;
-    const camState = this.getOffsetCameraState(new THREE.Vector3(0, 6, 0.05), new THREE.Vector3(0, 0, 0));
+
+    // Return to Grid View
+    const camState = this.getOffsetCameraState(new THREE.Vector3(0, 4.2, 0), new THREE.Vector3(0, 0, 0.5));
     this.startCameraAnim(camState.pos, camState.target);
 
     if (this.onVoxelSelect && this.selectedCivId) this.onVoxelSelect(null, this.selectedCivId);
   }
 
+  // Level 1 -> Level 0
   closeHeroLayer(toVoxelFocus = false) {
     if (!this.focusedState) return;
     this.isClosingToVoxel = toVoxelFocus;
@@ -336,93 +321,25 @@ export class ThreeScene implements ISceneState {
       this.heroGroup.visible = false; this.focusedState = null;
     } else this.contentGroup.visible = false;
   }
-
   activateVoxelFocus(pt: THREE.Vector3) { }
   resetVoxelFocus() { }
   selectFace(i: number, n: THREE.Vector3) { }
   closePanel() { }
   updateVoxelFaces() { }
-
-  setGridCellColors(cells: any[] | null, palette: Record<string, number>, fallbackColor = 0xffffff) {
-    if (!this.interactiveGrid.instanceColor) return;
-    const color = new THREE.Color();
-    const res = CONFIG.gridResolution;
-    for (let i = 0; i < res * res; i++) {
-      let hex = fallbackColor;
-      if (cells) {
-        const x = i % res;
-        const y = Math.floor(i / res);
-        const cell = cells.find((c) => c.x === x && c.y === y);
-        if (cell && palette[cell.type]) { hex = palette[cell.type]; }
-      }
-      color.setHex(hex);
-
-      // Memory highlight overlay
-      if (this.voxelHighlights.has(i)) {
-        color.offsetHSL(0, 0, 0.3);
-        color.lerp(new THREE.Color(0x00ffcc), 0.4);
-      }
-
-      this.interactiveGrid.setColorAt(i, color);
-    }
-    this.interactiveGrid.instanceColor.needsUpdate = true;
-  }
-
-  setGridHeightColors(heightmap: number[], gradient: { stop: number; color: number }[], fallbackColor = 0xffffff) {
-    if (!this.interactiveGrid.instanceColor) return;
-    const color = new THREE.Color();
-    const res = CONFIG.gridResolution;
-    const total = res * res;
-    for (let i = 0; i < total; i++) {
-      const h = heightmap[i];
-      if (typeof h !== 'number') {
-        color.setHex(fallbackColor);
-        this.interactiveGrid.setColorAt(i, color);
-        continue;
-      }
-      const clamped = Math.min(1, Math.max(0, h));
-      let lower = gradient[0], upper = gradient[gradient.length - 1];
-      for (let g = 0; g < gradient.length - 1; g++) {
-        if (clamped >= gradient[g].stop && clamped <= gradient[g + 1].stop) {
-          lower = gradient[g]; upper = gradient[g + 1]; break;
-        }
-      }
-      const t = upper.stop === lower.stop ? 0 : (clamped - lower.stop) / (upper.stop - lower.stop);
-      const lowerColor = new THREE.Color(lower.color), upperColor = new THREE.Color(upper.color);
-      color.copy(lowerColor).lerp(upperColor, t);
-
-      // Memory highlight overlay
-      if (this.voxelHighlights.has(i)) {
-        color.offsetHSL(0, 0, 0.3);
-        color.lerp(new THREE.Color(0x00ffcc), 0.4);
-      }
-
-      this.interactiveGrid.setColorAt(i, color);
-    }
-    this.interactiveGrid.instanceColor.needsUpdate = true;
-  }
-
-  setVoxelHighlights(indices: number[]) {
-    this.voxelHighlights = new Set(indices);
-    // Trigger redraw by re-applying current colors
-    // This is a bit hacky but works since we don't store base colors separately
-    // Ideally we would trigger a refresh from the Visualizer
-  }
-
   onResize = () => { if (this.container) { const w = this.container.clientWidth, h = this.container.clientHeight; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.composer.setSize(w, h); } };
-  animate = () => {
-    this.animationFrameId = requestAnimationFrame(this.animate);
-    if (this.container.clientWidth === 0 || this.container.clientHeight === 0) return;
-    animateScene(this, this.clock.getDelta(), this.clock.getElapsedTime());
-  };
+  animate = () => { this.animationFrameId = requestAnimationFrame(this.animate); animateScene(this, this.clock.getDelta(), this.clock.getElapsedTime()); };
 
   toggleExpand() {
     if (!this.focusedState) {
       const expanding = Math.round(this.spreadFactor) === 0;
       this.targetSpread = expanding ? 1.0 : 0.0;
       if (this.onExpand) this.onExpand(expanding);
+
+      // Animate Camera
       if (expanding) {
-        const camState = this.getOffsetCameraState(new THREE.Vector3(0, 12, 55), new THREE.Vector3(0, 2.5, 0));
+        // Linear layout is wide (approx 54 units). Pull back camera to Z=90.
+        // Center at Y=0 now that stacks are flat.
+        const camState = this.getOffsetCameraState(new THREE.Vector3(0, 10, 60), new THREE.Vector3(0, 0, 0));
         this.startCameraAnim(camState.pos, camState.target);
       } else {
         this.startCameraAnim(new THREE.Vector3(0, 12, 55), new THREE.Vector3(0, 0, 0));
@@ -430,5 +347,12 @@ export class ThreeScene implements ISceneState {
     }
   }
 
-  dispose() { cancelAnimationFrame(this.animationFrameId); this.renderer.dispose(); this.composer.dispose(); if (this.container && this.renderer.domElement) { this.container.removeChild(this.renderer.domElement); } }
+  // Stubs for missing methods expected by Visualizer
+  setVoxelHighlights(highlights: any[]) { }
+  setHeroCivs(civs: any[]) { }
+  setGridHeightColors(colors: any[], gradient: any[], baseColor: number) { }
+  setGridCellColors(colors: any[], palette: any, defaultColor: number) { }
+  // Removed gridHoverLabel stub because it's now a property
+
+  dispose() { cancelAnimationFrame(this.animationFrameId); this.renderer.dispose(); }
 }

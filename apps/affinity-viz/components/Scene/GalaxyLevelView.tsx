@@ -63,7 +63,7 @@ export const GalaxyLevelView: React.FC<GalaxyLevelProps> = ({ galaxy, onSelectSy
     <group>
       <ambientLight intensity={0.2} />
       {galaxy.systems.map((sys, i) => (
-        <SystemStar 
+        <SystemStar
           key={sys.id}
           system={sys}
           index={i}
@@ -96,18 +96,18 @@ const SystemStar: React.FC<{
 
   // Position
   const position = useMemo(() => {
-    const seed = galaxyId.split('').reduce((a,c) => a+c.charCodeAt(0),0) + index * 50;
+    const seed = galaxyId.split('').reduce((a, c) => a + c.charCodeAt(0), 0) + index * 50;
     const rng = (offset: number) => {
-        const x = Math.sin(seed + offset) * 10000;
-        return x - Math.floor(x);
+      const x = Math.sin(seed + offset) * 10000;
+      return x - Math.floor(x);
     };
     const angle = rng(1) * Math.PI * 2;
-    const radius = 15 + rng(2) * 25; 
-    const y = (rng(3) - 0.5) * 12; 
-    
+    const radius = 15 + rng(2) * 25;
+    const y = (rng(3) - 0.5) * 12;
+
     if (total <= 3) {
-        const safeAngle = (index / total) * Math.PI * 2 + (rng(4) * 0.5);
-        return new Vector3(Math.cos(safeAngle) * 20, y, Math.sin(safeAngle) * 20);
+      const safeAngle = (index / total) * Math.PI * 2 + (rng(4) * 0.5);
+      return new Vector3(Math.cos(safeAngle) * 20, y, Math.sin(safeAngle) * 20);
     }
     return new Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
   }, [galaxyId, index, total]);
@@ -129,89 +129,89 @@ const SystemStar: React.FC<{
 
   return (
     <group position={position}>
-        {/* Click Hitbox */}
-        <mesh
-            onClick={(e) => { e.stopPropagation(); onSelect(); }}
-            onPointerOver={() => setHover(true)}
-            onPointerOut={() => setHover(false)}
-            visible={false}
-        >
-            <sphereGeometry args={[4, 16, 16]} />
-            <meshBasicMaterial />
-        </mesh>
+      {/* Click Hitbox */}
+      <mesh
+        onClick={(e) => { e.stopPropagation(); onSelect(); }}
+        onPointerOver={() => setHover(true)}
+        onPointerOut={() => setHover(false)}
+        visible={false}
+      >
+        <sphereGeometry args={[4, 16, 16]} />
+        <meshBasicMaterial />
+      </mesh>
 
-        {/* Star Glow */}
-        <mesh ref={meshRef}>
-            <planeGeometry args={[2, 2]} />
-            <meshBasicMaterial 
-                map={texture} 
-                color={starColor} 
-                transparent 
-                opacity={hovered ? 1 : 0.8} 
-                blending={AdditiveBlending} 
-                depthWrite={false}
-            />
-        </mesh>
+      {/* Star Glow */}
+      <mesh ref={meshRef}>
+        <planeGeometry args={[2, 2]} />
+        <meshBasicMaterial
+          map={texture}
+          color={starColor}
+          transparent
+          opacity={hovered ? 1 : 0.8}
+          blending={AdditiveBlending}
+          depthWrite={false}
+        />
+      </mesh>
 
-        {/* High-Fidelity HUD - Screen Space */}
-        <Html 
-            position={[5, 0, 0]} 
-            transform={false}
-            zIndexRange={[100, 0]} 
-            style={{ 
-                pointerEvents: 'none',
-                opacity: hovered ? 1 : 0.4,
-                transition: 'all 0.2s ease-out'
-            }}
-        >
-            <div className={`
+      {/* High-Fidelity HUD - Screen Space */}
+      <Html
+        position={[5, 0, 0]}
+        transform={false}
+        zIndexRange={[100, 0]}
+        style={{
+          pointerEvents: 'none',
+          opacity: hovered ? 1 : 0.4,
+          transition: 'all 0.2s ease-out'
+        }}
+      >
+        <div className={`
                 flex items-center gap-3
                 ${hovered ? 'scale-100 translate-x-2' : 'scale-90 opacity-60'}
                 transition-all duration-300
             `}>
-                 <div className="w-12 h-[1px] bg-white/50" />
-                 
-                 <div className="bg-black/80 backdrop-blur-md border border-white/20 p-4 rounded min-w-[300px] shadow-2xl text-white font-mono">
-                    <div className="flex justify-between items-start border-b border-white/10 pb-2 mb-3">
-                        <div>
-                            <div className="text-xl font-bold uppercase tracking-wider">{system.name}</div>
-                            <div className="text-xs text-slate-400">CLASS: {system.starType.toUpperCase()}</div>
-                        </div>
-                        <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: starColor.getStyle() }} />
-                    </div>
+          <div className="w-12 h-[1px] bg-white/50" />
 
-                    <div className="space-y-3">
-                        <SystemStat label="Population Density" value={stats.pop} color="bg-cyan-400" />
-                        <SystemStat label="Resource Richness" value={stats.res} color="bg-yellow-400" />
-                        <SystemStat label="Hazard Level" value={stats.haz} color="bg-red-500" />
-                    </div>
-                 </div>
+          <div className="bg-black/80 backdrop-blur-md border border-white/20 p-4 rounded min-w-[300px] shadow-2xl text-white font-mono">
+            <div className="flex justify-between items-start border-b border-white/10 pb-2 mb-3">
+              <div>
+                <div className="text-xl font-bold uppercase tracking-wider">{system.name}</div>
+                <div className="text-xs text-slate-400">CLASS: {system.starType.toUpperCase()}</div>
+              </div>
+              <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: starColor.getStyle() }} />
             </div>
-        </Html>
 
-        {/* 3D Label */}
-        <Billboard follow={true}>
-            <Text
-                position={[0, 4, 0]}
-                fontSize={1.5}
-                color={hovered ? "white" : "#aaa"}
-                anchorY="bottom"
-                outlineWidth={0.1}
-                outlineColor="black"
-            >
-                {system.name.toUpperCase()}
-            </Text>
-        </Billboard>
+            <div className="space-y-3">
+              <SystemStat label="Population Density" value={stats.pop} color="bg-cyan-400" />
+              <SystemStat label="Resource Richness" value={stats.res} color="bg-yellow-400" />
+              <SystemStat label="Hazard Level" value={stats.haz} color="bg-red-500" />
+            </div>
+          </div>
+        </div>
+      </Html>
+
+      {/* 3D Label */}
+      <Billboard follow={true}>
+        <Text
+          position={[0, 4, 0]}
+          fontSize={1.5}
+          color={hovered ? "white" : "#aaa"}
+          anchorY="bottom"
+          outlineWidth={0.1}
+          outlineColor="black"
+        >
+          {system.name.toUpperCase()}
+        </Text>
+      </Billboard>
     </group>
   );
 };
 
 const SystemStat: React.FC<{ label: string, value: number, color: string }> = ({ label, value, color }) => (
-    <div className="flex items-center gap-2 text-xs">
-        <div className="w-24 text-slate-400 uppercase">{label}</div>
-        <div className="flex-1 h-1.5 bg-slate-800 rounded-full">
-            <div style={{ width: `${value}%` }} className={`h-full rounded-full ${color} shadow-[0_0_8px_currentColor]`} />
-        </div>
-        <div className="w-8 text-right font-bold">{value}%</div>
+  <div className="flex items-center gap-2 text-xs">
+    <div className="w-24 text-slate-400 uppercase">{label}</div>
+    <div className="flex-1 h-1.5 bg-slate-800 rounded-full">
+      <div style={{ width: `${value}%` }} className={`h-full rounded-full ${color} shadow-[0_0_8px_currentColor]`} />
     </div>
+    <div className="w-8 text-right font-bold">{value}%</div>
+  </div>
 );

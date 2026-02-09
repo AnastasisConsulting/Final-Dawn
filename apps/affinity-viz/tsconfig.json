@@ -9,10 +9,11 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "skipLibCheck": true,
     "types": [
-      "node"
+      "@react-three/fiber",
+      "three"
     ],
+    "skipLibCheck": true,
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -25,5 +26,13 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "global.d.ts",
+    "types.ts",
+    "components/**/*.tsx",
+    "index.tsx",
+    "App.tsx",
+    "vite.config.ts"
+  ]
 }

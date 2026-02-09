@@ -1,7 +1,7 @@
 import { BinderOutputs, NavNodeBinding, EntityBinding, QuestBinding, BootstrapVoxel } from "./types.js";
 import { parseExactSpatialFromId, parsePlaceTagFromId, mkLoreKey, uniq, manhattan } from "./parse.js";
 
-type Inputs = { lorebook: any; sectorMap: any; quests: any; sourceSeed: any };
+type Inputs = { lorebook: any; sectorMap: any; quests: any; sourceSeed: any; acts?: any[] };
 
 function getWorldId(lorebook: any): string {
   if (typeof lorebook?.world_id === "string") return lorebook.world_id;
@@ -250,22 +250,36 @@ function collectEntities(worldId: string, lorebook: any, navBindings: NavNodeBin
   return dedup;
 }
 
-function collectQuestBindings(worldId: string, quests: any, warnings: string[]): QuestBinding[] {
+function collectQuestBindings(worldId: string, quests: any, acts: any[], warnings: string[]): QuestBinding[] {
   const out: QuestBinding[] = [];
-  const questsArr = Array.isArray(quests?.quests) ? quests.quests : Array.isArray(quests) ? quests : [];
-
   const NPC_ID_RE = /G\d+-S\d+-O\d+-C\d+-CT\d+-R\d+-NPC/gi;
 
-  for (const q of questsArr) {
-    const questId = String(q?.id ?? q?.quest_id ?? q?.name ?? "");
-    if (!questId) continue;
+  // Helper to process a single quest object (from quests.json)
+  const processQuest = (q: any, affinityPath?: string) => {
+    const questId = String(q?.id ?? q?.quest_id ?? q?.title ?? "");
+    if (!questId) return;
 
-    const blob = JSON.stringify(q);
-    const npcIds = uniq(blob.match(NPC_ID_RE) ?? []);
+    // Extract NPC IDs from cast object (giver, contact, target)
+    const npcIds: string[] = [];
+    const cast = q?.cast;
+    if (cast) {
+      if (cast.giver?.id) npcIds.push(cast.giver.id);
+      if (cast.contact?.id) npcIds.push(cast.contact.id);
+      if (cast.target?.id) npcIds.push(cast.target.id);
+    }
+
+    // Fallback: scan entire quest JSON for NPC ID patterns
+    if (npcIds.length === 0) {
+      const blob = JSON.stringify(q);
+      const matched = blob.match(NPC_ID_RE) ?? [];
+      npcIds.push(...matched);
+    }
+
+    const uniqueNpcIds = uniq(npcIds);
     const spatialTargets1: any[] = [];
     const spatialTargets0: any[] = [];
 
-    for (const id of npcIds) {
+    for (const id of uniqueNpcIds) {
       const parsed = parseExactSpatialFromId(id);
       if (parsed) {
         spatialTargets1.push(parsed.k1);
@@ -277,14 +291,112 @@ function collectQuestBindings(worldId: string, quests: any, warnings: string[]):
       worldId,
       questId,
       title: q?.title ?? q?.name ?? null,
-      npcIds,
+      npcIds: uniqueNpcIds,
       spatialTargets1,
       spatialTargets0,
-      tags: uniq([`world:${worldId}`, `quest:${questId}`, ...npcIds.map((x: string) => `entity:${x}`)]),
+      tags: uniq([
+        `world:${worldId}`,
+        `quest:${questId}`,
+        ...(affinityPath ? [`affinity:${affinityPath}`] : []),
+        ...uniqueNpcIds.map((x: string) => `entity:${x}`),
+      ]),
     });
+  };
+
+  // Format 1: paths.STR/DEX/INT.campaign_outline.quests (campaign-based format)
+  if (quests?.paths) {
+    for (const [affinity, pathData] of Object.entries(quests.paths as Record<string, any>)) {
+      const questsArr = pathData?.campaign_outline?.quests;
+      if (Array.isArray(questsArr)) {
+        for (const q of questsArr) {
+          processQuest(q, affinity);
+        }
+      }
+    }
   }
 
-  if (out.length === 0) warnings.push("No quests found in quests.json (expected quests[] or array root).");
+  // Format 2: quests[] array at root or quests.quests[]
+  const flatQuestsArr = Array.isArray(quests?.quests) ? quests.quests : Array.isArray(quests) ? quests : [];
+  for (const q of flatQuestsArr) {
+    processQuest(q);
+  }
+
+  // Format 3: Act JSON files (act1-7.json) with paths[].chapters[] structure
+  for (const actData of acts) {
+    const actId = actData?.act?.id ?? "UNKNOWN_ACT";
+    const actWorldId = actData?.act?.world_id ?? worldId;
+    const paths = actData?.paths ?? [];
+
+    for (const path of paths) {
+      const attribute = path?.attribute ?? path?.id; // STR/DEX/INT
+      const chapters = path?.chapters ?? [];
+
+      for (const chapter of chapters) {
+        const chapterNum = chapter?.chapter ?? 0;
+        const title = chapter?.title ?? `Chapter ${chapterNum}`;
+        const mission = chapter?.mission ?? "";
+        const objectives = chapter?.objectives ?? [];
+        const keyCast = chapter?.key_cast;
+
+        // Extract NPC IDs from key_cast
+        const npcIds: string[] = [];
+        const keyCastData: any = {};
+
+        if (keyCast?.giver?.npc_key) {
+          npcIds.push(keyCast.giver.npc_key);
+          keyCastData.giver = { name: keyCast.giver.name, npcKey: keyCast.giver.npc_key, role: keyCast.giver.role };
+        }
+        if (keyCast?.intermediary?.npc_key) {
+          npcIds.push(keyCast.intermediary.npc_key);
+          keyCastData.intermediary = { name: keyCast.intermediary.name, npcKey: keyCast.intermediary.npc_key, role: keyCast.intermediary.role };
+        }
+        if (keyCast?.closer?.npc_key) {
+          npcIds.push(keyCast.closer.npc_key);
+          keyCastData.closer = { name: keyCast.closer.name, npcKey: keyCast.closer.npc_key, role: keyCast.closer.role };
+        }
+
+        const uniqueNpcIds = uniq(npcIds);
+        const spatialTargets1: any[] = [];
+        const spatialTargets0: any[] = [];
+
+        for (const id of uniqueNpcIds) {
+          const parsed = parseExactSpatialFromId(id);
+          if (parsed) {
+            spatialTargets1.push(parsed.k1);
+            spatialTargets0.push(parsed.k0);
+          }
+        }
+
+        const questId = `${actId}_${attribute}_CH${chapterNum}`;
+
+        out.push({
+          worldId: actWorldId,
+          questId,
+          title,
+          npcIds: uniqueNpcIds,
+          spatialTargets1,
+          spatialTargets0,
+          tags: uniq([
+            `world:${actWorldId}`,
+            `act:${actId}`,
+            `chapter:${chapterNum}`,
+            `affinity:${attribute}`,
+            `quest:${questId}`,
+            ...uniqueNpcIds.map((x: string) => `entity:${x}`),
+          ]),
+          // Extended act fields
+          actId,
+          chapter: chapterNum,
+          mission,
+          objectives,
+          attribute,
+          keyCast: Object.keys(keyCastData).length > 0 ? keyCastData : undefined,
+        });
+      }
+    }
+  }
+
+  if (out.length === 0) warnings.push("No quests found in quests.json or act files.");
   return out;
 }
 
@@ -338,7 +450,7 @@ export function bindWorldBundle(inputs: Inputs): BinderOutputs {
 
   const nav_bindings = bindNavNodes(worldId, inputs.lorebook, inputs.sectorMap, warnings);
   const entity_index = collectEntities(worldId, inputs.lorebook, nav_bindings, warnings);
-  const quest_bindings = collectQuestBindings(worldId, inputs.quests, warnings);
+  const quest_bindings = collectQuestBindings(worldId, inputs.quests, inputs.acts ?? [], warnings);
   const bootstrap_voxels = buildBootstrapVoxels(worldId, nav_bindings, entity_index, warnings);
 
   return { worldId, generatedAtUnixMs: Date.now(), warnings, nav_bindings, entity_index, quest_bindings, bootstrap_voxels };

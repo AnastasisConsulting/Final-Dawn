@@ -1,6 +1,6 @@
-import { CoordinateMapper } from "../../eideus-universe-mapper/dist/coordinateMapper.js";
-import { bindWorldBundle } from "../../eideus-world-bundle-binder/dist/binder.js";
-import { resolveDominantAffinity } from "../../eideus-affinity-system/dist/affinity/llm.js";
+import { CoordinateMapper } from "eideus-universe-mapper";
+import { bindWorldBundle } from "eideus-world-bundle-binder";
+import { resolveDominantAffinity } from "eideus-affinity-system";
 import { parseSpatialKey } from "eideus-memory-lattice-api";
 
 export type IngestResult = {
@@ -34,8 +34,10 @@ export class WorldLoader {
 
     // Force start at City 1
     const startNode = bundle.nav_bindings.find(
-      (nb) => nb.civIndex === targetCiv?.index && nb.label.includes("City 1")
+      (nb: any) => nb.civIndex === targetCiv?.index && (nb.label.includes("City 1") || nb.label.includes("CT1"))
     ) || bundle.nav_bindings[0];
+
+    console.log(`[WorldLoader] Landing Target: ${startNode?.spatialKey1 ?? "UNKNOWN"} (Affinity: ${playerBucket?.dominant})`);
 
     // Populate Stateless Caches
     const worldCaches = {
@@ -44,11 +46,11 @@ export class WorldLoader {
       quests: new Map<string, any>()
     };
 
-    bundle.nav_bindings.forEach(nb => {
+    bundle.nav_bindings.forEach((nb: any) => {
       worldCaches.lore.set(nb.loreKey, { label: nb.label, tags: nb.tags, kind: nb.nodeKind });
     });
 
-    bundle.entity_index.forEach(ent => {
+    bundle.entity_index.forEach((ent: any) => {
       worldCaches.cast.set(ent.entityId, {
         name: ent.name,
         role: ent.role,
@@ -57,8 +59,8 @@ export class WorldLoader {
       });
     });
 
-    bundle.quest_bindings.forEach(q => {
-      q.npcIds.forEach(npcId => {
+    bundle.quest_bindings.forEach((q: any) => {
+      q.npcIds.forEach((npcId: string) => {
         if (!worldCaches.quests.has(npcId)) worldCaches.quests.set(npcId, []);
         worldCaches.quests.get(npcId).push({ title: q.title, id: q.questId, tags: q.tags });
       });

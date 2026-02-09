@@ -2,7 +2,7 @@ export enum ViewLevel {
   UNIVERSE = 'UNIVERSE',
   GALAXY = 'GALAXY',
   SYSTEM = 'SYSTEM',
-  PLANET = 'PLANET', 
+  PLANET = 'PLANET',
   SURFACE = 'SURFACE',
   CITY = 'CITY',
   DISTRICT = 'DISTRICT'
@@ -11,6 +11,7 @@ export enum ViewLevel {
 export interface EntityBase {
   id: string;
   name: string;
+  type: string;
   description: string;
   coordinates: string;
   lore?: any; // To attach the rich JSON data
@@ -35,7 +36,7 @@ export interface Civilization extends EntityBase {
 export interface Planet extends EntityBase {
   type: 'planet';
   biome: string;
-  surfaceData: Civilization[]; 
+  surfaceData: Civilization[];
 }
 
 export interface StarSystem extends EntityBase {

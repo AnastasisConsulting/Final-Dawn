@@ -14,7 +14,7 @@ export class Market {
   public readonly name: string;
   public readonly type: MarketType;
   public readonly currency: Currency;
-  private readonly inventory: MarketItem[];
+  public readonly inventory: MarketItem[]; // Changed to public
   private readonly priceMod: number;
   private readonly sellMod: number;
   private readonly illegalTypes?: string[];
@@ -28,6 +28,15 @@ export class Market {
     this.sellMod = options.sellMod ?? 0.5;
     this.illegalTypes = options.illegalTypes;
     this.currency = options.currency ?? 'CrypC';
+  }
+
+  // Getter for modifiers
+  public get modifiers() {
+    return {
+      priceMod: this.priceMod,
+      sellMod: this.sellMod,
+      illegalTypes: this.illegalTypes
+    };
   }
 
   private hydrate(itemKey: string): Item | null {

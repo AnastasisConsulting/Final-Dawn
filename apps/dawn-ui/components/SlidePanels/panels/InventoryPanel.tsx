@@ -23,7 +23,7 @@ export const InventoryPanel: React.FC = () => {
     const itemCategories: FilterCategory[] = ['All', 'WEAPON', 'ARMOR', 'RESOURCE', 'consumable'];
 
     // Placeholder currency (could be added to GameState)
-    const crypCredits = 3200;
+    // Placeholder currency (could be added to GameState)
     const slag = 12;
 
     return (
@@ -31,7 +31,7 @@ export const InventoryPanel: React.FC = () => {
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold text-green-300 sci-fi-glow uppercase">Inventory</h2>
                 <div className="bg-gray-900/50 border border-green-500/30 px-4 py-2 text-right">
-                    <p className="text-lg font-bold text-green-200">{crypCredits.toLocaleString()} <span className="text-xs text-gray-400">CrypC</span></p>
+                    <p className="text-lg font-bold text-green-200">{(state.credits || 0).toLocaleString()} <span className="text-xs text-gray-400">CrypC</span></p>
                     <p className="text-sm font-bold text-orange-300">{slag.toLocaleString()} <span className="text-xs text-gray-400">Slag</span></p>
                 </div>
             </div>

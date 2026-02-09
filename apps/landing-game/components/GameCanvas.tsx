@@ -1,6 +1,8 @@
+// landing-game/components/GameCanvas.tsx
+
 /**
  * Game Canvas - Atmospheric Entry Scene
- * Completely redesigned with 5-phase atmospheric entry physics
+ * Redesigned with 5-phase atmospheric entry physics and corrected landing logic.
  */
 
 import React, { Suspense, useRef, useState, useEffect, useMemo } from 'react';
@@ -17,7 +19,6 @@ import { ReentryEffects } from '../effects/reentryEffects';
 import { WeatherSystem, WeatherType } from '../weather/weatherSystem';
 import { generateMegaCity, findNearestLandingPad, isInLandingClearance, MegaCity, LandingPad } from '../generation/cityGenerator';
 import { LandingPadIndicator, NavigationArrow } from './Navigation/WaypointSystem';
-import { NavigationHUD } from './Navigation/NavigationHUD';
 import { AutoLandingController } from '../systems/autoLanding';
 import { LandingGear, TouchdownEffects, AutopilotHUD } from '../effects/landingEffects';
 import { GuidanceRibbon } from './Navigation/GuidanceRibbon';
@@ -36,12 +37,12 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
     new AtmosphericPhysics(landingContext?.ship?.position?.y || 100000)
   );
 
-  // Ship velocity
+  // Calibrated initial velocity: Lower vertical drop to prevent instant landing
   const velocityRef = useRef(
     new THREE.Vector3(
       landingContext?.ship?.velocity?.x || 0,
-      landingContext?.ship?.velocity?.y || -50,
-      landingContext?.ship?.velocity?.z || 0
+      landingContext?.ship?.velocity?.y || -5, // Slower initial drop
+      landingContext?.ship?.velocity?.z || -50 // Forward momentum
     )
   );
 
@@ -54,12 +55,9 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
 
   // Track target landing pad
   const [targetPad, setTargetPad] = useState<LandingPad | null>(null);
-  const [inLandingClearance, setInLandingClearance] = useState(false);
-
-  // Auto-landing controller
-  const autoLandingRef = useRef<AutoLandingController | null>(null);
   const [autoLandingState, setAutoLandingState] = useState<any>(null);
   const [touchdownActive, setTouchdownActive] = useState(false);
+  const autoLandingRef = useRef<AutoLandingController | null>(null);
 
   const [atmosphericState, setAtmosphericState] = useState(physicsRef.current.getState());
   const [integrity, setIntegrity] = useState(landingContext?.ship?.health || 100);
@@ -89,24 +87,21 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
 
     // Find nearest landing pad when approaching
     if (atmState.altitude < 5000 && !targetPad) {
-      const nearest = findNearestLandingPad(shipRef.current.position, city);
-      setTargetPad(nearest);
+      setTargetPad(findNearestLandingPad(shipRef.current.position, city));
     }
 
-    // Check landing clearance and activate auto-landing
+    // Check landing clearance for Autopilot takeover
     if (targetPad) {
       const clearance = isInLandingClearance(
         shipRef.current.position,
         velocityRef.current,
         targetPad
       );
-      setInLandingClearance(clearance);
 
       // Activate auto-landing when in clearance
       if (clearance && !autoLandingRef.current) {
         autoLandingRef.current = new AutoLandingController(targetPad.position);
         autoLandingRef.current.activate(shipRef.current.position);
-        console.log('[Landing Game] Auto-landing activated');
       }
     }
 
@@ -133,14 +128,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
       }
     }
 
-    // Get turbulence shake (Disabled to prevent camera conflict)
-
-    // Heat damage
-    if (physicsRef.current.isOverheating()) {
-      const damage = physicsRef.current.getHeatDamage() * delta;
-      setIntegrity((prev) => Math.max(0, prev - damage));
-    }
-
     // Update game phase based on atmospheric phase
     const atmPhase = atmState.phase;
     if (atmPhase === AtmosphericPhase.LOW_ORBIT && phase !== GamePhase.ORBIT) {
@@ -152,8 +139,13 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
       phase !== GamePhase.FLIGHT
     ) {
       setPhase(GamePhase.FLIGHT);
-    } else if (atmPhase === AtmosphericPhase.APPROACH && atmState.altitude < 1000) {
-      setPhase(GamePhase.LANDED);
+    }
+    // Hard-coded LANDED trigger based purely on altitude removed
+
+    // Heat damage
+    if (physicsRef.current.isOverheating()) {
+      const damage = physicsRef.current.getHeatDamage() * delta;
+      setIntegrity((prev) => Math.max(0, prev - damage));
     }
 
     // Crash condition
@@ -181,11 +173,8 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         return '#1a0a00';
       case AtmosphericPhase.VIOLENT_ENTRY:
         return '#3a1000';
-      case AtmosphericPhase.ATMOSPHERE:
-      case AtmosphericPhase.APPROACH:
-        return '#87CEEB';
       default:
-        return '#000000';
+        return '#87CEEB';
     }
   };
 
@@ -193,49 +182,39 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
     <>
       <color attach="background" args={[getBackgroundColor()]} />
 
-      {/* Lighting */}
       <ambientLight intensity={0.6} />
       <directionalLight position={[50, 100, 20]} intensity={2.0} castShadow />
 
-      {/* Stars (visible in space) */}
       {atmosphericState.altitude > 50000 && (
         <Stars radius={20000} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} />
       )}
 
-      {/* Sky (visible in atmosphere) */}
       {atmosphericState.altitude < 30000 && (
         <Sky sunPosition={[10, 10, 10]} turbidity={8} rayleigh={3} />
       )}
 
-      {/* Weather System */}
       <WeatherSystem
         type={getWeatherType()}
         intensity={atmosphericState.turbulence}
         altitude={atmosphericState.altitude}
       />
 
-      {/* Ship Group */}
       <group ref={shipRef}>
         <PerspectiveCamera ref={cameraRef} makeDefault fov={85} near={0.01} far={50000} />
 
-        {/* Reentry Effects */}
         <ReentryEffects
           heat={atmosphericState.heat}
           speed={atmosphericState.speed}
           phase={atmosphericState.phase}
         />
 
-        {/* Spaceship Model */}
         <Spaceship />
 
-        {/* Landing Gear */}
         <LandingGear deployed={autoLandingState?.gearDeployed || false} />
       </group>
 
-      {/* Planet Surface */}
       <Planet />
 
-      {/* Touchdown Effects */}
       {touchdownActive && targetPad && (
         <TouchdownEffects
           active={touchdownActive}
@@ -243,7 +222,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         />
       )}
 
-      {/* Landing Pads */}
       {targetPad && atmosphericState.altitude < 10000 && (
         <LandingPadIndicator
           position={targetPad.position}
@@ -253,7 +231,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         />
       )}
 
-      {/* Guidance Ribbon - luminescent path to landing pad */}
       {targetPad && shipRef.current && atmosphericState.altitude < 5000 && !autoLandingState?.active && (
         <GuidanceRibbon
           startPosition={shipRef.current.position}
@@ -263,7 +240,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         />
       )}
 
-      {/* Navigation Arrow (when far from target) */}
       {targetPad && shipRef.current && atmosphericState.altitude > 1000 && !autoLandingState?.active && (
         <NavigationArrow
           targetDirection={targetPad.position.clone().sub(shipRef.current.position)}
@@ -271,7 +247,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         />
       )}
 
-      {/* Autopilot HUD */}
       {autoLandingState?.active && (
         <AutopilotHUD
           phase={autoLandingState.phase}
@@ -280,7 +255,6 @@ const AtmosphericEntryScene: React.FC<SceneProps> = ({ landingContext }) => {
         />
       )}
 
-      {/* Sound Effects */}
       <SoundManager />
     </>
   );

@@ -1,9 +1,7 @@
-// Final_Dawn_of_Eideus/apps/dawn-ui/components/Layout/MainGrid.tsx
-
 import React, { useEffect, useMemo, useState } from 'react';
-import { LeftPanel } from '../Panels/LeftPanel';
 import { CenterPanel } from '../Panels/CenterPanel';
 import { RightPanel } from '../Panels/RightPanel';
+import { LeftDock } from '../Panels/LeftDock';
 import { SlidePanel } from '../SlidePanels/SlidePanel';
 import { PanelContent } from '../SlidePanels/PanelContent';
 import { useKernel } from '../../hooks/useKernel';
@@ -19,65 +17,80 @@ interface MainGridProps {
         openingScene: string;
     } | null;
     onClearLandingPayload?: () => void;
+    // Props passed through to CenterPanel
+    activeChatTarget: 'navbot' | 'vizzy' | 'lyra';
+    setActiveChatTarget: (t: 'navbot' | 'vizzy' | 'lyra') => void;
+    chatInjection?: any;
 }
 
-export const MainGrid: React.FC<MainGridProps> = ({ onFlightMode, landingPayload, onClearLandingPayload }) => {
+export const MainGrid: React.FC<MainGridProps> = ({
+    onFlightMode,
+    landingPayload,
+    onClearLandingPayload,
+    activeChatTarget,
+    setActiveChatTarget,
+    chatInjection
+}) => {
     const { state } = useKernel();
     const isWarping = state.isWarping;
 
-    const [activePanel, setActivePanel] = useState<string | null>(null);
-    const [activeChatTarget, setActiveChatTarget] = useState<'navbot' | 'vizzy' | 'lyra'>('navbot');
-    const [focusedPanel, setFocusedPanel] = useState<'left' | 'right' | null>(null);
+    // Independent interaction states for Left and Right docks
+    const [activeLeftPanel, setActiveLeftPanel] = useState<string | null>(null);
+    const [activeRightPanel, setActiveRightPanel] = useState<string | null>(null);
+
+    // Hover/Focus states for visual feedback
     const [hoveredPanel, setHoveredPanel] = useState<'left' | 'right' | null>(null);
 
-    const chatInjection = useMemo(() => {
-        if (!landingPayload) return null;
-        return {
-            id: landingPayload.id,
-            targetName: landingPayload.targetName,
-            targetAddress: landingPayload.targetAddress,
-            landingNarration: landingPayload.landingNarration,
-            openingScene: landingPayload.openingScene,
-        };
-    }, [landingPayload]);
-
+    // Chat Injection Logic (preserved from previous implementation)
     useEffect(() => {
         if (!landingPayload) return;
-        setActivePanel(null);
-        setFocusedPanel(null);
-        setActiveChatTarget('lyra');
+        // Close panels on landing
+        setActiveLeftPanel(null);
+        setActiveRightPanel(null);
 
         const t = window.setTimeout(() => onClearLandingPayload?.(), 50);
         return () => window.clearTimeout(t);
     }, [landingPayload, onClearLandingPayload]);
 
-    const handlePanelSelect = (panelId: string) => {
-        setActivePanel(prev => prev === panelId ? null : panelId);
-        setFocusedPanel('right');
+    // Handlers
+    const handleLeftPanelSelect = (panelId: string) => {
+        // Warp Handoff: Trigger Flight Mode directly instead of opening a panel
+        if (panelId === 'FLIGHT') {
+            onFlightMode();
+            return;
+        }
+
+        setActiveLeftPanel(prev => prev === panelId ? null : panelId);
+        // Mutual Exclusion: Close right panel when opening left
+        if (panelId !== activeLeftPanel) {
+            setActiveRightPanel(null);
+        }
+    };
+
+    const handleRightPanelSelect = (panelId: string) => {
+        setActiveRightPanel(prev => prev === panelId ? null : panelId);
+        // Mutual Exclusion: Close left panel when opening right
+        if (panelId !== activeRightPanel) {
+            setActiveLeftPanel(null);
+        }
     };
 
     const handleBackgroundClick = () => {
-        setFocusedPanel(null);
+        // Optional: Click background to close panels?
+        // setActiveLeftPanel(null);
+        // setActiveRightPanel(null);
     };
 
-    /**
-     * BAY DOOR ANIMATION LOGIC:
-     * When isWarping is true (triggered by the button press), panels open outward.
-     * Left panel pivots on its left edge to swing away from the center.
-     * Right panel pivots on its right edge to swing away from the center.
-     * Center chat panel fades out and recedes.
-     */
-    const getLeftTransform = () => {
-        if (isWarping) return 'rotateY(-110deg) translateX(-100%)';
-        if (focusedPanel === 'left' || hoveredPanel === 'left') return 'rotateY(0deg)';
-        return 'rotateY(12deg)';
+    // WARP ANIMATION STYLES
+
+    const getLeftDockTransform = () => {
+        if (isWarping) return 'translateX(-200%)';
+        return 'translateX(0)';
     };
 
-    const getRightTransform = () => {
-        if (isWarping) return 'rotateY(110deg) translateX(100%)';
-        const isActive = focusedPanel === 'right' || hoveredPanel === 'right';
-        if (isActive) return 'rotateY(-5deg) translateX(0)';
-        return 'rotateY(-88deg) translateX(10%)';
+    const getRightDockTransform = () => {
+        if (isWarping) return 'translateX(200%)';
+        return 'translateX(0)';
     };
 
     const getCenterStyle = (): React.CSSProperties => {
@@ -86,77 +99,98 @@ export const MainGrid: React.FC<MainGridProps> = ({ onFlightMode, landingPayload
                 transform: 'scale(0.8) translateZ(-800px)',
                 opacity: 0,
                 filter: 'blur(10px)',
-                transition: 'all 4000ms cubic-bezier(0.4, 0, 0.2, 1)'
+                transition: 'all 2000ms cubic-bezier(0.4, 0, 0.2, 1)'
             };
         }
         return {
             transform: 'translateZ(0)',
-            opacity: activePanel ? 0.1 : 1,
-            filter: activePanel ? 'blur(4px)' : 'none',
+            opacity: 1,
+            filter: 'none',
             transition: 'all 1500ms cubic-bezier(0.4, 0, 0.2, 1)'
         };
     };
 
     return (
         <div
-            className="relative flex flex-row w-full h-full justify-between items-center px-[1%] gap-[1%]"
+            className="relative flex flex-row w-full h-full max-h-full overflow-hidden"
             style={{ perspective: '1600px' }}
             onClick={handleBackgroundClick}
         >
-            {/* Left Panel: Opens like a bay door */}
-            <div
-                className="w-[25%] h-full relative z-10 transition-all duration-[4000ms] cubic-bezier(0.4, 0, 0.2, 1)"
-                style={{
-                    visibility: 'hidden', // HIDDEN PER USER REQUEST (Preserves layout)
-                    transform: getLeftTransform(),
-                    transformStyle: 'preserve-3d',
-                    transformOrigin: 'center left'
-                }}
-                data-panel-trigger="true"
-                onMouseEnter={() => !isWarping && setHoveredPanel('left')}
-                onMouseLeave={() => setHoveredPanel(null)}
-                onClick={(e) => { e.stopPropagation(); !isWarping && setFocusedPanel('left'); }}
-            >
-                <LeftPanel onTargetSelect={(t) => { setActiveChatTarget(t); setFocusedPanel('left'); }} />
-            </div>
-
-            {/* Center Panel: Fades and recedes */}
-            <div
-                className="w-[55%] h-full relative z-10"
-                data-panel-trigger="true"
-                style={getCenterStyle()}
-                onClick={(e) => { e.stopPropagation(); setFocusedPanel(null); }}
-            >
-                <CenterPanel activeTarget={activeChatTarget} onTargetSelect={setActiveChatTarget} injection={chatInjection} />
-            </div>
-
-            {/* Slide Panel Overlay */}
-            <SlidePanel
-                isOpen={!!activePanel && !isWarping}
-                title={activePanel || ''}
-                onClose={() => setActivePanel(null)}
-            >
-                <PanelContent panelId={activePanel} onFlightMode={onFlightMode} />
-            </SlidePanel>
-
-            {/* Right Panel: Opens like a bay door */}
-            <div
-                className="w-[5%] h-full relative z-30"
-                data-panel-trigger="true"
-                onMouseEnter={() => !isWarping && setHoveredPanel('right')}
-                onMouseLeave={() => setHoveredPanel(null)}
-                onClick={(e) => { e.stopPropagation(); !isWarping && setFocusedPanel('right'); }}
-            >
+            {/* --- LEFT ZONE (25%) --- */}
+            <div className="w-1/4 h-full relative flex flex-row z-30">
+                {/* DOCK (20% of 25% = 5% screen width) */}
                 <div
-                    className="w-full h-full transition-all duration-[4000ms] cubic-bezier(0.4, 0, 0.2, 1) will-change-transform"
-                    style={{
-                        transform: getRightTransform(),
-                        transformStyle: 'preserve-3d',
-                        transformOrigin: 'center right',
-                        opacity: isWarping ? 0 : ((focusedPanel === 'right' || hoveredPanel === 'right') ? 1 : 0.6)
-                    }}
+                    className="w-[20%] h-full relative z-30"
+                    onMouseEnter={() => !isWarping && setHoveredPanel('left')}
+                    onMouseLeave={() => setHoveredPanel(null)}
                 >
-                    <RightPanel activePanel={activePanel} onPanelSelect={handlePanelSelect} />
+                    <div
+                        className="w-full h-full transition-all duration-[2000ms] cubic-bezier(0.4, 0, 0.2, 1) will-change-transform"
+                        style={{
+                            transform: getLeftDockTransform(),
+                            opacity: isWarping ? 0 : 1
+                        }}
+                    >
+                        <LeftDock activePanel={activeLeftPanel} onPanelSelect={handleLeftPanelSelect} />
+                    </div>
+                </div>
+
+                {/* PANEL AREA (80% of 25% = 20% screen width) */}
+                <div className="w-[80%] h-full relative z-20 pointer-events-none">
+                    <SlidePanel
+                        isOpen={!!activeLeftPanel && !isWarping}
+                        title={activeLeftPanel || ''}
+                        onClose={() => setActiveLeftPanel(null)}
+                        side="left"
+                        layout="flex"
+                    >
+                        <PanelContent panelId={activeLeftPanel} onFlightMode={onFlightMode} onPanelChange={handleLeftPanelSelect} />
+                    </SlidePanel>
+                </div>
+            </div>
+
+            {/* --- CENTER ZONE (50%) --- */}
+            <div
+                className="w-1/2 h-full relative z-10 px-2"
+                style={getCenterStyle()}
+            >
+                <CenterPanel
+                    activeTarget={activeChatTarget}
+                    onTargetSelect={setActiveChatTarget}
+                    injection={chatInjection}
+                />
+            </div>
+
+            {/* --- RIGHT ZONE (25%) --- */}
+            <div className="w-1/4 h-full relative flex flex-row-reverse z-30">
+                {/* DOCK (20% of 25% = 5% screen width) */}
+                <div
+                    className="w-[20%] h-full relative z-30"
+                    onMouseEnter={() => !isWarping && setHoveredPanel('right')}
+                    onMouseLeave={() => setHoveredPanel(null)}
+                >
+                    <div
+                        className="w-full h-full transition-all duration-[2000ms] cubic-bezier(0.4, 0, 0.2, 1) will-change-transform"
+                        style={{
+                            transform: getRightDockTransform(),
+                            opacity: isWarping ? 0 : 1
+                        }}
+                    >
+                        <RightPanel activePanel={activeRightPanel} onPanelSelect={handleRightPanelSelect} />
+                    </div>
+                </div>
+
+                {/* PANEL AREA (80% of 25% = 20% screen width) */}
+                <div className="w-[80%] h-full relative z-20 pointer-events-none">
+                    <SlidePanel
+                        isOpen={!!activeRightPanel && !isWarping}
+                        title={activeRightPanel || ''}
+                        onClose={() => setActiveRightPanel(null)}
+                        side="right"
+                        layout="flex"
+                    >
+                        <PanelContent panelId={activeRightPanel} onFlightMode={onFlightMode} onPanelChange={handleRightPanelSelect} />
+                    </SlidePanel>
                 </div>
             </div>
         </div>

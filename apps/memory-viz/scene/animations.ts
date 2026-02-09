@@ -88,9 +88,8 @@ export function animateScene(s: ISceneState, delta: number, elapsedTime: number)
     }
     
     const pulse = 0.5 + Math.sin(elapsedTime * CONFIG.pulseSpeed) * 0.5;
-    const visibilityBoost = s.spreadFactor > 0.05 ? 1.4 : 1.0;
-    s.wireframeMaterials.forEach(m => m.opacity = CONFIG.baseWireOpacity * s.opacityMultiplier * visibilityBoost * (0.8 + 0.4 * pulse));
-    s.fillMaterials.forEach(m => m.opacity = Math.min(CONFIG.baseFillOpacity * (s.opacityMultiplier * 2.0) * visibilityBoost, 0.9));
+    s.wireframeMaterials.forEach(m => m.opacity = CONFIG.baseWireOpacity * s.opacityMultiplier * (0.8 + 0.4 * pulse));
+    s.fillMaterials.forEach(m => m.opacity = Math.min(CONFIG.baseFillOpacity * (s.opacityMultiplier * 2.0), 0.8));
   }
   s.composer.render();
 }

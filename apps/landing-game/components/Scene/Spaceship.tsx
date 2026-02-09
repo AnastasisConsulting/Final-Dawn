@@ -352,7 +352,7 @@ export const Spaceship: React.FC = () => {
       <RibbonGuide
         shipPosition={shipRef.current?.position || new Vector3(0, 2500, 0)}
         targetPosition={landingPadVec}
-        active={phase !== GamePhase.ORBIT && !isLanded}
+        active={phase !== GamePhase.ORBIT && phase !== GamePhase.LANDED}
       />
     </group>
   );

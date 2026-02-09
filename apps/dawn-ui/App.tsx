@@ -12,11 +12,12 @@ import { useKernel } from './hooks/useKernel';
 import { useLandingPrep } from './hooks/useLandingPrep';
 import { useGame } from './src/context/GameContext';
 import { useAutoSave } from './src/hooks/useAutoSave';
-import masterIndex from './src/world/master_locations_index.json';
+import { getDirectory } from 'eideus-routers';
 import { PersistenceService } from './src/services/PersistenceService';
 import { FeederDock } from './components/Panels/FeederDock';
 import { vizzyOrchestrator } from './src/services/VizzyOrchestrator';
 import { ColorStealingProvider } from './src/contexts/ColorStealingContext';
+import { SimProvider } from './src/context/SimContext';
 
 type FlightState = 'idle' | 'retracting' | 'warping' | 'flying';
 
@@ -53,6 +54,7 @@ const App: React.FC = () => {
   const [landingPayload, setLandingPayload] = useState<LandingPayload | null>(null);
   const [showLandingGame, setShowLandingGame] = useState(false);
   const [landingContext, setLandingContext] = useState<LandingContext | null>(null);
+  const [activeChatTarget, setActiveChatTarget] = useState<'navbot' | 'vizzy' | 'lyra'>('navbot'); // Lifted state
 
   const timersRef = useRef<number[]>([]);
 
@@ -73,10 +75,11 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!landingPrep?.targetId) return;
-    const registry = (masterIndex as any).registry;
-    const entry = registry?.[landingPrep.targetId];
-    if (!entry) return;
-    const dirParts = String(entry.directory || '').split('/').filter(Boolean);
+
+    const directory = getDirectory(landingPrep.targetId);
+    if (!directory) return;
+
+    const dirParts = directory.split('/').filter(Boolean);
     if (dirParts.length < 3) return;
     const [galaxy, system, object] = dirParts;
     loadWorldAssets(landingPrep.targetId, galaxy, system, object);
@@ -256,6 +259,10 @@ const App: React.FC = () => {
 
   const isUIActive = flightState === 'idle' && !showLandingGame;
 
+  // Dev Overlay Toggle
+  const [showDevOverlay, setShowDevOverlay] = useState(false);
+  const toggleDevOverlay = () => setShowDevOverlay(prev => !prev);
+
   const dawnUi = (
     <div
       className="flex flex-col h-screen w-screen bg-[#020202] text-cyan-50 select-none overflow-hidden relative"
@@ -286,10 +293,13 @@ const App: React.FC = () => {
         </button>
       </div>
 
-      {/* DEV COMMANDS OVERLAY (TEMP) */}
-      <div className="fixed bottom-24 left-8 z-[200] pointer-events-none font-mono text-[10px] text-cyan-300 opacity-70">
-        <div className="bg-black/40 backdrop-blur-sm p-4 rounded border border-cyan-900/30 shadow-lg">
-          <h3 className="font-bold text-cyan-100 mb-2 border-b border-cyan-800 pb-1">DEV PROTOCOLS</h3>
+      {/* DEV COMMANDS OVERLAY (TOGGLEABLE) */}
+      <div className={`fixed bottom-24 left-8 z-[200] pointer-events-none font-mono text-[10px] text-cyan-300 transition-opacity duration-300 ${showDevOverlay ? 'opacity-90' : 'opacity-0'}`}>
+        <div className="bg-black/80 backdrop-blur-sm p-4 rounded border border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+          <h3 className="font-bold text-cyan-100 mb-2 border-b border-cyan-800 pb-1 flex justify-between">
+            <span>DEV PROTOCOLS</span>
+            <span className="text-xs">v0.9.4</span>
+          </h3>
           <ul className="space-y-1">
             <li><span className="text-yellow-400">/beta-test [CLS] [AFF]</span> : Auto-Pilot</li>
             <li><span className="text-yellow-400">/stop-bot</span> : Terminate Auto-Pilot</li>
@@ -314,7 +324,7 @@ const App: React.FC = () => {
           pointerEvents: isUIActive ? 'auto' : 'none'
         }}
       >
-        <FeederDock />
+        {/* FeederDock REMOVED */}
 
         {/* Header: Tilts up and away */}
         <div
@@ -325,12 +335,15 @@ const App: React.FC = () => {
             opacity: flightState !== 'idle' ? 0 : 1
           }}
         >
-          <Header onLaunchFlight={initiateWarpSequence} />
+          <Header onLaunchFlight={initiateWarpSequence} onToggleDev={toggleDevOverlay} />
         </div>
 
         <main className="flex-1 overflow-visible relative w-full h-full box-border transform-style-3d">
           <MainGrid
             onFlightMode={initiateWarpSequence}
+            activeChatTarget={activeChatTarget} // Passed through
+            setActiveChatTarget={setActiveChatTarget} // Passed through
+            chatInjection={null}
           />
         </main>
 
@@ -354,7 +367,9 @@ const App: React.FC = () => {
       {/* UI Layer: Fades out as the zoom finishes */}
       <div className={`h-full w-full transition-opacity duration-1000 ${!isUIActive ? 'opacity-0' : 'opacity-100'}`}>
         <ColorStealingProvider>
-          {dawnUi}
+          <SimProvider>
+            {dawnUi}
+          </SimProvider>
         </ColorStealingProvider>
       </div>
 
@@ -387,7 +402,7 @@ const App: React.FC = () => {
               gameActions.gainXp(50);
             }}
             onEnemyDestroyed={(tier, enemyId) => {
-              gameActions.recordKill('FLIGHT', tier, enemyId, state.address.full || 'G1-S1');
+              gameActions.recordKill('FLIGHT', tier as any, enemyId, state.address.full || 'G1-S1');
             }}
             onStoryXpAwarded={(amount) => {
               gameActions.gainXp(amount);

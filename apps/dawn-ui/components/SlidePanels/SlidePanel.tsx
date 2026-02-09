@@ -6,21 +6,39 @@ interface SlidePanelProps {
   title: string;
   onClose: () => void;
   children?: React.ReactNode;
+  side?: 'left' | 'right';
+  layout?: 'fixed' | 'flex';
 }
 
-export const SlidePanel: React.FC<SlidePanelProps> = ({ isOpen, title, onClose, children }) => {
+export const SlidePanel: React.FC<SlidePanelProps> = ({ isOpen, title, onClose, children, side = 'right', layout = 'fixed' }) => {
+  const isFlex = layout === 'flex';
+
+  // Fixed Global Positioning (Old)
+  const fixedClasses = side === 'left'
+    ? 'left-[calc(5%+1%)] right-[auto] w-[30%] origin-left'
+    : 'right-[calc(5%+1%)] left-[auto] w-[30%] origin-right';
+
+  // Flexible Container Positioning (New)
+  // We use w-[350%] to make the panel 3.5x wider than its 20% container.
+  // Both sides must use absolute positioning to ignore parent's flow direction and anchor correctly.
+  const flexBase = 'h-full pointer-events-auto transition-all duration-300';
+  const flexLeft = 'absolute top-0 left-0 w-[350%]';
+  const flexRight = 'absolute top-0 right-0 w-[350%]';
+
+  const flexClasses = isFlex
+    ? (side === 'left' ? `${flexBase} ${flexLeft}` : `${flexBase} ${flexRight}`)
+    : '';
+
+  const positionClasses = isFlex ? flexClasses : fixedClasses;
+
+  const translateClass = side === 'left' ? '-translate-x-full' : 'translate-x-full';
+
   return (
     <div
       className={`
-        absolute top-0 bottom-0
-        /*
-          The main grid uses: px-[4%] gap-[2%] and the left panel is w-[25%].
-          When the slide panel opens, it should fill ALL space to the right of the left panel
-          (i.e., flush against the left panel's right edge), and run to the far right edge.
-        */
-        left-[calc(4%+25%)] right-0
+        ${isFlex ? '' : 'absolute top-0 bottom-0'} ${positionClasses}
         z-20 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
-        ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'}
+        ${isOpen ? 'translate-x-0 opacity-100' : `${translateClass} opacity-0 pointer-events-none`}
       `}
     >
       <PanelFrame

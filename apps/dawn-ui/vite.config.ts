@@ -158,7 +158,8 @@ export default defineConfig(({ mode }) => {
           path.resolve(__dirname, '../landing-game'),
           path.resolve(__dirname, '../../packages'),
           path.resolve(__dirname, '../..'),
-          path.resolve(__dirname, '../../Galaxies_Folder')
+          path.resolve(__dirname, '../../Galaxies_Folder'),
+          path.resolve(__dirname, '../../Memories_Folder')
         ],
       },
     },
@@ -285,6 +286,24 @@ export default defineConfig(({ mode }) => {
             }
           });
         }
+      },
+      {
+        name: 'serve-memories-folder',
+        configureServer(server) {
+          server.middlewares.use('/api/memories', (req, res, next) => {
+            if (!req.url) return next();
+            // The client will request e.g. /api/memories/MEM-123.json
+            // We map this to project_root/Memories_Folder/MEM-123.json
+            const filePath = path.join(__dirname, '../../Memories_Folder', req.url);
+            if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+              res.setHeader('Content-Type', 'application/json');
+              res.end(fs.readFileSync(filePath));
+            } else {
+              // If file not found, next() to let Vite handle 404 or fallback
+              next();
+            }
+          });
+        }
       }
     ],
     define: {
@@ -295,13 +314,19 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': path.resolve(__dirname, '.'),
 
+        '@eideus/class-skills': path.resolve(__dirname, '../../packages/eideus_class_skills/src'),
         '@eideus/universe-mapper': path.resolve(__dirname, '../../packages/eideus-universe-mapper/src'),
         '@eideus/world-bundle-binder': path.resolve(__dirname, '../../packages/eideus-world-bundle-binder/src'),
         'eideus-bestiary': path.resolve(__dirname, '../../packages/eideus-bestiary/src'),
         'eideus-xp-system': path.resolve(__dirname, '../../packages/eideus-xp-system/src'),
-        'eideus-combat': path.resolve(__dirname, '../../packages/eideus-combat/src')
+        'eideus-combat': path.resolve(__dirname, '../../packages/eideus-combat/src'),
+        'eideus-routers': path.resolve(__dirname, '../../packages/eideus-routers/src'),
+        'memory-viz': path.resolve(__dirname, '../../apps/memory-viz/Visualizer.tsx')
       },
       dedupe: ['react', 'react-dom', '@react-three/fiber', '@react-three/drei', 'three']
+    },
+    optimizeDeps: {
+      exclude: ['memory-viz']
     }
   };
 });

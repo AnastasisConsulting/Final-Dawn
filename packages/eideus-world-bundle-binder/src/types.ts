@@ -42,6 +42,17 @@ export type QuestBinding = {
   spatialTargets1: SpatialKey1[];
   spatialTargets0: SpatialKey0[];
   tags: string[];
+  // Extended fields from act JSON files
+  actId?: string;
+  chapter?: number;
+  mission?: string;
+  objectives?: string[];
+  attribute?: string; // STR/DEX/INT path
+  keyCast?: {
+    giver?: { name: string; npcKey: string; role: string };
+    intermediary?: { name: string; npcKey: string; role: string };
+    closer?: { name: string; npcKey: string; role: string };
+  };
 };
 
 export type BootstrapVoxel = {

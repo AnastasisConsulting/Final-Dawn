@@ -84,7 +84,14 @@ graph TD
 ### Prerequisites
 -   **Node.js**: v20 or higher.
 -   **PNPM**: `npm install -g pnpm`
+-   **Ollama**: Required for local AI inference.
+    -   Install from [ollama.com](https://ollama.com/).
+    -   Pull default models: `ollama pull llama3` and `ollama pull nomic-embed-text`.
 -   **Hardware**: A dedicated GPU is recommended for `Vizzy` and `landing-game` (WebGL).
+
+### System Architecture
+
+For a deep dive into the code structure, monorepo layout, and AI orchestration, please see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
 ### Installation
 

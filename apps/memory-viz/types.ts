@@ -5,31 +5,6 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 export type SpatialKey = { g: number; s: number; o: number; c: number; ct: number; r: number };
 export type TemporalKey = { saga: number; book: number; chapter: number; page: number };
 
-export interface EntityCard {
-  id: string;
-  name: string;
-  class?: string;
-  aliases?: string[];
-  meta?: Record<string, unknown>;
-}
-
-export type VoxelFaces = {
-  "x+": string; // summed input
-  "x-": string; // summed output
-  "y+": number[][]; // up to 7 embeddings
-  "y-": string[]; // up to 7 tags
-  "z+": EntityCard[]; // entities present
-  "z-": string; // lorekey
-};
-
-export interface MemoryVoxel {
-  id: string;
-  spatial: SpatialKey;
-  temporal: TemporalKey;
-  faces: VoxelFaces;
-  createdAtUnixMs: number;
-}
-
 export interface MemoryVizRootProps {
   embedded?: boolean;
   initialSpatial?: SpatialKey;
@@ -41,6 +16,7 @@ export interface MemoryVizRootProps {
     latestAtLocation: (args: any) => Promise<any>;
     directSpatialSlice: (args: any) => Promise<any>;
   };
+  hierarchyData?: any[];
 }
 
 export interface StackData {
@@ -52,6 +28,7 @@ export interface StackData {
   targetPos: THREE.Vector3;
   startRot: THREE.Euler;
   targetRot: THREE.Euler;
+  initialMatrices?: THREE.Matrix4[];
 }
 
 export interface FocusedLayerState {
@@ -76,61 +53,54 @@ export interface HeroLayerData {
   id: string;
   originalY: number;
   civName: string;
-  civId: string;
-  civIndex: number;
 }
 
 export interface SectorMapCell {
   x: number;
   y: number;
   type: string;
-  meta?: Record<string, unknown>;
 }
 
 export interface SectorMapNode {
-  id: string;
-  kind: string;
   x: number;
   y: number;
-  ownerCityId?: string | null;
-  tags?: string[];
+  id: string;
+  kind: string;
+  ownerCityId?: string;
 }
 
 export interface SectorMapCivilization {
   civId: string;
   index: number;
-  seed: string;
-  grid: {
-    cells: SectorMapCell[];
-  };
-  nodes?: SectorMapNode[];
+  grid: { cells: SectorMapCell[] };
+  nodes: SectorMapNode[];
 }
 
 export interface SectorMap {
-  version: string;
   worldId: string;
-  gridSize: number;
   civilizations: SectorMapCivilization[];
 }
 
-export interface CivSelection {
-  id: string;
-  name: string;
-  index: number;
-}
-
-export interface TopographyCivilization {
-  civId: string;
-  seed: string;
-  heightmap: number[];
-}
-
-export interface TopographySet {
+export type TopographySet = {
   version: string;
   worldId: string;
   gridSize: number;
-  civs: TopographyCivilization[];
+  civs: { civId: string; seed: string; heightmap: number[] }[];
+};
+
+export interface MemoryVoxel {
+  id: string;
+  spatial: { g: number; s: number; o: number; c: number; ct: number; r: number };
+  temporal: { saga: number; book: number; chapter: number; page: number };
+  faces: Record<string, string>;
+  createdAtUnixMs?: number;
 }
+
+export type CivSelection = {
+  id: string;
+  name: string;
+  index: number;
+};
 
 export interface ISceneState {
   container: HTMLElement;
@@ -222,14 +192,16 @@ export interface ISceneState {
   onPanelUpdate?: (open: boolean, faceInfo: string, coords: string) => void;
   onSelectCallback?: (payload: any) => void;
   onLayerSelect?: (indices: { cube: number, stack: number, layer: number } | null) => void;
-  onCivSelect?: (civ: CivSelection | null) => void;
+  onCivSelect?: (civ: { name: string; id: string } | null) => void;
   onCivHover?: (civName: string | null) => void;
-  onVoxelSelect?: (index: number | null, civId: string) => void;
+  onVoxelSelect?: (index: number | null, layerId: string) => void;
   onStackHover?: (cubeIndex: number, stackIndex: number, layerIndex: number, active: boolean) => void;
   onExpand?: (expanded: boolean) => void;
 
-  gridHoverLabel?: (index: number, civId: string | null) => string | null;
-  setGridCellColors?: (cells: SectorMapCell[] | null, palette: Record<string, number>, fallbackColor?: number) => void;
-  setGridHeightColors?: (heightmap: number[], gradient: { stop: number; color: number }[], fallbackColor?: number) => void;
-  setVoxelHighlights: (indices: number[]) => void;
+  // Visualizer compatibility
+  setVoxelHighlights(highlights: any[]): void;
+  setHeroCivs(civs: any[]): void;
+  setGridHeightColors(heights: number[], gradient: any[], baseColor: number): void;
+  setGridCellColors(cells: any[], palette: any, defaultColor: number): void;
+  gridHoverLabel?: (index: number, civId: string) => string;
 }

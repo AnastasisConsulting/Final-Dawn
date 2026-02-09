@@ -104,40 +104,40 @@ const generateCiv = (parentId: string, index: number): Civilization => ({
   cities: Array.from({ length: 3 }, (_, i) => generateCity(`${parentId}_c${index}`, i)),
 });
 
-const generatePlanets = (sysId: string, planetNames: string[]): Planet[] => 
+const generatePlanets = (sysId: string, planetNames: string[]): Planet[] =>
   planetNames.map((name, i) => {
     // Use 1-based indexing for Objects to match O1, O2...
     const planetId = `${sysId}-O${i + 1}`;
-    
+
     // Check if we have specific lore data for this planet (specifically S-11 Drill)
     let surfaceData;
     if (planetId === 'G1-S1-O1') {
-       surfaceData = LORE_DATA.civilizations.map((civ, cIdx) => ({
-           id: `${planetId}_c${cIdx}`,
-           name: civ.name,
-           description: civ.summary,
-           coordinates: `${planetId}_c${cIdx}`,
-           type: 'civilization',
-           archetype: civ.attribute_key as 'STR' | 'INT' | 'DEX',
-           cities: civ.cities.map((city, ctIdx) => ({
-               id: `${planetId}_c${cIdx}-ct${ctIdx}`,
-               name: city.name,
-               description: `Governed by ${city.governor.name}. ${city.governor.title}.`,
-               coordinates: `${planetId}_c${cIdx}-ct${ctIdx}`,
-               type: 'urban',
-               districts: city.districts.map((dist, rIdx) => ({
-                   id: `${planetId}_c${cIdx}-ct${ctIdx}-r${rIdx}`,
-                   name: dist.name,
-                   description: dist.description || 'Restricted Area.',
-                   coordinates: `${planetId}_c${cIdx}-ct${ctIdx}-r${rIdx}`,
-                   type: 'rural',
-                   resourceType: dist.type
-               }))
-           }))
-       }));
+      surfaceData = LORE_DATA[planetId].civilizations.map((civ, cIdx) => ({
+        id: `${planetId}_c${cIdx}`,
+        name: civ.name,
+        description: civ.summary,
+        coordinates: `${planetId}_c${cIdx}`,
+        type: 'civilization',
+        archetype: civ.attribute_key as 'STR' | 'INT' | 'DEX',
+        cities: civ.cities.map((city, ctIdx) => ({
+          id: `${planetId}_c${cIdx}-ct${ctIdx}`,
+          name: city.name,
+          description: `Governed by ${city.governor.name}. ${city.governor.title}.`,
+          coordinates: `${planetId}_c${cIdx}-ct${ctIdx}`,
+          type: 'urban',
+          districts: city.districts.map((dist, rIdx) => ({
+            id: `${planetId}_c${cIdx}-ct${ctIdx}-r${rIdx}`,
+            name: dist.name,
+            description: dist.description || 'Restricted Area.',
+            coordinates: `${planetId}_c${cIdx}-ct${ctIdx}-r${rIdx}`,
+            type: 'rural',
+            resourceType: dist.type
+          }))
+        }))
+      }));
     } else {
-       // Procedural Fallback
-       surfaceData = Array.from({ length: 3 }, (_, c) => generateCiv(planetId, c));
+      // Procedural Fallback
+      surfaceData = Array.from({ length: 3 }, (_, c) => generateCiv(planetId, c));
     }
 
     return {

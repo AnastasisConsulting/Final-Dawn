@@ -78,10 +78,11 @@ export const InputConsole: React.FC<InputConsoleProps> = ({
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 w-full resize-none rounded-md border border-neutral-800/80 bg-black/30 px-3 py-2 text-sm leading-relaxed text-slate-100 outline-none transition-shadow duration-200 focus:border-white/70 focus:shadow-[0_0_15px_rgba(14,165,233,0.35)]"
+        className="flex-1 w-full resize-none rounded-md border border-neutral-800/80 bg-black/30 px-3 py-2 text-sm leading-relaxed text-slate-100 outline-none transition-shadow duration-200 focus:border-white/70 focus:shadow-[0_0_15px_rgba(14,165,233,0.35)] min-h-[120px]"
         placeholder="Send a command, request, or narrative prompt... (↑/↓ for history)"
         onKeyDown={handleKeyDown}
         spellCheck={false}
+        rows={5}
       />
 
       <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-slate-500">

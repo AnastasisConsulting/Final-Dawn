@@ -1,0 +1,1 @@
+is a mysterious voice in the players head that they discover for the first time after a particularly nasty bar fight . The same bar fight that rendered Vizzy to its current state. She ends up guiding the player through the

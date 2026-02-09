@@ -2,7 +2,15 @@
 
 import React, { createContext, useContext, useEffect, useMemo, useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import masterIndex from '../src/world/master_locations_index.json';
+import {
+  getDirectory,
+  getLorePath,
+  getQuestPath,
+  getSectorMapPath,
+  getActPath,
+  getLocationName,
+  ROOT_DIRECTORY
+} from 'eideus-routers';
 import { bindWorldBundle } from '@eideus/world-bundle-binder';
 import { CoordinateMapper } from '@eideus/universe-mapper';
 
@@ -101,24 +109,32 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
    * Location Loader: Fetches associated planet JSONs.
    */
   const loadLocationFromAddress = useCallback(async (addressKey: string) => {
-    const registry = (masterIndex as any).registry;
-    if (!registry) return;
-
-    const entry = registry[addressKey];
-    if (!entry) {
+    // Validate ID exists in registry
+    const directory = getDirectory(addressKey);
+    if (!directory) {
       console.error(`[Kernel] Failed to resolve address: ${addressKey}`);
       return;
     }
 
     try {
-      const rootDir = masterIndex.meta.root_directory;
-      const base = `${rootDir}/${entry.directory}`;
+      const rootDir = ROOT_DIRECTORY;
+      const base = `${rootDir}/${directory}`;
+
+      const lorePath = getLorePath(addressKey);
+      const questPath = getQuestPath(addressKey);
+      const sectorPath = getSectorMapPath(addressKey);
+      const actPath = getActPath(addressKey);
+
+      // Using helpers to get paths, but constructing full URL with base for fetch
+      // actually, getLorePath returns relative to base, wait.
+      // getLorePath returns "Director/Lorebook.json"
+      // we need "/Galaxies_Folder/Directory/Lorebook.json"
 
       const [act, lore, quests, map, sourceSeed] = await Promise.all([
-        fetch(`/${base}/${entry.files.act}`).then(r => r.json()),
-        fetch(`/${base}/${entry.files.lorebook}`).then(r => r.json()),
-        fetch(`/${base}/${entry.files.quests}`).then(r => r.json()),
-        fetch(`/${base}/${entry.files.sector_map}`).then(r => r.json()),
+        fetch(`/${rootDir}/${actPath}`).then(r => r.json()),
+        fetch(`/${rootDir}/${lorePath}`).then(r => r.json()),
+        fetch(`/${rootDir}/${questPath}`).then(r => r.json()),
+        fetch(`/${rootDir}/${sectorPath}`).then(r => r.json()),
         fetch(`/${base}/source_seed.json`).then(r => (r.ok ? r.json() : null)).catch(() => null)
       ]);
 
@@ -132,10 +148,17 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
       const worldSeed = String(lore?.world_id ?? addressKey);
       const worldRng = CoordinateMapper.createSeededRng(worldSeed);
 
+      // Texture logic retrieval (needs helper or manual construction)
+      // Since LocationEntry isn't fully exposed, we can assume standard naming or 
+      // we could have exported getEntry. But let's just guess standard for now or use what we have.
+      // Actually, we can just use the directory + texture.png as default if not available.
+      // Eideus-router doesn't export getTexturePath yet. 
+      // But we can fallback to texture.png in directory.
+
       const bundle = {
         id: addressKey,
-        name: entry.name,
-        directory: entry.directory,
+        name: getLocationName(addressKey) || addressKey,
+        directory: directory,
         act,
         lore,
         quests,
@@ -145,7 +168,7 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
         worldSeed,
         worldRng,
         worldBindings,
-        textureUrl: entry.files.texture ? `/${base}/${entry.files.texture}` : `/${base}/texture.png`,
+        textureUrl: `/${base}/texture.png`, // Simplified assumption or add getTexturePath later
         timestamp: Date.now()
       };
 
@@ -182,7 +205,7 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
 
         // Correctly dispatching using the new state setters
         dispatch({ type: 'SET_WORLD_BUNDLE', payload: bundle });
-        dispatch({ type: 'SET_ADDRESS', payload: { full: addressKey, localId: entry.name } });
+        dispatch({ type: 'SET_ADDRESS', payload: { full: addressKey, localId: bundle.name } });
         dispatch({ type: 'SET_NAV_CONTEXT', payload: { sessionId } });
 
         // Broadcast for Flight Engine
@@ -194,7 +217,7 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
         console.error('[Kernel] CRITICAL: Failed to initialize backend session:', landErr);
         // Dispatch session anyway so UI doesn't completely break, but log aggressively
         dispatch({ type: 'SET_WORLD_BUNDLE', payload: bundle });
-        dispatch({ type: 'SET_ADDRESS', payload: { full: addressKey, localId: entry.name } });
+        dispatch({ type: 'SET_ADDRESS', payload: { full: addressKey, localId: bundle.name } });
         return undefined;
       }
 

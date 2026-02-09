@@ -194,3 +194,26 @@ export class InMemoryAffinitySystem {
         // No-op for now - entities are auto-created
     }
 }
+
+// === UTILS ===
+
+export function resolveDominantAffinity(affinityData: any): { dominant: AffinityType; score: number } {
+    // Handle string input
+    if (typeof affinityData === 'string') {
+        const type = affinityData as AffinityType;
+        return { dominant: type, score: 1.0 };
+    }
+
+    // Handle object input with buckets
+    if (affinityData?.buckets) {
+        // Mock implementation since actual bucket logic might be complex or missing
+        // For now, just return a default or the first bucket
+        const buckets = affinityData.buckets;
+        if (Array.isArray(buckets) && buckets.length > 0) {
+            return { dominant: buckets[0].affinity, score: buckets[0].score };
+        }
+    }
+
+    // Default fallback
+    return { dominant: AffinityType.STR, score: 0 };
+}

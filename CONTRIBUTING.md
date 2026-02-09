@@ -28,6 +28,10 @@ This project uses **PNPM Workspaces**.
 -   **TypeScript**: We use strict TypeScript across the repo. Please ensure no implicit anys.
 -   **React**: Most apps use React 18. Functional components and Hooks are preferred.
 -   **Three.js**: We use `@react-three/fiber` for 3D elements.
+-   **Styling**: 
+    -   Strict adherence to the **"Dark Dystopian Noir Satire"** aesthetic.
+    -   Use `tailwind.config.js` tokens (e.g., `bg-neutral-950`, `text-cyan-400`).
+    -   Avoid "default" HTML inputs; use the custom styled components in `dawn-ui`.
 
 ## Pull Requests
 

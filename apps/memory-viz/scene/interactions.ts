@@ -39,11 +39,9 @@ export function handleMouseMove(s: ISceneState) {
   // 2. Interactive Grid Hover (Level 2: Voxel Grid)
   if (s.selectedCivId && s.selectedVoxelIndex === null) {
       s.raycaster.setFromCamera(s.mouse, s.camera);
-      s.interactiveGrid.updateMatrixWorld(true);
       const intersects = s.raycaster.intersectObject(s.interactiveGrid, false);
       if (intersects.length > 0 && intersects[0].instanceId !== undefined) {
-          const label = s.gridHoverLabel ? s.gridHoverLabel(intersects[0].instanceId, s.selectedCivId) : `Coord: ${intersects[0].instanceId}`;
-          if (s.onTooltipUpdate) s.onTooltipUpdate(0, 0, label || `Coord: ${intersects[0].instanceId}`, true);
+          if (s.onTooltipUpdate) s.onTooltipUpdate(0, 0, `Coord: ${intersects[0].instanceId}`, true);
           document.body.style.cursor = 'pointer';
       } else {
           if (s.onTooltipUpdate) s.onTooltipUpdate(0, 0, '', false);
@@ -99,21 +97,13 @@ export function handleMouseMove(s: ISceneState) {
 
 export function handleClick(s: ISceneState, clientX: number, clientY: number, mouseDownPos: THREE.Vector2) {
   const moveDist = mouseDownPos.distanceTo(new THREE.Vector2(clientX, clientY));
-  if (moveDist > 5) return;
-  // Allow grid/voxel selection even during camera easing
-  if (s.camAnim.active && !s.selectedCivId && s.selectedVoxelIndex === null) return;
-
-  // Ensure raycaster uses the latest click position (use canvas bounds)
-  const rect = s.renderer.domElement.getBoundingClientRect();
-  s.mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
-  s.mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+  if (moveDist > 5 || s.camAnim.active) return;
   
   if (s.isPanelOpen && !s.focusedState && s.spreadFactor < 0.1) { s.closePanel(); return; }
 
   // Step 3: Voxel Selected (Level 3 -> Level 2)
   if (s.selectedVoxelIndex !== null) {
       s.raycaster.setFromCamera(s.mouse, s.camera);
-      s.interactiveGrid.updateMatrixWorld(true);
       // In voxel view, other voxels are hidden (scale 0), so we basically check if we hit the current one.
       const intersects = s.raycaster.intersectObject(s.interactiveGrid, false);
       if (intersects.length > 0 && intersects[0].instanceId === s.selectedVoxelIndex) {
@@ -129,7 +119,6 @@ export function handleClick(s: ISceneState, clientX: number, clientY: number, mo
   // Step 2: Grid Selection (Level 2 -> Level 1 or Level 3)
   if (s.selectedCivId && s.selectedVoxelIndex === null) {
       s.raycaster.setFromCamera(s.mouse, s.camera);
-      s.interactiveGrid.updateMatrixWorld(true);
       const intersects = s.raycaster.intersectObject(s.interactiveGrid, false);
       if (intersects.length > 0 && intersects[0].instanceId !== undefined) {
           s.selectVoxel(intersects[0].instanceId);

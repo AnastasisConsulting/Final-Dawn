@@ -1,7 +1,7 @@
 import React from 'react';
 import { PanelFrame } from '../SlidePanels/PanelFrame';
 import { NavBot } from '../SlidePanels/panels/Navbot';
-import { JunkScatter } from '../Features/Vizzy/JunkScatter';
+
 import { TreatDispenser } from '../Features/Vizzy/TreatDispenser';
 import { vizzyOrchestrator } from '../../src/services/VizzyOrchestrator';
 
@@ -18,7 +18,7 @@ export const LeftPanel: React.FC<LeftPanelProps> = ({ onTargetSelect }) => {
   return (
     <div className="flex flex-col h-full gap-4 relative">
       {/* Space Junk Decorations */}
-      <JunkScatter panelId="left" />
+
       {/* CSS for scan animation */}
       <style>{`
             @keyframes scan-up {

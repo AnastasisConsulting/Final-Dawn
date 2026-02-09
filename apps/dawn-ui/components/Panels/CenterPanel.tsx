@@ -7,17 +7,14 @@ import { CommandDeck } from '../Features/Chat/CommandDeck';
 import { runTurn } from '../../services/orchestrator';
 import { vizzyOrchestrator } from '../../src/services/VizzyOrchestrator';
 import { useKernel } from '../../hooks/useKernel';
-import masterIndex from '../../src/world/master_locations_index.json';
+import { getDefaultLocationId } from 'eideus-routers';
 import { JunkScatter } from '../Features/Vizzy/JunkScatter';
 import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 
+import { useGame } from '../../src/context/GameContext';
+
 const getDefaultAddress = () => {
-  const registry = (masterIndex as any)?.registry;
-  if (registry) {
-    const first = Object.keys(registry).find((k) => !k.startsWith('//'));
-    if (first) return first;
-  }
-  return 'G1-S1-O1';
+  return getDefaultLocationId();
 };
 
 interface CenterPanelProps {
@@ -32,9 +29,19 @@ interface CenterPanelProps {
   } | null;
 }
 
+// Global log accessor for CrashBoundary
+declare global {
+  interface Window {
+    __LATEST_CHAT_LOGS?: Message[];
+  }
+}
+
 export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTargetSelect, injection }) => {
   const { state, dispatch, loadLocationFromAddress, ensureGlobalSession } = useKernel();
+  const { actions: gameActions } = useGame();
   const isWarping = state.isWarping;
+  const { panelColors } = useColorStealing();
+  const centerColor = panelColors.center;
 
   // Message ID counter to ensure globally unique IDs
   const messageIdCounter = useRef(0);
@@ -52,6 +59,11 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       timestamp: '08:00:01'
     }
   ]);
+
+  // Sync messages to global scope for CrashBoundary
+  useEffect(() => {
+    window.__LATEST_CHAT_LOGS = messages;
+  }, [messages]);
 
   const lastInjectionId = useRef<number | null>(null);
 
@@ -143,12 +155,22 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     const saved = localStorage.getItem('eideus-autopilot');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        // Ensure new fields exist
+        return {
+          enabled: false,
+          class: parsed.class || '',
+          affinity: parsed.affinity || '',
+          questsCompleted: parsed.questsCompleted || 0,
+          turnCount: 0,
+          maxTurns: 0,
+          boldness: parsed.boldness ?? 50 // 0-100, default balanced
+        };
       } catch (e) {
         console.error("Failed to parse saved autopilot state", e);
       }
     }
-    return { enabled: false, class: '', affinity: '', questsCompleted: 0 };
+    return { enabled: false, class: '', affinity: '', questsCompleted: 0, turnCount: 0, maxTurns: 0, boldness: 50 };
   });
 
   const [lastAutoAction, setLastAutoAction] = useState(0);
@@ -161,6 +183,19 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
   // Auto-Pilot Decision Loop
   useEffect(() => {
     if (!autoPilot.enabled || isProcessing) return;
+
+    // Check Turn Limit
+    if (autoPilot.maxTurns > 0 && autoPilot.turnCount >= autoPilot.maxTurns) {
+      setAutoPilot(prev => ({ ...prev, enabled: false }));
+      setMessages(prev => [...prev, {
+        id: generateMessageId('sys'),
+        sender: 'navbot',
+        content: `>> BETA TEST COMPLETE. LIMIT REACHED (${autoPilot.maxTurns} TURNS).`,
+        type: 'text',
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      }]);
+      return;
+    }
 
     // Throttle: Don't act too fast
     const timeSinceLastAct = Date.now() - lastAutoAction;
@@ -179,13 +214,26 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
 
     const runBot = async () => {
       setLastAutoAction(Date.now());
-      console.log('[AutoPilot] Deciding next move...');
+      // Increment turn count immediately when we decide to act
+      setAutoPilot(prev => ({ ...prev, turnCount: prev.turnCount + 1 }));
+      gameActions.incrementTurn(); // Global Turn Counter
+
+      console.log(`[AutoPilot] Deciding move ${autoPilot.turnCount + 1}/${autoPilot.maxTurns || '∞'}... Boldness: ${autoPilot.boldness}`);
+
+      // Boldness behavior injection
+      const boldnessDirective = autoPilot.boldness < 30
+        ? 'Be CAUTIOUS. Avoid risky actions. Prefer safe, defensive choices.'
+        : autoPilot.boldness > 70
+          ? 'Be BOLD! Take risks. Push boundaries. Pursue aggressive exploration.'
+          : 'Balance risk and reward. Act thoughtfully but don\'t shy from opportunity.';
 
       const prompt = `
         You are an autonomous beta-tester agent playing Eideus Dawn.
         Role: Level 1 ${autoPilot.class} [${autoPilot.affinity}].
         Goal: Progress through the world and interact with local entities.
         Location: ${objectKeyRef.current}
+        
+        BEHAVIOR: ${boldnessDirective}
         
         Last Narration/Dialogue:
         "${lastMsg.sender.toUpperCase()}: ${lastMsg.content.replace(/<[^>]*>/g, '')}"
@@ -225,7 +273,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     };
 
     runBot();
-  }, [autoPilot.enabled, isProcessing, messages, lastAutoAction, autoPilot.class, autoPilot.affinity]);
+  }, [autoPilot.enabled, isProcessing, messages, lastAutoAction, autoPilot.class, autoPilot.affinity, autoPilot.maxTurns, autoPilot.turnCount]);
 
   const processTransaction = async (userText: string, targets: ChatTarget[], overrideSessionId?: string) => {
     const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
@@ -239,6 +287,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     };
     setMessages(prev => [...prev, userMsg]);
     setIsProcessing(true);
+    gameActions.incrementTurn(); // Global Turn Counter
 
     const activeRecipients = targets.length ? targets : [activeTarget];
 
@@ -348,11 +397,14 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       if (parts.length >= 3) {
         const cls = parts[1];
         const aff = parts[2];
-        setAutoPilot({ enabled: true, class: cls, affinity: aff, questsCompleted: 0 });
+        const limitArg = parts[3];
+        const maxTurns = limitArg ? parseInt(limitArg, 10) : 0; // 0 = infinite
+
+        setAutoPilot({ enabled: true, class: cls, affinity: aff, questsCompleted: 0, turnCount: 0, maxTurns, boldness: 50 });
         setMessages(prev => [...prev, {
           id: generateMessageId('sys'),
           sender: 'navbot',
-          content: `>> BETA PROTOCOL INITIATED. CLASS: ${cls} // AFFINITY: ${aff}. WARPING TO SECTOR 7...`,
+          content: `>> BETA PROTOCOL INITIATED. CLASS: ${cls} // AFFINITY: ${aff}. LIMIT: ${maxTurns > 0 ? maxTurns : '∞'} TURNS. WARPING TO SECTOR 7...`,
           type: 'text',
           timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
         }]);
@@ -364,7 +416,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     }
 
     if (text === '/stop-bot') {
-      setAutoPilot((prev: { enabled: boolean; class: string; affinity: string; questsCompleted: number }) => ({ ...prev, enabled: false }));
+      setAutoPilot((prev: any) => ({ ...prev, enabled: false }));
       setMessages(prev => [...prev, {
         id: generateMessageId('sys'),
         sender: 'navbot',
@@ -462,7 +514,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       const stateDump = JSON.stringify({
         location: objectKeyRef.current,
         session: sessionIdRef.current,
-        bot: autoPilot,
+        bot: autoPilot, // Now contains turnCount and maxTurns
         travelCount: travelCountRef.current,
         lastActionTime: lastAutoAction
       }, null, 2);
@@ -603,6 +655,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         const parts = cleanArg.split('-');
         let targetKey = cleanArg;
         let subCoords = { c: 0, ct: 0, r: 0 };
+        let hasExplicitSubCoords = false;
 
         // 3. Extract Base Key (Gx-Sx-Ox)
         // If we have at least 3 parts (G, S, O), the first 3 form the base key.
@@ -617,24 +670,33 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
             const token = p.toUpperCase();
             if (token.startsWith('CT')) {
               const val = parseInt(token.replace('CT', ''), 10);
-              if (!isNaN(val)) subCoords.ct = Math.max(0, val - 1);
+              if (!isNaN(val)) { subCoords.ct = Math.max(0, val - 1); hasExplicitSubCoords = true; }
             } else if (token.startsWith('C')) {
               const val = parseInt(token.replace('C', ''), 10);
               // Distinguish between City (CT) and Civ (C) if naming is ambiguous, 
               // but strict token parsing handles it if they assume standard order.
               // The user spec says "cX.ctX" so "c1" is Civ, "ct1" is City.
-              if (!isNaN(val)) subCoords.c = Math.max(0, val - 1);
+              if (!isNaN(val)) { subCoords.c = Math.max(0, val - 1); hasExplicitSubCoords = true; }
             } else if (token.startsWith('R')) {
               const val = parseInt(token.replace('R', ''), 10);
-              if (!isNaN(val)) subCoords.r = Math.max(0, val - 1);
+              if (!isNaN(val)) { subCoords.r = Math.max(0, val - 1); hasExplicitSubCoords = true; }
             }
           });
+        }
+
+        // 5. If no sub-coordinates provided, randomize for immersive landing
+        if (!hasExplicitSubCoords) {
+          subCoords = {
+            c: Math.floor(Math.random() * 3),   // Random civ (0-2)
+            ct: Math.floor(Math.random() * 5),  // Random city (0-4)
+            r: Math.floor(Math.random() * 8),   // Random region/loc (0-7)
+          };
         }
 
         setMessages(prev => [...prev, {
           id: generateMessageId('sys'),
           sender: 'navbot',
-          content: `>> OVERRIDE: QUANTUM JUMP INITIATED TO [${targetKey.toUpperCase()}] (Sub-Vector: ${subCoords.c}/${subCoords.ct}/${subCoords.r})`,
+          content: `>> OVERRIDE: QUANTUM JUMP INITIATED TO [${targetKey.toUpperCase()}-C${subCoords.c + 1}-CT${subCoords.ct + 1}-R${subCoords.r + 1}]`,
           type: 'text',
           timestamp: stamp
         }]);
@@ -661,7 +723,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
             setMessages(prev => [...prev, {
               id: generateMessageId('sys'),
               sender: 'navbot',
-              content: `>> JUMP COMPLETE. LINK ESTABLISHED AT VECTOR [${targetKey}-C${subCoords.c + 1}-CT${subCoords.ct + 1}].`,
+              content: `>> JUMP COMPLETE. LINK ESTABLISHED AT [${targetKey}-C${subCoords.c + 1}-CT${subCoords.ct + 1}-R${subCoords.r + 1}].`,
               type: 'text',
               timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
             }]);
@@ -721,22 +783,36 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
   };
 
   return (
-    <div className={`flex flex-col h-full gap-[1px] relative bg-neutral-950/20 p-0.5 ${isWarping ? 'scale-[0.05] opacity-0 blur-2xl translate-z-[-1000px]' : ''}`}
+    <div className={`flex flex-col h-full max-h-full overflow-hidden gap-[1px] relative bg-neutral-950/20 p-0.5 ${isWarping ? 'scale-[0.05] opacity-0 blur-2xl translate-z-[-1000px]' : ''}`}
       style={{ transformStyle: 'preserve-3d' }}
     >
-      {/* Space Junk Decorations */}
-      <JunkScatter panelId="center" />
-      {/* Auto-Pilot Indicator */}
+      {/* Auto-Pilot Indicator with Boldness Control */}
       {autoPilot.enabled && (
-        <div className="absolute top-4 right-4 z-50 bg-red-900/80 border border-red-500 text-red-200 px-3 py-1 rounded font-mono text-xs animate-pulse flex items-center gap-2">
-          <div className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
-          <span>BETA AUTOMATION ENGAGED: {autoPilot.class} / {autoPilot.affinity}</span>
-          <span className="opacity-70">Quests: {autoPilot.questsCompleted}/7</span>
+        <div className="absolute top-4 right-4 z-50 bg-red-900/80 border border-red-500 text-red-200 px-4 py-2 rounded font-mono text-xs animate-pulse flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
+            <span>BETA AUTOMATION: {autoPilot.class} / {autoPilot.affinity}</span>
+            <span className="opacity-70">Turn: {autoPilot.turnCount}/{autoPilot.maxTurns > 0 ? autoPilot.maxTurns : '∞'}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-red-300/70 w-16">Cautious</span>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={autoPilot.boldness}
+              onChange={(e) => setAutoPilot(prev => ({ ...prev, boldness: parseInt(e.target.value, 10) }))}
+              className="flex-1 h-1 bg-red-800 rounded appearance-none cursor-pointer accent-amber-500"
+              style={{ accentColor: autoPilot.boldness > 70 ? '#f59e0b' : autoPilot.boldness < 30 ? '#3b82f6' : '#a855f7' }}
+            />
+            <span className="text-[9px] text-amber-400/70 w-10 text-right">Bold</span>
+            <span className="text-[10px] font-bold w-8 text-center">{autoPilot.boldness}</span>
+          </div>
         </div>
       )}
 
       {/* Top Section: Chat Log (Flex Grow) */}
-      <div className="flex-[6] min-h-0 w-full relative group/chat">
+      <div className="flex-[5] min-h-0 w-full relative group/chat overflow-hidden">
         <div className={`
              absolute inset-0 bg-neutral-950/40 backdrop-blur-[2px] shadow-lg transition-all duration-500 pointer-events-none rounded-sm
              ${centerColor.stolen
@@ -754,8 +830,8 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         </div>
       </div>
 
-      {/* Middle Section: Input Console (Flex Grow) */}
-      <div className="flex-[3] min-h-0 w-full relative group/input">
+      {/* Middle Section: Input Console (Flex Shrink) */}
+      <div className="flex-[3] min-h-[180px] w-full relative group/input overflow-hidden">
         <div className={`
             absolute inset-0 bg-neutral-950/40 backdrop-blur-[2px] shadow-lg transition-all duration-500 pointer-events-none rounded-sm
             ${centerColor.stolen
@@ -777,8 +853,8 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         </div>
       </div>
 
-      {/* Bottom Section: Command Deck (Fixed/Flex Base) */}
-      <div className="h-[60px] min-h-[60px] w-full relative group/deck shrink-0">
+      {/* Bottom Section: Command Deck (Fixed Height) */}
+      <div className="h-16 min-h-16 w-full relative group/deck flex-shrink-0">
         <div className={`
             absolute inset-0 bg-neutral-950/40 backdrop-blur-[2px] shadow-lg transition-all duration-500 pointer-events-none rounded-sm
             ${centerColor.stolen

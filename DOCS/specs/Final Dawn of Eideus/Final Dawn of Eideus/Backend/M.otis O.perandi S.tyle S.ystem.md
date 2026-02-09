@@ -1,0 +1,3 @@
+Before there was cause and effect, there was M.O.S.S.
+
+Agentic Agendas that drive the relationships of agents and players which cause the Affinity wheels to turn. Goals, motives, dispositions of characters will naturally conflict and coalesce as time progressess. It is the dissonance and harmony that will push and pull the relational scores between the player and the cast but also the cast members with each other. These are the firtst derivitive. Then the differences of these relational scores are what drives the Affinity Simulation and thus our second derivitive 
