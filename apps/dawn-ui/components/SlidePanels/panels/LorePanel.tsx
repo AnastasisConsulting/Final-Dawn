@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSim } from '../../../src/context/SimContext';
 import { useGame } from '../../../src/context/GameContext';
-import questsData from '../../../src/data/quests.json';
+import generatedQuests from '../../../src/data/generated_quests.json';
 
 // Define strict types for NPC data structure
 interface NPC {
@@ -11,8 +11,23 @@ interface NPC {
     location?: string;
 }
 
+interface QuestCast {
+    giver?: { name: string; id: string; role?: string };
+    contact?: { name: string; id: string; role?: string };
+    target?: { name: string; id: string; role?: string };
+    [key: string]: any; // Allow flexibility
+}
+
+interface Quest {
+    title: string;
+    narrative_guidance: string;
+    improvisation_points: string[];
+    cast: QuestCast;
+}
+
 export const LorePanel: React.FC = () => {
     const { state } = useGame();
+    // We use selectedPlanetId (e.g. "G1-S1-O1") as the primary location key
     const { simState, currentRegionName } = useSim();
 
     // Determine current Quest Line based on Archetype
@@ -20,32 +35,43 @@ export const LorePanel: React.FC = () => {
         state.identity?.core === 'HACKER' ? 'INT' :
             state.identity?.core === 'ACOLYTE' ? 'DEX' : 'STR') as 'STR' | 'INT' | 'DEX';
 
-    // Extract NPCs from the quest data for the current archetype
-    const localNPCs = useMemo(() => {
-        // @ts-ignore
-        const pathData = questsData.paths[archetype];
-        if (!pathData) return [];
+    // Current Location Key
+    const locationKey = simState.selectedPlanetId || 'G1-S1-O1'; // Default for testing if null
 
+    // Extract Quests and NPCs from the generated data
+    const { activeQuests, localNPCs } = useMemo(() => {
+        // @ts-ignore - JSON import might be loosely typed
+        const locationData = generatedQuests[locationKey];
+        if (!locationData) return { activeQuests: [], localNPCs: [] };
+
+        const affinityData = locationData[archetype];
+        if (!affinityData || !affinityData.quests) return { activeQuests: [], localNPCs: [] };
+
+        const quests: Quest[] = affinityData.quests;
         const npcs: NPC[] = [];
         const seen = new Set();
 
-        pathData.campaign_outline.quests.forEach((q: any) => {
+        quests.forEach((q) => {
             if (q.cast) {
                 Object.entries(q.cast).forEach(([role, char]: [string, any]) => {
-                    if (!seen.has(char.id)) {
+                    // Handle both string IDs (old format) and object definitions (new format)
+                    if (typeof char === 'string') return; // Skip old string-only format if present
+
+                    if (char && char.id && !seen.has(char.id)) {
                         npcs.push({
                             name: char.name,
                             id: char.id,
-                            role: role.toUpperCase(),
-                            location: 'Unknown Sector' // Placeholder until map data integration
+                            role: (char.role || role).toUpperCase(),
+                            location: locationKey
                         });
                         seen.add(char.id);
                     }
                 });
             }
         });
-        return npcs;
-    }, [archetype]);
+
+        return { activeQuests: quests, localNPCs: npcs };
+    }, [archetype, locationKey]);
 
     return (
         <div className="h-full w-full flex flex-col p-4 text-cyan-100 font-mono overflow-y-auto custom-scrollbar">
@@ -56,8 +82,8 @@ export const LorePanel: React.FC = () => {
                     LORE_DATABASE
                 </h2>
                 <div className="text-[10px] text-cyan-600 uppercase tracking-[0.2em] flex justify-between">
-                    <span>Region: {currentRegionName}</span>
-                    <span>System: {simState.selectedSystemId || 'Deep Space'}</span>
+                    <span>SECTOR: {locationKey}</span>
+                    <span>AFFINITY: {archetype}</span>
                 </div>
             </div>
 
@@ -65,23 +91,28 @@ export const LorePanel: React.FC = () => {
             <section className="mb-8">
                 <h3 className="text-sm font-bold text-purple-400 uppercase mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-                    Local Intelligence
+                    Active Objectives
                 </h3>
-                <div className="bg-purple-950/10 border border-purple-900/30 p-4 rounded text-xs text-purple-100/80 leading-relaxed">
-                    <p className="mb-2">
-                        Analyzing local societal structures... The current region appears to be heavily influenced by
-                        <span className="text-purple-300 font-bold"> {archetype} </span>
-                        aligned factions.
-                    </p>
-                    <div className="grid grid-cols-2 gap-2 mt-4">
-                        <button className="bg-purple-900/40 border border-purple-500/30 p-2 rounded hover:bg-purple-800/50 transition-colors text-[10px] uppercase tracking-wider text-purple-300">
-                            Scan Flora/Fauna
-                        </button>
-                        <button className="bg-purple-900/40 border border-purple-500/30 p-2 rounded hover:bg-purple-800/50 transition-colors text-[10px] uppercase tracking-wider text-purple-300">
-                            History Logs
-                        </button>
+
+                {activeQuests.length > 0 ? (
+                    <div className="space-y-4">
+                        {activeQuests.map((quest, idx) => (
+                            <div key={idx} className="bg-purple-950/10 border border-purple-900/30 p-4 rounded text-xs text-purple-100/80 leading-relaxed">
+                                <h4 className="text-purple-300 font-bold mb-2 uppercase">{quest.title}</h4>
+                                <p className="mb-3 italic opacity-80">"{quest.narrative_guidance}"</p>
+                                <ul className="list-disc pl-4 space-y-1 text-[10px] text-purple-200/70">
+                                    {quest.improvisation_points.map((point, i) => (
+                                        <li key={i}>{point}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
-                </div>
+                ) : (
+                    <div className="bg-purple-950/10 border border-purple-900/30 p-4 rounded text-xs text-gray-500 italic">
+                        No active frequencies detected in this sector.
+                    </div>
+                )}
             </section>
 
             {/* NPC List */}

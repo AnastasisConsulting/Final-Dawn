@@ -4,7 +4,7 @@ export const CONFIG = {
   planeThickness: 0.04,
   pulseSpeed: 2.0,
   extractDistanceY: 5.0,
-  extractDistanceX: 10.0,
+  extractDistanceX: 5.5,
   baseFillOpacity: 0.12,
   baseWireOpacity: 0.35,
   hoverScale: 1.1,

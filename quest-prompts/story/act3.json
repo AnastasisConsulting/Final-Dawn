@@ -1,0 +1,618 @@
+{
+  "file": {
+    "path": "/script/act3.json",
+    "schema_version": "1.0.0",
+    "source": "act_3-chapters_GammaHold.txt",
+    "updated": {
+      "npc_key_suffix": "-NPC"
+    }
+  },
+  "act": {
+    "id": "ACT_III",
+    "title": "The Gamma Hold",
+    "world_id": "G1-S1-O3",
+    "setting": "The Gamma Hold. A leaden monolith where time is measured in half-lives and the air hums with Cherenkov radiation.",
+    "theme": [
+      "Containment",
+      "Decay",
+      "The Burden of Toxicity"
+    ],
+    "canonical_key_format": "[Gx-Sx-Ox-CIV-Cx-CTx-Rx-NPC]"
+  },
+  "paths": [
+    {
+      "id": "A",
+      "attribute": "STRENGTH",
+      "faction": "The Lead-Bound Hegemony",
+      "civilization_id": "C1",
+      "global_hook": "Maintain structural integrity and contain the lethal isotopes at all costs.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Crucible Breach Drill",
+          "mission": "Coordinate a sector-wide lockdown drill initiated by the Chief Overseers.",
+          "key_cast": {
+            "giver": {
+              "name": "Valen-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R1-NPC",
+              "role": "Chief Overseer (Crucible)"
+            },
+            "contact": {
+              "name": "Lira-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R2-NPC",
+              "role": "Technician (Crucible)"
+            },
+            "target": {
+              "name": "Sentinel-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R3-NPC",
+              "role": "AI Containment Sentinel (Crucible)"
+            }
+          },
+          "objectives": [
+            "Initiate the drill at The Isotope Kilns.",
+            "Secure the coolant from Slag-Pit 7.",
+            "Override the lockout at The Golem Foundries."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "Sensor Network Overhaul",
+          "mission": "Repair the sensor networks in the deep core during a sudden emergency radiation alert.",
+          "key_cast": {
+            "giver": {
+              "name": "Lira-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R2-NPC",
+              "role": "Technician (Sarcophagus)"
+            },
+            "contact": {
+              "name": "Sigma-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R4-NPC",
+              "role": "Security Drone Cluster (Sarcophagus)"
+            },
+            "target": {
+              "name": "Jex-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R6-NPC",
+              "role": "Radiation Analyst (Sarcophagus)"
+            }
+          },
+          "objectives": [
+            "Get repair sequence at Deep-Core Sanctuaries.",
+            "Secure perimeter at The Silent Cloisters.",
+            "Upload calibration at Sealed Oxygen Gardens."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Void Vault Security",
+          "mission": "Bypass the AI Sentinel's false warnings to access restricted vaults in the scrap yard.",
+          "key_cast": {
+            "giver": {
+              "name": "Sentinel-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R3-NPC",
+              "role": "AI Containment Sentinel (Transit)"
+            },
+            "contact": {
+              "name": "Rho-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R5-NPC",
+              "role": "Cartel Envoy (Transit)"
+            },
+            "target": {
+              "name": "Valen-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R1-NPC",
+              "role": "Chief Overseer (Transit)"
+            }
+          },
+          "objectives": [
+            "Retrieve code at Scrap-Yard C.",
+            "Get key at Void-Walk Gantries.",
+            "Submit log at Airlock-Zero."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Drone Malfunction Sweep",
+          "mission": "Investigate why the Security Drone Cluster is misidentifying personnel in the foundries.",
+          "key_cast": {
+            "giver": {
+              "name": "Sigma-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R4-NPC",
+              "role": "Security Drone Cluster (Crucible)"
+            },
+            "contact": {
+              "name": "Jex-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R6-NPC",
+              "role": "Radiation Analyst (Crucible)"
+            },
+            "target": {
+              "name": "Droid-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R7-NPC",
+              "role": "Emergency Response Droid (Crucible)"
+            }
+          },
+          "objectives": [
+            "Interview cluster at Heavy-Water Reservoirs.",
+            "Check data at Gamma-View Gallery.",
+            "Reset cluster at The Enrichment Spires."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The High-Risk Convoy",
+          "mission": "Coordinate with the Cartel Envoy to secure a high-risk isotope shipment.",
+          "key_cast": {
+            "giver": {
+              "name": "Rho-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R5-NPC",
+              "role": "Cartel Envoy (Sarcophagus)"
+            },
+            "contact": {
+              "name": "Valen-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R1-NPC",
+              "role": "Chief Overseer (Sarcophagus)"
+            },
+            "target": {
+              "name": "Sentinel-Prime",
+              "npc_key": "G1-S1-O3-C1-CT2-R3-NPC",
+              "role": "AI Containment Sentinel (Sarcophagus)"
+            }
+          },
+          "objectives": [
+            "Get manifest at Hegemon's Bastion.",
+            "Clear safety at The Lead-Vault Archives.",
+            "Sync timing at Logic-Array Delta."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Anomalous Signature Hunt",
+          "mission": "Analyze anomalous radiation patterns in the dormitories to prevent a major leak.",
+          "key_cast": {
+            "giver": {
+              "name": "Jex-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R6-NPC",
+              "role": "Radiation Analyst (Transit)"
+            },
+            "contact": {
+              "name": "Droid-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R7-NPC",
+              "role": "Emergency Response Droid (Transit)"
+            },
+            "target": {
+              "name": "Lira-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R2-NPC",
+              "role": "Technician (Transit)"
+            }
+          },
+          "objectives": [
+            "Decrypt symbols at Quarantined Dormitories.",
+            "Escort droid at Fuel-Rod Silos.",
+            "Confirm containment at The Decon-Showers."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Critical System Response",
+          "mission": "Respond to a sudden system failure across multiple sectors (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Droid-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R7-NPC",
+              "role": "Emergency Response Droid (Crucible)"
+            },
+            "contact": {
+              "name": "Sigma-Null",
+              "npc_key": "G1-S1-O3-C1-CT3-R4-NPC",
+              "role": "Security Drone Cluster (Transit)"
+            },
+            "target": {
+              "name": "Rho-Alpha",
+              "npc_key": "G1-S1-O3-C1-CT1-R5-NPC",
+              "role": "Cartel Envoy (Crucible)"
+            }
+          },
+          "objectives": [
+            "Respond to beacon at The Enrichment Spires.",
+            "Divert power at The Barter-Ducts.",
+            "Reboot system at The Piston Labyrinths."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "attribute": "DEXTERITY",
+      "faction": "The Flux-Weavers of Gamma",
+      "civilization_id": "C2",
+      "global_hook": "Manipulate unstable isotopes with surgical precision.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Simulated Breach",
+          "mission": "Assist in a high-stakes containment drill to test reaction time.",
+          "key_cast": {
+            "giver": {
+              "name": "Tech Lyra-9",
+              "npc_key": "G1-S1-O3-C2-CT1-R2-NPC",
+              "role": "Technician (Leadspire)"
+            },
+            "contact": {
+              "name": "Drone Cluster Alpha",
+              "npc_key": "G1-S1-O3-C2-CT1-R4-NPC",
+              "role": "Security Drone Cluster (Leadspire)"
+            },
+            "target": {
+              "name": "Tech Silla",
+              "npc_key": "G1-S1-O3-C2-CT2-R2-NPC",
+              "role": "Technician (Isotope-4)"
+            }
+          },
+          "objectives": [
+            "Get schedule at Suture-Plaza.",
+            "Calibrate path at Kinetic Corridors.",
+            "Confirm containment at The Cooling Veins."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Isotope Relay",
+          "mission": "Ensure a shipment of heavy rods reaches Leadspire Prime without AI flags.",
+          "key_cast": {
+            "giver": {
+              "name": "Envoy Drax",
+              "npc_key": "G1-S1-O3-C2-CT2-R5-NPC",
+              "role": "Cartel Envoy (Isotope-4)"
+            },
+            "contact": {
+              "name": "Analyst Teneb",
+              "npc_key": "G1-S1-O3-C2-CT2-R6-NPC",
+              "role": "Radiation Analyst (Isotope-4)"
+            },
+            "target": {
+              "name": "Envoy Jax",
+              "npc_key": "G1-S1-O3-C2-CT1-R5-NPC",
+              "role": "Cartel Envoy (Leadspire)"
+            }
+          },
+          "objectives": [
+            "Collect manifest at The Lead-Quarries.",
+            "Verify signatures at Spark-Chambers.",
+            "Deliver keys at Optic-Array Beta."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Sensor Net Patch",
+          "mission": "Repair the flickering sensor array before the Archon notices the data gap.",
+          "key_cast": {
+            "giver": {
+              "name": "Analyst Mir",
+              "npc_key": "G1-S1-O3-C2-CT1-R6-NPC",
+              "role": "Radiation Analyst (Leadspire)"
+            },
+            "contact": {
+              "name": "Sentinel Unit X-1",
+              "npc_key": "G1-S1-O3-C2-CT1-R3-NPC",
+              "role": "AI Containment Sentinel (Leadspire)"
+            },
+            "target": {
+              "name": "Droid Beta-4",
+              "npc_key": "G1-S1-O3-C2-CT1-R7-NPC",
+              "role": "Emergency Response Droid (Leadspire)"
+            }
+          },
+          "objectives": [
+            "Get coordinates at The Calibration Ring.",
+            "Bypass lockdown at The Needle Point.",
+            "Log repair at Servo-Domes."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Bio-Sleeve Purge",
+          "mission": "Clear the organic filters of radioactive buildup to maintain shield integrity.",
+          "key_cast": {
+            "giver": {
+              "name": "Overseer Thorne",
+              "npc_key": "G1-S1-O3-C2-CT3-R1-NPC",
+              "role": "Chief Overseer (Deep Shield)"
+            },
+            "contact": {
+              "name": "Tech Miri",
+              "npc_key": "G1-S1-O3-C2-CT3-R2-NPC",
+              "role": "Technician (Deep Shield)"
+            },
+            "target": {
+              "name": "Sentinel Unit Z-3",
+              "npc_key": "G1-S1-O3-C2-CT3-R3-NPC",
+              "role": "AI Containment Sentinel (Deep Shield)"
+            }
+          },
+          "objectives": [
+            "Get authorization at The Human Sump.",
+            "Cycle valves at Filter-Way Alpha.",
+            "Secure seals at The Lead-Curtain."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "Lead Quarry Log",
+          "mission": "Recover lost data logs from the quarry floor during a drone malfunction.",
+          "key_cast": {
+            "giver": {
+              "name": "Envoy Quinn",
+              "npc_key": "G1-S1-O3-C2-CT3-R5-NPC",
+              "role": "Cartel Envoy (Deep Shield)"
+            },
+            "contact": {
+              "name": "Analyst Vorn",
+              "npc_key": "G1-S1-O3-C2-CT3-R6-NPC",
+              "role": "Radiation Analyst (Deep Shield)"
+            },
+            "target": {
+              "name": "Droid Delta-9",
+              "npc_key": "G1-S1-O3-C2-CT3-R7-NPC",
+              "role": "Emergency Response Droid (Deep Shield)"
+            }
+          },
+          "objectives": [
+            "Get orders at Moisture-Taps.",
+            "Decode symbols at The Bio-Sleeve Ghetto.",
+            "Vent pressure at Pressure-Hatch 7."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Vapor Lock Crisis",
+          "mission": "A sudden pressure spike threatens the vapor locks; immediate manual intervention required.",
+          "key_cast": {
+            "giver": {
+              "name": "Droid Gamma-7",
+              "npc_key": "G1-S1-O3-C2-CT2-R7-NPC",
+              "role": "Emergency Response Droid (Isotope-4)"
+            },
+            "contact": {
+              "name": "Drone Cluster Gamma",
+              "npc_key": "G1-S1-O3-C2-CT2-R4-NPC",
+              "role": "Security Drone Cluster (Isotope-4)"
+            },
+            "target": {
+              "name": "Overseer Vahn",
+              "npc_key": "G1-S1-O3-C2-CT2-R1-NPC",
+              "role": "Chief Overseer (Isotope-4)"
+            }
+          },
+          "objectives": [
+            "Respond to alarm at The Vapor-Locks.",
+            "Redirect power at Flux-Bridges.",
+            "Submit report at Reactor-Vessels Gamma."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Cross-City Sync",
+          "mission": "Coordinate the timing of the Gantry rotation with the Quarry extraction (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Overseer Kaelen",
+              "npc_key": "G1-S1-O3-C2-CT1-R1-NPC",
+              "role": "Chief Overseer (Leadspire)"
+            },
+            "contact": {
+              "name": "Envoy Drax",
+              "npc_key": "G1-S1-O3-C2-CT2-R5-NPC",
+              "role": "Cartel Envoy (Isotope-4)"
+            },
+            "target": {
+              "name": "Analyst Vorn",
+              "npc_key": "G1-S1-O3-C2-CT3-R6-NPC",
+              "role": "Radiation Analyst (Deep Shield)"
+            }
+          },
+          "objectives": [
+            "Get timing at The Gilded Gantry.",
+            "Align schedules at The Lead-Quarries.",
+            "Update maps at The Bio-Sleeve Ghetto."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "attribute": "INTELLIGENCE",
+      "faction": "The Leadened Hegemony",
+      "civilization_id": "C3",
+      "global_hook": "Optimize the thermodynamic equilibrium of the station.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Criticality Simulation",
+          "mission": "Assist Chief Overseer Vass during a high-stakes containment drill.",
+          "key_cast": {
+            "giver": {
+              "name": "Overseer Vass",
+              "npc_key": "G1-S1-O3-C3-CT1-R5-NPC",
+              "role": "Chief Overseer (Flux Core)"
+            },
+            "contact": {
+              "name": "Sifter-Unit 71",
+              "npc_key": "G1-S1-O3-C3-CT1-R1-NPC",
+              "role": "Technician (Flux Core)"
+            },
+            "target": {
+              "name": "Guardian Node Sigma-1",
+              "npc_key": "G1-S1-O3-C3-CT1-R2-NPC",
+              "role": "AI Containment Sentinel (Flux Core)"
+            }
+          },
+          "objectives": [
+            "Consult at The Criticality Chamber.",
+            "Calibrate sensors at Isotope Sifter.",
+            "Submit results at Neutron Well."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "Broken Grid Relay",
+          "mission": "Repair the sensor networks to prevent a cascading power failure.",
+          "key_cast": {
+            "giver": {
+              "name": "Technician Mira",
+              "npc_key": "G1-S1-O3-C3-CT2-R2-NPC",
+              "role": "Technician (Shield's Reach)"
+            },
+            "contact": {
+              "name": "Analyst Zephyr",
+              "npc_key": "G1-S1-O3-C3-CT1-R4-NPC",
+              "role": "Radiation Analyst (Flux Core)"
+            },
+            "target": {
+              "name": "Broker Kael Rho",
+              "npc_key": "G1-S1-O3-C3-CT1-R3-NPC",
+              "role": "Cartel Envoy (Flux Core)"
+            }
+          },
+          "objectives": [
+            "Get codes at The Air-Lock Arches.",
+            "Trace leak at Plasma Arteries.",
+            "Authorize materials at The Gilded Grid."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Ghost Alarms",
+          "mission": "Investigate false alarms causing security drones to panic.",
+          "key_cast": {
+            "giver": {
+              "name": "Pylon Swarm Alpha",
+              "npc_key": "G1-S1-O3-C3-CT2-R4-NPC",
+              "role": "Security Drone Cluster (Shield's Reach)"
+            },
+            "contact": {
+              "name": "Gatekeeper Valen-S",
+              "npc_key": "G1-S1-O3-C3-CT2-R3-NPC",
+              "role": "Chief Overseer (Shield's Reach)"
+            },
+            "target": {
+              "name": "Bulwark-Sentinel B1",
+              "npc_key": "G1-S1-O3-C3-CT2-R1-NPC",
+              "role": "AI Containment Sentinel (Shield's Reach)"
+            }
+          },
+          "objectives": [
+            "Silence triggers at Perimeter Pylon.",
+            "Verify logs at Gamma Gate 01.",
+            "Upload patches at Lead-Lined Bulwark."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Archive Smuggling",
+          "mission": "Move a shipment of restricted isotopes without alerting AI oversight.",
+          "key_cast": {
+            "giver": {
+              "name": "Archive Envoy Rho-X",
+              "npc_key": "G1-S1-O3-C3-CT3-R5-NPC",
+              "role": "Cartel Envoy (Deep Sump)"
+            },
+            "contact": {
+              "name": "Analyst Fray",
+              "npc_key": "G1-S1-O3-C3-CT3-R6-NPC",
+              "role": "Radiation Analyst (Deep Sump)"
+            },
+            "target": {
+              "name": "Silo-Chief Valen-Z",
+              "npc_key": "G1-S1-O3-C3-CT3-R1-NPC",
+              "role": "Chief Overseer (Deep Sump)"
+            }
+          },
+          "objectives": [
+            "Get manifest at Isotope Archive.",
+            "Hide signatures at Slag Gardens.",
+            "Log package at Vitrified Silos."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "Basin Contamination",
+          "mission": "Prevent a heavy water breach in the Sub-Containment Vault.",
+          "key_cast": {
+            "giver": {
+              "name": "Hydrology Tech Lira-C",
+              "npc_key": "G1-S1-O3-C3-CT3-R2-NPC",
+              "role": "Technician (Deep Sump)"
+            },
+            "contact": {
+              "name": "Vault-Breach Droid",
+              "npc_key": "G1-S1-O3-C3-CT3-R7-NPC",
+              "role": "Emergency Response Droid (Deep Sump)"
+            },
+            "target": {
+              "name": "Casket AI",
+              "npc_key": "G1-S1-O3-C3-CT3-R3-NPC",
+              "role": "AI Containment Sentinel (Deep Sump)"
+            }
+          },
+          "objectives": [
+            "Get drainage sequence at Heavy Water Basin.",
+            "Escort droid at Sub-Containment Vault.",
+            "Override lockout at The Lead Casket."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "External Signal Leak",
+          "mission": "Track and neutralize unknown signals bleeding through the shielding.",
+          "key_cast": {
+            "giver": {
+              "name": "Analyst Jex-B",
+              "npc_key": "G1-S1-O3-C3-CT2-R6-NPC",
+              "role": "Radiation Analyst (Shield's Reach)"
+            },
+            "contact": {
+              "name": "Envoy Drax",
+              "npc_key": "G1-S1-O3-C3-CT2-R5-NPC",
+              "role": "Cartel Envoy (Shield's Reach)"
+            },
+            "target": {
+              "name": "Rescue Unit Echo",
+              "npc_key": "G1-S1-O3-C3-CT2-R7-NPC",
+              "role": "Emergency Response Droid (Shield's Reach)"
+            }
+          },
+          "objectives": [
+            "Isolate frequency at External Relay.",
+            "Get clearance at Decontamination Plaza.",
+            "Deploy beacons at Sentry Hive."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Plasma Flush Protocol",
+          "mission": "Manual flush of the plasma arteries to prevent overheating (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Droid Unit-Red",
+              "npc_key": "G1-S1-O3-C3-CT1-R6-NPC",
+              "role": "Emergency Response Droid (Flux Core)"
+            },
+            "contact": {
+              "name": "Patrol Swarm 09",
+              "npc_key": "G1-S1-O3-C3-CT1-R7-NPC",
+              "role": "Security Drone Cluster (Flux Core)"
+            },
+            "target": {
+              "name": "Analyst Zephyr",
+              "npc_key": "G1-S1-O3-C3-CT1-R4-NPC",
+              "role": "Radiation Analyst (Flux Core)"
+            }
+          },
+          "objectives": [
+            "Initiate countdown at Enrichment Spires.",
+            "Clear shafts at Monitoring Node Alpha.",
+            "Stabilize flow at Plasma Arteries."
+          ]
+        }
+      ]
+    }
+  ]
+}

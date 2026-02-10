@@ -321,6 +321,7 @@ export default defineConfig(({ mode }) => {
         'eideus-xp-system': path.resolve(__dirname, '../../packages/eideus-xp-system/src'),
         'eideus-combat': path.resolve(__dirname, '../../packages/eideus-combat/src'),
         'eideus-routers': path.resolve(__dirname, '../../packages/eideus-routers/src'),
+        'eideus-affinity-system': path.resolve(__dirname, '../../packages/eideus-affinity-system/src'),
         'memory-viz': path.resolve(__dirname, '../../apps/memory-viz/Visualizer.tsx')
       },
       dedupe: ['react', 'react-dom', '@react-three/fiber', '@react-three/drei', 'three']

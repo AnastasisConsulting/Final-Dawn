@@ -33,7 +33,6 @@ export const CharacterProgressionPanel: React.FC<Props> = () => {
 
                 <Suspense fallback={null}>
                     <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-                    <Environment preset="city" />
 
                     {/* Render the 3 distinct trees (Rebel, Acolyte, Hacker) */}
                     <group position={[0, -10, 0]}>

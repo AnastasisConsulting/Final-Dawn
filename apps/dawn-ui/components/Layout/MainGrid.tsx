@@ -112,15 +112,15 @@ export const MainGrid: React.FC<MainGridProps> = ({
 
     return (
         <div
-            className="relative flex flex-row w-full h-full max-h-full overflow-hidden"
+            className="relative flex flex-row w-full h-full overflow-hidden"
             style={{ perspective: '1600px' }}
             onClick={handleBackgroundClick}
         >
-            {/* --- LEFT ZONE (25%) --- */}
-            <div className="w-1/4 h-full relative flex flex-row z-30">
-                {/* DOCK (20% of 25% = 5% screen width) */}
+            {/* --- LEFT ZONE (20%) --- */}
+            <div className="w-[20%] min-w-[20%] max-w-[20%] h-full relative flex flex-row z-30 shrink-0">
+                {/* DOCK (15% of 20% = 3% screen width) - TAILORED FOR "TALL AND SKINNY" */}
                 <div
-                    className="w-[20%] h-full relative z-30"
+                    className="w-[15%] h-full relative z-30"
                     onMouseEnter={() => !isWarping && setHoveredPanel('left')}
                     onMouseLeave={() => setHoveredPanel(null)}
                 >
@@ -135,8 +135,8 @@ export const MainGrid: React.FC<MainGridProps> = ({
                     </div>
                 </div>
 
-                {/* PANEL AREA (80% of 25% = 20% screen width) */}
-                <div className="w-[80%] h-full relative z-20 pointer-events-none">
+                {/* PANEL AREA (85% of 20% = 17% screen width) */}
+                <div className="w-[85%] h-full relative z-20 pointer-events-none">
                     <SlidePanel
                         isOpen={!!activeLeftPanel && !isWarping}
                         title={activeLeftPanel || ''}
@@ -149,9 +149,9 @@ export const MainGrid: React.FC<MainGridProps> = ({
                 </div>
             </div>
 
-            {/* --- CENTER ZONE (50%) --- */}
+            {/* --- CENTER ZONE (60%) --- */}
             <div
-                className="w-1/2 h-full relative z-10 px-2"
+                className="w-[60%] min-w-[60%] max-w-[60%] h-full relative z-10 px-2 shrink-0"
                 style={getCenterStyle()}
             >
                 <CenterPanel
@@ -161,11 +161,11 @@ export const MainGrid: React.FC<MainGridProps> = ({
                 />
             </div>
 
-            {/* --- RIGHT ZONE (25%) --- */}
-            <div className="w-1/4 h-full relative flex flex-row-reverse z-30">
-                {/* DOCK (20% of 25% = 5% screen width) */}
+            {/* --- RIGHT ZONE (20%) --- */}
+            <div className="w-[20%] min-w-[20%] max-w-[20%] h-full relative flex flex-row-reverse z-30 shrink-0">
+                {/* DOCK (15% of 20% = 3% screen width) */}
                 <div
-                    className="w-[20%] h-full relative z-30"
+                    className="w-[15%] h-full relative z-30"
                     onMouseEnter={() => !isWarping && setHoveredPanel('right')}
                     onMouseLeave={() => setHoveredPanel(null)}
                 >
@@ -180,8 +180,8 @@ export const MainGrid: React.FC<MainGridProps> = ({
                     </div>
                 </div>
 
-                {/* PANEL AREA (80% of 25% = 20% screen width) */}
-                <div className="w-[80%] h-full relative z-20 pointer-events-none">
+                {/* PANEL AREA (85% of 20% = 17% screen width) */}
+                <div className="w-[85%] h-full relative z-20 pointer-events-none">
                     <SlidePanel
                         isOpen={!!activeRightPanel && !isWarping}
                         title={activeRightPanel || ''}

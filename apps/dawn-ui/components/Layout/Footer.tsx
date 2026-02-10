@@ -1,9 +1,8 @@
 // Final_Dawn_of_Eideus/apps/dawn-ui/components/Layout/Footer.tsx
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useKernel } from '../../hooks/useKernel';
-import { runSimulation } from '../../../alive-object-engine/Vizzy/POA/SimulateLattice';
-import { VizzyOrchestrator } from '../../services/VizzyOrchestrator';
+import { createSimulation, AffinitySimulation } from 'eideus-affinity-system';
 
 /**
  * Footer: The lower status bar of the Eideus Dawn interface.
@@ -12,6 +11,11 @@ import { VizzyOrchestrator } from '../../services/VizzyOrchestrator';
 export const Footer: React.FC = () => {
   const { state } = useKernel();
   const isWarping = state.isWarping;
+
+  // Affinity Simulation Ref
+  const simRef = useRef<AffinitySimulation | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const [isSimRunning, setSimRunning] = useState(false);
 
   const statusItems = [
     "HEALTH: CRITICAL",
@@ -23,15 +27,31 @@ export const Footer: React.FC = () => {
   ];
 
   const handleSimTrigger = () => {
-    // Check if a model is selected for Vizzy
-    const vizzyModel = localStorage.getItem('vizzy:model');
-
-    if (vizzyModel) {
-      console.log(`[Footer] Starting Vizzy Simulation with Model: ${vizzyModel}`);
-      runSimulation(VizzyOrchestrator, vizzyModel);
+    if (isSimRunning) {
+      // STOP SIMULATION
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      setSimRunning(false);
+      console.log('[Footer] Affinity System Simulation STOPPED.');
     } else {
-      console.log('[Footer] Starting Vizzy Simulation (Hardcoded Mode)');
-      runSimulation();
+      // START SIMULATION
+      if (!simRef.current) {
+        console.log('[Footer] Initializing Affinity Simulation...');
+        simRef.current = createSimulation();
+      }
+
+      console.log('[Footer] Affinity System Simulation STARTED.');
+      setSimRunning(true);
+
+      intervalRef.current = window.setInterval(() => {
+        if (simRef.current) {
+          simRef.current.tick();
+          const tick = simRef.current.getGlobalTick();
+          console.log(`[Affinity Sim] Tick ${tick} | Unrest: ${simRef.current.getLevelAggregate(1).unrest.toFixed(2)}`); // Level 1 = INTERSTELLAR approx check
+        }
+      }, 2500); // 2.5s per tick
     }
   };
 
@@ -48,8 +68,11 @@ export const Footer: React.FC = () => {
     >
       {/* Left 10%: Fractal Sim Trigger */}
       <div className="w-[10%] bg-[#050505] border-r border-[#111] flex items-center justify-center relative shadow-[inset_-5px_0_10px_black] overflow-hidden">
-        <button onClick={handleSimTrigger} className="p-2 bg-cyan-500 text-black font-bold hover:bg-cyan-400 transition-colors w-full h-full text-[10px]">
-          START FRACTAL SIM
+        <button
+          onClick={handleSimTrigger}
+          className={`p-2 font-bold transition-colors w-full h-full text-[10px] ${isSimRunning ? 'bg-orange-500 text-black animate-pulse' : 'bg-cyan-500 text-black hover:bg-cyan-400'}`}
+        >
+          {isSimRunning ? 'STOP SIM' : 'START FRACTAL SIM'}
         </button>
       </div>
 

@@ -5,18 +5,40 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 export type SpatialKey = { g: number; s: number; o: number; c: number; ct: number; r: number };
 export type TemporalKey = { saga: number; book: number; chapter: number; page: number };
 
+export interface MacroHierarchy {
+  name: string;
+  subs: {
+    name: string;
+    items: string[];
+  }[];
+}
+
+export interface MicroHierarchy {
+  name: string; // Planetary Object Name
+  civilizations: {
+    name: string;
+    cities: {
+      name: string;
+      regions: string[];
+    }[];
+  }[];
+}
+
 export interface MemoryVizRootProps {
   embedded?: boolean;
   initialSpatial?: SpatialKey;
   initialTemporal?: TemporalKey;
   onSelect?: (payload: any) => void;
+  hierarchyData?: {
+    macro?: MacroHierarchy[];
+    micro?: MicroHierarchy;
+  };
   api?: {
     directVoxelRead: (args: any) => Promise<any>;
     readVoxel: (args: any) => Promise<any>;
     latestAtLocation: (args: any) => Promise<any>;
     directSpatialSlice: (args: any) => Promise<any>;
   };
-  hierarchyData?: any[];
 }
 
 export interface StackData {
@@ -28,7 +50,6 @@ export interface StackData {
   targetPos: THREE.Vector3;
   startRot: THREE.Euler;
   targetRot: THREE.Euler;
-  initialMatrices?: THREE.Matrix4[];
 }
 
 export interface FocusedLayerState {
@@ -54,53 +75,6 @@ export interface HeroLayerData {
   originalY: number;
   civName: string;
 }
-
-export interface SectorMapCell {
-  x: number;
-  y: number;
-  type: string;
-}
-
-export interface SectorMapNode {
-  x: number;
-  y: number;
-  id: string;
-  kind: string;
-  ownerCityId?: string;
-}
-
-export interface SectorMapCivilization {
-  civId: string;
-  index: number;
-  grid: { cells: SectorMapCell[] };
-  nodes: SectorMapNode[];
-}
-
-export interface SectorMap {
-  worldId: string;
-  civilizations: SectorMapCivilization[];
-}
-
-export type TopographySet = {
-  version: string;
-  worldId: string;
-  gridSize: number;
-  civs: { civId: string; seed: string; heightmap: number[] }[];
-};
-
-export interface MemoryVoxel {
-  id: string;
-  spatial: { g: number; s: number; o: number; c: number; ct: number; r: number };
-  temporal: { saga: number; book: number; chapter: number; page: number };
-  faces: Record<string, string>;
-  createdAtUnixMs?: number;
-}
-
-export type CivSelection = {
-  id: string;
-  name: string;
-  index: number;
-};
 
 export interface ISceneState {
   container: HTMLElement;
@@ -192,16 +166,9 @@ export interface ISceneState {
   onPanelUpdate?: (open: boolean, faceInfo: string, coords: string) => void;
   onSelectCallback?: (payload: any) => void;
   onLayerSelect?: (indices: { cube: number, stack: number, layer: number } | null) => void;
-  onCivSelect?: (civ: { name: string; id: string } | null) => void;
+  onCivSelect?: (civName: string | null) => void;
   onCivHover?: (civName: string | null) => void;
   onVoxelSelect?: (index: number | null, layerId: string) => void;
   onStackHover?: (cubeIndex: number, stackIndex: number, layerIndex: number, active: boolean) => void;
   onExpand?: (expanded: boolean) => void;
-
-  // Visualizer compatibility
-  setVoxelHighlights(highlights: any[]): void;
-  setHeroCivs(civs: any[]): void;
-  setGridHeightColors(heights: number[], gradient: any[], baseColor: number): void;
-  setGridCellColors(cells: any[], palette: any, defaultColor: number): void;
-  gridHoverLabel?: (index: number, civId: string) => string;
 }

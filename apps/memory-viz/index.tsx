@@ -2,6 +2,10 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import MemoryVizRoot from './Visualizer';
 
-const container = document.getElementById('app');
-const root = createRoot(container!);
-root.render(<MemoryVizRoot embedded={false} />);
+export default MemoryVizRoot;
+
+if (document.getElementById('app')) {
+    const container = document.getElementById('app');
+    const root = createRoot(container!);
+    root.render(<MemoryVizRoot embedded={false} />);
+}

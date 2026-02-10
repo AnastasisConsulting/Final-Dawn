@@ -18,6 +18,7 @@
     "eideus-bestiary": "workspace:*",
     "eideus-memory-lattice-api": "workspace:*",
     "eideus-routers": "workspace:*",
+    "eideus-affinity-system": "workspace:*",
     "eideus-world-bundle-binder": "workspace:*",
     "eideus-xp-system": "workspace:*",
     "flight-one": "workspace:*",

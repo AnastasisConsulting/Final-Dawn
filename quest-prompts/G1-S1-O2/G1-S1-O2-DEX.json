@@ -1,0 +1,169 @@
+{
+    "affinity": "DEX",
+    "civilization_target": "The Aegis Directive",
+    "civilization_id": "G1-S1-O2-C2",
+    "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Phantasmal Breach",
+            "narrative_guidance": "A simulated breach has spiraled out of control. You must verify the authenticity of the threat across multiple sectors.",
+            "improvisation_points": [
+                "Consult Virek-Alpha about the 04:00 sensor logs.",
+                "Verify the holographic integrity with Sentinel-Edge.",
+                "Submit a seismic resonance report to Nove-Reach to confirm no ground-shaking occurred."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Commander Virek-Alpha",
+                    "id": "G1-S1-O2-C2-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Sentinel-Edge",
+                    "id": "G1-S1-O2-C2-CT3-R3-NPC"
+                },
+                "target": {
+                    "name": "Nove-Reach",
+                    "id": "G1-S1-O2-C2-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Calibrating the Void",
+            "narrative_guidance": "The optical sensors are failing. A coordinated recalibration is required to maintain the Aegis vision.",
+            "improvisation_points": [
+                "Acquire the specialized lens filters from Rilo-Prime.",
+                "Deliver the flux-capacitors to Tamsin-M to power the array.",
+                "Confirm the long-range visuals with Omega-03."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Technician Rilo-Prime",
+                    "id": "G1-S1-O2-C2-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Tamsin-M",
+                    "id": "G1-S1-O2-C2-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Omega-03",
+                    "id": "G1-S1-O2-C2-CT3-R4-NPC"
+                }
+            }
+        },
+        {
+            "title": "The False Signal",
+            "narrative_guidance": "A ghost signal is bypassing the central AI. You must trace the origin through the mercenary network.",
+            "improvisation_points": [
+                "Intercept the ghost packet from Sentinel-Core.",
+                "Consult with Katt-Deep to see if the Cartel is using the frequency.",
+                "Report the breach findings to Virek-Gamma for perimeter lockdown."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Sentinel-Core",
+                    "id": "G1-S1-O2-C2-CT1-R3-NPC"
+                },
+                "contact": {
+                    "name": "Katt-Deep",
+                    "id": "G1-S1-O2-C2-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Virek-Gamma",
+                    "id": "G1-S1-O2-C2-CT3-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "Deep Pressure Drift",
+            "narrative_guidance": "Sensors in the Mantle are detecting movement in the heat that shouldn't be there.",
+            "improvisation_points": [
+                "Retrieve the thermal logs from Omega-02.",
+                "Request turret support from Rilo-Rim to cover the vents.",
+                "Finalize the security contract with Katt-V to bring in extra guards."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Omega-02",
+                    "id": "G1-S1-O2-C2-CT2-R4-NPC"
+                },
+                "contact": {
+                    "name": "Rilo-Rim",
+                    "id": "G1-S1-O2-C2-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Katt-V",
+                    "id": "G1-S1-O2-C2-CT1-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Shielding Secret",
+            "narrative_guidance": "The buffer zone's shields are fluctuating. You need to decode the maintenance symbols.",
+            "improvisation_points": [
+                "Obtain the cipher key from Tamsin-A's markings.",
+                "Cross-reference the efficiency logs with Nove-One.",
+                "Upload the fix to the Valve District flow controller Sentinel-V3."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Tamsin-A",
+                    "id": "G1-S1-O2-C2-CT1-R6-NPC"
+                },
+                "contact": {
+                    "name": "Nove-One",
+                    "id": "G1-S1-O2-C2-CT1-R7-NPC"
+                },
+                "target": {
+                    "name": "Sentinel-V3",
+                    "id": "G1-S1-O2-C2-CT2-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Mercenary's Gambit",
+            "narrative_guidance": "A shipment of illegal pulse pistols has been detected moving through the trenches.",
+            "improvisation_points": [
+                "Meet Katt-Rim to get the shipment manifest.",
+                "Search the deep shafts with Virek-Beta for the hidden stash.",
+                "Reinforce the garrison gates with Tamsin-Z to prevent export."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Katt-Rim",
+                    "id": "G1-S1-O2-C2-CT3-R5-NPC"
+                },
+                "contact": {
+                    "name": "Virek-Beta",
+                    "id": "G1-S1-O2-C2-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Tamsin-Z",
+                    "id": "G1-S1-O2-C2-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Orbital Prediction",
+            "narrative_guidance": "Atmospheric pressure changes suggest a massive orbital object is descending.",
+            "improvisation_points": [
+                "Get the threat probability from Nove-Seven.",
+                "Deploy Omega-01 to get a high-altitude visual.",
+                "Hand the coordinates to Rilo-Mantle for emergency pressure venting."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Nove-Seven",
+                    "id": "G1-S1-O2-C2-CT3-R7-NPC"
+                },
+                "contact": {
+                    "name": "Omega-01",
+                    "id": "G1-S1-O2-C2-CT1-R4-NPC"
+                },
+                "target": {
+                    "name": "Rilo-Mantle",
+                    "id": "G1-S1-O2-C2-CT2-R2-NPC"
+                }
+            }
+        }
+    ]
+}

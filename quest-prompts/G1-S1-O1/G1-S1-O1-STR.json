@@ -1,0 +1,169 @@
+{
+    "affinity": "STR",
+    "civilization_target": "The Marrow-Hollowed Union",
+    "civilization_id": "G1-S1-O1-C1",
+    "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Collapsing Shaft",
+            "narrative_guidance": "The main drill shaft at the Command Monolith is buckling. You must stabilize it before the whole city tilts.",
+            "improvisation_points": [
+                "Consult Chief Engineer Hara-Prime for the stabilization schematics.",
+                "Secure the support beams from Foreman Kraul at the Gneiss Gates.",
+                "Deliver the final calibration codes to Technician Lorn-Seven to seal the shaft."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Chief Engineer Hara-Prime",
+                    "id": "G1-S1-O1-C1-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Foreman Kraul",
+                    "id": "G1-S1-O1-C1-CT1-R7-NPC"
+                },
+                "target": {
+                    "name": "Technician Lorn-Seven",
+                    "id": "G1-S1-O1-C1-CT1-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "Rad-Safe Routing",
+            "narrative_guidance": "A surge of radiation has blocked the transport lines. A new path must be mapped using secure codes.",
+            "improvisation_points": [
+                "Obtain the encrypted bypass logic from AI Core-11.A.",
+                "Scan for safe pockets with Radiation Scout Iko-Red in the Gantry Row.",
+                "Hand the verified coordinates to Drone Commander R-Delta-V to update the drone paths."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "AI Core-11.A",
+                    "id": "G1-S1-O1-C1-CT1-R3-NPC"
+                },
+                "contact": {
+                    "name": "Radiation Scout Iko-Red",
+                    "id": "G1-S1-O1-C1-CT1-R6-NPC"
+                },
+                "target": {
+                    "name": "Drone Commander R-Delta-V",
+                    "id": "G1-S1-O1-C1-CT1-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Black-Market Batch",
+            "narrative_guidance": "Rare ore has gone missing from the foundry. It needs to be moved to a buyer without the Overseer knowing.",
+            "improvisation_points": [
+                "Accept the hidden stash from Salvager Xyra-One.",
+                "Stash the ore in the reclamation pit with Scrap King Jax.",
+                "Bribe Grease Monkey Sly to smuggle it through the corridors."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Salvager Xyra-One",
+                    "id": "G1-S1-O1-C1-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Scrap King Jax",
+                    "id": "G1-S1-O1-C1-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Grease Monkey Sly",
+                    "id": "G1-S1-O1-C1-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Atmospheric Integrity",
+            "narrative_guidance": "The Welders' Habitats are losing oxygen pressure. Repairs must be expedited.",
+            "improvisation_points": [
+                "Collect a requisition order from Habitat Warden Jace.",
+                "Secure the refined gas canisters from Refinery Op Mara.",
+                "Install the seals at the spare-part vaults under the eye of Vault Guard Drax."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Habitat Warden Jace",
+                    "id": "G1-S1-O1-C1-CT2-R1-NPC"
+                },
+                "contact": {
+                    "name": "Refinery Op Mara",
+                    "id": "G1-S1-O1-C1-CT2-R2-NPC"
+                },
+                "target": {
+                    "name": "Vault Guard Drax",
+                    "id": "G1-S1-O1-C1-CT2-R4-NPC"
+                }
+            }
+        },
+        {
+            "title": "Hydraulic Overload",
+            "narrative_guidance": "A hydraulic leak is threatening the chassis forge. Someone needs to crawl into the ducts.",
+            "improvisation_points": [
+                "Get the leak locations from Duct Crawler Pip.",
+                "Acquire the custom-welded patch from Forge Master Bran.",
+                "Ensure the waste valves are cleared by Slag Monitor Nox."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Duct Crawler Pip",
+                    "id": "G1-S1-O1-C1-CT2-R3-NPC"
+                },
+                "contact": {
+                    "name": "Forge Master Bran",
+                    "id": "G1-S1-O1-C1-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Slag Monitor Nox",
+                    "id": "G1-S1-O1-C1-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Magma Flow Regulation",
+            "narrative_guidance": "The geothermal intake is running too hot. The turbines are at risk of melting.",
+            "improvisation_points": [
+                "Receive the flow-gate keys from Intake Guard Vol.",
+                "Calculate the cooling dispersal with Heat Analyst Sora.",
+                "Apply the radiation dampeners with Lead Shield Tavish."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Intake Guard Vol",
+                    "id": "G1-S1-O1-C1-CT3-R1-NPC"
+                },
+                "contact": {
+                    "name": "Heat Analyst Sora",
+                    "id": "G1-S1-O1-C1-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Lead Shield Tavish",
+                    "id": "G1-S1-O1-C1-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Deep Anchor Protocol",
+            "narrative_guidance": "The base is shifting on the sub-crustal plates. The anchors must be reinforced with crushed quartz.",
+            "improvisation_points": [
+                "Collect the heavy material from Mill Hand Grog.",
+                "Power up the anchor-winches with Turbine Tech Elara.",
+                "Deliver the status report to Anchor Master Silas at the anchor points."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Mill Hand Grog",
+                    "id": "G1-S1-O1-C1-CT3-R4-NPC"
+                },
+                "contact": {
+                    "name": "Turbine Tech Elara",
+                    "id": "G1-S1-O1-C1-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Anchor Master Silas",
+                    "id": "G1-S1-O1-C1-CT3-R7-NPC"
+                }
+            }
+        }
+    ]
+}

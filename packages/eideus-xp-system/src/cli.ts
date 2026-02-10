@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // PATH: src/cli.ts
 import fs from "node:fs";
 import { defaultConfig } from "./config.js";

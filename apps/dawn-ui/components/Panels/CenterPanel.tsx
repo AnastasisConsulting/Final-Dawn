@@ -8,10 +8,12 @@ import { runTurn } from '../../services/orchestrator';
 import { vizzyOrchestrator } from '../../src/services/VizzyOrchestrator';
 import { useKernel } from '../../hooks/useKernel';
 import { getDefaultLocationId } from 'eideus-routers';
+import { getTotalXpForLevel } from 'eideus-xp-system';
 import { JunkScatter } from '../Features/Vizzy/JunkScatter';
 import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 
 import { useGame } from '../../src/context/GameContext';
+import { QuestManager } from '../../src/services/QuestManager';
 
 const getDefaultAddress = () => {
   return getDefaultLocationId();
@@ -38,7 +40,7 @@ declare global {
 
 export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTargetSelect, injection }) => {
   const { state, dispatch, loadLocationFromAddress, ensureGlobalSession } = useKernel();
-  const { actions: gameActions } = useGame();
+  const { state: gameState, actions: gameActions } = useGame();
   const isWarping = state.isWarping;
   const { panelColors } = useColorStealing();
   const centerColor = panelColors.center;
@@ -145,6 +147,8 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     }
   }, [state.address.full]);
 
+
+
   const isLiveActive = false;
   const isLiveSpeaking = false;
   const toggleLive = () => { };
@@ -220,6 +224,28 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
 
       console.log(`[AutoPilot] Deciding move ${autoPilot.turnCount + 1}/${autoPilot.maxTurns || '∞'}... Boldness: ${autoPilot.boldness}`);
 
+      // Quest Logic
+      // Construct a Quest ID based on location and affinity (assuming 1 quest per loc/affinity for now)
+      const questId = `${objectKeyRef.current}-${autoPilot.affinity}`;
+      const activeQuest = gameState.quests?.[questId];
+
+      let objective = "Explore the area. Look for opportunities.";
+      let targetParams = "";
+
+      // Look up static data
+      const qData = QuestManager.getQuest(objectKeyRef.current, autoPilot.affinity);
+
+      if (activeQuest && activeQuest.status === 'active' && qData) {
+        const target = QuestManager.getTargetDetails(qData, activeQuest.stepIndex);
+        objective = QuestManager.getObjective(qData, activeQuest.stepIndex);
+        if (target) {
+          targetParams = `CURRENT TARGET NPC: ${target.name} (ID: ${target.id})`;
+        }
+      } else if (qData && (!activeQuest || activeQuest.status !== 'completed')) {
+        objective = `NEW MISSION AVAILABLE: ${qData.title}. Seek out ${qData.cast.giver.name}.`;
+        targetParams = `TARGET NPC: ${qData.cast.giver.name} (ID: ${qData.cast.giver.id})`;
+      }
+
       // Boldness behavior injection
       const boldnessDirective = autoPilot.boldness < 30
         ? 'Be CAUTIOUS. Avoid risky actions. Prefer safe, defensive choices.'
@@ -228,22 +254,32 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
           : 'Balance risk and reward. Act thoughtfully but don\'t shy from opportunity.';
 
       const prompt = `
-        You are an autonomous beta-tester agent playing Eideus Dawn.
+        You are an autonomous player agent speed-running Eideus Dawn.
         Role: Level 1 ${autoPilot.class} [${autoPilot.affinity}].
-        Goal: Progress through the world and interact with local entities.
-        Location: ${objectKeyRef.current}
+        Goal: COMPLETE QUESTS. ACQUIRE LOOT. PROGRESS.
+
+        Current Location: ${objectKeyRef.current}
+        Current Objective: ${objective}
+        ${targetParams}
         
-        BEHAVIOR: ${boldnessDirective}
-        
-        Last Narration/Dialogue:
+        Boldness Setting: ${autoPilot.boldness}/100
+
+        Last Message:
         "${lastMsg.sender.toUpperCase()}: ${lastMsg.content.replace(/<[^>]*>/g, '')}"
+
+        INSTRUCTIONS:
+        1. DECIDE an immediate action based on the last message.
+        2. PRIORITIZE the Current Objective and Target NPC.
+        3. IF the objective is to find a specific NPC, try to "scan for" or "call out to" them.
+        4. IF a quest is offered, ACCEPT IT.
+        5. IF in combat, ATTACK or USE SKILL.
+        6. IF stuck or bored, warp to a neighbor system using "/warp G1-S1-O[1-7]".
+        7. DO NOT be passive. DO NOT "reflect" or "think". ACT.
         
-        TASK:
-        - Output a short, immersive roleplay action (1 sentence).
-        - Use the first person "I". 
-        - If you see a clear quest, try to accept it.
-        - DO NOT output game commands unless you are finished with 7 quests (then use /warp).
-        - NO EXPLANATIONS. NO QUOTES.
+        OUTPUT FORMAT:
+        - Output ONLY the action string.
+        - Examples: "I approach Overseer Prime and ask about the anomaly.", "I accept the job.", "I detailed scan the area.", "/warp G1-S1-O2"
+        - NO Markdown. NO explanations.
       `;
 
       try {
@@ -427,6 +463,32 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       return;
     }
 
+    if (text === '/landing-game') {
+      // Dispatch legacy event or use a global handler if needed, 
+      // but since CenterPanel is deeply nested, we might need a way to reach App.tsx's handleLaunchLandingGame.
+      // App.tsx holds the state.
+      // We can use a custom event since we don't have direct access to App.tsx props here.
+      window.dispatchEvent(new CustomEvent('trigger-test-landing', {
+        detail: {
+          id: 'TEST-LANDING',
+          name: 'Test Site Alpha',
+          address: 'G1-S1-O1-CIV1-CT1',
+          position: [0, 8000, 0],
+          velocity: [0, -50, 0],
+          heading: 0
+        }
+      }));
+
+      setMessages(prev => [...prev, {
+        id: generateMessageId('sys'),
+        sender: 'navbot',
+        content: `>> INITIATING LANDING GAME SEQUENCE...`,
+        type: 'text',
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      }]);
+      return;
+    }
+
     // DEV COMMANDS
     if (text.startsWith('/help')) {
       const query = text.replace('/help', '').trim();
@@ -437,6 +499,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
           - /help [QUESTION] : Ask the AI Game Manual a question directly.
           - /beta-test [CLASS] [AFFINITY] : Start autonomous tester bot.
           - /stop-bot : Stop the bot.
+          - /landing-game : Jump to Landing Game.
           - /warp [ADDRESS] : Instant teleport (e.g. G1-S1-O1).
           - /telemetry : Display current player/bot state.
           - /sim-combat [DIFF 1-10] : Simulate combat encounter (Awards XP).
@@ -444,6 +507,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
           - /spawn-loot [RARITY] : Generate random loot drop.
           - /export-logs : Download chat history as MD.
           - /print-logs : Send chat history to printer.
+          - /lint : Critique narrative immersion.
           `;
         setMessages(prev => [...prev, {
           id: generateMessageId('sys'),
@@ -532,6 +596,11 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     if (text.startsWith('/sim-combat ')) {
       const diff = parseInt(text.split(' ')[1]) || 1;
       const xp = diff * 150;
+
+      // Award XP
+      gameActions.gainXp(xp);
+      gameActions.recordCombatResult(true); // Track stats
+
       setMessages(prev => [...prev, {
         id: generateMessageId('sys'),
         sender: 'lyra',
@@ -539,36 +608,148 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
         content: `<b>Combat Simulation (Diff ${diff})</b><br/>Enemies neutralized. Gained <b>${xp} XP</b>.`
       }]);
-      // TODO: Actually hook into XP engine
       return;
     }
 
-    if (text.startsWith('/force-level ')) {
-      const level = parseInt(text.split(' ')[1]) || 1;
+    if (text === '/quest-status') {
+      const questId = `${objectKeyRef.current}-${autoPilot.affinity}`;
+      const activeQuest = gameState.quests?.[questId];
+      const qData = QuestManager.getQuest(objectKeyRef.current, autoPilot.affinity);
+
+      let content = `<b>Quest Status [${questId}]</b><br/>`;
+      if (activeQuest) {
+        content += `Status: <span class="text-yellow-400">${activeQuest.status.toUpperCase()}</span><br/>`;
+        content += `Step: ${activeQuest.stepIndex}<br/>`;
+        content += `Log: ${activeQuest.log.join(' -> ')}`;
+      } else {
+        content += `Status: <span class="text-gray-500">NO ACTIVE QUEST</span>`;
+      }
+
+      if (qData) {
+        content += `<br/><br/><b>Local Data</b><br/>Title: ${qData.title}<br/>Giver: ${qData.cast.giver.name}`;
+      } else {
+        content += `<br/><br/><b>Local Data</b><br/>No quest data found for ${autoPilot.affinity} at ${objectKeyRef.current}.`;
+      }
+
       setMessages(prev => [...prev, {
         id: generateMessageId('sys'),
         sender: 'navbot',
         type: 'text',
         timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
-        content: `>> OVERRIDE: CORE LEVEL SET TO [${level}]. STATS UPDATED.`
+        content: content
       }]);
-      // TODO: Actually hook into XP engine
+      return;
+    }
+
+    if (text === '/save') {
+      localStorage.setItem('eideus-gamestate', JSON.stringify(gameState));
+      setMessages(prev => [...prev, {
+        id: generateMessageId('sys'),
+        sender: 'navbot',
+        type: 'text',
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
+        content: `>> GAME STATE SAVED.`
+      }]);
+      return;
+    }
+
+    if (text === '/reset-save') {
+      localStorage.removeItem('eideus-gamestate');
+      location.reload();
+      return;
+    }
+
+    if (text.startsWith('/force-level ')) {
+      const level = parseInt(text.split(' ')[1]) || 1;
+      // Calculate XP needed to reach this level
+      const targetXp = getTotalXpForLevel(level);
+      const currentXp = gameState.xp || 0;
+
+      if (targetXp > currentXp) {
+        gameActions.gainXp(targetXp - currentXp);
+        setMessages(prev => [...prev, {
+          id: generateMessageId('sys'),
+          sender: 'navbot',
+          type: 'text',
+          timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
+          content: `>> OVERRIDE: CORE LEVEL SET TO [${level}]. XP ADJUSTED (+${targetXp - currentXp}).`
+        }]);
+      } else {
+        setMessages(prev => [...prev, {
+          id: generateMessageId('sys'),
+          sender: 'navbot',
+          type: 'text',
+          timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
+          content: `>> OVERRIDE FAILED: Current Level (${gameState.level}) is already >= ${level}.`
+        }]);
+      }
       return;
     }
 
     if (text.startsWith('/spawn-loot ')) {
-      const rarity = text.split(' ')[1] || 'COMMON';
-      const items = ['Plasma Refiner', 'Void Shard', 'Ancient Datapad', 'Cyber-Neural Link', 'Rusty Bolt'];
-      const item = items[Math.floor(Math.random() * items.length)];
+      const rarity = (text.split(' ')[1] || 'COMMON').toUpperCase();
+      const items = [
+        { name: 'Plasma Refiner', type: 'RESOURCE', id: 'res_plasma' },
+        { name: 'Void Shard', type: 'RESOURCE', id: 'res_void' },
+        { name: 'Ancient Datapad', type: 'consumable', id: 'item_pad' },
+        { name: 'Cyber-Neural Link', type: 'RESOURCE', id: 'res_link' },
+        { name: 'Rusty Bolt', type: 'RESOURCE', id: 'res_bolt' }
+      ];
+      const itemTemplate = items[Math.floor(Math.random() * items.length)];
+
+      const item = {
+        ...itemTemplate,
+        rarity: rarity.toLowerCase(),
+        count: 1
+      };
+
+      // @ts-ignore
+      gameActions.addItem(item);
+
       setMessages(prev => [...prev, {
         id: generateMessageId('sys'),
         sender: 'lyra',
         type: 'text',
         timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
-        content: `Loot Dropped: <span style="color: gold">[${rarity}] ${item}</span>`
+        content: `Loot Dropped: <span style="color: gold">[${rarity}] ${item.name}</span>`
       }]);
       return;
     }
+    if (text === '/lint') {
+      setIsProcessing(true);
+      try {
+        const history = messages.slice(-10).map(m => `[${m.sender.toUpperCase()}]: ${m.content}`).join('\n');
+
+        const res = await fetch('http://localhost:4000/api/lint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chatHistory: history })
+        });
+
+        const data = await res.json();
+
+        setMessages(prev => [...prev, {
+          id: generateMessageId('sys'),
+          sender: 'navbot', // Or a new sender 'EDITOR'
+          content: `<b>NARRATIVE CRITIQUE:</b><br/>${data.critique ? data.critique.replace(/\n/g, '<br/>') : 'No critique available.'}`,
+          type: 'text',
+          timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+        }]);
+      } catch (err) {
+        setMessages(prev => [...prev, {
+          id: generateMessageId('err'),
+          sender: 'navbot',
+          content: `[LINT ERROR]: Unable to contact narrative processor.`,
+          type: 'text',
+          timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+        }]);
+      } finally {
+        setIsProcessing(false);
+        setInput('');
+      }
+      return;
+    }
+
     if (text === '/export-logs' || text === '/save-txt') {
       // Format specifically for Notepad/Text viewing
       const logContent = messages.map(m =>
@@ -781,6 +962,21 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       msg.id === id ? { ...msg, content: newContent } : msg
     ));
   };
+
+  // Keep a fresh ref to executeInput to avoid stale closures in event listener
+  const executeRef = useRef(executeInput);
+  useEffect(() => { executeRef.current = executeInput; });
+
+  useEffect(() => {
+    const handleDevParams = (e: any) => {
+      const cmd = e.detail;
+      if (typeof cmd === 'string') {
+        void executeRef.current(cmd);
+      }
+    };
+    window.addEventListener('execute-dev-command', handleDevParams);
+    return () => window.removeEventListener('execute-dev-command', handleDevParams);
+  }, []);
 
   return (
     <div className={`flex flex-col h-full max-h-full overflow-hidden gap-[1px] relative bg-neutral-950/20 p-0.5 ${isWarping ? 'scale-[0.05] opacity-0 blur-2xl translate-z-[-1000px]' : ''}`}

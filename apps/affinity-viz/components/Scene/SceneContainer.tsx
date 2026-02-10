@@ -189,7 +189,6 @@ export const SceneContainer: React.FC<SceneProps> = ({ state, data, actions }) =
 
           {/* Base Environment */}
           <ambientLight intensity={0.2} />
-          <Environment preset="city" />
 
           {/* Custom Background Stars */}
           <BackgroundStarfield />

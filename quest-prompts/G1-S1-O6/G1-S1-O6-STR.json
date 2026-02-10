@@ -1,0 +1,169 @@
+{
+    "affinity": "STR",
+    "civilization_target": "The Ion-Bound Sovereignty",
+    "civilization_id": "G1-S1-O6-C1",
+    "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Whispered Sequence",
+            "narrative_guidance": "Archivist Tol Varin needs a specific frequency to complete a sentence from the storm, but it requires drone-level processing and a religious blessing.",
+            "improvisation_points": [
+                "Retrieve the encrypted plasma-crystal from Archivist Tol Varin.",
+                "Take the crystal to Unit-77 to process the binary storm-whispers.",
+                "Deliver the processed data to High Priest Orun for a final ritual blessing to unlock the message."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Archivist Tol Varin",
+                    "id": "G1-S1-O6-C1-CT1-R3-NPC"
+                },
+                "contact": {
+                    "name": "Unit-77",
+                    "id": "G1-S1-O6-C1-CT1-R5-NPC"
+                },
+                "target": {
+                    "name": "High Priest Orun",
+                    "id": "G1-S1-O6-C1-CT1-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Storm-Diver's Toll",
+            "narrative_guidance": "Seraphine Kael is trying to smuggle critical components through the Ion, but Captain Drevos's drones are blocking the route and Dakar Vey needs to hack the security.",
+            "improvisation_points": [
+                "Obtain the smuggling manifest from Seraphine Kael.",
+                "Convince or bribe Captain Drevos to lower the orbital drone perimeter.",
+                "Escort the manifest to Dakar Vey to finalize the encrypted flight path."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Seraphine Kael",
+                    "id": "G1-S1-O6-C1-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Captain Drevos",
+                    "id": "G1-S1-O6-C1-CT1-R4-NPC"
+                },
+                "target": {
+                    "name": "Dakar Vey",
+                    "id": "G1-S1-O6-C1-CT1-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Ghost in the Machine",
+            "narrative_guidance": "Mira Vox hears her mother's voice coming from the defense grid. She needs Sergeant Vax's clearance and Scout Nyx's tracking data to find the source.",
+            "improvisation_points": [
+                "Listen to Mira Vox's glowing tears to identify the frequency.",
+                "Request the defense grid logs from Sergeant Vax.",
+                "Follow Scout Nyx to the remote location where the signal is strongest."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Mira Vox",
+                    "id": "G1-S1-O6-C1-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Sergeant Vax",
+                    "id": "G1-S1-O6-C1-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Scout Nyx",
+                    "id": "G1-S1-O6-C1-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Foundry Sabotage",
+            "narrative_guidance": "Master Smith Borin suspects a flaw in the Ion-blades. He needs Welder Tali to inspect the welds and Foreman Grog to investigate the labor source.",
+            "improvisation_points": [
+                "Accept a prototype blade from Master Smith Borin.",
+                "Bring the blade to Welder Tali for a structural analysis.",
+                "Present the findings to Foreman Grog to identify the saboteur in the ribs."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Master Smith Borin",
+                    "id": "G1-S1-O6-C1-CT3-R1-NPC"
+                },
+                "contact": {
+                    "name": "Welder Tali",
+                    "id": "G1-S1-O6-C1-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Foreman Grog",
+                    "id": "G1-S1-O6-C1-CT2-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Kinetic Circuit",
+            "narrative_guidance": "Duelist Kaelen needs the treasury to fund a tournament, but the volts are missing and the scrappers are the primary suspects.",
+            "improvisation_points": [
+                "Receive the tournament request from Duelist Kaelen.",
+                "Verify the missing power logs with Treasurer Sola.",
+                "Recover the stolen energy cells from Scrapper Pip in the ghetto."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Duelist Kaelen",
+                    "id": "G1-S1-O6-C1-CT2-R4-NPC"
+                },
+                "contact": {
+                    "name": "Treasurer Sola",
+                    "id": "G1-S1-O6-C1-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Scrapper Pip",
+                    "id": "G1-S1-O6-C1-CT2-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Gear-Grasp Gamble",
+            "narrative_guidance": "Mechanist Fix believes a gear is sentient. He needs Overseer Ryn to stop the line so Bard Lute can record its 'voice'.",
+            "improvisation_points": [
+                "Acquire the special listening device from Mechanist Fix.",
+                "Persuade Overseer Ryn to temporarily halt Flux-Line Row.",
+                "Deliver the gear's recordings to Bard Lute for interpretation."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Mechanist Fix",
+                    "id": "G1-S1-O6-C1-CT3-R4-NPC"
+                },
+                "contact": {
+                    "name": "Overseer Ryn",
+                    "id": "G1-S1-O6-C1-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Bard Lute",
+                    "id": "G1-S1-O6-C1-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Slag's Secret",
+            "narrative_guidance": "Wastelander Crev found a strange artifact in the slag, but it needs the heat of the kilns and the soil of the fields to activate.",
+            "improvisation_points": [
+                "Acquire the glowing slag artifact from Wastelander Crev.",
+                "Place the artifact in the Cobalt Kilns with Stoker Ignis to heat it up.",
+                "Bury the heated artifact in the Thunder-Thresher Fields for Farmer Jax to observe the reaction."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Wastelander Crev",
+                    "id": "G1-S1-O6-C1-CT3-R7-NPC"
+                },
+                "contact": {
+                    "name": "Stoker Ignis",
+                    "id": "G1-S1-O6-C1-CT3-R3-NPC"
+                },
+                "target": {
+                    "name": "Farmer Jax",
+                    "id": "G1-S1-O6-C1-CT2-R3-NPC"
+                }
+            }
+        }
+    ]
+}

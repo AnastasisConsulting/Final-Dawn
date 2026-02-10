@@ -1,0 +1,169 @@
+{
+    "affinity": "INT",
+    "civilization_target": "The Isotope Synthesis",
+    "civilization_id": "G1-S1-O4-C3",
+    "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Isotope Smuggle",
+            "narrative_guidance": "Transport illegal isotopic pollen from the flats to the core labs for clandestine study.",
+            "improvisation_points": [
+                "Recover the pollen cache from Tracker Korr in the Polonium Flats.",
+                "Secure passage through the docks with Docker Jax's assistance.",
+                "Deliver the sample to Sidera in Core Lab Alpha for analysis."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Tracker Korr",
+                    "id": "G1-S1-O4-C3-CT2-R2-NPC"
+                },
+                "contact": {
+                    "name": "Docker Jax",
+                    "id": "G1-S1-O4-C3-CT2-R7-NPC"
+                },
+                "target": {
+                    "name": "Sidera",
+                    "id": "G1-S1-O4-C3-CT1-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Holy Mutation",
+            "narrative_guidance": "Preserve and record the emergence of a new biological strain within the Spires.",
+            "improvisation_points": [
+                "Receive the record tablets from Archivist Juno at Pharmanon Heights.",
+                "Obtain the sanctified bismuth from Monk Silas to protect the tablets.",
+                "Observe and record the Bloom Child's latest growth in the Gardens."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Archivist Juno",
+                    "id": "G1-S1-O4-C3-CT3-R1-NPC"
+                },
+                "contact": {
+                    "name": "Monk Silas",
+                    "id": "G1-S1-O4-C3-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Bloom Child",
+                    "id": "G1-S1-O4-C3-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Heart-Reactor Sabotage",
+            "narrative_guidance": "Disrupt the cooling systems to force a recalibration of the city's power grid.",
+            "improvisation_points": [
+                "Obtain the override codes from Sentinel Riven.",
+                "Access the fission controls via Voron in Fission Plaza.",
+                "Disable the primary cooling pumps monitored by Elara."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Sentinel Riven",
+                    "id": "G1-S1-O4-C3-CT3-R4-NPC"
+                },
+                "contact": {
+                    "name": "Voron",
+                    "id": "G1-S1-O4-C3-CT1-R3-NPC"
+                },
+                "target": {
+                    "name": "Elara",
+                    "id": "G1-S1-O4-C3-CT1-R4-NPC"
+                }
+            }
+        },
+        {
+            "title": "Fungal Data Retrieval",
+            "narrative_guidance": "Extract raw data from a mutated spore cluster and synthesize it into a digital format.",
+            "improvisation_points": [
+                "Deploy the scrubbing probes provided by Pax in the Data-Scrub Wards.",
+                "Extract the spore samples from Spore-Warden Mira's enrichment spines.",
+                "Synthesize the final data package with Alchemist Vex in Synthesis Square."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Pax",
+                    "id": "G1-S1-O4-C3-CT1-R5-NPC"
+                },
+                "contact": {
+                    "name": "Spore-Warden Mira",
+                    "id": "G1-S1-O4-C3-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Alchemist Vex",
+                    "id": "G1-S1-O4-C3-CT3-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Lead-Glass Catalyst",
+            "narrative_guidance": "Craft a reinforced lead-glass lens to focus gamma rays for botanical acceleration.",
+            "improvisation_points": [
+                "Retrieve the tempered glass mold from Kaelen at the Lead-Glass Atrium.",
+                "Harden the mold using the gamma-tide currents at Goyle's harbor.",
+                "Apply the lens to Botanist Lys's glowing gardens in the Thallium Groves."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Kaelen",
+                    "id": "G1-S1-O4-C3-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Harbormaster Goyle",
+                    "id": "G1-S1-O4-C3-CT2-R3-NPC"
+                },
+                "target": {
+                    "name": "Botanist Lys",
+                    "id": "G1-S1-O4-C3-CT2-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "Cure the Veins",
+            "narrative_guidance": "Develop a serum to slow the lethal radiation poisoning affecting the harvest workers.",
+            "improvisation_points": [
+                "Collect blood samples from Foreman Yorrik's glowing veins.",
+                "Process the samples with Apothecary Zoya to create a mutagenic buffer.",
+                "Administer the final serum to Dr. Aris in Quarantine Sector 9 for mass production."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Foreman Yorrik",
+                    "id": "G1-S1-O4-C3-CT2-R4-NPC"
+                },
+                "contact": {
+                    "name": "Apothecary Zoya",
+                    "id": "G1-S1-O4-C3-CT3-R7-NPC"
+                },
+                "target": {
+                    "name": "Dr. Aris",
+                    "id": "G1-S1-O4-C3-CT1-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Scintillation Harvesting",
+            "narrative_guidance": "Capture pure light-energy from the fields and store it in the high-density vaults.",
+            "improvisation_points": [
+                "Calibrate the light-catchers with Scintillator Krell in the fields.",
+                "Escort the energy canisters past the vault security managed by Vane.",
+                "Analyze the energy frequency with Watcher Sol at the Observation Spire."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Scintillator Krell",
+                    "id": "G1-S1-O4-C3-CT2-R6-NPC"
+                },
+                "contact": {
+                    "name": "Vane",
+                    "id": "G1-S1-O4-C3-CT1-R6-NPC"
+                },
+                "target": {
+                    "name": "Watcher Sol",
+                    "id": "G1-S1-O4-C3-CT3-R6-NPC"
+                }
+            }
+        }
+    ]
+}

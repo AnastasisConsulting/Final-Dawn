@@ -238,17 +238,23 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
     // 4. Update Session State (Time marches on)
     sessions.tick(sessionId);
 
-    // 5. Update Spatial if output contains navigation (Future: Parse 'outputs' for moves)
-    // if (out.newSpatial) session.location.spatial = out.newSpatial;
+    // 5. Advance World Simulation
+    await affinity.tick({ tick: 1 });
+    const worldState = await affinity.getLatestSnapshot({});
+
+    // 6. Inject World State into Output Telemetry (for Client UI)
+    // We append it to the response so the UI can update the "Global Tension" widgets
+    const telemetry = {
+      credits: session.credits,
+      inventory: session.inventory,
+      location: session.location,
+      affinity: worldState
+    };
 
     res.json({
       ok: true,
       outputs: out.outputs,
-      telemetry: {
-        credits: session.credits,
-        inventory: session.inventory,
-        location: session.location
-      }
+      telemetry
     });
 
   } catch (err: any) {
@@ -318,6 +324,61 @@ app.post("/directSpatialSlice", async (req: express.Request, res: express.Respon
   }
 });
 
+// --- Proxy to Ollama (Bridge) ---
+
+app.post("/api/generate", async (req, res) => {
+  try {
+    const response = await fetch(`${CONFIG.OLLAMA_HOST}/api/generate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+    if (!response.ok) {
+      const txt = await response.text();
+      return res.status(response.status).send(txt);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * Handle direct /generate (some UI calls omit /api)
+ */
+app.post("/generate", async (req, res) => {
+  try {
+    const response = await fetch(`${CONFIG.OLLAMA_HOST}/api/generate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(req.body),
+    });
+    if (!response.ok) {
+      const txt = await response.text();
+      return res.status(response.status).send(txt);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/api/tags", async (_req, res) => {
+  try {
+    const response = await fetch(`${CONFIG.OLLAMA_HOST}/api/tags`);
+    if (!response.ok) {
+      const txt = await response.text();
+      return res.status(response.status).send(txt);
+    }
+    const data = await response.json();
+    res.json(data);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // --- Affinity API ---
 
 app.get("/affinity/state", async (_req, res) => {
@@ -353,12 +414,34 @@ app.post("/affinity/register", async (req, res) => {
   }
 });
 
+// --- Linter API ---
+
+import { buildLinterPrompt } from "./prompts.js";
+
+app.post("/api/lint", async (req, res) => {
+  try {
+    const { chatHistory } = req.body; // Expects a string or array of messages
+    const prompt = buildLinterPrompt(typeof chatHistory === 'string' ? chatHistory : JSON.stringify(chatHistory));
+
+    const response = await ollama.generate({
+      model: CONFIG.LLM_MODEL,
+      prompt,
+      options: { temperature: 0.7 },
+    });
+
+    res.json({ critique: response.response });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // =================
 // Landing API Routes
 // =================
 import { handleLandingGeneration, handleLandingStatus } from './landingApi.js';
 
 app.post('/api/landing/generate', handleLandingGeneration);
+app.get('/api/landing/status/:address', handleLandingStatus);
 // =================
 // Map Data Discovery API
 // =================

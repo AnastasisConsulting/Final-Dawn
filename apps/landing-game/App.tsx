@@ -1,125 +1,106 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { GameCanvas } from './components/GameCanvas';
+import React, { useState, Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { GameScene } from './components/GameScene';
 import { HUD } from './components/HUD';
-import { useGameStore } from './store';
-import { GamePhase } from './types';
-import { getMissionUpdate } from './services/geminiService';
-import { LandingContext } from '../dawn-ui/types/landingContext';
-import { generateWorldContent } from './services/worldGeneration';
-import { PersistenceService } from '../dawn-ui/src/services/PersistenceService';
+import { requestPointerLock } from './components/Controls';
 
-interface LandingGameProps {
-  landingContext: LandingContext;
-  onLandingComplete?: (success: boolean) => void;
-}
+import { LandingContext } from './types';
 
-const App: React.FC<LandingGameProps> = ({ landingContext, onLandingComplete }) => {
-  const { phase, resetGame, setMessage, sessionId } = useGameStore();
-  const [showOverlay, setShowOverlay] = useState(false);
-  const landingReportedRef = useRef<number | null>(null);
+export default function App({ landingContext, onLandingComplete }: { landingContext?: LandingContext, onLandingComplete?: (success: boolean) => void }) {
+  const [gameState, setGameState] = useState<'START' | 'PLAYING' | 'GAMEOVER'>('START');
+  const [hudData, setHudData] = useState<any>({
+    score: 0, health: 100, wave: 1, speed: 0, altitude: 0, heading: 0,
+    targetLocked: false, flightAssist: true, weaponLevel: 1, distanceToTarget: 0
+  });
+  const [finalScore, setFinalScore] = useState(0);
+  const [worldId, setWorldId] = useState(landingContext?.destination.address || 'G1-S1-O1'); // Default to context or first location
 
-  console.log('[Landing Game] Received landing context:', landingContext);
+  const startGame = async () => {
+    await requestPointerLock();
+    setGameState('PLAYING');
+  };
 
-  useEffect(() => {
-    // Initial greeting with destination name
-    const dest = landingContext.destination;
-    getMissionUpdate(GamePhase.ORBIT, 3000, 100, 0).then(msg =>
-      setMessage(`Initiating atmospheric entry to ${dest.name || 'unknown destination'}...`)
-    );
-  }, [setMessage, sessionId, landingContext]);
-
-  // Handle delayed overlay for game end states
-  useEffect(() => {
-    if (phase === GamePhase.LANDED) {
-      // Give the player time to see the celebration effects
-      const timer = setTimeout(() => setShowOverlay(true), 3500);
-      return () => clearTimeout(timer);
-    } else if (phase === GamePhase.CRASHED) {
-      // Short delay for crash to register what happened
-      const timer = setTimeout(() => setShowOverlay(true), 1500);
-      return () => clearTimeout(timer);
-    } else {
-      setShowOverlay(false);
-    }
-  }, [phase]);
-
-  useEffect(() => {
-    if (phase !== GamePhase.LANDED || !onLandingComplete) return;
-    if (landingReportedRef.current === sessionId) return;
-    landingReportedRef.current = sessionId;
-
-    let timer: NodeJS.Timeout;
-
-    // Mark location as visited (only on successful landing)
-    const address = landingContext.destination.address || 'UNKNOWN';
-    PersistenceService.markLocationVisited(address);
-    console.log('[Landing Game] Location marked as visited:', address);
-
-    // Trigger world generation if first visit
-    if (landingContext.firstVisit) {
-      console.log('[Landing Game] First visit - triggering world generation...');
-      generateWorldContent({
-        galaxy: landingContext.destination.galaxy,
-        system: landingContext.destination.system,
-        object: landingContext.destination.object,
-        civ: landingContext.destination.civ,
-        city: landingContext.destination.city,
-        region: landingContext.destination.region,
-        name: landingContext.destination.name || 'Unknown',
-        address: landingContext.destination.address || 'UNKNOWN',
-      })
-        .then((result) => {
-          if (result.success) {
-            console.log('[Landing Game] World generation complete:', result.generated);
-          } else {
-            console.error('[Landing Game] World generation failed:', result.error);
-          }
-          // Proceed with landing complete regardless of generation outcome
-          timer = setTimeout(() => onLandingComplete(true), 2000);
-        })
-        .catch((error) => {
-          console.error('[Landing Game] World generation error:', error);
-          // Still complete landing even if generation fails
-          timer = setTimeout(() => onLandingComplete(true), 2000);
-        });
-    } else {
-      // Not first visit - just complete landing
-      timer = setTimeout(() => onLandingComplete(true), 4000);
-    }
-
-    return () => clearTimeout(timer);
-  }, [phase, onLandingComplete, sessionId, landingContext]);
+  const handleGameOver = (score: number) => {
+    setFinalScore(score);
+    setGameState('GAMEOVER');
+    // Release pointer lock
+    document.exitPointerLock();
+  };
 
   return (
-    <div className="w-full h-screen bg-black relative overflow-hidden">
-      {/* Key forces re-mount of entire 3D scene on reset */}
-      <GameCanvas key={sessionId} landingContext={landingContext} />
-      <HUD />
+    <div className="w-full h-screen bg-black relative">
+      <Canvas shadows camera={{ fov: 60, position: [0, 5, 10] }} gl={{ antialias: false, toneMappingExposure: 1.2 }}>
+        <Suspense fallback={null}>
+          <GameScene
+            isGameActive={gameState === 'PLAYING'}
+            onUpdateHUD={(data) => setHudData((prev: any) => ({ ...prev, ...data }))}
+            onGameOver={handleGameOver}
+            worldId={worldId}
+          />
+        </Suspense>
+        {/* Adjusted Fog: Starts further out to allow high-orbit visibility of the planet */}
+        <fog attach="fog" args={['#050b14', 2000, 25000]} />
+      </Canvas>
 
-      {/* Game Over Screen */}
-      {showOverlay && (
-        <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md animate-in fade-in duration-1000">
-          <h1 className={`text-6xl font-bold mb-4 ${phase === GamePhase.LANDED ? 'text-green-500' : 'text-red-500'}`}>
-            {phase === GamePhase.LANDED ? 'MISSION SUCCESS' : 'CRITICAL FAILURE'}
-          </h1>
-          <p className="text-white text-xl mb-8 max-w-md text-center">
-            {phase === GamePhase.LANDED
-              ? "The asset has been delivered safely to the surface. Welcome home, pilot."
-              : "Telemetry lost. Rescue teams dispatched to crash site."}
-          </p>
-          <button
-            onClick={() => {
-              setShowOverlay(false);
-              resetGame();
-            }}
-            className="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded text-lg transition-colors border-2 border-cyan-400"
-          >
-            REBOOT SYSTEM
-          </button>
+      {gameState === 'PLAYING' && <HUD data={hudData} />}
+
+      {gameState === 'START' && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/90 z-50">
+          <div className="text-center">
+            <h1 className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-slate-100 to-slate-600 mb-2 tracking-tighter shadow-cyan-500/50">
+              STAR VIPER
+            </h1>
+            <p className="text-cyan-500 mb-8 tracking-[1em] text-xs font-bold uppercase border-t border-b border-cyan-900 py-2 bg-black/50">
+              Orbital Drop | 4025 AD
+            </p>
+            <div className="bg-slate-900/90 p-8 border-l-4 border-cyan-600 rounded-r-lg mb-8 text-left text-sm text-slate-300 font-mono shadow-2xl max-w-md mx-auto">
+              <div className="flex justify-between border-b border-slate-700 pb-2 mb-4">
+                <span>MISSION_BRIEF</span>
+                <span className="text-cyan-500 animate-pulse">ACTIVE</span>
+              </div>
+              <p className="mb-4 text-xs text-slate-400">
+                Hostile drones detected in upper atmosphere.
+                Execute orbital entry maneuver. Follow the <span className="text-yellow-400">Guidance Ribbon</span> to the designated landing zone.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div><span className="text-yellow-500">W/S</span> Pitch</div>
+                <div><span className="text-yellow-500">A/D</span> Roll</div>
+                <div><span className="text-yellow-500">MOUSE</span> Vector</div>
+                <div><span className="text-yellow-500">L-CLICK</span> Plasma</div>
+                <div><span className="text-yellow-500">SHIFT</span> Burner</div>
+                <div><span className="text-yellow-500">SPACE</span> Brake</div>
+              </div>
+            </div>
+            <button
+              onClick={startGame}
+              className="group relative px-10 py-4 bg-cyan-900/30 overflow-hidden rounded-none border border-cyan-500/50 text-cyan-100 font-bold tracking-widest hover:bg-cyan-500/20 transition-all"
+            >
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+              INITIATE DROP
+            </button>
+          </div>
         </div>
       )}
+
+      {gameState === 'GAMEOVER' && (
+        <div className="absolute inset-0 flex items-center justify-center bg-red-950/80 z-50 backdrop-blur-md">
+          <div className="text-center border border-red-500/30 p-12 bg-black/80">
+            <h2 className="text-6xl font-black text-red-600 mb-2 tracking-tighter">CRITICAL FAILURE</h2>
+            <p className="text-red-200 font-mono text-xl mb-8">SCORE: {finalScore}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-8 py-3 bg-red-900/50 border border-red-500 text-white hover:bg-red-600 transition-colors font-mono"
+            >
+              REBOOT_SEQUENCE
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .group-hover\\:animate-shimmer { animation: shimmer 1s infinite; }
+      `}</style>
     </div>
   );
-};
-
-export default App;
+}

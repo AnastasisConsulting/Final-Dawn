@@ -78,9 +78,18 @@ export interface GameState {
         vizzy: number;
         navbot: number;
     };
-    quests: Record<string, any>; // Placeholder for quests
+    quests: Record<string, QuestState>;
     turnCount: number;
 }
+
+export interface QuestState {
+    id: string;
+    status: 'active' | 'completed' | 'failed';
+    stepIndex: number; // 0=Giver, 1=Contact, 2=Target, 3=Complete
+    log: string[];
+}
+
+// ... existing interfaces ...
 
 type Action =
     | { type: 'ADD_XP'; amount: number }
@@ -99,7 +108,10 @@ type Action =
     | { type: 'UPGRADE_SHIP'; stat: 'weaponLevel' | 'armorLevel' | 'maxHull' | 'maxShield'; value?: number }
     | { type: 'UPDATE_SETTINGS'; payload: Partial<GameState['settings']> }
     | { type: 'UPDATE_SETTINGS_DEEP'; payload: Partial<GameState['settings']> }
-    | { type: 'UPDATE_RELATIONSHIP'; target: 'lyra' | 'vizzy' | 'navbot'; value: number };
+    | { type: 'UPDATE_RELATIONSHIP'; target: 'lyra' | 'vizzy' | 'navbot'; value: number }
+    | { type: 'START_QUEST'; questId: string }
+    | { type: 'ADVANCE_QUEST'; questId: string; logEntry: string }
+    | { type: 'COMPLETE_QUEST'; questId: string; rewardXp: number };
 
 // --- Initial State ---
 
@@ -346,6 +358,57 @@ const gameReducer = (state: GameState, action: Action): GameState => {
                     [action.target]: action.value
                 }
             };
+        case 'START_QUEST':
+            return {
+                ...state,
+                quests: {
+                    ...state.quests,
+                    [action.questId]: {
+                        id: action.questId,
+                        status: 'active',
+                        stepIndex: 0,
+                        log: ['Quest Started']
+                    }
+                }
+            };
+        case 'ADVANCE_QUEST': {
+            const q = state.quests[action.questId];
+            if (!q) return state;
+            return {
+                ...state,
+                quests: {
+                    ...state.quests,
+                    [action.questId]: {
+                        ...q,
+                        stepIndex: q.stepIndex + 1,
+                        log: [...q.log, action.logEntry]
+                    }
+                }
+            };
+        }
+        case 'COMPLETE_QUEST': {
+            const q = state.quests[action.questId];
+            if (!q) return state;
+
+            // Auto-grant XP
+            const newXp = state.xp + action.rewardXp;
+            const newLevel = calculateLevelFromXp(newXp);
+
+            return {
+                ...state,
+                xp: newXp,
+                level: newLevel,
+                quests: {
+                    ...state.quests,
+                    [action.questId]: {
+                        ...q,
+                        status: 'completed',
+                        stepIndex: 3, // Final state
+                        log: [...q.log, 'Quest Completed']
+                    }
+                }
+            };
+        }
         default:
             return state;
     }
@@ -371,11 +434,38 @@ const GameContext = createContext<{
         updateSettings: (settings: Partial<GameState['settings']>) => void;
         updateSettingsDeep: (settings: any) => void;
         updateRelationship: (target: 'lyra' | 'vizzy' | 'navbot', value: number) => void;
+        recordCombatResult: (win: boolean) => void;
+        startQuest: (questId: string) => void;
+        advanceQuest: (questId: string, logEntry: string) => void;
+        completeQuest: (questId: string, rewardXp: number) => void;
     }
 } | null>(null);
 
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [state, dispatch] = useReducer(gameReducer, initialState);
+    const [state, dispatch] = useReducer(gameReducer, initialState, (initial) => {
+        try {
+            const saved = localStorage.getItem('eideus-gamestate');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                // Merge with initial to ensure new schema fields exist
+                return { ...initial, ...parsed };
+            }
+        } catch (e) {
+            console.error("Failed to load game state", e);
+        }
+        return initial;
+    });
+
+    // Auto-Save
+    React.useEffect(() => {
+        if (state.settings.autoSaveEnabled) {
+            const saveHandler = setTimeout(() => {
+                localStorage.setItem('eideus-gamestate', JSON.stringify(state));
+                console.log('[GameContext] Auto-saved game state.');
+            }, 1000); // 1s debounce
+            return () => clearTimeout(saveHandler);
+        }
+    }, [state]);
 
     // Helper actions for cleaner usage
     const actions = {
@@ -395,6 +485,10 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         updateSettings: (payload: Partial<GameState['settings']>) => dispatch({ type: 'UPDATE_SETTINGS', payload }),
         updateSettingsDeep: (payload: any) => dispatch({ type: 'UPDATE_SETTINGS_DEEP', payload }),
         updateRelationship: (target: 'lyra' | 'vizzy' | 'navbot', value: number) => dispatch({ type: 'UPDATE_RELATIONSHIP', target, value }),
+        recordCombatResult: (win: boolean) => dispatch({ type: 'RECORD_COMBAT_RESULT', win }),
+        startQuest: (questId: string) => dispatch({ type: 'START_QUEST', questId }),
+        advanceQuest: (questId: string, logEntry: string) => dispatch({ type: 'ADVANCE_QUEST', questId, logEntry }),
+        completeQuest: (questId: string, rewardXp: number) => dispatch({ type: 'COMPLETE_QUEST', questId, rewardXp }),
     };
 
     return (

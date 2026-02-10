@@ -1,0 +1,169 @@
+{
+    "affinity": "INT",
+    "civilization_target": "The Aethel-Ion Synod",
+    "civilization_id": "G1-S1-O6-C3",
+    "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Whispered Protocol",
+            "narrative_guidance": "Recover a lost frequency key from the Scribes' Walkway to facilitate a trade in the Frequency Markets.",
+            "improvisation_points": [
+                "Obtain the tuning fork calibration from Elara Sync.",
+                "Take the calibration to Malos Vox to locate the key's signature.",
+                "Deliver the decrypted key to Kaelen Bit for payment."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Elara Sync",
+                    "id": "G1-S1-O6-C3-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Malos Vox",
+                    "id": "G1-S1-O6-C3-CT1-R2-NPC"
+                },
+                "target": {
+                    "name": "Kaelen Bit",
+                    "id": "G1-S1-O6-C3-CT1-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Static Sabotage",
+            "narrative_guidance": "Divert excess power from the Capacitor Fields to the Smelters to prevent a cascade failure.",
+            "improvisation_points": [
+                "Collect the discharge codes from Oris Volt.",
+                "Input the codes at the Terrace terminal guarded by Leda Ozone.",
+                "Confirm the power transfer with Grak Smelter at the forges."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Oris Volt",
+                    "id": "G1-S1-O6-C3-CT2-R1-NPC"
+                },
+                "contact": {
+                    "name": "Leda Ozone",
+                    "id": "G1-S1-O6-C3-CT2-R2-NPC"
+                },
+                "target": {
+                    "name": "Grak Smelter",
+                    "id": "G1-S1-O6-C3-CT2-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Ghost in the Antenna",
+            "narrative_guidance": "Carry an ancestral signal from the Hall of Waves to the Oracular Crypts to awaken a sleeping prophecy.",
+            "improvisation_points": [
+                "Receive the sonic urn from Thal Waves.",
+                "Have Kiri Perch align the signal with the Spire's peak.",
+                "Deposit the urn in the Oracular Crypts with Vahn Crypt."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Thal Waves",
+                    "id": "G1-S1-O6-C3-CT3-R1-NPC"
+                },
+                "contact": {
+                    "name": "Kiri Perch",
+                    "id": "G1-S1-O6-C3-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Vahn Crypt",
+                    "id": "G1-S1-O6-C3-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Dormitory Disturbance",
+            "narrative_guidance": "Investigate a rogue transmission that is disrupting sleep in the dorms and trace it to the docks.",
+            "improvisation_points": [
+                "Receive a recording of the disturbance from Sora Echo.",
+                "Track the signal source through the Archive of Static with Juro Static.",
+                "Identify the illegal transmitter at the Aether-Docks with Vexen Tide."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Sora Echo",
+                    "id": "G1-S1-O6-C3-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Juro Static",
+                    "id": "G1-S1-O6-C3-CT1-R5-NPC"
+                },
+                "target": {
+                    "name": "Vexen Tide",
+                    "id": "G1-S1-O6-C3-CT1-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Arc-Welder's Gambit",
+            "narrative_guidance": "Escort a shipment of specialized Guard-Coils through the dangerous Turbulence Plaza to the Welders.",
+            "improvisation_points": [
+                "Secure the shipment from Harlen Coil.",
+                "Pass through the Turbulence Plaza checkpoints managed by Mira Turbulence.",
+                "Deliver the coils to Boros Arc to repair the city's shielding."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Harlen Coil",
+                    "id": "G1-S1-O6-C3-CT2-R4-NPC"
+                },
+                "contact": {
+                    "name": "Mira Turbulence",
+                    "id": "G1-S1-O6-C3-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Boros Arc",
+                    "id": "G1-S1-O6-C3-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Resonance Restoration",
+            "narrative_guidance": "Cultivate resonance seeds, weave them into protective shrouds, and deliver them to the clinics.",
+            "improvisation_points": [
+                "Gather resonance seeds from Lyra Garden.",
+                "Deliver the seeds to Phex Shroud to be woven into fabric.",
+                "Bring the completed shrouds to Miri Null for the patients."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Lyra Garden",
+                    "id": "G1-S1-O6-C3-CT3-R4-NPC"
+                },
+                "contact": {
+                    "name": "Phex Shroud",
+                    "id": "G1-S1-O6-C3-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Miri Null",
+                    "id": "G1-S1-O6-C3-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Observatory Breach",
+            "narrative_guidance": "Relay an urgent deep-space signal from the Observatory, through the Static Sinks, to the Gilded Antenna.",
+            "improvisation_points": [
+                "Acquire the emergency transmission from Rina Signal.",
+                "Bypass the interference in the Static Sinks with help from Silt Static.",
+                "Broadcast the signal from the Gilded Antenna via Zeph Antenna."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Rina Signal",
+                    "id": "G1-S1-O6-C3-CT1-R7-NPC"
+                },
+                "contact": {
+                    "name": "Silt Static",
+                    "id": "G1-S1-O6-C3-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Zeph Antenna",
+                    "id": "G1-S1-O6-C3-CT3-R7-NPC"
+                }
+            }
+        }
+    ]
+}

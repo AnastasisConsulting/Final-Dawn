@@ -1,0 +1,169 @@
+{
+    "affinity": "DEX",
+    "civilization_target": "The Flux-Weavers of Gamma",
+    "civilization_id": "G1-S1-O3-C2",
+    "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Simulated Breach",
+            "narrative_guidance": "Assist in a high-stakes containment drill to test the facility's reaction time.",
+            "improvisation_points": [
+                "Obtain the simulation schedule from Tech Lyra-9.",
+                "Calibrate the patrol path for Drone Cluster Alpha.",
+                "Confirm successful containment with Tech Silla."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Tech Lyra-9",
+                    "id": "G1-S1-O3-C2-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Drone Cluster Alpha",
+                    "id": "G1-S1-O3-C2-CT1-R4-NPC"
+                },
+                "target": {
+                    "name": "Tech Silla",
+                    "id": "G1-S1-O3-C2-CT2-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Isotope Relay",
+            "narrative_guidance": "Ensure a shipment of heavy rods reaches Leadspire Prime without being flagged by the AI.",
+            "improvisation_points": [
+                "Collect the shipment manifest from Envoy Drax.",
+                "Verify the radiation signatures with Analyst Teneb.",
+                "Deliver the secure vault keys to Envoy Jax."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Envoy Drax",
+                    "id": "G1-S1-O3-C2-CT2-R5-NPC"
+                },
+                "contact": {
+                    "name": "Analyst Teneb",
+                    "id": "G1-S1-O3-C2-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Envoy Jax",
+                    "id": "G1-S1-O3-C2-CT1-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "Sensor Net Patch",
+            "narrative_guidance": "Repair the flickering sensor array before the Archon notices the data gap.",
+            "improvisation_points": [
+                "Receive the error coordinates from Analyst Mir.",
+                "Bypass the lockdown initiated by Sentinel Unit X-1.",
+                "Log the repair completion with Droid Beta-4."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Analyst Mir",
+                    "id": "G1-S1-O3-C2-CT1-R6-NPC"
+                },
+                "contact": {
+                    "name": "Sentinel Unit X-1",
+                    "id": "G1-S1-O3-C2-CT1-R3-NPC"
+                },
+                "target": {
+                    "name": "Droid Beta-4",
+                    "id": "G1-S1-O3-C2-CT1-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Bio-Sleeve Purge",
+            "narrative_guidance": "Clear the organic filters of radioactive buildup to maintain shield integrity.",
+            "improvisation_points": [
+                "Get the purge authorization from Overseer Thorne.",
+                "Manually cycle the valves with Tech Miri.",
+                "Secure the seals under the gaze of Sentinel Unit Z-3."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Overseer Thorne",
+                    "id": "G1-S1-O3-C2-CT3-R1-NPC"
+                },
+                "contact": {
+                    "name": "Tech Miri",
+                    "id": "G1-S1-O3-C2-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Sentinel Unit Z-3",
+                    "id": "G1-S1-O3-C2-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Lead Quarry Log",
+            "narrative_guidance": "Recover lost data logs from the quarry floor during a drone malfunction.",
+            "improvisation_points": [
+                "Receive the retrieval orders from Envoy Quinn.",
+                "Decode the encrypted site symbols with Analyst Vorn.",
+                "Vent the pressure at the extraction point via Droid Delta-9."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Envoy Quinn",
+                    "id": "G1-S1-O3-C2-CT3-R5-NPC"
+                },
+                "contact": {
+                    "name": "Analyst Vorn",
+                    "id": "G1-S1-O3-C2-CT3-R6-NPC"
+                },
+                "target": {
+                    "name": "Droid Delta-9",
+                    "id": "G1-S1-O3-C2-CT3-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Vapor Lock Crisis",
+            "narrative_guidance": "A sudden pressure spike threatens the vapor locks; immediate manual intervention is required.",
+            "improvisation_points": [
+                "Respond to the alarm triggered by Droid Gamma-7.",
+                "Redirect the power flow through the Flux-Bridges via Drone Cluster Gamma.",
+                "Submit the incident report to Overseer Vahn."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Droid Gamma-7",
+                    "id": "G1-S1-O3-C2-CT2-R7-NPC"
+                },
+                "contact": {
+                    "name": "Drone Cluster Gamma",
+                    "id": "G1-S1-O3-C2-CT2-R4-NPC"
+                },
+                "target": {
+                    "name": "Overseer Vahn",
+                    "id": "G1-S1-O3-C2-CT2-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "Cross-City Sync",
+            "narrative_guidance": "Coordinate the timing of the Gantry rotation with the Quarry extraction cycles.",
+            "improvisation_points": [
+                "Receive the rotation timing from Overseer Kaelen.",
+                "Align the transfer schedules with Envoy Drax.",
+                "Update the containment maps with Analyst Vorn."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Overseer Kaelen",
+                    "id": "G1-S1-O3-C2-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Envoy Drax",
+                    "id": "G1-S1-O3-C2-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Analyst Vorn",
+                    "id": "G1-S1-O3-C2-CT3-R6-NPC"
+                }
+            }
+        }
+    ]
+}

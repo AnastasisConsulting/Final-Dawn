@@ -1,0 +1,31 @@
+{
+    "affinity": "DEX",
+    "civilization_target": "Civilization of G1-S1-O14",
+    "civilization_id": "G1-S1-O14-C1",
+    "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "DEX Trial Alpha",
+            "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O14.",
+            "improvisation_points": [
+                "Meet the local overseer.",
+                "Resolve the instability using your core affinity.",
+                "Report outcome to the civilization council."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Overseer Prime",
+                    "id": "G1-S1-O14-C1-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Field Agent",
+                    "id": "G1-S1-O14-C1-CT2-R2-NPC"
+                },
+                "target": {
+                    "name": "Council Node",
+                    "id": "G1-S1-O14-C1-CT3-R3-NPC"
+                }
+            }
+        }
+    ]
+}

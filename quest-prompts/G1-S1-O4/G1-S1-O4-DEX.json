@@ -1,0 +1,169 @@
+{
+    "affinity": "DEX",
+    "civilization_target": "The Radian Collective",
+    "civilization_id": "G1-S1-O4-C2",
+    "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "Harvest Crimson Spores",
+            "narrative_guidance": "Collect rare Crimson Bloom spores for a weapons experiment while avoiding the heavy radiation of the refinery.",
+            "improvisation_points": [
+                "Meet Riven-88 at the refinery to obtain a radiation-shielded container.",
+                "Deliver the container to Mother Spore to have it filled with consecrated spores.",
+                "Bring the filled container to Dr. Lys Arkan for final processing."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Riven-88",
+                    "id": "G1-S1-O4-C2-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Mother Spore",
+                    "id": "G1-S1-O4-C2-CT2-R4-NPC"
+                },
+                "target": {
+                    "name": "Dr. Lys Arkan",
+                    "id": "G1-S1-O4-C2-CT1-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Isotopic Run",
+            "narrative_guidance": "Smuggle a batch of refined isotopic pollen past the local sentries to the market.",
+            "improvisation_points": [
+                "Receive the pollen package from Korr Malek in the Scrapyard.",
+                "Bribe or bypass Sentry Glass-Eye at the Lead-Glass Atrium.",
+                "Hand off the package to Trader Dax at the Spectral-Cusp Market."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Korr Malek",
+                    "id": "G1-S1-O4-C2-CT2-R6-NPC"
+                },
+                "contact": {
+                    "name": "Sentry Glass-Eye",
+                    "id": "G1-S1-O4-C2-CT1-R1-NPC"
+                },
+                "target": {
+                    "name": "Trader Dax",
+                    "id": "G1-S1-O4-C2-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Holy Mutation",
+            "narrative_guidance": "Facilitate the ritualistic growth of a new fungal strain that mirrors the Bloom Child's nature.",
+            "improvisation_points": [
+                "Obtain a starter seed from Gardener Sol's Echoing Greenhouse.",
+                "Introduce the seed to the Bloom Child to be enriched by their spore cloud.",
+                "Record the resulting mutation's data with Archivist Juno."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Gardener Sol",
+                    "id": "G1-S1-O4-C2-CT3-R3-NPC"
+                },
+                "contact": {
+                    "name": "The Bloom Child",
+                    "id": "G1-S1-O4-C2-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Archivist Juno",
+                    "id": "G1-S1-O4-C2-CT3-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Sabotage the Reactor",
+            "narrative_guidance": "Infiltrate the cooling system to disrupt a rival's isotope production.",
+            "improvisation_points": [
+                "Coordinate with Riven-88 to identify the weak point in the reactor.",
+                "Swim through the Cooling Canal with Diver Myra to plant the disruptive device.",
+                "Escalate the confusion by reporting a false emergency to Loader Brix."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Riven-88",
+                    "id": "G1-S1-O4-C2-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Diver Myra",
+                    "id": "G1-S1-O4-C2-CT1-R7-NPC"
+                },
+                "target": {
+                    "name": "Loader Brix",
+                    "id": "G1-S1-O4-C2-CT1-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Child's Shield",
+            "narrative_guidance": "Ensure the Bloom Child is safely transported to the Gardens while under threat from dissenters.",
+            "improvisation_points": [
+                "Escort The Bloom Child from the refinery through the Bone-Lichen Fields.",
+                "Defend the path alongside Prism-Guard Val near the Refraction Plaza.",
+                "Safe delivery to Gardener Sol in the Echoing Greenhouse."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "The Bloom Child",
+                    "id": "G1-S1-O4-C2-CT3-R5-NPC"
+                },
+                "contact": {
+                    "name": "Prism-Guard Val",
+                    "id": "G1-S1-O4-C2-CT3-R2-NPC"
+                },
+                "target": {
+                    "name": "Gardener Sol",
+                    "id": "G1-S1-O4-C2-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Yorrik's Salvation",
+            "narrative_guidance": "Attempt to stabilize Foreman Yorrik's rapidly mutating body using heavy water treatments.",
+            "improvisation_points": [
+                "Retrieve a request for help from a delirious Foreman Yorrik.",
+                "Collect high-purity heavy water from Pumper Finn.",
+                "Deliver the water to Carver Rhia to create a localized obsidian cooling chamber."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Foreman Yorrik",
+                    "id": "G1-S1-O4-C2-CT2-R2-NPC"
+                },
+                "contact": {
+                    "name": "Pumper Finn",
+                    "id": "G1-S1-O4-C2-CT2-R3-NPC"
+                },
+                "target": {
+                    "name": "Carver Rhia",
+                    "id": "G1-S1-O4-C2-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Bone Chronicle",
+            "narrative_guidance": "Help Archivist Juno preserve the memory of a collapsing mutation found in the reservoirs.",
+            "improvisation_points": [
+                "Consult Archivist Juno to identify which bone tablets are needed.",
+                "Retrieve a 'living' sample from Dredger Kael at the Chrono-Silt Reservoirs.",
+                "Bring the sample to Weaver Lyss to have its spectral patterns woven into a permanent record."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Archivist Juno",
+                    "id": "G1-S1-O4-C2-CT3-R7-NPC"
+                },
+                "contact": {
+                    "name": "Dredger Kael",
+                    "id": "G1-S1-O4-C2-CT1-R4-NPC"
+                },
+                "target": {
+                    "name": "Weaver Lyss",
+                    "id": "G1-S1-O4-C2-CT3-R4-NPC"
+                }
+            }
+        }
+    ]
+}

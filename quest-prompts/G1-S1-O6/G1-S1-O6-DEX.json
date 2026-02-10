@@ -1,0 +1,169 @@
+{
+    "affinity": "DEX",
+    "civilization_target": "The Kineto-Aural Hegemony",
+    "civilization_id": "G1-S1-O6-C2",
+    "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The High-Velocity Smuggle",
+            "narrative_guidance": "Guide a high-priority smuggler convoy safely through the upper storm currents into the grounding pits.",
+            "improvisation_points": [
+                "Obtain the storm-eye navigation charts from Seraphine Kael.",
+                "Secure a high-speed gantry bypass from Rigger Zephyr to avoid Hegemony patrols.",
+                "Deliver the cargo to Scavenger Rust in the Copper Sump for final grounding."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Seraphine Kael",
+                    "id": "G1-S1-O6-C2-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Rigger Zephyr",
+                    "id": "G1-S1-O6-C2-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Scavenger Rust",
+                    "id": "G1-S1-O6-C2-CT3-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Sentence of Plasma",
+            "narrative_guidance": "Help decode a vital message from the storm whispers that could unlock the Hegemony's main reactor.",
+            "improvisation_points": [
+                "Collect the initial whisper fragment from Archivist Tol Varin.",
+                "Use Runner Spark's speed to deliver the fragment to the relay station before the signal decays.",
+                "Have Scribe Mute record the final translated sentence into the Whisper Archive."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Archivist Tol Varin",
+                    "id": "G1-S1-O6-C2-CT1-R2-NPC"
+                },
+                "contact": {
+                    "name": "Runner Spark",
+                    "id": "G1-S1-O6-C2-CT2-R2-NPC"
+                },
+                "target": {
+                    "name": "Scribe Mute",
+                    "id": "G1-S1-O6-C2-CT3-R4-NPC"
+                }
+            }
+        },
+        {
+            "title": "Orbital Blackout",
+            "narrative_guidance": "Sabotage the drone network to allow a rebel signal to reach the outer colonies.",
+            "improvisation_points": [
+                "Extract the drone patrol routes from Captain Drevos under the guise of an inspection.",
+                "Retrieve the necessary EMP components from Harvester Bolt's stash in the Basin.",
+                "Activate the signal jammer within Shielder Cage's Faraday zone."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Captain Drevos",
+                    "id": "G1-S1-O6-C2-CT1-R3-NPC"
+                },
+                "contact": {
+                    "name": "Harvester Bolt",
+                    "id": "G1-S1-O6-C2-CT2-R3-NPC"
+                },
+                "target": {
+                    "name": "Shielder Cage",
+                    "id": "G1-S1-O6-C2-CT3-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Mother's Frequency",
+            "narrative_guidance": "Escort Mira Vox to the deepest vaults so she can hear the voice of the Ion Throne.",
+            "improvisation_points": [
+                "Protect Mira Vox during her ritual at the Tuning Chamber.",
+                "Coordinate with Slider Dash to find a path through the Friction Flats that avoids static interference.",
+                "Reach the Lead-Lined Corridors where Tunnel-Rat Scurry will hide Mira from the Harmonizer's ears."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Mira Vox",
+                    "id": "G1-S1-O6-C2-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Slider Dash",
+                    "id": "G1-S1-O6-C2-CT2-R4-NPC"
+                },
+                "target": {
+                    "name": "Tunnel-Rat Scurry",
+                    "id": "G1-S1-O6-C2-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Rogue Protocol Uplink",
+            "narrative_guidance": "Assist Unit-77 in reclaiming a lost memory core hidden within the city's power grid.",
+            "improvisation_points": [
+                "Receive the encrypted core location from Unit-77.",
+                "Manipulate the coil rotation with Spinner Coil to generate the specific frequency needed to reveal the core.",
+                "Upload the core data into the Grounding Grids under the supervision of Tech Static."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit-77",
+                    "id": "G1-S1-O6-C2-CT1-R5-NPC"
+                },
+                "contact": {
+                    "name": "Spinner Coil",
+                    "id": "G1-S1-O6-C2-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Tech Static",
+                    "id": "G1-S1-O6-C2-CT3-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Master Encryption Key",
+            "narrative_guidance": "Extract an Overseer command code from the whispers to bypass Hegemony security.",
+            "improvisation_points": [
+                "Receive the decryption software from Dakar Vey.",
+                "Infiltrate the Surge Gate and use Warden Gate's console to run the extraction.",
+                "Cool the overheating data crystal at Refiner Gloam's insulator works to preserve the key."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Dakar Vey",
+                    "id": "G1-S1-O6-C2-CT1-R6-NPC"
+                },
+                "contact": {
+                    "name": "Warden Gate",
+                    "id": "G1-S1-O6-C2-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Refiner Gloam",
+                    "id": "G1-S1-O6-C2-CT3-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Great Convergence Ritual",
+            "narrative_guidance": "Join a ritual to 'merge' with the storm and achieve absolute synchronization.",
+            "improvisation_points": [
+                "Acquire the lightning-charged focus from High Priest Orun.",
+                "Trade for the rare kinetic catalysts at Trader Flicker's Arc-Light Market.",
+                "Perform the final resonance at the Sub-Signal Vaults with Deep-Ear Echo to ground the divine signal."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "High Priest Orun",
+                    "id": "G1-S1-O6-C2-CT1-R7-NPC"
+                },
+                "contact": {
+                    "name": "Trader Flicker",
+                    "id": "G1-S1-O6-C2-CT2-R7-NPC"
+                },
+                "target": {
+                    "name": "Deep-Ear Echo",
+                    "id": "G1-S1-O6-C2-CT3-R7-NPC"
+                }
+            }
+        }
+    ]
+}

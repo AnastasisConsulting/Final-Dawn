@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Iron-Sunder Cartel",
+      "civilization_id": "G1-S2-O3-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Hidden Forge Heist",
+            "narrative_guidance": "Recover stolen alloy blueprints from the Hidden Forge without alerting the Overseer AI.",
+            "improvisation_points": [
+              "Obtain encryption keys from Krel-Beta in Smelter's Gulch.",
+              "Use Flux-Prime's hum to jam the sensors in the Kinetic Piston.",
+              "Deliver the blueprints to Overseer-Alpha to bypass the lockdown."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Krel-Beta",
+                "id": "G1-S2-O3-C1-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Flux-Prime",
+                "id": "G1-S2-O3-C1-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Overseer-Alpha",
+                "id": "G1-S2-O3-C1-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Nexus Slag Deactivation",
+            "narrative_guidance": "Deactivate a volatile slag pocket threatening the Furnace Nexus.",
+            "improvisation_points": [
+              "Consult Voss-Steel for the deactivation sequence in Basalt Maw.",
+              "Escort Dray-Heat through the thermal vents of Pressure Chamber 04.",
+              "Submit the stabilized core to Forge-Unit-9 in Slag Descent."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Voss-Steel",
+                "id": "G1-S2-O3-C1-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Dray-Heat",
+                "id": "G1-S2-O3-C1-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Forge-Unit-9",
+                "id": "G1-S2-O3-C1-CT1-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Experimental Sintering Escort",
+            "narrative_guidance": "Escort a shipment to the Sintering Pits for experimental alloy testing.",
+            "improvisation_points": [
+              "Meet Smelter-Shadow at Anvil Reach to collect the experimental core.",
+              "Pass through the Vitreous Archive by bribing Krel-Archivist with data.",
+              "Secure the delivery with Flux-Filter in the Carbon Filter Spires."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Smelter-Shadow",
+                "id": "G1-S2-O3-C1-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Krel-Archivist",
+                "id": "G1-S2-O3-C1-CT2-R1-NPC"
+              },
+              "target": {
+                "name": "Flux-Filter",
+                "id": "G1-S2-O3-C1-CT2-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Phantom Core Chase",
+            "narrative_guidance": "Track the Phantom Smelter through molten channels to recover stolen cores.",
+            "improvisation_points": [
+              "Analyze heat distortions with Overseer-Theta in Cooling Vent Theta.",
+              "Follow the secret symbols left by Voss-Gamma in Geodesic Dome Alpha.",
+              "Corner the phantom using Dray-Glass's sonar in the Polishing Flats."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Overseer-Theta",
+                "id": "G1-S2-O3-C1-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Voss-Gamma",
+                "id": "G1-S2-O3-C1-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Dray-Glass",
+                "id": "G1-S2-O3-C1-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Mapping the Void Routes",
+            "narrative_guidance": "Assist in mapping new tunnel routes to optimize extraction efficiency.",
+            "improvisation_points": [
+              "Collect topographical data from Forge-Unit-X in the Refractive Gallery.",
+              "Identify thermal weak points with Smelter-Ghost in the Data-Chiseled Halls.",
+              "Deliver the finalized map to Krel-Soot in the Soot-Home Blocks."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Forge-Unit-X",
+                "id": "G1-S2-O3-C1-CT2-R6-NPC"
+              },
+              "contact": {
+                "name": "Smelter-Ghost",
+                "id": "G1-S2-O3-C1-CT2-R7-NPC"
+              },
+              "target": {
+                "name": "Krel-Soot",
+                "id": "G1-S2-O3-C1-CT3-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Plasma Conduit Sabotage",
+            "narrative_guidance": "Sabotage a rival foundry's plasma conduits to delay production.",
+            "improvisation_points": [
+              "Acquire the jamming device from Flux-Spark at the Radiant Hearth.",
+              "Infiltrate the Ash-Gardens under the guidance of Overseer-Ash.",
+              "Overload the conduits at Sulfur Springs with Voss-Acid."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Flux-Spark",
+                "id": "G1-S2-O3-C1-CT3-R2-NPC"
+              },
+              "contact": {
+                "name": "Overseer-Ash",
+                "id": "G1-S2-O3-C1-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Voss-Acid",
+                "id": "G1-S2-O3-C1-CT3-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Pre-Syndicate Retrieval",
+            "narrative_guidance": "Infiltrate the Maintenance Conclave to retrieve pre-Syndicate machinery schematics.",
+            "improvisation_points": [
+              "Gain entry codes from Dray-Silt in the Low-Vent Shallows.",
+              "Trade alloy samples for information with Forge-Unit-8 at the Tallow Market.",
+              "Store the schematics safely with Smelter-Void in the Breath-Safe Vaults."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Dray-Silt",
+                "id": "G1-S2-O3-C1-CT3-R5-NPC"
+              },
+              "contact": {
+                "name": "Forge-Unit-8",
+                "id": "G1-S2-O3-C1-CT3-R6-NPC"
+              },
+              "target": {
+                "name": "Smelter-Void",
+                "id": "G1-S2-O3-C1-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Argent-Forge Hegemony",
+      "civilization_id": "G1-S2-O3-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Blueprint Heist",
+            "narrative_guidance": "Recover stolen alloy blueprints from a hidden forge before the AI detects the breach.",
+            "improvisation_points": [
+              "Infiltrate the Piston Plinth and obtain the location from Foreman Krel-Alpha.",
+              "Meet Engineer Voss-Glass in Vitreous Reach to decode the blueprint encryption.",
+              "Deliver the decrypted files to Flux-Delta in the Iron-Gut Deep for secure storage."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Foreman Krel-Alpha",
+                "id": "G1-S2-O3-C2-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Engineer Voss-Glass",
+                "id": "G1-S2-O3-C2-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Flux-Delta",
+                "id": "G1-S2-O3-C2-CT3-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "Slag Pocket Suppression",
+            "narrative_guidance": "A volatile slag pocket is threatening the furnace nexus and must be deactivated immediately.",
+            "improvisation_points": [
+              "Receive the emergency coordinates from Overseer AI-Thermal on the Magma-Tap Terrace.",
+              "Obtain a specialized cooling core from Blacksmith AI-Forge in Cinder-Gait Hub.",
+              "Install the core at the Slag-Flow Bypass under the supervision of Foreman Krel-Sigma."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Overseer AI-Thermal",
+                "id": "G1-S2-O3-C2-CT3-R3-NPC"
+              },
+              "contact": {
+                "name": "Blacksmith AI-Forge",
+                "id": "G1-S2-O3-C2-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Foreman Krel-Sigma",
+                "id": "G1-S2-O3-C2-CT3-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Sintering Escort",
+            "narrative_guidance": "Escort a renegade engineer to a dangerous testing site for experimental alloy trials.",
+            "improvisation_points": [
+              "Meet Engineer Voss-Seven in the Steam-Hiss Conduits to begin the journey.",
+              "Navigate the dangerous Fiber-Weave Vaults with Scout Dray-Vitreous to avoid detection.",
+              "Complete the alloy test and deliver the results to Flux-Prime in the Rapid-Rail Arteries."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Engineer Voss-Seven",
+                "id": "G1-S2-O3-C2-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Scout Dray-Vitreous",
+                "id": "G1-S2-O3-C2-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Flux-Prime",
+                "id": "G1-S2-O3-C2-CT1-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "Wraith of the Molten Canyon",
+            "narrative_guidance": "Track the mysterious Phantom Smelter to recover stolen power cores.",
+            "improvisation_points": [
+              "Analyze the heat distortion patterns with Blacksmith AI-Marrow in the Sulfur-Mist Vents.",
+              "Confront the Phantom Smelter-Cinder in the Gear-Grind Plaza to reclaim the first batch of cores.",
+              "Secure the remaining cores with Overseer AI-Vision in the Cooling Coils."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Blacksmith AI-Marrow",
+                "id": "G1-S2-O3-C2-CT3-R6-NPC"
+              },
+              "contact": {
+                "name": "The Phantom Smelter-Cinder",
+                "id": "G1-S2-O3-C2-CT1-R7-NPC"
+              },
+              "target": {
+                "name": "Overseer AI-Vision",
+                "id": "G1-S2-O3-C2-CT2-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Optimal Extraction Route",
+            "narrative_guidance": "Map new tunnel routes to increase the efficiency of raw material extraction.",
+            "improvisation_points": [
+              "Begin the mapping mission with Scout Dray-Deep at Tectonic Anchor 09.",
+              "Bypass security protocols in the Rapid-Rail Arteries using Flux-Prime's interference field.",
+              "Submit the finalized maps to Foreman Krel-Beta at the Prism-Light Labs."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scout Dray-Deep",
+                "id": "G1-S2-O3-C2-CT3-R5-NPC"
+              },
+              "contact": {
+                "name": "Flux-Prime",
+                "id": "G1-S2-O3-C2-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Foreman Krel-Beta",
+                "id": "G1-S2-O3-C2-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Foundry Sabotage",
+            "narrative_guidance": "Delay a rival's production by sabotaging their plasma conduits.",
+            "improvisation_points": [
+              "Receive the sabotage target data from Overseer AI-Logic in the Hub.",
+              "Modify the sabotage tools with Engineer Voss-Iron in the Anvil Heart.",
+              "Plant the device and escape via Bolt-Tight Alley with the help of Scout Dray-One."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Overseer AI-Logic",
+                "id": "G1-S2-O3-C2-CT1-R3-NPC"
+              },
+              "contact": {
+                "name": "Engineer Voss-Iron",
+                "id": "G1-S2-O3-C2-CT3-R4-NPC"
+              },
+              "target": {
+                "name": "Scout Dray-One",
+                "id": "G1-S2-O3-C2-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Pre-Syndicate Schematics",
+            "narrative_guidance": "Infiltrate the conclave to retrieve ancient machinery designs.",
+            "improvisation_points": [
+              "Obtain the entry codes from Flux-Delta in the Iron-Gut Deep.",
+              "Retrieve the hidden data chips from Blacksmith AI-Mirror in the Translucent Tunnels.",
+              "Deliver the schematics to The Phantom Smelter-Prime in the Ore-Crush Canyon for safe keeping."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Flux-Delta",
+                "id": "G1-S2-O3-C2-CT3-R2-NPC"
+              },
+              "contact": {
+                "name": "Blacksmith AI-Mirror",
+                "id": "G1-S2-O3-C2-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "The Phantom Smelter-Prime",
+                "id": "G1-S2-O3-C2-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Arch-Engineers of Syncline",
+      "civilization_id": "G1-S2-O3-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Blueprints of the Hidden Forge",
+            "narrative_guidance": "Recover stolen alloy blueprints from a hidden compartment without triggering the Overseer AI's alarm.",
+            "improvisation_points": [
+              "Obtain the location codes from Foreman Krel in Magma-Throne.",
+              "Intercept the decryption key from Engineer Tavis in the Vent-Spire.",
+              "Deliver the blueprints to Forge-Master AI-11 for integration."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Foreman Krel",
+                "id": "G1-S2-O3-C3-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Engineer Tavis",
+                "id": "G1-S2-O3-C3-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Forge-Master AI-11",
+                "id": "G1-S2-O3-C3-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Slag Pocket Neutralization",
+            "narrative_guidance": "A volatile pocket of slag is threatening the foundation of the Delta. Deactivate it immediately.",
+            "improvisation_points": [
+              "Consult Scout Dray for the precise thermal coordinates.",
+              "Use Flux-02 to disrupt the pressure sensors around the pocket.",
+              "Request Logic-Unit Gamma to initiate a controlled quench."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scout Dray",
+                "id": "G1-S2-O3-C3-CT1-R5-NPC"
+              },
+              "contact": {
+                "name": "Flux-02",
+                "id": "G1-S2-O3-C3-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Logic-Unit Gamma",
+                "id": "G1-S2-O3-C3-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Renegade's Escort",
+            "narrative_guidance": "Engineer Voss must reach the sintering pits for an experiment, but his secret symbols have made him a target.",
+            "improvisation_points": [
+              "Secure authorization from Logic-Unit Alpha.",
+              "Meet Scout Lyra to navigate through the vapor cover.",
+              "Deliver Voss safely to Engineer Kael's stamping row."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Logic-Unit Alpha",
+                "id": "G1-S2-O3-C3-CT1-R3-NPC"
+              },
+              "contact": {
+                "name": "Scout Lyra",
+                "id": "G1-S2-O3-C3-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Engineer Kael",
+                "id": "G1-S2-O3-C3-CT3-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Tracking the Phantom",
+            "narrative_guidance": "Recover stolen alloy cores by following the trail of heat distortion across the Syncline.",
+            "improvisation_points": [
+              "Observe the heat patterns with The Sintering Ghost.",
+              "Triangulate the phantom's pulse with Forge-Master AI-10.",
+              "Ambush the entity with Scout Silas in the quench-pools."
+            ],
+            "cast": {
+              "giver": {
+                "name": "The Sintering Ghost",
+                "id": "G1-S2-O3-C3-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Forge-Master AI-10",
+                "id": "G1-S2-O3-C3-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Scout Silas",
+                "id": "G1-S2-O3-C3-CT3-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Mapping the Dark Tunnels",
+            "narrative_guidance": "The extraction routes are outdated. Assist the scouts in establishing a new thermal grid.",
+            "improvisation_points": [
+              "Deploy Flux-01 to plant signal repeaters.",
+              "Verify the atmospheric pressure with Logic-Unit Beta.",
+              "Confirm the final route with The Grid Phantom."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Flux-01",
+                "id": "G1-S2-O3-C3-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Logic-Unit Beta",
+                "id": "G1-S2-O3-C3-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "The Grid Phantom",
+                "id": "G1-S2-O3-C3-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Plasma Sabotage Protocol",
+            "narrative_guidance": "A rival foundry is outpacing production. Delay them by sabotaging their plasma conduits.",
+            "improvisation_points": [
+              "Receive the sabotage schedule from Forge-Master AI-9.",
+              "Procure the necessary tools from Foreman Jarek.",
+              "Execute the cut and escape through Foreman Zale's commons."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Forge-Master AI-9",
+                "id": "G1-S2-O3-C3-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Foreman Jarek",
+                "id": "G1-S2-O3-C3-CT2-R1-NPC"
+              },
+              "target": {
+                "name": "Foreman Zale",
+                "id": "G1-S2-O3-C3-CT3-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Pre-Syndicate Schematics",
+            "narrative_guidance": "Infiltrate the Maintenance Conclave to retrieve ancient machinery schematics lost to time.",
+            "improvisation_points": [
+              "Accept the mission from Engineer Voss.",
+              "Gain entry using the heat-masking technique of The Vapor Phantom.",
+              "Extract the data via Flux-03's encrypted frequency."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Engineer Voss",
+                "id": "G1-S2-O3-C3-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "The Vapor Phantom",
+                "id": "G1-S2-O3-C3-CT2-R7-NPC"
+              },
+              "target": {
+                "name": "Flux-03",
+                "id": "G1-S2-O3-C3-CT3-R2-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

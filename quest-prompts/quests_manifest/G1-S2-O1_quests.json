@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Hollow Chorus",
+      "civilization_id": "G1-S2-O1-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Inspection Gambit",
+            "narrative_guidance": "Corvess's network requires forged Syndicate inspection papers to maintain the station's autonomy and keep the Chorus's secrets buried.",
+            "improvisation_points": [
+              "Recover the template from the Shredder pits in Foundry Maw.",
+              "Take the template to Signal-Eater Lane to have it digitally encoded.",
+              "Deliver the final forged documents to the Crow's Nest for distribution."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Krag",
+                "id": "G1-S2-O1-C1-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Static",
+                "id": "G1-S2-O1-C1-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Watch",
+                "id": "G1-S2-O1-C1-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Plasma Run",
+            "narrative_guidance": "Lira Voidhand demands a rare shipment of quantum plasma rods be smuggled through the dark zones to fuel her black market power.",
+            "improvisation_points": [
+              "Secure the plasma shipment from the Dead-Air Market.",
+              "Route the rods through the high-voltage Spark-Gap to mask their signature.",
+              "Drop the rods into the Sump for final pickup and payment."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Greed",
+                "id": "G1-S2-O1-C1-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Sola",
+                "id": "G1-S2-O1-C1-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Muck",
+                "id": "G1-S2-O1-C1-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Relic of the Thicket",
+            "narrative_guidance": "Brother Hask begs for the recovery of a stolen relic idol, claiming it holds the spiritual essence needed to stabilize the hydroponic bunkers.",
+            "improvisation_points": [
+              "Locate the idol's trail in the Condensate Thicket.",
+              "Retrieve the idol from the heavy-lift zones of The Sledge.",
+              "Return the idol to the Navigator’s Rest for a ritual purification."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Moss",
+                "id": "G1-S2-O1-C1-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Brawn",
+                "id": "G1-S2-O1-C1-CT1-R3-NPC"
+              },
+              "target": {
+                "name": "Compass",
+                "id": "G1-S2-O1-C1-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Contract Cleanup",
+            "narrative_guidance": "Tovin Grell needs a rival mercenary team eliminated before they can outbid the Chorus on a lucrative station-wide contract.",
+            "improvisation_points": [
+              "Identify the rival's heat signature near the Heat-Sink Spire.",
+              "Lure them into an ambush at Pressure-Lock 4.",
+              "Confirm the elimination to the lookout at Wire-Walk."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Vane",
+                "id": "G1-S2-O1-C1-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Seal",
+                "id": "G1-S2-O1-C1-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Zip",
+                "id": "G1-S2-O1-C1-CT3-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Cipher Protocol",
+            "narrative_guidance": "Cipher-Iron requires help in delivering a forbidden data package through the station's arterial network without alerting the Warlords.",
+            "improvisation_points": [
+              "Acquire the data drive hidden in The Leak.",
+              "Corrode the drive's security lock in Rust-Gully.",
+              "Upload the data to the central hydraulic processor in Piston Row."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Drip",
+                "id": "G1-S2-O1-C1-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Oxide",
+                "id": "G1-S2-O1-C1-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Dredge",
+                "id": "G1-S2-O1-C1-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Injector Prototype",
+            "narrative_guidance": "Jax Orlin needs scavenged tech components from across the Chorus's territory to complete his experimental fuel injector.",
+            "improvisation_points": [
+              "Scavenge rare alloys from the Slag Flats.",
+              "Obtain a high-flow fan from The Vent.",
+              "Assemble the prototype in the Ghost Docks."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Sinder",
+                "id": "G1-S2-O1-C1-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Draft",
+                "id": "G1-S2-O1-C1-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Specter",
+                "id": "G1-S2-O1-C1-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Herald's Sacrifice",
+            "narrative_guidance": "The Crimson Herald demands a demonstration of loyalty through the strategic sabotage of a secondary fuel tank to prove the Chorus's might.",
+            "improvisation_points": [
+              "Collect caustic minerals from the Copper-Crawl.",
+              "Use the minerals to breach the tank at The Fuel-Well.",
+              "Commemorate the destruction at The Anvil with a blood-mark."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Verdigris",
+                "id": "G1-S2-O1-C1-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Gulp",
+                "id": "G1-S2-O1-C1-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Anvil-Eye",
+                "id": "G1-S2-O1-C1-CT1-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Silent Accord",
+      "civilization_id": "G1-S2-O1-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Paper Trail Protocol",
+            "narrative_guidance": "Corvess needs forged Syndicate inspection papers moved across the station to hide the fuel guild's secret reserves.",
+            "improvisation_points": [
+              "Retrieve the blank forms from Twitch in Flicker Alley.",
+              "Have the forms encrypted with the fake Syndicate seal by Code in the Cipher Cellar.",
+              "Deliver the final papers to Drift at the Drift Deck for distribution."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Twitch",
+                "id": "G1-S2-O1-C2-CT1-R5-NPC"
+              },
+              "contact": {
+                "name": "Code",
+                "id": "G1-S2-O1-C2-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Drift",
+                "id": "G1-S2-O1-C2-CT1-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Quantum Plasma Rod Run",
+            "narrative_guidance": "Lira Voidhand requires a shipment of quantum plasma rods smuggled from the scrap heaps to her private market.",
+            "improvisation_points": [
+              "Meet Vex in the Vector Void to receive the shipment coordinates.",
+              "Pick up the rods from Junk in the Scrap Sift while avoiding patrols.",
+              "Deliver the rods to Alta at the Pilot's Perch for safe storage."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Vex",
+                "id": "G1-S2-O1-C2-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Junk",
+                "id": "G1-S2-O1-C2-CT2-R7-NPC"
+              },
+              "target": {
+                "name": "Alta",
+                "id": "G1-S2-O1-C2-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Lost Relic Search",
+            "narrative_guidance": "A sacred relic idol has been lost in the station's heavy machinery and must be recovered for the sanctuary.",
+            "improvisation_points": [
+              "Obtain the last known location of the idol from Piston in Hydraulic Heights.",
+              "Search for the hidden idol near the Shadow Spire with Spire's guidance.",
+              "Return the idol to Grip in Gasket Grove for purification and storage."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Piston",
+                "id": "G1-S2-O1-C2-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Spire",
+                "id": "G1-S2-O1-C2-CT3-R4-NPC"
+              },
+              "target": {
+                "name": "Grip",
+                "id": "G1-S2-O1-C2-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Market Contract Clean-up",
+            "narrative_guidance": "A rival mercenary team is encroaching on Tovin Grell's territory. You must disrupt their supply lines.",
+            "improvisation_points": [
+              "Get the target roster and route from Dash at The Rivet Run.",
+              "Use Haze's jamming equipment in the Sensor Shroud to disable their comms.",
+              "Report the success to Gauge in the Precision Pit to claim the bounty."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Dash",
+                "id": "G1-S2-O1-C2-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Haze",
+                "id": "G1-S2-O1-C2-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Gauge",
+                "id": "G1-S2-O1-C2-CT2-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Forbidden Data Hand-off",
+            "narrative_guidance": "A high-security data package from Cipher-Iron must be delivered across the station without Syndicate detection.",
+            "improvisation_points": [
+              "Receive the encrypted drive from Wire in Whisper Wire.",
+              "Route the data through Static's interceptor in the Signal Snag to scrub the signature.",
+              "Finalize the delivery to Core in the Hollow Hub for transmission."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Wire",
+                "id": "G1-S2-O1-C2-CT3-R2-NPC"
+              },
+              "contact": {
+                "name": "Static",
+                "id": "G1-S2-O1-C2-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Core",
+                "id": "G1-S2-O1-C2-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Injector Prototype",
+            "narrative_guidance": "Jax Orlin needs specialized alien tech to complete his experimental fuel injector prototype.",
+            "improvisation_points": [
+              "Consult Spark in Micro-Weld Row for the technical specifications.",
+              "Find the rare alien circuit board in Glint's Null Gallery.",
+              "Deliver the components to Melt at the Flux Foundry to begin the casting process."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Spark",
+                "id": "G1-S2-O1-C2-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Glint",
+                "id": "G1-S2-O1-C2-CT1-R4-NPC"
+              },
+              "target": {
+                "name": "Melt",
+                "id": "G1-S2-O1-C2-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Siphon Sabotage",
+            "narrative_guidance": "A statement must be made. The Fuel Tank Array needs to be subtly sabotaged to distract the Warlord's guards.",
+            "improvisation_points": [
+              "Get the sabotage instructions from Ghost in the False Bulkhead District.",
+              "Navigate the Cloak Walk with Shade to plant the disruptors undetected.",
+              "Meet with Blind at The Blind Spot to confirm the perimeter is clear before the blast."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Ghost",
+                "id": "G1-S2-O1-C2-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Shade",
+                "id": "G1-S2-O1-C2-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Blind",
+                "id": "G1-S2-O1-C2-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Silent Accord",
+      "civilization_id": "G1-S2-O1-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Forged Inspection",
+            "narrative_guidance": "Secure the station's independence by distributing forged Syndicate papers through the black market.",
+            "improvisation_points": [
+              "Meet Jax Orlin at Hangar-Prime to receive the forged documents.",
+              "Deliver the papers to Marek Vyke for official stamping at Docking Bay 9.",
+              "Confirm the documents have cleared the market with Zola Silt."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Jax Orlin",
+                "id": "G1-S2-O1-C3-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Marek Vyke",
+                "id": "G1-S2-O1-C3-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Zola Silt",
+                "id": "G1-S2-O1-C3-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Plasma Heist",
+            "narrative_guidance": "Smuggle a crate of quantum plasma rods past the internal security sensors.",
+            "improvisation_points": [
+              "Acquire the rods from Cipher-Iron under the Helium-3 Siphon.",
+              "Have Tully Moss hide the rods in a shipment of condensate.",
+              "Deliver the rods to Sister Elara at the Sleeper Pods for safe keeping."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Cipher-Iron",
+                "id": "G1-S2-O1-C3-CT2-R1-NPC"
+              },
+              "contact": {
+                "name": "Tully Moss",
+                "id": "G1-S2-O1-C3-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Sister Elara",
+                "id": "G1-S2-O1-C3-CT2-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Crimson Path",
+            "narrative_guidance": "Demonstrate loyalty by marking specific logic-nodes with the Herald's signs.",
+            "improvisation_points": [
+              "Receive the ritual markings from The Crimson Herald.",
+              "Smear the markings on the main terminal held by Node-7.",
+              "Report the completed ritual to Exo-Link."
+            ],
+            "cast": {
+              "giver": {
+                "name": "The Crimson Herald",
+                "id": "G1-S2-O1-C3-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Node-7",
+                "id": "G1-S2-O1-C3-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Exo-Link",
+                "id": "G1-S2-O1-C3-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Memory Retrieval",
+            "narrative_guidance": "Recover stolen memory cores from the district's drainage system.",
+            "improvisation_points": [
+              "Get the coordinates for the lost cores from Byte-Thief.",
+              "Locate the cores in the server racks guarded by Cold-Frame.",
+              "Bypass the security locks with Gate-Keeper's authorization."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Byte-Thief",
+                "id": "G1-S2-O1-C3-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Cold-Frame",
+                "id": "G1-S2-O1-C3-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Gate-Keeper",
+                "id": "G1-S2-O1-C3-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Signal Disharmony",
+            "narrative_guidance": "Interrupt the station's internal broadcasts to mask a secret delivery.",
+            "improvisation_points": [
+              "Obtain the frequency jammer from Pulse-Echo.",
+              "Install the jammer in the vent paths managed by Slyn Vent.",
+              "Ensure the final signal is sealed by Riko Gasket."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Pulse-Echo",
+                "id": "G1-S2-O1-C3-CT3-R7-NPC"
+              },
+              "contact": {
+                "name": "Slyn Vent",
+                "id": "G1-S2-O1-C3-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Riko Gasket",
+                "id": "G1-S2-O1-C3-CT2-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Hydroponic Harvest",
+            "narrative_guidance": "Collect rare bioluminescent spores to power an experimental light source.",
+            "improvisation_points": [
+              "Collect the spores from Vora Spore in the gardens.",
+              "Have Dredge Gasket purify the spores for transport.",
+              "Deliver the refined material to Vane Thorne for inspection."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Vora Spore",
+                "id": "G1-S2-O1-C3-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Dredge Gasket",
+                "id": "G1-S2-O1-C3-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Vane Thorne",
+                "id": "G1-S2-O1-C3-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Mercenary Contract",
+            "narrative_guidance": "Eliminate the paper trail of a rival mercenary crew.",
+            "improvisation_points": [
+              "Receive the target list from Kaelen Voss at the Terrace.",
+              "Acquire the access codes from Rinn Scry in the Valve Hall.",
+              "Finalize the contract termination with Sila Grave at the Pub."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Kaelen Voss",
+                "id": "G1-S2-O1-C3-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Rinn Scry",
+                "id": "G1-S2-O1-C3-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Sila Grave",
+                "id": "G1-S2-O1-C3-CT1-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

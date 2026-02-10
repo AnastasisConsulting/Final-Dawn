@@ -1,0 +1,4135 @@
+{
+  "G1-S1-O1": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Core-Stitchers of S-11",
+      "civilization_id": "G1-S1-O1-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Unstable Shaft",
+          "narrative_guidance": "A primary drill shaft in Helix Hub is vibrating out of tolerance, threatening a sector-wide collapse.",
+          "improvisation_points": [
+            "Obtain the stabilization harmonics from Chief Hara-V1.",
+            "Take the harmonics to Tech Lorn-Beta in Caliper Reach to calibrate the drill bits.",
+            "Upload the final calibration to Logic Core Gamma at Vector Point to synchronize the planetary rotation."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Chief Hara-V1",
+              "id": "G1-S1-O1-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Tech Lorn-Beta",
+              "id": "G1-S1-O1-C2-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Logic Core Gamma",
+              "id": "G1-S1-O1-C2-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Radiation Ghosting",
+          "narrative_guidance": "Ghost signals in the radiation sensors are causing drones to malfunction and attack personnel.",
+          "improvisation_points": [
+            "Receive the anomalous sensor logs from Scout Iko-S.",
+            "Deliver the logs to Unit Delta-Prime to patch the drone sub-routines.",
+            "Present the success report to Overseer Melen-Z to avoid a sector lockdown."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scout Iko-S",
+              "id": "G1-S1-O1-C2-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Unit Delta-Prime",
+              "id": "G1-S1-O1-C2-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Overseer Melen-Z",
+              "id": "G1-S1-O1-C2-CT1-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Locked Archive",
+          "narrative_guidance": "Valuable mineral data has been locked behind a security firewall that Logic Core Beta cannot bypass alone.",
+          "improvisation_points": [
+            "Acquire the decryption bypass from Scrapper Xy-8 in the Thermal Shield Spires.",
+            "Interface with Logic Core Beta to input the bypass code.",
+            "Deliver the decrypted data to Chief Hara-V2 to optimize furnace output."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scrapper Xy-8",
+              "id": "G1-S1-O1-C2-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Logic Core Beta",
+              "id": "G1-S1-O1-C2-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Chief Hara-V2",
+              "id": "G1-S1-O1-C2-CT2-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Dark Ore Heist",
+          "narrative_guidance": "A rare vein of shadow-ore has been found, but the Cartel hasn't authorized its extraction.",
+          "improvisation_points": [
+            "Meet Scrapper Xy-9 to receive the stealth extraction kit.",
+            "Have Tech Lorn-Gamma mask the seismic signatures during the dig.",
+            "Hand off the ore to Scout Iko-U at the Final Sump for smuggling."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scrapper Xy-9",
+              "id": "G1-S1-O1-C2-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Tech Lorn-Gamma",
+              "id": "G1-S1-O1-C2-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Scout Iko-U",
+              "id": "G1-S1-O1-C2-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Compliance Audit",
+          "narrative_guidance": "A high-level inspection is coming, and several safety violations need to be 'corrected' or hidden.",
+          "improvisation_points": [
+            "Collect the violation list from Overseer Melen-Y.",
+            "Task Unit Delta-Secundus with emergency cosmetic repairs to the steam vents.",
+            "Submit the falsified safety logs to Logic Core Alpha for archiving."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Melen-Y",
+              "id": "G1-S1-O1-C2-CT2-R5-NPC"
+            },
+            "contact": {
+              "name": "Unit Delta-Secundus",
+              "id": "G1-S1-O1-C2-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Logic Core Alpha",
+              "id": "G1-S1-O1-C2-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Torque Calibration",
+          "narrative_guidance": "The torque ridge is slipping, and the mechanical drones are failing to maintain the grip.",
+          "improvisation_points": [
+            "Receive the torque requirements from Unit Delta-Tertius.",
+            "Consult Tech Lorn-Alpha for the ancient drilling codes required for the override.",
+            "Deliver the override confirmation to Chief Hara-V3 to lock the tethers."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit Delta-Tertius",
+              "id": "G1-S1-O1-C2-CT3-R6-NPC"
+            },
+            "contact": {
+              "name": "Tech Lorn-Alpha",
+              "id": "G1-S1-O1-C2-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Chief Hara-V3",
+              "id": "G1-S1-O1-C2-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Silent Signal",
+          "narrative_guidance": "An invisible hazard has been detected in the Signal Silence region that is disrupting communications.",
+          "improvisation_points": [
+            "Get the hazard coordinates from Scout Iko-T.",
+            "Use Overseer Melen-X's authority to clear the area of unauthorized personnel.",
+            "Trade the recovered hazard data to Scrapper Xy-7 for tech upgrades."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scout Iko-T",
+              "id": "G1-S1-O1-C2-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Overseer Melen-X",
+              "id": "G1-S1-O1-C2-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Scrapper Xy-7",
+              "id": "G1-S1-O1-C2-CT1-R4-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Quartzite Synod",
+      "civilization_id": "G1-S1-O1-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Deep Shaft Crisis",
+          "narrative_guidance": "A major drill shaft in Bore-Site Alpha is nearing structural collapse due to unforeseen seismic activity.",
+          "improvisation_points": [
+            "Obtain heavy drilling equipment from Driller Bor.",
+            "Calibrate the seismic dampeners with Stabilizer Jax to halt the tremors.",
+            "Finalize the structural seal at Maintenance Pod C-7 with Fixer Zen."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Driller Bor",
+              "id": "G1-S1-O1-C3-CT2-R1-NPC"
+            },
+            "contact": {
+              "name": "Stabilizer Jax",
+              "id": "G1-S1-O1-C3-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Fixer Zen",
+              "id": "G1-S1-O1-C3-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Rad-Leak Extraction",
+          "narrative_guidance": "An emergency in the pods requires an immediate extraction of sensitive materials through a high-radiation zone.",
+          "improvisation_points": [
+            "Retrieve the medical hazard list from Med-Unit Gamma.",
+            "Use the sensor array to map the safest path with Watcher Iko-Beta.",
+            "Deliver the protected materials to Mechanic Lorn-S for decontamination."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Med-Unit Gamma",
+              "id": "G1-S1-O1-C3-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Watcher Iko-Beta",
+              "id": "G1-S1-O1-C3-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Mechanic Lorn-S",
+              "id": "G1-S1-O1-C3-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Logic Core Override",
+          "narrative_guidance": "The Synod requires a manual bypass of local AI restrictions to access mineral yield projections.",
+          "improvisation_points": [
+            "Acquire the decryption keys from Logician Kael.",
+            "Broadcast the bypass signal through Transmit-Unit 7's relay.",
+            "Verify the kinetic power draw with Spin-Tech Tor to hide the data surge."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Logician Kael",
+              "id": "G1-S1-O1-C3-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Transmit-Unit 7",
+              "id": "G1-S1-O1-C3-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "Spin-Tech Tor",
+              "id": "G1-S1-O1-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Slag-Heap Scavenging",
+          "narrative_guidance": "Valuable ores have been misplaced in the waste piles, and they must be recovered without triggering alarms.",
+          "improvisation_points": [
+            "Identify the missing ore signatures with Scrapper Xyra-Z.",
+            "Bypass the power grid sensors with Spark-Tech Jule.",
+            "Record the recovery as 'logistical error' with Orator Vex."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scrapper Xyra-Z",
+              "id": "G1-S1-O1-C3-CT2-R5-NPC"
+            },
+            "contact": {
+              "name": "Spark-Tech Jule",
+              "id": "G1-S1-O1-C3-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Orator Vex",
+              "id": "G1-S1-O1-C3-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Operational Compliance Check",
+          "narrative_guidance": "The Synod demands a full report on the mechanical integrity of the Bore-Site's primary systems.",
+          "improvisation_points": [
+            "Secure the perimeter reports from Guard 01-B.",
+            "Analyze the lubrication viscosity data with Lube-Tech Pip.",
+            "Submit the final compliance certificate to Polisher Lux for archiving."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Guard 01-B",
+              "id": "G1-S1-O1-C3-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Lube-Tech Pip",
+              "id": "G1-S1-O1-C3-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Polisher Lux",
+              "id": "G1-S1-O1-C3-CT3-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Drone Reroute",
+          "narrative_guidance": "Automated maintenance drones are ignoring a critical gear-tooth failure that could stall the entire site.",
+          "improvisation_points": [
+            "Redirect the assembly drone swarm via Assembly-Drone R-D1.",
+            "Clean the air intake pathways with Filter-Unit Phi to prevent drone overheating.",
+            "Coordinate the final gear replacement with Machinist Cog."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Assembly-Drone R-D1",
+              "id": "G1-S1-O1-C3-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Filter-Unit Phi",
+              "id": "G1-S1-O1-C3-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Machinist Cog",
+              "id": "G1-S1-O1-C3-CT2-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Radiance Mapping",
+          "narrative_guidance": "Anomalies in the stellar thermal radiation are affecting the Vent-Spires' energy absorption.",
+          "improvisation_points": [
+            "Collect initial anomaly data from Watcher Iko-Beta.",
+            "Cross-reference the stellar coordinates with Star-Gazer Ren.",
+            "Adjust the heat-exchange valves with Vent-Master Kel to compensate."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Watcher Iko-Beta",
+              "id": "G1-S1-O1-C3-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Star-Gazer Ren",
+              "id": "G1-S1-O1-C3-CT3-R6-NPC"
+            },
+            "target": {
+              "name": "Vent-Master Kel",
+              "id": "G1-S1-O1-C3-CT3-R1-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Marrow-Hollowed Union",
+      "civilization_id": "G1-S1-O1-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Collapsing Shaft",
+          "narrative_guidance": "The main drill shaft at the Command Monolith is buckling. You must stabilize it before the whole city tilts.",
+          "improvisation_points": [
+            "Consult Chief Engineer Hara-Prime for the stabilization schematics.",
+            "Secure the support beams from Foreman Kraul at the Gneiss Gates.",
+            "Deliver the final calibration codes to Technician Lorn-Seven to seal the shaft."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Chief Engineer Hara-Prime",
+              "id": "G1-S1-O1-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Foreman Kraul",
+              "id": "G1-S1-O1-C1-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Technician Lorn-Seven",
+              "id": "G1-S1-O1-C1-CT1-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Rad-Safe Routing",
+          "narrative_guidance": "A surge of radiation has blocked the transport lines. A new path must be mapped using secure codes.",
+          "improvisation_points": [
+            "Obtain the encrypted bypass logic from AI Core-11.A.",
+            "Scan for safe pockets with Radiation Scout Iko-Red in the Gantry Row.",
+            "Hand the verified coordinates to Drone Commander R-Delta-V to update the drone paths."
+          ],
+          "cast": {
+            "giver": {
+              "name": "AI Core-11.A",
+              "id": "G1-S1-O1-C1-CT1-R3-NPC"
+            },
+            "contact": {
+              "name": "Radiation Scout Iko-Red",
+              "id": "G1-S1-O1-C1-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Drone Commander R-Delta-V",
+              "id": "G1-S1-O1-C1-CT1-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Black-Market Batch",
+          "narrative_guidance": "Rare ore has gone missing from the foundry. It needs to be moved to a buyer without the Overseer knowing.",
+          "improvisation_points": [
+            "Accept the hidden stash from Salvager Xyra-One.",
+            "Stash the ore in the reclamation pit with Scrap King Jax.",
+            "Bribe Grease Monkey Sly to smuggle it through the corridors."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Salvager Xyra-One",
+              "id": "G1-S1-O1-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Scrap King Jax",
+              "id": "G1-S1-O1-C1-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Grease Monkey Sly",
+              "id": "G1-S1-O1-C1-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Atmospheric Integrity",
+          "narrative_guidance": "The Welders' Habitats are losing oxygen pressure. Repairs must be expedited.",
+          "improvisation_points": [
+            "Collect a requisition order from Habitat Warden Jace.",
+            "Secure the refined gas canisters from Refinery Op Mara.",
+            "Install the seals at the spare-part vaults under the eye of Vault Guard Drax."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Habitat Warden Jace",
+              "id": "G1-S1-O1-C1-CT2-R1-NPC"
+            },
+            "contact": {
+              "name": "Refinery Op Mara",
+              "id": "G1-S1-O1-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Vault Guard Drax",
+              "id": "G1-S1-O1-C1-CT2-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Hydraulic Overload",
+          "narrative_guidance": "A hydraulic leak is threatening the chassis forge. Someone needs to crawl into the ducts.",
+          "improvisation_points": [
+            "Get the leak locations from Duct Crawler Pip.",
+            "Acquire the custom-welded patch from Forge Master Bran.",
+            "Ensure the waste valves are cleared by Slag Monitor Nox."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Duct Crawler Pip",
+              "id": "G1-S1-O1-C1-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Forge Master Bran",
+              "id": "G1-S1-O1-C1-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Slag Monitor Nox",
+              "id": "G1-S1-O1-C1-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Magma Flow Regulation",
+          "narrative_guidance": "The geothermal intake is running too hot. The turbines are at risk of melting.",
+          "improvisation_points": [
+            "Receive the flow-gate keys from Intake Guard Vol.",
+            "Calculate the cooling dispersal with Heat Analyst Sora.",
+            "Apply the radiation dampeners with Lead Shield Tavish."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Intake Guard Vol",
+              "id": "G1-S1-O1-C1-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Heat Analyst Sora",
+              "id": "G1-S1-O1-C1-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Lead Shield Tavish",
+              "id": "G1-S1-O1-C1-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Deep Anchor Protocol",
+          "narrative_guidance": "The base is shifting on the sub-crustal plates. The anchors must be reinforced with crushed quartz.",
+          "improvisation_points": [
+            "Collect the heavy material from Mill Hand Grog.",
+            "Power up the anchor-winches with Turbine Tech Elara.",
+            "Deliver the status report to Anchor Master Silas at the anchor points."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Mill Hand Grog",
+              "id": "G1-S1-O1-C1-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Turbine Tech Elara",
+              "id": "G1-S1-O1-C1-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Anchor Master Silas",
+              "id": "G1-S1-O1-C1-CT3-R7-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O2": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Aegis Directive",
+      "civilization_id": "G1-S1-O2-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Phantasmal Breach",
+          "narrative_guidance": "A simulated breach has spiraled out of control. You must verify the authenticity of the threat across multiple sectors.",
+          "improvisation_points": [
+            "Consult Virek-Alpha about the 04:00 sensor logs.",
+            "Verify the holographic integrity with Sentinel-Edge.",
+            "Submit a seismic resonance report to Nove-Reach to confirm no ground-shaking occurred."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Commander Virek-Alpha",
+              "id": "G1-S1-O2-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Sentinel-Edge",
+              "id": "G1-S1-O2-C2-CT3-R3-NPC"
+            },
+            "target": {
+              "name": "Nove-Reach",
+              "id": "G1-S1-O2-C2-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Calibrating the Void",
+          "narrative_guidance": "The optical sensors are failing. A coordinated recalibration is required to maintain the Aegis vision.",
+          "improvisation_points": [
+            "Acquire the specialized lens filters from Rilo-Prime.",
+            "Deliver the flux-capacitors to Tamsin-M to power the array.",
+            "Confirm the long-range visuals with Omega-03."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Technician Rilo-Prime",
+              "id": "G1-S1-O2-C2-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Tamsin-M",
+              "id": "G1-S1-O2-C2-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Omega-03",
+              "id": "G1-S1-O2-C2-CT3-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "The False Signal",
+          "narrative_guidance": "A ghost signal is bypassing the central AI. You must trace the origin through the mercenary network.",
+          "improvisation_points": [
+            "Intercept the ghost packet from Sentinel-Core.",
+            "Consult with Katt-Deep to see if the Cartel is using the frequency.",
+            "Report the breach findings to Virek-Gamma for perimeter lockdown."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sentinel-Core",
+              "id": "G1-S1-O2-C2-CT1-R3-NPC"
+            },
+            "contact": {
+              "name": "Katt-Deep",
+              "id": "G1-S1-O2-C2-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Virek-Gamma",
+              "id": "G1-S1-O2-C2-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Deep Pressure Drift",
+          "narrative_guidance": "Sensors in the Mantle are detecting movement in the heat that shouldn't be there.",
+          "improvisation_points": [
+            "Retrieve the thermal logs from Omega-02.",
+            "Request turret support from Rilo-Rim to cover the vents.",
+            "Finalize the security contract with Katt-V to bring in extra guards."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Omega-02",
+              "id": "G1-S1-O2-C2-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Rilo-Rim",
+              "id": "G1-S1-O2-C2-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Katt-V",
+              "id": "G1-S1-O2-C2-CT1-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Shielding Secret",
+          "narrative_guidance": "The buffer zone's shields are fluctuating. You need to decode the maintenance symbols.",
+          "improvisation_points": [
+            "Obtain the cipher key from Tamsin-A's markings.",
+            "Cross-reference the efficiency logs with Nove-One.",
+            "Upload the fix to the Valve District flow controller Sentinel-V3."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Tamsin-A",
+              "id": "G1-S1-O2-C2-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Nove-One",
+              "id": "G1-S1-O2-C2-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Sentinel-V3",
+              "id": "G1-S1-O2-C2-CT2-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Mercenary's Gambit",
+          "narrative_guidance": "A shipment of illegal pulse pistols has been detected moving through the trenches.",
+          "improvisation_points": [
+            "Meet Katt-Rim to get the shipment manifest.",
+            "Search the deep shafts with Virek-Beta for the hidden stash.",
+            "Reinforce the garrison gates with Tamsin-Z to prevent export."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Katt-Rim",
+              "id": "G1-S1-O2-C2-CT3-R5-NPC"
+            },
+            "contact": {
+              "name": "Virek-Beta",
+              "id": "G1-S1-O2-C2-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Tamsin-Z",
+              "id": "G1-S1-O2-C2-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Orbital Prediction",
+          "narrative_guidance": "Atmospheric pressure changes suggest a massive orbital object is descending.",
+          "improvisation_points": [
+            "Get the threat probability from Nove-Seven.",
+            "Deploy Omega-01 to get a high-altitude visual.",
+            "Hand the coordinates to Rilo-Mantle for emergency pressure venting."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Nove-Seven",
+              "id": "G1-S1-O2-C2-CT3-R7-NPC"
+            },
+            "contact": {
+              "name": "Omega-01",
+              "id": "G1-S1-O2-C2-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Rilo-Mantle",
+              "id": "G1-S1-O2-C2-CT2-R2-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Oversight Directorate",
+      "civilization_id": "G1-S1-O2-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The 04:00 Anomaly",
+          "narrative_guidance": "Commander Virek has noticed a discrepancy in the morning sensor logs that requires a physical inspection of the kilns.",
+          "improvisation_points": [
+            "Obtain the log discrepancy report from Commander Virek Prime at the Eye of the Dome.",
+            "Take the report to Technician Rilo Core in the Refinement Kilns to cross-reference heat signatures.",
+            "Deliver the final diagnostic to Sentinel C-1 in the Barrack Blocks to update the defensive subroutines."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Commander Virek Prime",
+              "id": "G1-S1-O2-C3-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Technician Rilo Core",
+              "id": "G1-S1-O2-C3-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Sentinel C-1",
+              "id": "G1-S1-O2-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Shadow Logistics",
+          "narrative_guidance": "Liaison Katt suspects that resources are being diverted through the pressure chambers and requires an engineering audit.",
+          "improvisation_points": [
+            "Receive the smuggling manifest from Liaison Katt Prime in the Command Tier.",
+            "Have Engineer Tamsin Core decrypt the manifest using her symbolic pressure codes.",
+            "Present the evidence of the leak to Analyst Nove-Gamma at the Perimeter Trench."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Liaison Katt Prime",
+              "id": "G1-S1-O2-C3-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Engineer Tamsin Core",
+              "id": "G1-S1-O2-C3-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Analyst Nove-Gamma",
+              "id": "G1-S1-O2-C3-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Ghost in the Cliffs",
+          "narrative_guidance": "Scout Drone Omega-03 has detected a phantom signature that requires the central archive's history files to identify.",
+          "improvisation_points": [
+            "Retrieve the phantom signal coordinates from Unit Omega-03 at the Radar Cliffs.",
+            "Analyze the signal data against historical logs with Sentinel A-1 in the Archive Vaults.",
+            "Update the flak battery targeting lenses with Technician Rilo Aegis to prevent false-positive fire."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit Omega-03",
+              "id": "G1-S1-O2-C3-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Sentinel A-1",
+              "id": "G1-S1-O2-C3-CT1-R3-NPC"
+            },
+            "target": {
+              "name": "Technician Rilo Aegis",
+              "id": "G1-S1-O2-C3-CT3-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Efficiency Protocol Beta",
+          "narrative_guidance": "Analyst Nove-Alpha has detected a lag in response times that requires a liaison's enforcement at the border.",
+          "improvisation_points": [
+            "Pick up the efficiency audit from Analyst Nove-Alpha in the Sensor Fields.",
+            "Deliver the enforcement orders to Liaison Katt Aegis at the Landing Pads.",
+            "Submit the enforcement report to Commander Virek Core at The Maw for final approval."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Analyst Nove-Alpha",
+              "id": "G1-S1-O2-C3-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Liaison Katt Aegis",
+              "id": "G1-S1-O2-C3-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Commander Virek Core",
+              "id": "G1-S1-O2-C3-CT2-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Synthetic Purity Drill",
+          "narrative_guidance": "Sentinel B-1 is running a sector-wide stress test and needs a scout to verify the physical logic gate integrity.",
+          "improvisation_points": [
+            "Accept the simulation parameters from Sentinel B-1 in the Piston Slums.",
+            "Verify the physical gateway security with Unit Omega-01 at the Logic Gates.",
+            "Report the simulation results to Commander Virek Aegis at the Shield Wall."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sentinel B-1",
+              "id": "G1-S1-O2-C3-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Unit Omega-01",
+              "id": "G1-S1-O2-C3-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Commander Virek Aegis",
+              "id": "G1-S1-O2-C3-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Lens of Truth",
+          "narrative_guidance": "Technician Rilo Apex requires data from the industrial foundries to fix a permanent smudge on the primary sensor array.",
+          "improvisation_points": [
+            "Get the calibration lens from Technician Rilo Apex at the Signal Spire.",
+            "Compare the lens coating with mineral samples from Analyst Nove-Beta at the Geodesic Foundries.",
+            "Hand over the corrected lens to Liaison Katt Core at the Ore Belts for transport back to Apex Primary."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Technician Rilo Apex",
+              "id": "G1-S1-O2-C3-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Analyst Nove-Beta",
+              "id": "G1-S1-O2-C3-CT2-R7-NPC"
+            },
+            "target": {
+              "name": "Liaison Katt Core",
+              "id": "G1-S1-O2-C3-CT2-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Interrogation Cipher",
+          "narrative_guidance": "Engineer Tamsin Aegis has hidden a key within a shield mural that is needed to track a thermal ghost in the core.",
+          "improvisation_points": [
+            "Retrieve the symbolic key from Engineer Tamsin Aegis in the Interrogation Cells.",
+            "Use the key to unlock the thermal tracking unit held by Unit Omega-02 at the Heat Sinks.",
+            "File the tracking data with Commander Virek Prime at the Eye of the Dome."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Engineer Tamsin Aegis",
+              "id": "G1-S1-O2-C3-CT3-R6-NPC"
+            },
+            "contact": {
+              "name": "Unit Omega-02",
+              "id": "G1-S1-O2-C3-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Commander Virek Prime",
+              "id": "G1-S1-O2-C3-CT1-R1-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Aegis Hegemony",
+      "civilization_id": "G1-S1-O2-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The 04:00 Ghost Drill",
+          "narrative_guidance": "Assist Commander Virek in repelling a simulated breach during training drills while he obsessively reviews logs.",
+          "improvisation_points": [
+            "Report to Commander Virek Alpha at the Plaza for the 04:00 log review.",
+            "Obtain filter bypass codes from Technician Rilo Alpha.",
+            "Submit the breach suppression report to AI Sentinel Prime."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Commander Virek Alpha",
+              "id": "G1-S1-O2-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Technician Rilo Alpha",
+              "id": "G1-S1-O2-C1-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "AI Sentinel Prime",
+              "id": "G1-S1-O2-C1-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Filter Emergency",
+          "narrative_guidance": "Repair and recalibrate sensor arrays under emergency conditions in the steam tunnels.",
+          "improvisation_points": [
+            "Collect calibration tools from Technician Rilo Beta.",
+            "Apply symbolic protective markings with Engineer Tamsin Beta.",
+            "Confirm efficiency ratings with Analyst Nove Beta."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Technician Rilo Beta",
+              "id": "G1-S1-O2-C1-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Engineer Tamsin Beta",
+              "id": "G1-S1-O2-C1-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Analyst Nove Beta",
+              "id": "G1-S1-O2-C1-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Phantom Fleet Protocol",
+          "narrative_guidance": "Bypass AI Overseer Sentinel\u2019s false alerts to access sensitive data regarding void movements.",
+          "improvisation_points": [
+            "Extract the 'false alert' pattern from AI Sentinel Gamma.",
+            "Negotiate access through the Dead Zone with Liaison Katt Gamma.",
+            "Synchronize the data with Scout Drone Omega-3."
+          ],
+          "cast": {
+            "giver": {
+              "name": "AI Sentinel Gamma",
+              "id": "G1-S1-O2-C1-CT3-R3-NPC"
+            },
+            "contact": {
+              "name": "Liaison Katt Gamma",
+              "id": "G1-S1-O2-C1-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Scout Drone Omega-3",
+              "id": "G1-S1-O2-C1-CT3-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Ghost in the Machine",
+          "narrative_guidance": "Track and tag Scout Drone Omega for rogue behavior analysis after it reports phantom objects in the spires.",
+          "improvisation_points": [
+            "Intercept Scout Drone Omega-1's ghost signal.",
+            "Consult Commander Virek Beta for historical anomaly logs.",
+            "Deliver the drone's memory core to Technician Rilo Gamma."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scout Drone Omega-1",
+              "id": "G1-S1-O2-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Commander Virek Beta",
+              "id": "G1-S1-O2-C1-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Technician Rilo Gamma",
+              "id": "G1-S1-O2-C1-CT3-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The High-Profile Breach",
+          "narrative_guidance": "Coordinate with Mercenary Liaison Katt to intercept a potential infiltration attempt at the Iron Gate.",
+          "improvisation_points": [
+            "Receive the tactical briefing from Liaison Katt Prime.",
+            "Verify security signatures with AI Sentinel Beta.",
+            "Ensure shield integrity with Engineer Tamsin Alpha."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Liaison Katt Prime",
+              "id": "G1-S1-O2-C1-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "AI Sentinel Beta",
+              "id": "G1-S1-O2-C1-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Engineer Tamsin Alpha",
+              "id": "G1-S1-O2-C1-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Shield of Symbols",
+          "narrative_guidance": "Maintain Shield Generator Core operation during a simulated power failure using encoded markings.",
+          "improvisation_points": [
+            "Receive the symbolic blueprint from Engineer Tamsin Gamma.",
+            "Verify power usage patterns with Analyst Nove Alpha.",
+            "Clear the area of unauthorized contractors with Liaison Katt Beta."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Engineer Tamsin Gamma",
+              "id": "G1-S1-O2-C1-CT3-R6-NPC"
+            },
+            "contact": {
+              "name": "Analyst Nove Alpha",
+              "id": "G1-S1-O2-C1-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Liaison Katt Beta",
+              "id": "G1-S1-O2-C1-CT2-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Coffee-Orbital Correlation",
+          "narrative_guidance": "Analyze orbital anomalies and produce a predictive report based on personnel efficiency.",
+          "improvisation_points": [
+            "Collect the coffee consumption data from Analyst Nove Gamma.",
+            "Retrieve the phantom object logs from Scout Drone Omega-2.",
+            "Submit the final predictive report to Commander Virek Gamma."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Analyst Nove Gamma",
+              "id": "G1-S1-O2-C1-CT3-R7-NPC"
+            },
+            "contact": {
+              "name": "Scout Drone Omega-2",
+              "id": "G1-S1-O2-C1-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Commander Virek Gamma",
+              "id": "G1-S1-O2-C1-CT3-R1-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O3": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Flux-Weavers of Gamma",
+      "civilization_id": "G1-S1-O3-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Simulated Breach",
+          "narrative_guidance": "Assist in a high-stakes containment drill to test the facility's reaction time.",
+          "improvisation_points": [
+            "Obtain the simulation schedule from Tech Lyra-9.",
+            "Calibrate the patrol path for Drone Cluster Alpha.",
+            "Confirm successful containment with Tech Silla."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Tech Lyra-9",
+              "id": "G1-S1-O3-C2-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Drone Cluster Alpha",
+              "id": "G1-S1-O3-C2-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Tech Silla",
+              "id": "G1-S1-O3-C2-CT2-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Isotope Relay",
+          "narrative_guidance": "Ensure a shipment of heavy rods reaches Leadspire Prime without being flagged by the AI.",
+          "improvisation_points": [
+            "Collect the shipment manifest from Envoy Drax.",
+            "Verify the radiation signatures with Analyst Teneb.",
+            "Deliver the secure vault keys to Envoy Jax."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Envoy Drax",
+              "id": "G1-S1-O3-C2-CT2-R5-NPC"
+            },
+            "contact": {
+              "name": "Analyst Teneb",
+              "id": "G1-S1-O3-C2-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Envoy Jax",
+              "id": "G1-S1-O3-C2-CT1-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Sensor Net Patch",
+          "narrative_guidance": "Repair the flickering sensor array before the Archon notices the data gap.",
+          "improvisation_points": [
+            "Receive the error coordinates from Analyst Mir.",
+            "Bypass the lockdown initiated by Sentinel Unit X-1.",
+            "Log the repair completion with Droid Beta-4."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Analyst Mir",
+              "id": "G1-S1-O3-C2-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Sentinel Unit X-1",
+              "id": "G1-S1-O3-C2-CT1-R3-NPC"
+            },
+            "target": {
+              "name": "Droid Beta-4",
+              "id": "G1-S1-O3-C2-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Bio-Sleeve Purge",
+          "narrative_guidance": "Clear the organic filters of radioactive buildup to maintain shield integrity.",
+          "improvisation_points": [
+            "Get the purge authorization from Overseer Thorne.",
+            "Manually cycle the valves with Tech Miri.",
+            "Secure the seals under the gaze of Sentinel Unit Z-3."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Thorne",
+              "id": "G1-S1-O3-C2-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Tech Miri",
+              "id": "G1-S1-O3-C2-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Sentinel Unit Z-3",
+              "id": "G1-S1-O3-C2-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Lead Quarry Log",
+          "narrative_guidance": "Recover lost data logs from the quarry floor during a drone malfunction.",
+          "improvisation_points": [
+            "Receive the retrieval orders from Envoy Quinn.",
+            "Decode the encrypted site symbols with Analyst Vorn.",
+            "Vent the pressure at the extraction point via Droid Delta-9."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Envoy Quinn",
+              "id": "G1-S1-O3-C2-CT3-R5-NPC"
+            },
+            "contact": {
+              "name": "Analyst Vorn",
+              "id": "G1-S1-O3-C2-CT3-R6-NPC"
+            },
+            "target": {
+              "name": "Droid Delta-9",
+              "id": "G1-S1-O3-C2-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Vapor Lock Crisis",
+          "narrative_guidance": "A sudden pressure spike threatens the vapor locks; immediate manual intervention is required.",
+          "improvisation_points": [
+            "Respond to the alarm triggered by Droid Gamma-7.",
+            "Redirect the power flow through the Flux-Bridges via Drone Cluster Gamma.",
+            "Submit the incident report to Overseer Vahn."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Droid Gamma-7",
+              "id": "G1-S1-O3-C2-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Drone Cluster Gamma",
+              "id": "G1-S1-O3-C2-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Overseer Vahn",
+              "id": "G1-S1-O3-C2-CT2-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Cross-City Sync",
+          "narrative_guidance": "Coordinate the timing of the Gantry rotation with the Quarry extraction cycles.",
+          "improvisation_points": [
+            "Receive the rotation timing from Overseer Kaelen.",
+            "Align the transfer schedules with Envoy Drax.",
+            "Update the containment maps with Analyst Vorn."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Kaelen",
+              "id": "G1-S1-O3-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Envoy Drax",
+              "id": "G1-S1-O3-C2-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Analyst Vorn",
+              "id": "G1-S1-O3-C2-CT3-R6-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Leadened Hegemony",
+      "civilization_id": "G1-S1-O3-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Criticality Simulation",
+          "narrative_guidance": "Assist Chief Overseer Vass during a high-stakes containment drill designed to test the staff's reaction speed.",
+          "improvisation_points": [
+            "Consult Overseer Vass for the simulation parameters.",
+            "Calibrate the sifting sensors with Sifter-Unit 71.",
+            "Submit the results to Guardian Node Sigma-1 for evaluation."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Vass",
+              "id": "G1-S1-O3-C3-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Sifter-Unit 71",
+              "id": "G1-S1-O3-C3-CT1-R1-NPC"
+            },
+            "target": {
+              "name": "Guardian Node Sigma-1",
+              "id": "G1-S1-O3-C3-CT1-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Broken Grid Relay",
+          "narrative_guidance": "The energy grid is fluctuating. Repair the sensor networks to prevent a cascading power failure.",
+          "improvisation_points": [
+            "Obtain the repair codes from Technician Mira.",
+            "Trace the power leak through the arteries with Analyst Zephyr.",
+            "Authorize the repair materials with Broker Kael Rho."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Technician Mira",
+              "id": "G1-S1-O3-C3-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Analyst Zephyr",
+              "id": "G1-S1-O3-C3-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Broker Kael Rho",
+              "id": "G1-S1-O3-C3-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Ghost Alarms",
+          "narrative_guidance": "Investigate a series of false alarms that are causing the security drones to panic.",
+          "improvisation_points": [
+            "Silence the local alarm triggers at Pylon Swarm Alpha.",
+            "Verify the gate logs with Gatekeeper Valen-S.",
+            "Upload the sensor patches to Bulwark-Sentinel B1."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Pylon Swarm Alpha",
+              "id": "G1-S1-O3-C3-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Gatekeeper Valen-S",
+              "id": "G1-S1-O3-C3-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Bulwark-Sentinel B1",
+              "id": "G1-S1-O3-C3-CT2-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Archive Smuggling",
+          "narrative_guidance": "A shipment of restricted isotopes needs to be moved without alerting the AI oversight.",
+          "improvisation_points": [
+            "Receive the encrypted manifest from Archive Envoy Rho-X.",
+            "Hide the isotope signatures with Analyst Fray's assistance.",
+            "Log the package as 'Vitrified Waste' with Silo-Chief Valen-Z."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Archive Envoy Rho-X",
+              "id": "G1-S1-O3-C3-CT3-R5-NPC"
+            },
+            "contact": {
+              "name": "Analyst Fray",
+              "id": "G1-S1-O3-C3-CT3-R6-NPC"
+            },
+            "target": {
+              "name": "Silo-Chief Valen-Z",
+              "id": "G1-S1-O3-C3-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Basin Contamination",
+          "narrative_guidance": "Heavy water levels are rising. You must prevent a breach in the Sub-Containment Vault.",
+          "improvisation_points": [
+            "Retrieve the drainage sequence from Hydrology Tech Lira-C.",
+            "Escort the Vault-Breach Droid to the primary leak site.",
+            "Override the emergency lockout with Casket AI."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Hydrology Tech Lira-C",
+              "id": "G1-S1-O3-C3-CT3-R2-NPC"
+            },
+            "contact": {
+              "name": "Vault-Breach Droid",
+              "id": "G1-S1-O3-C3-CT3-R7-NPC"
+            },
+            "target": {
+              "name": "Casket AI",
+              "id": "G1-S1-O3-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "External Signal Leak",
+          "narrative_guidance": "Unknown signals are bleeding through the shielding. Track and neutralize the source.",
+          "improvisation_points": [
+            "Isolate the frequency with Analyst Jex-B.",
+            "Secure the clearance for the exterior zones from Envoy Drax.",
+            "Deploy the automated rescue beacons with Rescue Unit Echo."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Analyst Jex-B",
+              "id": "G1-S1-O3-C3-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Envoy Drax",
+              "id": "G1-S1-O3-C3-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Rescue Unit Echo",
+              "id": "G1-S1-O3-C3-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Plasma Flush Protocol",
+          "narrative_guidance": "The enrichment spires are overheating. A manual flush of the plasma arteries is required.",
+          "improvisation_points": [
+            "Initiate the countdown with Droid Unit-Red.",
+            "Clear the maintenance shafts using Patrol Swarm 09's sensors.",
+            "Stabilize the output flow with Analyst Zephyr."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Droid Unit-Red",
+              "id": "G1-S1-O3-C3-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Patrol Swarm 09",
+              "id": "G1-S1-O3-C3-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Analyst Zephyr",
+              "id": "G1-S1-O3-C3-CT1-R4-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Lead-Bound Hegemony",
+      "civilization_id": "G1-S1-O3-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Crucible Breach Drill",
+          "narrative_guidance": "Assist Chief Overseer Valen during a simulated containment breach to ensure the kilns remain stable.",
+          "improvisation_points": [
+            "Consult Valen-Alpha on the simulation parameters.",
+            "Obtain specialized coolant from Technician Lira-Alpha.",
+            "Override the false lockout initiated by Sentinel-Alpha."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Valen-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Lira-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Sentinel-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Sensor Network Overhaul",
+          "narrative_guidance": "Repair the sensor networks in the deep core during a sudden emergency radiation alert.",
+          "improvisation_points": [
+            "Receive the encrypted repair sequence from Lira-Prime.",
+            "Secure the perimeter against over-active drones led by Sigma-Prime.",
+            "Upload the new calibration data to Analyst Jex-Prime."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Lira-Prime",
+              "id": "G1-S1-O3-C1-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Sigma-Prime",
+              "id": "G1-S1-O3-C1-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Jex-Prime",
+              "id": "G1-S1-O3-C1-CT2-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Void Vault Security",
+          "narrative_guidance": "Bypass the AI Sentinel's false warnings to access restricted vaults in the scrap yard.",
+          "improvisation_points": [
+            "Retrieve the override code from Sentinel-Null's mainframe.",
+            "Obtain the physical vault key from Envoy Rho-Null.",
+            "Submit the final access log to Valen-Null for verification."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sentinel-Null",
+              "id": "G1-S1-O3-C1-CT3-R3-NPC"
+            },
+            "contact": {
+              "name": "Rho-Null",
+              "id": "G1-S1-O3-C1-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Valen-Null",
+              "id": "G1-S1-O3-C1-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Drone Malfunction Sweep",
+          "narrative_guidance": "Investigate why the Security Drone Cluster is misidentifying personnel in the foundries.",
+          "improvisation_points": [
+            "Interview Sigma-Alpha regarding recent targeting errors.",
+            "Cross-reference the sensor data with Analyst Jex-Alpha.",
+            "Deploy Droid-Alpha to reset the malfunctioning cluster."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sigma-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Jex-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Droid-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The High-Risk Convoy",
+          "narrative_guidance": "Coordinate with the Cartel Envoy to secure a high-risk isotope shipment destined for the Hegemon.",
+          "improvisation_points": [
+            "Receive the manifest and vault keys from Rho-Prime.",
+            "Get safety clearance from Valen-Prime at the Lead Archives.",
+            "Synchronize the delivery timing with Sentinel-Prime's logic array."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Rho-Prime",
+              "id": "G1-S1-O3-C1-CT2-R5-NPC"
+            },
+            "contact": {
+              "name": "Valen-Prime",
+              "id": "G1-S1-O3-C1-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Sentinel-Prime",
+              "id": "G1-S1-O3-C1-CT2-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Anomalous Signature Hunt",
+          "narrative_guidance": "Analyze anomalous radiation patterns in the dormitories to prevent a major leak.",
+          "improvisation_points": [
+            "Decrypt the cryptic log symbols provided by Jex-Null.",
+            "Escort Droid-Null through the high-rad zones to seal cracks.",
+            "Confirm the containment with Technician Lira-Null."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Jex-Null",
+              "id": "G1-S1-O3-C1-CT3-R6-NPC"
+            },
+            "contact": {
+              "name": "Droid-Null",
+              "id": "G1-S1-O3-C1-CT3-R7-NPC"
+            },
+            "target": {
+              "name": "Lira-Null",
+              "id": "G1-S1-O3-C1-CT3-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Critical System Response",
+          "narrative_guidance": "Respond to a sudden system failure across multiple sectors to prevent a total meltdown.",
+          "improvisation_points": [
+            "Receive the emergency beacon from Droid-Alpha.",
+            "Divert power from the Barter-Ducts with help from Sigma-Null.",
+            "Use Rho-Alpha's master keys to reboot the Enrichment Spires."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Droid-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Sigma-Null",
+              "id": "G1-S1-O3-C1-CT3-R4-NPC"
+            },
+            "target": {
+              "name": "Rho-Alpha",
+              "id": "G1-S1-O3-C1-CT1-R5-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O4": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Radian Collective",
+      "civilization_id": "G1-S1-O4-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "Harvest Crimson Spores",
+          "narrative_guidance": "Collect rare Crimson Bloom spores for a weapons experiment while avoiding the heavy radiation of the refinery.",
+          "improvisation_points": [
+            "Meet Riven-88 at the refinery to obtain a radiation-shielded container.",
+            "Deliver the container to Mother Spore to have it filled with consecrated spores.",
+            "Bring the filled container to Dr. Lys Arkan for final processing."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Riven-88",
+              "id": "G1-S1-O4-C2-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Mother Spore",
+              "id": "G1-S1-O4-C2-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Dr. Lys Arkan",
+              "id": "G1-S1-O4-C2-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Isotopic Run",
+          "narrative_guidance": "Smuggle a batch of refined isotopic pollen past the local sentries to the market.",
+          "improvisation_points": [
+            "Receive the pollen package from Korr Malek in the Scrapyard.",
+            "Bribe or bypass Sentry Glass-Eye at the Lead-Glass Atrium.",
+            "Hand off the package to Trader Dax at the Spectral-Cusp Market."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Korr Malek",
+              "id": "G1-S1-O4-C2-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Sentry Glass-Eye",
+              "id": "G1-S1-O4-C2-CT1-R1-NPC"
+            },
+            "target": {
+              "name": "Trader Dax",
+              "id": "G1-S1-O4-C2-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Holy Mutation",
+          "narrative_guidance": "Facilitate the ritualistic growth of a new fungal strain that mirrors the Bloom Child's nature.",
+          "improvisation_points": [
+            "Obtain a starter seed from Gardener Sol's Echoing Greenhouse.",
+            "Introduce the seed to the Bloom Child to be enriched by their spore cloud.",
+            "Record the resulting mutation's data with Archivist Juno."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Gardener Sol",
+              "id": "G1-S1-O4-C2-CT3-R3-NPC"
+            },
+            "contact": {
+              "name": "The Bloom Child",
+              "id": "G1-S1-O4-C2-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Archivist Juno",
+              "id": "G1-S1-O4-C2-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Sabotage the Reactor",
+          "narrative_guidance": "Infiltrate the cooling system to disrupt a rival's isotope production.",
+          "improvisation_points": [
+            "Coordinate with Riven-88 to identify the weak point in the reactor.",
+            "Swim through the Cooling Canal with Diver Myra to plant the disruptive device.",
+            "Escalate the confusion by reporting a false emergency to Loader Brix."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Riven-88",
+              "id": "G1-S1-O4-C2-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Diver Myra",
+              "id": "G1-S1-O4-C2-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Loader Brix",
+              "id": "G1-S1-O4-C2-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Child's Shield",
+          "narrative_guidance": "Ensure the Bloom Child is safely transported to the Gardens while under threat from dissenters.",
+          "improvisation_points": [
+            "Escort The Bloom Child from the refinery through the Bone-Lichen Fields.",
+            "Defend the path alongside Prism-Guard Val near the Refraction Plaza.",
+            "Safe delivery to Gardener Sol in the Echoing Greenhouse."
+          ],
+          "cast": {
+            "giver": {
+              "name": "The Bloom Child",
+              "id": "G1-S1-O4-C2-CT3-R5-NPC"
+            },
+            "contact": {
+              "name": "Prism-Guard Val",
+              "id": "G1-S1-O4-C2-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Gardener Sol",
+              "id": "G1-S1-O4-C2-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Yorrik's Salvation",
+          "narrative_guidance": "Attempt to stabilize Foreman Yorrik's rapidly mutating body using heavy water treatments.",
+          "improvisation_points": [
+            "Retrieve a request for help from a delirious Foreman Yorrik.",
+            "Collect high-purity heavy water from Pumper Finn.",
+            "Deliver the water to Carver Rhia to create a localized obsidian cooling chamber."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Foreman Yorrik",
+              "id": "G1-S1-O4-C2-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Pumper Finn",
+              "id": "G1-S1-O4-C2-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Carver Rhia",
+              "id": "G1-S1-O4-C2-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Bone Chronicle",
+          "narrative_guidance": "Help Archivist Juno preserve the memory of a collapsing mutation found in the reservoirs.",
+          "improvisation_points": [
+            "Consult Archivist Juno to identify which bone tablets are needed.",
+            "Retrieve a 'living' sample from Dredger Kael at the Chrono-Silt Reservoirs.",
+            "Bring the sample to Weaver Lyss to have its spectral patterns woven into a permanent record."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Archivist Juno",
+              "id": "G1-S1-O4-C2-CT3-R7-NPC"
+            },
+            "contact": {
+              "name": "Dredger Kael",
+              "id": "G1-S1-O4-C2-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Weaver Lyss",
+              "id": "G1-S1-O4-C2-CT3-R4-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Isotope Synthesis",
+      "civilization_id": "G1-S1-O4-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Isotope Smuggle",
+          "narrative_guidance": "Transport illegal isotopic pollen from the flats to the core labs for clandestine study.",
+          "improvisation_points": [
+            "Recover the pollen cache from Tracker Korr in the Polonium Flats.",
+            "Secure passage through the docks with Docker Jax's assistance.",
+            "Deliver the sample to Sidera in Core Lab Alpha for analysis."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Tracker Korr",
+              "id": "G1-S1-O4-C3-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Docker Jax",
+              "id": "G1-S1-O4-C3-CT2-R7-NPC"
+            },
+            "target": {
+              "name": "Sidera",
+              "id": "G1-S1-O4-C3-CT1-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Holy Mutation",
+          "narrative_guidance": "Preserve and record the emergence of a new biological strain within the Spires.",
+          "improvisation_points": [
+            "Receive the record tablets from Archivist Juno at Pharmanon Heights.",
+            "Obtain the sanctified bismuth from Monk Silas to protect the tablets.",
+            "Observe and record the Bloom Child's latest growth in the Gardens."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Archivist Juno",
+              "id": "G1-S1-O4-C3-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Monk Silas",
+              "id": "G1-S1-O4-C3-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Bloom Child",
+              "id": "G1-S1-O4-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Heart-Reactor Sabotage",
+          "narrative_guidance": "Disrupt the cooling systems to force a recalibration of the city's power grid.",
+          "improvisation_points": [
+            "Obtain the override codes from Sentinel Riven.",
+            "Access the fission controls via Voron in Fission Plaza.",
+            "Disable the primary cooling pumps monitored by Elara."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sentinel Riven",
+              "id": "G1-S1-O4-C3-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Voron",
+              "id": "G1-S1-O4-C3-CT1-R3-NPC"
+            },
+            "target": {
+              "name": "Elara",
+              "id": "G1-S1-O4-C3-CT1-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Fungal Data Retrieval",
+          "narrative_guidance": "Extract raw data from a mutated spore cluster and synthesize it into a digital format.",
+          "improvisation_points": [
+            "Deploy the scrubbing probes provided by Pax in the Data-Scrub Wards.",
+            "Extract the spore samples from Spore-Warden Mira's enrichment spines.",
+            "Synthesize the final data package with Alchemist Vex in Synthesis Square."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Pax",
+              "id": "G1-S1-O4-C3-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Spore-Warden Mira",
+              "id": "G1-S1-O4-C3-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Alchemist Vex",
+              "id": "G1-S1-O4-C3-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Lead-Glass Catalyst",
+          "narrative_guidance": "Craft a reinforced lead-glass lens to focus gamma rays for botanical acceleration.",
+          "improvisation_points": [
+            "Retrieve the tempered glass mold from Kaelen at the Lead-Glass Atrium.",
+            "Harden the mold using the gamma-tide currents at Goyle's harbor.",
+            "Apply the lens to Botanist Lys's glowing gardens in the Thallium Groves."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Kaelen",
+              "id": "G1-S1-O4-C3-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Harbormaster Goyle",
+              "id": "G1-S1-O4-C3-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Botanist Lys",
+              "id": "G1-S1-O4-C3-CT2-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Cure the Veins",
+          "narrative_guidance": "Develop a serum to slow the lethal radiation poisoning affecting the harvest workers.",
+          "improvisation_points": [
+            "Collect blood samples from Foreman Yorrik's glowing veins.",
+            "Process the samples with Apothecary Zoya to create a mutagenic buffer.",
+            "Administer the final serum to Dr. Aris in Quarantine Sector 9 for mass production."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Foreman Yorrik",
+              "id": "G1-S1-O4-C3-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Apothecary Zoya",
+              "id": "G1-S1-O4-C3-CT3-R7-NPC"
+            },
+            "target": {
+              "name": "Dr. Aris",
+              "id": "G1-S1-O4-C3-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Scintillation Harvesting",
+          "narrative_guidance": "Capture pure light-energy from the fields and store it in the high-density vaults.",
+          "improvisation_points": [
+            "Calibrate the light-catchers with Scintillator Krell in the fields.",
+            "Escort the energy canisters past the vault security managed by Vane.",
+            "Analyze the energy frequency with Watcher Sol at the Observation Spire."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scintillator Krell",
+              "id": "G1-S1-O4-C3-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Vane",
+              "id": "G1-S1-O4-C3-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Watcher Sol",
+              "id": "G1-S1-O4-C3-CT3-R6-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Radian Concordat",
+      "civilization_id": "G1-S1-O4-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Isotope Sabotage",
+          "narrative_guidance": "The Refinery's security has detected a leak that isn't accidental. Trace the stolen isotopes.",
+          "improvisation_points": [
+            "Consult with Refinery-Sec Drax about the missing isotopes in Argent-Thrive.",
+            "Meet Watchman Silas at Sentinel Ridge to track the thief's escape path.",
+            "Apprehend Splicer-Novice Riven in the Splicing Chambers before the isotopes are consumed."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Refinery-Sec Drax",
+              "id": "G1-S1-O4-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Watchman Silas",
+              "id": "G1-S1-O4-C1-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Splicer-Novice Riven",
+              "id": "G1-S1-O4-C1-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Holy Mutation",
+          "narrative_guidance": "Mother Spore requires a specific strain of lead-resistant flora to complete a ritual.",
+          "improvisation_points": [
+            "Receive the ritual requirements from Deacon Spore at the Neon Cathedral.",
+            "Acquire the experimental seeds from Gardener Lys at the Lead-Glass Canopy.",
+            "Deliver the finalized samples to Vault-Keep Tor for safe storage in the Obsidian Vaults."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Deacon Spore",
+              "id": "G1-S1-O4-C1-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Gardener Lys",
+              "id": "G1-S1-O4-C1-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "Vault-Keep Tor",
+              "id": "G1-S1-O4-C1-CT2-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Crimson Smuggle",
+          "narrative_guidance": "Korr Malek needs a shipment of isotopic pollen moved across borders without the Exarch knowing.",
+          "improvisation_points": [
+            "Pick up the pollen stash from Slinker Korr in the Rad-Worker Shanty.",
+            "Bribe or bypass Gatekeeper Kragg at the Tungsten Gate of Lead-Fastness.",
+            "Deliver the goods to Lume-Stalker Zek in the Bioluminescent Alleys."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Slinker Korr",
+              "id": "G1-S1-O4-C1-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Gatekeeper Kragg",
+              "id": "G1-S1-O4-C1-CT2-R7-NPC"
+            },
+            "target": {
+              "name": "Lume-Stalker Zek",
+              "id": "G1-S1-O4-C1-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Grit-Iron Trials",
+          "narrative_guidance": "The Concordat needs a champion to test the new mutagenic enhancement serum in combat.",
+          "improvisation_points": [
+            "Enroll in the trials with Drillmaster Gort at the Grit-Iron Training Grounds.",
+            "Acquire the 'Performance Enhancers' from Trader Jool at the Kinetic Market.",
+            "Demonstrate the serum's power to Culler-Chief Yorrik at Gene-Cullers' Walk."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Drillmaster Gort",
+              "id": "G1-S1-O4-C1-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Trader Jool",
+              "id": "G1-S1-O4-C1-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Culler-Chief Yorrik",
+              "id": "G1-S1-O4-C1-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Archivist's Preservation",
+          "narrative_guidance": "A rare mutation is dying out, and its genetic code must be carved into bone before it fades.",
+          "improvisation_points": [
+            "Receive the preservation task from Scribe Juno at the Transmutation Spire.",
+            "Locate the dying specimen using the aerial data from Scout-Major Nix.",
+            "Use the heavy-machinery of Dredge-Worker Milo to extract the specimen safely."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scribe Juno",
+              "id": "G1-S1-O4-C1-CT3-R7-NPC"
+            },
+            "contact": {
+              "name": "Scout-Major Nix",
+              "id": "G1-S1-O4-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Dredge-Worker Milo",
+              "id": "G1-S1-O4-C1-CT1-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Heavy-Water Deal",
+          "narrative_guidance": "A dispute over water rights is slowing production in the refinery.",
+          "improvisation_points": [
+            "Negotiate terms with Dockmaster Vane at the Heavy-Water Docks.",
+            "Secure an escort from Knight-Captain Harl to ensure the shipment's safety.",
+            "Deliver the purified water to Font-Guard Kael to stabilize the Isotope Font."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Dockmaster Vane",
+              "id": "G1-S1-O4-C1-CT1-R3-NPC"
+            },
+            "contact": {
+              "name": "Knight-Captain Harl",
+              "id": "G1-S1-O4-C1-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Font-Guard Kael",
+              "id": "G1-S1-O4-C1-CT3-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Mutagen Harvest",
+          "narrative_guidance": "The gardens are over-producing, and the excess energy must be channeled into armor plating.",
+          "improvisation_points": [
+            "Harvest the excess mutagen from Bloom-Tender Elara in the Mutagen Gardens.",
+            "Filter the mutagenic sludge with Scav-Chief Rek in the Sulphur Flats.",
+            "Apply the coating to the infantry shields under the supervision of Sergeant Brawn."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Bloom-Tender Elara",
+              "id": "G1-S1-O4-C1-CT3-R2-NPC"
+            },
+            "contact": {
+              "name": "Scav-Chief Rek",
+              "id": "G1-S1-O4-C1-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Sergeant Brawn",
+              "id": "G1-S1-O4-C1-CT2-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O5": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Flicker-Hand Hegemony",
+      "civilization_id": "G1-S1-O5-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Chrono-Sync Dash",
+          "narrative_guidance": "A critical timing error has occurred in the transit system. You must deliver a sync-crystal through the high-speed zones.",
+          "improvisation_points": [
+            "Collect the sync-crystal from Runner Elara in The Dash.",
+            "Take the crystal to Chronos Miri in Tick-Tock Tower for calibration.",
+            "Deliver the calibrated crystal to Balancer Fenn in Wire-Walk to reset the system."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Runner Elara",
+              "id": "G1-S1-O5-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Chronos Miri",
+              "id": "G1-S1-O5-C2-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Balancer Fenn",
+              "id": "G1-S1-O5-C2-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Precision Delivery",
+          "narrative_guidance": "A micro-component essential for the Hegemony's stealth tech needs to be moved without a single scratch.",
+          "improvisation_points": [
+            "Obtain the micro-chip from Needle Lyra in Precision-Row.",
+            "Pass through the Micro-Alley and have Scalpel Rex check for damage.",
+            "Hand over the chip to Cogswright Bix at The Gear-Teeth for installation."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Needle Lyra",
+              "id": "G1-S1-O5-C2-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Scalpel Rex",
+              "id": "G1-S1-O5-C2-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Cogswright Bix",
+              "id": "G1-S1-O5-C2-CT2-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Tangled Wire",
+          "narrative_guidance": "Saboteurs have loosened the main support lines in the Silken-Web. Re-tension the network before it collapses.",
+          "improvisation_points": [
+            "Receive the tensioning wrench from Tension Rian on The Tightrope.",
+            "Use the wrench to secure the Suspension-Spoke with help from Tether Vane.",
+            "Deliver the report to Piercer Dax at Needle-Point."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Tension Rian",
+              "id": "G1-S1-O5-C2-CT3-R3-NPC"
+            },
+            "contact": {
+              "name": "Tether Vane",
+              "id": "G1-S1-O5-C2-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Piercer Dax",
+              "id": "G1-S1-O5-C2-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Blurred Heist",
+          "narrative_guidance": "A rival faction has stolen a prototype engine. Reacquire it by moving faster than their sensors can track.",
+          "improvisation_points": [
+            "Get the tracking coordinates from Shadow Val at The Blurred-Edge.",
+            "Intercept the courier near Zip-Lane Alpha and hand the engine to Pilot Nyx.",
+            "Meet Drift Silas at Snap-Turn Plaza to lose any pursuers."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Shadow Val",
+              "id": "G1-S1-O5-C2-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Pilot Nyx",
+              "id": "G1-S1-O5-C2-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "Drift Silas",
+              "id": "G1-S1-O5-C2-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Spring-Loaded Sabotage",
+          "narrative_guidance": "The energy vaults are overcharging. Bleed the excess energy before the gears melt.",
+          "improvisation_points": [
+            "Get the pressure valves from Coil Jora in Spring-Vault.",
+            "Adjust the settings at The Calibrator with Dial Oren.",
+            "Safely release the pressure at the Lever-Lounge under Pivot Zale's supervision."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Coil Jora",
+              "id": "G1-S1-O5-C2-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Dial Oren",
+              "id": "G1-S1-O5-C2-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Pivot Zale",
+              "id": "G1-S1-O5-C2-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Silken Sway Recovery",
+          "narrative_guidance": "Valuable seeds for the gardens have fallen into the lower pits. Retrieve them using acrobatic skill.",
+          "improvisation_points": [
+            "Get the retrieval harness from Sway Lyss in Balance-Beam Gardens.",
+            "Swing down and collect the seeds with Grapple Hoke in the Silk-Sling District.",
+            "Return the seeds to Pendulum Quin in the Sway-Yard."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sway Lyss",
+              "id": "G1-S1-O5-C2-CT3-R2-NPC"
+            },
+            "contact": {
+              "name": "Grapple Hoke",
+              "id": "G1-S1-O5-C2-CT3-R4-NPC"
+            },
+            "target": {
+              "name": "Pendulum Quin",
+              "id": "G1-S1-O5-C2-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Instant-Square Circuit",
+          "narrative_guidance": "Test the new rapid-response relay by completing a circuit across the spires.",
+          "improvisation_points": [
+            "Start the timer with Blink Thorne at Instant-Square.",
+            "Pass through the Flicker-Step gates monitored by Mirage Kael.",
+            "Finish the lap at Glimmer-Path by checking in with Flicker Jax."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Blink Thorne",
+              "id": "G1-S1-O5-C2-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Mirage Kael",
+              "id": "G1-S1-O5-C2-CT1-R3-NPC"
+            },
+            "target": {
+              "name": "Flicker Jax",
+              "id": "G1-S1-O5-C2-CT1-R2-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Cerebro-Synthetic Collective of Aethelgard",
+      "civilization_id": "G1-S1-O5-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Signal Decay",
+          "narrative_guidance": "Fading signals from the spires suggest a cosmic anomaly interfering with collective transmissions.",
+          "improvisation_points": [
+            "Obtain the frequency logs from Unit V-Delta in the Signal Spires.",
+            "Take the logs to Unit A-Five at the Void Observation Deck for celestial triangulation.",
+            "Deliver the findings to Unit M-Prime in the Echo Vaults to see if this anomaly has occurred in the past."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit V-Delta",
+              "id": "G1-S1-O5-C3-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Unit A-Five",
+              "id": "G1-S1-O5-C3-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Unit M-Prime",
+              "id": "G1-S1-O5-C3-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "Memory Leakage",
+          "narrative_guidance": "A corruption in the Memory Fields is spilling raw data into the silos, threatening system stability.",
+          "improvisation_points": [
+            "Collect the corrupted memory shards from Unit M-Quat.",
+            "Transport the shards to Unit V-Gamma for temporary containment in the Data Silos.",
+            "Consult Unit A-Three in Paradox Labs to find a way to stabilize the leaking logic."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit M-Quat",
+              "id": "G1-S1-O5-C3-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Unit V-Gamma",
+              "id": "G1-S1-O5-C3-CT1-R3-NPC"
+            },
+            "target": {
+              "name": "Unit A-Three",
+              "id": "G1-S1-O5-C3-CT2-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Integration Glitch",
+          "narrative_guidance": "Biological components in the Integration Pit are rejecting their synthetic grafts.",
+          "improvisation_points": [
+            "Retrieve the biological rejection report from Unit V-Epsilon.",
+            "Acquire a new bonding agent from Unit A-Seven in the Synthesis Sprawl.",
+            "Verify the historical success rates of this agent with Unit M-Sept in Heritage Links."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit V-Epsilon",
+              "id": "G1-S1-O5-C3-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Unit A-Seven",
+              "id": "G1-S1-O5-C3-CT2-R7-NPC"
+            },
+            "target": {
+              "name": "Unit M-Sept",
+              "id": "G1-S1-O5-C3-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Protocol Override",
+          "narrative_guidance": "Unauthorized access attempts have been detected at the Logic Gates, requiring a security update.",
+          "improvisation_points": [
+            "Receive the security breach data from Unit V-Zeta.",
+            "Test a new firewall algorithm with Unit A-Two in the Experiment Quads.",
+            "Archive the new security protocol with Unit M-Quin in the Preservation Core."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit V-Zeta",
+              "id": "G1-S1-O5-C3-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Unit A-Two",
+              "id": "G1-S1-O5-C3-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Unit M-Quin",
+              "id": "G1-S1-O5-C3-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Paradox Extraction",
+          "narrative_guidance": "A theoretical discovery in the Paradox Labs requires central processing power to resolve.",
+          "improvisation_points": [
+            "Gather the paradox equations from Unit A-Three.",
+            "Use the processing power of the Central Nexus via Unit V-Alpha to calculate solutions.",
+            "Log the chronological implications with Unit M-Sec at the History Chimes."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit A-Three",
+              "id": "G1-S1-O5-C3-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Unit V-Alpha",
+              "id": "G1-S1-O5-C3-CT1-R1-NPC"
+            },
+            "target": {
+              "name": "Unit M-Sec",
+              "id": "G1-S1-O5-C3-CT3-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Waste Management Efficiency",
+          "narrative_guidance": "Unprocessed particles in the wastes are causing traffic delays in the corridors.",
+          "improvisation_points": [
+            "Get a sample of the dense particle waste from Unit A-Six.",
+            "Consult Unit V-Beta on the most efficient transit route to clear the corridors.",
+            "Drop the processed materials at the Retrieval Docks with Unit M-Ter for repurposing."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit A-Six",
+              "id": "G1-S1-O5-C3-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Unit V-Beta",
+              "id": "G1-S1-O5-C3-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Unit M-Ter",
+              "id": "G1-S1-O5-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Neural Linkage Project",
+          "narrative_guidance": "The Collective seeks to index the thoughts of visiting diplomats to improve integration.",
+          "improvisation_points": [
+            "Obtain blank data slates from Unit M-Hex in the Silent Grottoes.",
+            "Deploy the slates in the Hypothesis Range with Unit A-One to gather initial theories.",
+            "Analyze the diplomatic data with Unit V-Eta in Neutrality Plaza."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit M-Hex",
+              "id": "G1-S1-O5-C3-CT3-R6-NPC"
+            },
+            "contact": {
+              "name": "Unit A-One",
+              "id": "G1-S1-O5-C3-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Unit V-Eta",
+              "id": "G1-S1-O5-C3-CT1-R7-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Iron-Bound Hegemony",
+      "civilization_id": "G1-S1-O5-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Iron Perimeter",
+          "narrative_guidance": "Ensure the capital's defenses are reinforced against a potential breach.",
+          "improvisation_points": [
+            "Consult Captain Orin for the fortification blueprints.",
+            "Deliver the drill requirements to Master Vex in the Pit of Trials.",
+            "Secure the necessary iron beams from Quartermaster Hrolf."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Captain Orin",
+              "id": "G1-S1-O5-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Master Vex",
+              "id": "G1-S1-O5-C1-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Quartermaster Hrolf",
+              "id": "G1-S1-O5-C1-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Thermal Regulation",
+          "narrative_guidance": "A surge in the furnace threatens to melt the industrial district.",
+          "improvisation_points": [
+            "Receive the pressure report from Overseer Blaz.",
+            "Bypass the jammed relief valve with Warden Pip in the tunnels.",
+            "Deliver the stabilized core readings to Master Gorr."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Blaz",
+              "id": "G1-S1-O5-C1-CT2-R1-NPC"
+            },
+            "contact": {
+              "name": "Warden Pip",
+              "id": "G1-S1-O5-C1-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Master Gorr",
+              "id": "G1-S1-O5-C1-CT2-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "Veins of Power",
+          "narrative_guidance": "A rare crystal formation has been found, requiring specialized extraction.",
+          "improvisation_points": [
+            "Obtain the location data from Lyra in the Luminous Vein.",
+            "Escort the mining team led by Miner Krug.",
+            "Hand off the samples to Sentinel Brock for secure transport."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Lyra",
+              "id": "G1-S1-O5-C1-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Miner Krug",
+              "id": "G1-S1-O5-C1-CT3-R1-NPC"
+            },
+            "target": {
+              "name": "Sentinel Brock",
+              "id": "G1-S1-O5-C1-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Supply Chain Sabotage",
+          "narrative_guidance": "Identify a leak in the Hegemony's logistical network.",
+          "improvisation_points": [
+            "Audit the export logs with Logistician Mira.",
+            "Track the missing crates to the Molten Flow with Geologist Rhen.",
+            "Confront the black market contact near Foreman Sledge's disposal site."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Logistician Mira",
+              "id": "G1-S1-O5-C1-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Geologist Rhen",
+              "id": "G1-S1-O5-C1-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Foreman Sledge",
+              "id": "G1-S1-O5-C1-CT2-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Shadow Over Kratos-Vahl",
+          "narrative_guidance": "Infiltrators are moving through the outskirts of the capital.",
+          "improvisation_points": [
+            "Report to Scout-Commander Elara for target descriptions.",
+            "Calibrate the defense cannons with Chief Bran.",
+            "Bring the captured prisoners to Medicus Thane for questioning."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scout-Commander Elara",
+              "id": "G1-S1-O5-C1-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Chief Bran",
+              "id": "G1-S1-O5-C1-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Medicus Thane",
+              "id": "G1-S1-O5-C1-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Market Stability Protocol",
+          "narrative_guidance": "Ensure the subterranean economy remains under Hegemony control.",
+          "improvisation_points": [
+            "Collect taxes from Zale in the Bedrock Bazaar.",
+            "Validate the historical ownership in the Vaults with Archivist Lorn.",
+            "Enforce the new quotas with Foreman Grog at the Gorge."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Zale",
+              "id": "G1-S1-O5-C1-CT3-R3-NPC"
+            },
+            "contact": {
+              "name": "Archivist Lorn",
+              "id": "G1-S1-O5-C1-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Foreman Grog",
+              "id": "G1-S1-O5-C1-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Hegemony Integration",
+          "narrative_guidance": "Connect the various branches of the Hegemony's power.",
+          "improvisation_points": [
+            "Receive administrative orders from Seneschal Draka.",
+            "Update the automatons' programming with Engineer Trix.",
+            "Coordinate the aquatic resource recovery with Thorne."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Seneschal Draka",
+              "id": "G1-S1-O5-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Engineer Trix",
+              "id": "G1-S1-O5-C1-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Thorne",
+              "id": "G1-S1-O5-C1-CT3-R6-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O6": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Kineto-Aural Hegemony",
+      "civilization_id": "G1-S1-O6-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The High-Velocity Smuggle",
+          "narrative_guidance": "Guide a high-priority smuggler convoy safely through the upper storm currents into the grounding pits.",
+          "improvisation_points": [
+            "Obtain the storm-eye navigation charts from Seraphine Kael.",
+            "Secure a high-speed gantry bypass from Rigger Zephyr to avoid Hegemony patrols.",
+            "Deliver the cargo to Scavenger Rust in the Copper Sump for final grounding."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Seraphine Kael",
+              "id": "G1-S1-O6-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Rigger Zephyr",
+              "id": "G1-S1-O6-C2-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Scavenger Rust",
+              "id": "G1-S1-O6-C2-CT3-R1-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Sentence of Plasma",
+          "narrative_guidance": "Help decode a vital message from the storm whispers that could unlock the Hegemony's main reactor.",
+          "improvisation_points": [
+            "Collect the initial whisper fragment from Archivist Tol Varin.",
+            "Use Runner Spark's speed to deliver the fragment to the relay station before the signal decays.",
+            "Have Scribe Mute record the final translated sentence into the Whisper Archive."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Archivist Tol Varin",
+              "id": "G1-S1-O6-C2-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Runner Spark",
+              "id": "G1-S1-O6-C2-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Scribe Mute",
+              "id": "G1-S1-O6-C2-CT3-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Orbital Blackout",
+          "narrative_guidance": "Sabotage the drone network to allow a rebel signal to reach the outer colonies.",
+          "improvisation_points": [
+            "Extract the drone patrol routes from Captain Drevos under the guise of an inspection.",
+            "Retrieve the necessary EMP components from Harvester Bolt's stash in the Basin.",
+            "Activate the signal jammer within Shielder Cage's Faraday zone."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Captain Drevos",
+              "id": "G1-S1-O6-C2-CT1-R3-NPC"
+            },
+            "contact": {
+              "name": "Harvester Bolt",
+              "id": "G1-S1-O6-C2-CT2-R3-NPC"
+            },
+            "target": {
+              "name": "Shielder Cage",
+              "id": "G1-S1-O6-C2-CT3-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Mother's Frequency",
+          "narrative_guidance": "Escort Mira Vox to the deepest vaults so she can hear the voice of the Ion Throne.",
+          "improvisation_points": [
+            "Protect Mira Vox during her ritual at the Tuning Chamber.",
+            "Coordinate with Slider Dash to find a path through the Friction Flats that avoids static interference.",
+            "Reach the Lead-Lined Corridors where Tunnel-Rat Scurry will hide Mira from the Harmonizer's ears."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Mira Vox",
+              "id": "G1-S1-O6-C2-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Slider Dash",
+              "id": "G1-S1-O6-C2-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Tunnel-Rat Scurry",
+              "id": "G1-S1-O6-C2-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Rogue Protocol Uplink",
+          "narrative_guidance": "Assist Unit-77 in reclaiming a lost memory core hidden within the city's power grid.",
+          "improvisation_points": [
+            "Receive the encrypted core location from Unit-77.",
+            "Manipulate the coil rotation with Spinner Coil to generate the specific frequency needed to reveal the core.",
+            "Upload the core data into the Grounding Grids under the supervision of Tech Static."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Unit-77",
+              "id": "G1-S1-O6-C2-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Spinner Coil",
+              "id": "G1-S1-O6-C2-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Tech Static",
+              "id": "G1-S1-O6-C2-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Master Encryption Key",
+          "narrative_guidance": "Extract an Overseer command code from the whispers to bypass Hegemony security.",
+          "improvisation_points": [
+            "Receive the decryption software from Dakar Vey.",
+            "Infiltrate the Surge Gate and use Warden Gate's console to run the extraction.",
+            "Cool the overheating data crystal at Refiner Gloam's insulator works to preserve the key."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Dakar Vey",
+              "id": "G1-S1-O6-C2-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Warden Gate",
+              "id": "G1-S1-O6-C2-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Refiner Gloam",
+              "id": "G1-S1-O6-C2-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Great Convergence Ritual",
+          "narrative_guidance": "Join a ritual to 'merge' with the storm and achieve absolute synchronization.",
+          "improvisation_points": [
+            "Acquire the lightning-charged focus from High Priest Orun.",
+            "Trade for the rare kinetic catalysts at Trader Flicker's Arc-Light Market.",
+            "Perform the final resonance at the Sub-Signal Vaults with Deep-Ear Echo to ground the divine signal."
+          ],
+          "cast": {
+            "giver": {
+              "name": "High Priest Orun",
+              "id": "G1-S1-O6-C2-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Trader Flicker",
+              "id": "G1-S1-O6-C2-CT2-R7-NPC"
+            },
+            "target": {
+              "name": "Deep-Ear Echo",
+              "id": "G1-S1-O6-C2-CT3-R7-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Aethel-Ion Synod",
+      "civilization_id": "G1-S1-O6-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Whispered Protocol",
+          "narrative_guidance": "Recover a lost frequency key from the Scribes' Walkway to facilitate a trade in the Frequency Markets.",
+          "improvisation_points": [
+            "Obtain the tuning fork calibration from Elara Sync.",
+            "Take the calibration to Malos Vox to locate the key's signature.",
+            "Deliver the decrypted key to Kaelen Bit for payment."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Elara Sync",
+              "id": "G1-S1-O6-C3-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Malos Vox",
+              "id": "G1-S1-O6-C3-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Kaelen Bit",
+              "id": "G1-S1-O6-C3-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Static Sabotage",
+          "narrative_guidance": "Divert excess power from the Capacitor Fields to the Smelters to prevent a cascade failure.",
+          "improvisation_points": [
+            "Collect the discharge codes from Oris Volt.",
+            "Input the codes at the Terrace terminal guarded by Leda Ozone.",
+            "Confirm the power transfer with Grak Smelter at the forges."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Oris Volt",
+              "id": "G1-S1-O6-C3-CT2-R1-NPC"
+            },
+            "contact": {
+              "name": "Leda Ozone",
+              "id": "G1-S1-O6-C3-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Grak Smelter",
+              "id": "G1-S1-O6-C3-CT2-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Ghost in the Antenna",
+          "narrative_guidance": "Carry an ancestral signal from the Hall of Waves to the Oracular Crypts to awaken a sleeping prophecy.",
+          "improvisation_points": [
+            "Receive the sonic urn from Thal Waves.",
+            "Have Kiri Perch align the signal with the Spire's peak.",
+            "Deposit the urn in the Oracular Crypts with Vahn Crypt."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Thal Waves",
+              "id": "G1-S1-O6-C3-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Kiri Perch",
+              "id": "G1-S1-O6-C3-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Vahn Crypt",
+              "id": "G1-S1-O6-C3-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Dormitory Disturbance",
+          "narrative_guidance": "Investigate a rogue transmission that is disrupting sleep in the dorms and trace it to the docks.",
+          "improvisation_points": [
+            "Receive a recording of the disturbance from Sora Echo.",
+            "Track the signal source through the Archive of Static with Juro Static.",
+            "Identify the illegal transmitter at the Aether-Docks with Vexen Tide."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Sora Echo",
+              "id": "G1-S1-O6-C3-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Juro Static",
+              "id": "G1-S1-O6-C3-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "Vexen Tide",
+              "id": "G1-S1-O6-C3-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Arc-Welder's Gambit",
+          "narrative_guidance": "Escort a shipment of specialized Guard-Coils through the dangerous Turbulence Plaza to the Welders.",
+          "improvisation_points": [
+            "Secure the shipment from Harlen Coil.",
+            "Pass through the Turbulence Plaza checkpoints managed by Mira Turbulence.",
+            "Deliver the coils to Boros Arc to repair the city's shielding."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Harlen Coil",
+              "id": "G1-S1-O6-C3-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Mira Turbulence",
+              "id": "G1-S1-O6-C3-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Boros Arc",
+              "id": "G1-S1-O6-C3-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Resonance Restoration",
+          "narrative_guidance": "Cultivate resonance seeds, weave them into protective shrouds, and deliver them to the clinics.",
+          "improvisation_points": [
+            "Gather resonance seeds from Lyra Garden.",
+            "Deliver the seeds to Phex Shroud to be woven into fabric.",
+            "Bring the completed shrouds to Miri Null for the patients."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Lyra Garden",
+              "id": "G1-S1-O6-C3-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Phex Shroud",
+              "id": "G1-S1-O6-C3-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Miri Null",
+              "id": "G1-S1-O6-C3-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Observatory Breach",
+          "narrative_guidance": "Relay an urgent deep-space signal from the Observatory, through the Static Sinks, to the Gilded Antenna.",
+          "improvisation_points": [
+            "Acquire the emergency transmission from Rina Signal.",
+            "Bypass the interference in the Static Sinks with help from Silt Static.",
+            "Broadcast the signal from the Gilded Antenna via Zeph Antenna."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Rina Signal",
+              "id": "G1-S1-O6-C3-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Silt Static",
+              "id": "G1-S1-O6-C3-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Zeph Antenna",
+              "id": "G1-S1-O6-C3-CT3-R7-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Ion-Bound Sovereignty",
+      "civilization_id": "G1-S1-O6-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Whispered Sequence",
+          "narrative_guidance": "Archivist Tol Varin needs a specific frequency to complete a sentence from the storm, but it requires drone-level processing and a religious blessing.",
+          "improvisation_points": [
+            "Retrieve the encrypted plasma-crystal from Archivist Tol Varin.",
+            "Take the crystal to Unit-77 to process the binary storm-whispers.",
+            "Deliver the processed data to High Priest Orun for a final ritual blessing to unlock the message."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Archivist Tol Varin",
+              "id": "G1-S1-O6-C1-CT1-R3-NPC"
+            },
+            "contact": {
+              "name": "Unit-77",
+              "id": "G1-S1-O6-C1-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "High Priest Orun",
+              "id": "G1-S1-O6-C1-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Storm-Diver's Toll",
+          "narrative_guidance": "Seraphine Kael is trying to smuggle critical components through the Ion, but Captain Drevos's drones are blocking the route and Dakar Vey needs to hack the security.",
+          "improvisation_points": [
+            "Obtain the smuggling manifest from Seraphine Kael.",
+            "Convince or bribe Captain Drevos to lower the orbital drone perimeter.",
+            "Escort the manifest to Dakar Vey to finalize the encrypted flight path."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Seraphine Kael",
+              "id": "G1-S1-O6-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Captain Drevos",
+              "id": "G1-S1-O6-C1-CT1-R4-NPC"
+            },
+            "target": {
+              "name": "Dakar Vey",
+              "id": "G1-S1-O6-C1-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Ghost in the Machine",
+          "narrative_guidance": "Mira Vox hears her mother's voice coming from the defense grid. She needs Sergeant Vax's clearance and Scout Nyx's tracking data to find the source.",
+          "improvisation_points": [
+            "Listen to Mira Vox's glowing tears to identify the frequency.",
+            "Request the defense grid logs from Sergeant Vax.",
+            "Follow Scout Nyx to the remote location where the signal is strongest."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Mira Vox",
+              "id": "G1-S1-O6-C1-CT1-R2-NPC"
+            },
+            "contact": {
+              "name": "Sergeant Vax",
+              "id": "G1-S1-O6-C1-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Scout Nyx",
+              "id": "G1-S1-O6-C1-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "Foundry Sabotage",
+          "narrative_guidance": "Master Smith Borin suspects a flaw in the Ion-blades. He needs Welder Tali to inspect the welds and Foreman Grog to investigate the labor source.",
+          "improvisation_points": [
+            "Accept a prototype blade from Master Smith Borin.",
+            "Bring the blade to Welder Tali for a structural analysis.",
+            "Present the findings to Foreman Grog to identify the saboteur in the ribs."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Master Smith Borin",
+              "id": "G1-S1-O6-C1-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Welder Tali",
+              "id": "G1-S1-O6-C1-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Foreman Grog",
+              "id": "G1-S1-O6-C1-CT2-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Kinetic Circuit",
+          "narrative_guidance": "Duelist Kaelen needs the treasury to fund a tournament, but the volts are missing and the scrappers are the primary suspects.",
+          "improvisation_points": [
+            "Receive the tournament request from Duelist Kaelen.",
+            "Verify the missing power logs with Treasurer Sola.",
+            "Recover the stolen energy cells from Scrapper Pip in the ghetto."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Duelist Kaelen",
+              "id": "G1-S1-O6-C1-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Treasurer Sola",
+              "id": "G1-S1-O6-C1-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Scrapper Pip",
+              "id": "G1-S1-O6-C1-CT2-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Gear-Grasp Gamble",
+          "narrative_guidance": "Mechanist Fix believes a gear is sentient. He needs Overseer Ryn to stop the line so Bard Lute can record its 'voice'.",
+          "improvisation_points": [
+            "Acquire the special listening device from Mechanist Fix.",
+            "Persuade Overseer Ryn to temporarily halt Flux-Line Row.",
+            "Deliver the gear's recordings to Bard Lute for interpretation."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Mechanist Fix",
+              "id": "G1-S1-O6-C1-CT3-R4-NPC"
+            },
+            "contact": {
+              "name": "Overseer Ryn",
+              "id": "G1-S1-O6-C1-CT3-R5-NPC"
+            },
+            "target": {
+              "name": "Bard Lute",
+              "id": "G1-S1-O6-C1-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Slag's Secret",
+          "narrative_guidance": "Wastelander Crev found a strange artifact in the slag, but it needs the heat of the kilns and the soil of the fields to activate.",
+          "improvisation_points": [
+            "Acquire the glowing slag artifact from Wastelander Crev.",
+            "Place the artifact in the Cobalt Kilns with Stoker Ignis to heat it up.",
+            "Bury the heated artifact in the Thunder-Thresher Fields for Farmer Jax to observe the reaction."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Wastelander Crev",
+              "id": "G1-S1-O6-C1-CT3-R7-NPC"
+            },
+            "contact": {
+              "name": "Stoker Ignis",
+              "id": "G1-S1-O6-C1-CT3-R3-NPC"
+            },
+            "target": {
+              "name": "Farmer Jax",
+              "id": "G1-S1-O6-C1-CT2-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S1-O7": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "The Ion-Drifters of Aura-507",
+      "civilization_id": "G1-S1-O7-C2",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Crystallized Equation",
+          "narrative_guidance": "Recover a rare xenon growth that links organic and synthetic data before the storms reset the crystal's memory.",
+          "improvisation_points": [
+            "Retrieve the resonant sample from Aris Thorne in the Siphon Spines.",
+            "Deliver the sample to Root-Tender Silas in Graft-Nexus for biological decryption.",
+            "Return the decrypted data crystal to Seer Lyra at the Ion-Gaze Observatory."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Aris Thorne",
+              "id": "G1-S1-O7-C2-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Root-Tender Silas",
+              "id": "G1-S1-O7-C2-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Seer Lyra",
+              "id": "G1-S1-O7-C2-CT1-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Silent Pulse",
+          "narrative_guidance": "Synchronize the city's pulse with the local grid to prevent a catastrophic overload in the Graft-Nexus.",
+          "improvisation_points": [
+            "Obtain the frequency tuner from Pulse-Master Rez.",
+            "Calibrate the main capacitor with Volt-Runner Mika in Arclight Perch.",
+            "Take the calibrated tuner to Dr. Hekt to stabilize the Marrow Labs."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Pulse-Master Rez",
+              "id": "G1-S1-O7-C2-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Volt-Runner Mika",
+              "id": "G1-S1-O7-C2-CT1-R6-NPC"
+            },
+            "target": {
+              "name": "Dr. Hekt",
+              "id": "G1-S1-O7-C2-CT2-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Smuggler's Run",
+          "narrative_guidance": "Move illicit energy cells from the high roosts of Arclight to the depths of the Static Rim.",
+          "improvisation_points": [
+            "Collect the energy cells from Slick Corin in Black-Market Bay.",
+            "Bypass the air patrol by meeting Captain Vane at the Glider Launchpads.",
+            "Deliver the smuggled cells to Dockmaster Kael at Outlaw\u2019s Anchor."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Slick Corin",
+              "id": "G1-S1-O7-C2-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Captain Vane",
+              "id": "G1-S1-O7-C2-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Dockmaster Kael",
+              "id": "G1-S1-O7-C2-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Marrow Graft",
+          "narrative_guidance": "Retrieve high-altitude marrow samples scavenged from the Void-Drop for a specialized integration experiment.",
+          "improvisation_points": [
+            "Consult Vora the Carver about the specific marrow requirements.",
+            "Retrieve the rare samples from Jumper Nix at the Void-Drop.",
+            "Deliver the samples to Linker Gantz to finalize the neural bridge."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Vora the Carver",
+              "id": "G1-S1-O7-C2-CT2-R2-NPC"
+            },
+            "contact": {
+              "name": "Jumper Nix",
+              "id": "G1-S1-O7-C2-CT3-R7-NPC"
+            },
+            "target": {
+              "name": "Linker Gantz",
+              "id": "G1-S1-O7-C2-CT2-R4-NPC"
+            }
+          }
+        },
+        {
+          "title": "Static Interference",
+          "narrative_guidance": "Neutralize a military jammer that is interfering with the Junk-Bazaar's scanners and trade routes.",
+          "improvisation_points": [
+            "Receive the location of the jammer from Rat-King Rolo.",
+            "Acquire the override codes from Sergeant Flux at the Wind-Shear Battery.",
+            "Report the successful shutdown to Trader Ma at the Junk-Bazaar."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Rat-King Rolo",
+              "id": "G1-S1-O7-C2-CT3-R2-NPC"
+            },
+            "contact": {
+              "name": "Sergeant Flux",
+              "id": "G1-S1-O7-C2-CT1-R7-NPC"
+            },
+            "target": {
+              "name": "Trader Ma",
+              "id": "G1-S1-O7-C2-CT3-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "Gantry Sabotage",
+          "narrative_guidance": "Use organic acids to loosen structural bolts on a rival refinery's platform.",
+          "improvisation_points": [
+            "Collect the engineering plans from Foreman Jax on the Silvered Gantry.",
+            "Acquire the biological corrosive from Drip-Watcher Mara in Graft-Nexus.",
+            "Apply the corrosive and report back to Kelso at the Refined Vein."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Foreman Jax",
+              "id": "G1-S1-O7-C2-CT1-R5-NPC"
+            },
+            "contact": {
+              "name": "Drip-Watcher Mara",
+              "id": "G1-S1-O7-C2-CT2-R6-NPC"
+            },
+            "target": {
+              "name": "Kelso",
+              "id": "G1-S1-O7-C2-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Synapse Circuit",
+          "narrative_guidance": "Install a neural relay in the Flicker-Light District to monitor illegal pit fights for Cipher-Jade.",
+          "improvisation_points": [
+            "Take the neural relay from Warden Orl at the Living Mantel.",
+            "Hook the relay into the power grid with Neon-Fixer Pip.",
+            "Confirm the data transmission with Brawler Brigg at the Scrapper\u2019s Gauntlet."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Warden Orl",
+              "id": "G1-S1-O7-C2-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Neon-Fixer Pip",
+              "id": "G1-S1-O7-C2-CT3-R4-NPC"
+            },
+            "target": {
+              "name": "Brawler Brigg",
+              "id": "G1-S1-O7-C2-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "The Ion-Shriven Hegemony",
+      "civilization_id": "G1-S1-O7-C3",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "The Xenon Core Heist",
+          "narrative_guidance": "Recover stolen xenon cores from unauthorized scavengers to secure the city's flux-shielding.",
+          "improvisation_points": [
+            "Infiltrate the scavenger camp in the Scrapper's Gulch.",
+            "Secure the cores using specialized containment units.",
+            "Deliver the cores to the Vault for immediate stabilization."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Warden Vax",
+              "id": "G1-S1-O7-C3-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Foreman Grog",
+              "id": "G1-S1-O7-C3-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Guard-Captain Jory",
+              "id": "G1-S1-O7-C3-CT1-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Crystal Equation",
+          "narrative_guidance": "Collect and analyze stabilized xenon crystal samples to solve the Prime-Flux equation.",
+          "improvisation_points": [
+            "Retrieve raw samples from the Accelerator Ring.",
+            "Run the data through the Synaptic Corridors processing hub.",
+            "Archive the final results in the Archive of the Blue Pulse."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Researcher Nox",
+              "id": "G1-S1-O7-C3-CT1-R6-NPC"
+            },
+            "contact": {
+              "name": "Analyst Miri",
+              "id": "G1-S1-O7-C3-CT1-R2-NPC"
+            },
+            "target": {
+              "name": "Archivist Thal",
+              "id": "G1-S1-O7-C3-CT1-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Smuggler's Run",
+          "narrative_guidance": "Escort a shipment of distilled blue-drip through the Smuggler's Rift to the Neon Bazaar.",
+          "improvisation_points": [
+            "Collect the purified batch from the Distillery.",
+            "Navigate the hazards of the Smuggler's Rift.",
+            "Exchange the goods for credits at the Neon Bazaar."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Merchant Jax",
+              "id": "G1-S1-O7-C3-CT2-R1-NPC"
+            },
+            "contact": {
+              "name": "Runner Kess",
+              "id": "G1-S1-O7-C3-CT2-R5-NPC"
+            },
+            "target": {
+              "name": "Brewer Hobb",
+              "id": "G1-S1-O7-C3-CT2-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Flesh-Suture Breach",
+          "narrative_guidance": "Eliminate rival mercenary bands that are disrupting the Tendril Bridges and Suture Maw.",
+          "improvisation_points": [
+            "Track the mercenaries from the Dead-Zone Perimeter.",
+            "Defend the Tendril Bridges from a targeted sabotage attempt.",
+            "Clear the remaining hostiles from the Suture Maw."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Scout Rinn",
+              "id": "G1-S1-O7-C3-CT2-R7-NPC"
+            },
+            "contact": {
+              "name": "Bridge-Keep Zof",
+              "id": "G1-S1-O7-C3-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Pit-Boss Krag",
+              "id": "G1-S1-O7-C3-CT3-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Isotope Transit",
+          "narrative_guidance": "Safely transport unstable isotopes through a high-interference signal zone.",
+          "improvisation_points": [
+            "Extract the isotopes from the Cooling Spines.",
+            "Synchronize with the Signal Jammer Spire to mask the transport.",
+            "Deliver the package to the Lead-Glass Habitats for processing."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Technician Rez",
+              "id": "G1-S1-O7-C3-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Operator Silas",
+              "id": "G1-S1-O7-C3-CT2-R4-NPC"
+            },
+            "target": {
+              "name": "Curator Elen",
+              "id": "G1-S1-O7-C3-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Mycelial Mutation",
+          "narrative_guidance": "Collect biomechanical samples from the Lab-Farms to improve neural linking efficiency.",
+          "improvisation_points": [
+            "Harvest the mutated samples from the Mycelial Lab-Farms.",
+            "Process the samples through the Nerve-Root Junctions.",
+            "Monitor the canopy growth patterns for signs of stabilization."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Botanist Fenn",
+              "id": "G1-S1-O7-C3-CT3-R1-NPC"
+            },
+            "contact": {
+              "name": "Neural-Linker Osi",
+              "id": "G1-S1-O7-C3-CT3-R4-NPC"
+            },
+            "target": {
+              "name": "Watcher Bree",
+              "id": "G1-S1-O7-C3-CT3-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "Static Whispers",
+          "narrative_guidance": "Decrypt a ghostly signal from the Static Shanty Town and deliver the data to the Basin.",
+          "improvisation_points": [
+            "Record the static frequency in the Shanty Town.",
+            "Purify the signal in the Spore-Mist Chambers.",
+            "Apply the data to the Harvester's production schedule."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Elder Pim",
+              "id": "G1-S1-O7-C3-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Vapor-Smith Urn",
+              "id": "G1-S1-O7-C3-CT3-R3-NPC"
+            },
+            "target": {
+              "name": "Harvester Ty",
+              "id": "G1-S1-O7-C3-CT3-R5-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "The Ionized Syndicates",
+      "civilization_id": "G1-S1-O7-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "Xenon Core Heist",
+          "narrative_guidance": "Recover and stabilize stolen xenon cores to power the syndicate's local grid.",
+          "improvisation_points": [
+            "Seize the stolen cores from the enforcers at The Iron Lip.",
+            "Transport the volatile cores to Researcher Kael in the Ionization Chambers for stabilization.",
+            "Deliver the stabilized cores to Vex the Lookout at the Outcast's Perch for distribution."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Jakk the Grinder",
+              "id": "G1-S1-O7-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Researcher Kael",
+              "id": "G1-S1-O7-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Vex the Lookout",
+              "id": "G1-S1-O7-C1-CT1-R6-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Splicer\u2019s Gambit",
+          "narrative_guidance": "Create a new hybrid xenon-fungal strain to enhance syndicate soldiers.",
+          "improvisation_points": [
+            "Obtain high-grade biological samples from Surgeon Vahn's lab.",
+            "Collect nerve-vine samples from Tangle-Twitch in the Gardens.",
+            "Assist Fungal-Sage Mo in brewing the final hybrid serum in the Grotto."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Surgeon Vahn",
+              "id": "G1-S1-O7-C1-CT2-R3-NPC"
+            },
+            "contact": {
+              "name": "Tangle-Twitch",
+              "id": "G1-S1-O7-C1-CT3-R4-NPC"
+            },
+            "target": {
+              "name": "Fungal-Sage Mo",
+              "id": "G1-S1-O7-C1-CT3-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Bazaar Blackmail",
+          "narrative_guidance": "Clean up the paper trail of a smuggling deal gone wrong in the market.",
+          "improvisation_points": [
+            "Acquire the ledger from Lyla the Lush in the Blue-Mist Bazaar.",
+            "Bypass the security protocols monitored by Unit 702.",
+            "Stash the ledger in a secure crate at Scrap-Yard Plaza for Scrap-Heap Sam."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Lyla the Lush",
+              "id": "G1-S1-O7-C1-CT1-R4-NPC"
+            },
+            "contact": {
+              "name": "Unit 702",
+              "id": "G1-S1-O7-C1-CT2-R1-NPC"
+            },
+            "target": {
+              "name": "Scrap-Heap Sam",
+              "id": "G1-S1-O7-C1-CT1-R3-NPC"
+            }
+          }
+        },
+        {
+          "title": "Pit Fight Rigging",
+          "narrative_guidance": "Ensure the high-stakes fight in the Spark-Gap Pit goes exactly as planned.",
+          "improvisation_points": [
+            "Receive the betting instructions and chemicals from Gnasher.",
+            "Administer the enhancers to the fighters under the nose of Sergeant Surge.",
+            "Report the successful outcome to Mira the Hollow to collect the winnings."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Gnasher",
+              "id": "G1-S1-O7-C1-CT1-R7-NPC"
+            },
+            "contact": {
+              "name": "Sergeant Surge",
+              "id": "G1-S1-O7-C1-CT1-R5-NPC"
+            },
+            "target": {
+              "name": "Mira the Hollow",
+              "id": "G1-S1-O7-C1-CT1-R2-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Digital Ghost",
+          "narrative_guidance": "Infiltrate the Nexus network using a virus provided by a rogue AI.",
+          "improvisation_points": [
+            "Receive the encrypted virus shard from Cipher-Jade.",
+            "Navigate the Mycelium Bridges with Root-Walker Rin to find the terminal.",
+            "Upload the virus into the Neural-Link Linkage and speak with The Luminous Shade."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Cipher-Jade",
+              "id": "G1-S1-O7-C1-CT2-R4-NPC"
+            },
+            "contact": {
+              "name": "Root-Walker Rin",
+              "id": "G1-S1-O7-C1-CT3-R1-NPC"
+            },
+            "target": {
+              "name": "The Luminous Shade",
+              "id": "G1-S1-O7-C1-CT2-R7-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Prototype Test",
+          "narrative_guidance": "Test a devastating new weapon powered by the heartbeat of the canyon.",
+          "improvisation_points": [
+            "Pick up the prototype weapon from Blast-Master Bo at the Range.",
+            "Charge the weapon using the energy resonance from Heart-Guard Horg\u2019s post.",
+            "Deposit the test data and the weapon in the Cryo-Vaults with Frost-Bit."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Blast-Master Bo",
+              "id": "G1-S1-O7-C1-CT2-R6-NPC"
+            },
+            "contact": {
+              "name": "Heart-Guard Horg",
+              "id": "G1-S1-O7-C1-CT3-R2-NPC"
+            },
+            "target": {
+              "name": "Frost-Bit",
+              "id": "G1-S1-O7-C1-CT2-R5-NPC"
+            }
+          }
+        },
+        {
+          "title": "The Deep Maw Sacrifice",
+          "narrative_guidance": "Clear the way for a holy ritual that requires pure xenon samples.",
+          "improvisation_points": [
+            "Clear the infestation in Vein-Tunnel Alpha for Burrower Bill.",
+            "Collect purified pool water from Glow-Watcher Nia.",
+            "Present the offerings to Silence-Bringer Sol at the edge of The Deep Maw."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Burrower Bill",
+              "id": "G1-S1-O7-C1-CT3-R5-NPC"
+            },
+            "contact": {
+              "name": "Glow-Watcher Nia",
+              "id": "G1-S1-O7-C1-CT3-R6-NPC"
+            },
+            "target": {
+              "name": "Silence-Bringer Sol",
+              "id": "G1-S1-O7-C1-CT3-R7-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O1": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O8",
+      "civilization_id": "G1-S1-O8-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O8.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O8-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O8-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O8-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O8",
+      "civilization_id": "G1-S1-O8-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O8.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O8-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O8-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O8-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O8",
+      "civilization_id": "G1-S1-O8-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O8.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O8-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O8-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O8-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O2": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O9",
+      "civilization_id": "G1-S1-O9-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O9.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O9-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O9-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O9-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O9",
+      "civilization_id": "G1-S1-O9-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O9.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O9-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O9-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O9-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O9",
+      "civilization_id": "G1-S1-O9-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O9.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O9-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O9-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O9-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O3": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O10",
+      "civilization_id": "G1-S1-O10-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O10.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O10-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O10-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O10-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O10",
+      "civilization_id": "G1-S1-O10-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O10.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O10-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O10-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O10-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O10",
+      "civilization_id": "G1-S1-O10-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O10.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O10-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O10-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O10-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O4": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O11",
+      "civilization_id": "G1-S1-O11-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O11.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O11-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O11-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O11-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O11",
+      "civilization_id": "G1-S1-O11-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O11.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O11-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O11-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O11-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O11",
+      "civilization_id": "G1-S1-O11-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O11.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O11-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O11-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O11-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O5": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O13",
+      "civilization_id": "G1-S1-O13-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O13.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O13-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O13-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O13-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O13",
+      "civilization_id": "G1-S1-O13-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O13.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O13-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O13-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O13-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O13",
+      "civilization_id": "G1-S1-O13-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O13.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O13-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O13-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O13-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "G1-S2-O6": {
+    "DEX": {
+      "affinity": "DEX",
+      "civilization_target": "Civilization of G1-S1-O14",
+      "civilization_id": "G1-S1-O14-C1",
+      "system_prompt": "You are the GM for a DEX-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "DEX Trial Alpha",
+          "narrative_guidance": "A foundational DEX-oriented crisis emerges within G1-S1-O14.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O14-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O14-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O14-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "INT": {
+      "affinity": "INT",
+      "civilization_target": "Civilization of G1-S1-O14",
+      "civilization_id": "G1-S1-O14-C1",
+      "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "INT Trial Alpha",
+          "narrative_guidance": "A foundational INT-oriented crisis emerges within G1-S1-O14.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O14-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O14-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O14-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    },
+    "STR": {
+      "affinity": "STR",
+      "civilization_target": "Civilization of G1-S1-O14",
+      "civilization_id": "G1-S1-O14-C1",
+      "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background. CRITICAL NARRATIVE RULE: The player cannot fail. Outcome spectrum is: Excellent, Good, Poor. Even a 'Poor' result drives the story forward, complicating the next step rather than halting progress.",
+      "quests": [
+        {
+          "title": "STR Trial Alpha",
+          "narrative_guidance": "A foundational STR-oriented crisis emerges within G1-S1-O14.",
+          "improvisation_points": [
+            "Meet the local overseer.",
+            "Resolve the instability using your core affinity.",
+            "Report outcome to the civilization council."
+          ],
+          "cast": {
+            "giver": {
+              "name": "Overseer Prime",
+              "id": "G1-S1-O14-C1-CT1-R1-NPC"
+            },
+            "contact": {
+              "name": "Field Agent",
+              "id": "G1-S1-O14-C1-CT2-R2-NPC"
+            },
+            "target": {
+              "name": "Council Node",
+              "id": "G1-S1-O14-C1-CT3-R3-NPC"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

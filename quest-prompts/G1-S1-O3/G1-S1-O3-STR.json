@@ -1,0 +1,169 @@
+{
+    "affinity": "STR",
+    "civilization_target": "The Lead-Bound Hegemony",
+    "civilization_id": "G1-S1-O3-C1",
+    "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Crucible Breach Drill",
+            "narrative_guidance": "Assist Chief Overseer Valen during a simulated containment breach to ensure the kilns remain stable.",
+            "improvisation_points": [
+                "Consult Valen-Alpha on the simulation parameters.",
+                "Obtain specialized coolant from Technician Lira-Alpha.",
+                "Override the false lockout initiated by Sentinel-Alpha."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Valen-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Lira-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R2-NPC"
+                },
+                "target": {
+                    "name": "Sentinel-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Sensor Network Overhaul",
+            "narrative_guidance": "Repair the sensor networks in the deep core during a sudden emergency radiation alert.",
+            "improvisation_points": [
+                "Receive the encrypted repair sequence from Lira-Prime.",
+                "Secure the perimeter against over-active drones led by Sigma-Prime.",
+                "Upload the new calibration data to Analyst Jex-Prime."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Lira-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R2-NPC"
+                },
+                "contact": {
+                    "name": "Sigma-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R4-NPC"
+                },
+                "target": {
+                    "name": "Jex-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Void Vault Security",
+            "narrative_guidance": "Bypass the AI Sentinel's false warnings to access restricted vaults in the scrap yard.",
+            "improvisation_points": [
+                "Retrieve the override code from Sentinel-Null's mainframe.",
+                "Obtain the physical vault key from Envoy Rho-Null.",
+                "Submit the final access log to Valen-Null for verification."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Sentinel-Null",
+                    "id": "G1-S1-O3-C1-CT3-R3-NPC"
+                },
+                "contact": {
+                    "name": "Rho-Null",
+                    "id": "G1-S1-O3-C1-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Valen-Null",
+                    "id": "G1-S1-O3-C1-CT3-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "Drone Malfunction Sweep",
+            "narrative_guidance": "Investigate why the Security Drone Cluster is misidentifying personnel in the foundries.",
+            "improvisation_points": [
+                "Interview Sigma-Alpha regarding recent targeting errors.",
+                "Cross-reference the sensor data with Analyst Jex-Alpha.",
+                "Deploy Droid-Alpha to reset the malfunctioning cluster."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Sigma-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Jex-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R6-NPC"
+                },
+                "target": {
+                    "name": "Droid-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "The High-Risk Convoy",
+            "narrative_guidance": "Coordinate with the Cartel Envoy to secure a high-risk isotope shipment destined for the Hegemon.",
+            "improvisation_points": [
+                "Receive the manifest and vault keys from Rho-Prime.",
+                "Get safety clearance from Valen-Prime at the Lead Archives.",
+                "Synchronize the delivery timing with Sentinel-Prime's logic array."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Rho-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R5-NPC"
+                },
+                "contact": {
+                    "name": "Valen-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Sentinel-Prime",
+                    "id": "G1-S1-O3-C1-CT2-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Anomalous Signature Hunt",
+            "narrative_guidance": "Analyze anomalous radiation patterns in the dormitories to prevent a major leak.",
+            "improvisation_points": [
+                "Decrypt the cryptic log symbols provided by Jex-Null.",
+                "Escort Droid-Null through the high-rad zones to seal cracks.",
+                "Confirm the containment with Technician Lira-Null."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Jex-Null",
+                    "id": "G1-S1-O3-C1-CT3-R6-NPC"
+                },
+                "contact": {
+                    "name": "Droid-Null",
+                    "id": "G1-S1-O3-C1-CT3-R7-NPC"
+                },
+                "target": {
+                    "name": "Lira-Null",
+                    "id": "G1-S1-O3-C1-CT3-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "Critical System Response",
+            "narrative_guidance": "Respond to a sudden system failure across multiple sectors to prevent a total meltdown.",
+            "improvisation_points": [
+                "Receive the emergency beacon from Droid-Alpha.",
+                "Divert power from the Barter-Ducts with help from Sigma-Null.",
+                "Use Rho-Alpha's master keys to reboot the Enrichment Spires."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Droid-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R7-NPC"
+                },
+                "contact": {
+                    "name": "Sigma-Null",
+                    "id": "G1-S1-O3-C1-CT3-R4-NPC"
+                },
+                "target": {
+                    "name": "Rho-Alpha",
+                    "id": "G1-S1-O3-C1-CT1-R5-NPC"
+                }
+            }
+        }
+    ]
+}

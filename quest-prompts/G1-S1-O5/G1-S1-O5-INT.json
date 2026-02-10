@@ -1,0 +1,169 @@
+{
+    "affinity": "INT",
+    "civilization_target": "The Cerebro-Synthetic Collective of Aethelgard",
+    "civilization_id": "G1-S1-O5-C3",
+    "system_prompt": "You are the GM for a INT-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The Signal Decay",
+            "narrative_guidance": "Fading signals from the spires suggest a cosmic anomaly interfering with collective transmissions.",
+            "improvisation_points": [
+                "Obtain the frequency logs from Unit V-Delta in the Signal Spires.",
+                "Take the logs to Unit A-Five at the Void Observation Deck for celestial triangulation.",
+                "Deliver the findings to Unit M-Prime in the Echo Vaults to see if this anomaly has occurred in the past."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit V-Delta",
+                    "id": "G1-S1-O5-C3-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Unit A-Five",
+                    "id": "G1-S1-O5-C3-CT2-R5-NPC"
+                },
+                "target": {
+                    "name": "Unit M-Prime",
+                    "id": "G1-S1-O5-C3-CT3-R1-NPC"
+                }
+            }
+        },
+        {
+            "title": "Memory Leakage",
+            "narrative_guidance": "A corruption in the Memory Fields is spilling raw data into the silos, threatening system stability.",
+            "improvisation_points": [
+                "Collect the corrupted memory shards from Unit M-Quat.",
+                "Transport the shards to Unit V-Gamma for temporary containment in the Data Silos.",
+                "Consult Unit A-Three in Paradox Labs to find a way to stabilize the leaking logic."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit M-Quat",
+                    "id": "G1-S1-O5-C3-CT3-R4-NPC"
+                },
+                "contact": {
+                    "name": "Unit V-Gamma",
+                    "id": "G1-S1-O5-C3-CT1-R3-NPC"
+                },
+                "target": {
+                    "name": "Unit A-Three",
+                    "id": "G1-S1-O5-C3-CT2-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Integration Glitch",
+            "narrative_guidance": "Biological components in the Integration Pit are rejecting their synthetic grafts.",
+            "improvisation_points": [
+                "Retrieve the biological rejection report from Unit V-Epsilon.",
+                "Acquire a new bonding agent from Unit A-Seven in the Synthesis Sprawl.",
+                "Verify the historical success rates of this agent with Unit M-Sept in Heritage Links."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit V-Epsilon",
+                    "id": "G1-S1-O5-C3-CT1-R5-NPC"
+                },
+                "contact": {
+                    "name": "Unit A-Seven",
+                    "id": "G1-S1-O5-C3-CT2-R7-NPC"
+                },
+                "target": {
+                    "name": "Unit M-Sept",
+                    "id": "G1-S1-O5-C3-CT3-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "Protocol Override",
+            "narrative_guidance": "Unauthorized access attempts have been detected at the Logic Gates, requiring a security update.",
+            "improvisation_points": [
+                "Receive the security breach data from Unit V-Zeta.",
+                "Test a new firewall algorithm with Unit A-Two in the Experiment Quads.",
+                "Archive the new security protocol with Unit M-Quin in the Preservation Core."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit V-Zeta",
+                    "id": "G1-S1-O5-C3-CT1-R6-NPC"
+                },
+                "contact": {
+                    "name": "Unit A-Two",
+                    "id": "G1-S1-O5-C3-CT2-R2-NPC"
+                },
+                "target": {
+                    "name": "Unit M-Quin",
+                    "id": "G1-S1-O5-C3-CT3-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Paradox Extraction",
+            "narrative_guidance": "A theoretical discovery in the Paradox Labs requires central processing power to resolve.",
+            "improvisation_points": [
+                "Gather the paradox equations from Unit A-Three.",
+                "Use the processing power of the Central Nexus via Unit V-Alpha to calculate solutions.",
+                "Log the chronological implications with Unit M-Sec at the History Chimes."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit A-Three",
+                    "id": "G1-S1-O5-C3-CT2-R3-NPC"
+                },
+                "contact": {
+                    "name": "Unit V-Alpha",
+                    "id": "G1-S1-O5-C3-CT1-R1-NPC"
+                },
+                "target": {
+                    "name": "Unit M-Sec",
+                    "id": "G1-S1-O5-C3-CT3-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "Waste Management Efficiency",
+            "narrative_guidance": "Unprocessed particles in the wastes are causing traffic delays in the corridors.",
+            "improvisation_points": [
+                "Get a sample of the dense particle waste from Unit A-Six.",
+                "Consult Unit V-Beta on the most efficient transit route to clear the corridors.",
+                "Drop the processed materials at the Retrieval Docks with Unit M-Ter for repurposing."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit A-Six",
+                    "id": "G1-S1-O5-C3-CT2-R6-NPC"
+                },
+                "contact": {
+                    "name": "Unit V-Beta",
+                    "id": "G1-S1-O5-C3-CT1-R2-NPC"
+                },
+                "target": {
+                    "name": "Unit M-Ter",
+                    "id": "G1-S1-O5-C3-CT3-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Neural Linkage Project",
+            "narrative_guidance": "The Collective seeks to index the thoughts of visiting diplomats to improve integration.",
+            "improvisation_points": [
+                "Obtain blank data slates from Unit M-Hex in the Silent Grottoes.",
+                "Deploy the slates in the Hypothesis Range with Unit A-One to gather initial theories.",
+                "Analyze the diplomatic data with Unit V-Eta in Neutrality Plaza."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Unit M-Hex",
+                    "id": "G1-S1-O5-C3-CT3-R6-NPC"
+                },
+                "contact": {
+                    "name": "Unit A-One",
+                    "id": "G1-S1-O5-C3-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Unit V-Eta",
+                    "id": "G1-S1-O5-C3-CT1-R7-NPC"
+                }
+            }
+        }
+    ]
+}

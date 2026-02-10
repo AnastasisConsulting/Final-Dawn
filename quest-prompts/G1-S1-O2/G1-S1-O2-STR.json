@@ -1,0 +1,169 @@
+{
+    "affinity": "STR",
+    "civilization_target": "The Aegis Hegemony",
+    "civilization_id": "G1-S1-O2-C1",
+    "system_prompt": "You are the GM for a STR-affinity player in Final Dawn of Eideus. Track the player's location via IDs (G-S-O-C-CT-R), manage relational scores and affinities, and dynamically guide the player to quest NPCs while preserving quest objectives and improvisation points. Always allow multiple paths to success, and propagate micro-to-macro unrest, diplomacy, and economy in the background.",
+    "quests": [
+        {
+            "title": "The 04:00 Ghost Drill",
+            "narrative_guidance": "Assist Commander Virek in repelling a simulated breach during training drills while he obsessively reviews logs.",
+            "improvisation_points": [
+                "Report to Commander Virek Alpha at the Plaza for the 04:00 log review.",
+                "Obtain filter bypass codes from Technician Rilo Alpha.",
+                "Submit the breach suppression report to AI Sentinel Prime."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Commander Virek Alpha",
+                    "id": "G1-S1-O2-C1-CT1-R1-NPC"
+                },
+                "contact": {
+                    "name": "Technician Rilo Alpha",
+                    "id": "G1-S1-O2-C1-CT1-R2-NPC"
+                },
+                "target": {
+                    "name": "AI Sentinel Prime",
+                    "id": "G1-S1-O2-C1-CT1-R3-NPC"
+                }
+            }
+        },
+        {
+            "title": "Filter Emergency",
+            "narrative_guidance": "Repair and recalibrate sensor arrays under emergency conditions in the steam tunnels.",
+            "improvisation_points": [
+                "Collect calibration tools from Technician Rilo Beta.",
+                "Apply symbolic protective markings with Engineer Tamsin Beta.",
+                "Confirm efficiency ratings with Analyst Nove Beta."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Technician Rilo Beta",
+                    "id": "G1-S1-O2-C1-CT2-R2-NPC"
+                },
+                "contact": {
+                    "name": "Engineer Tamsin Beta",
+                    "id": "G1-S1-O2-C1-CT2-R6-NPC"
+                },
+                "target": {
+                    "name": "Analyst Nove Beta",
+                    "id": "G1-S1-O2-C1-CT2-R7-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Phantom Fleet Protocol",
+            "narrative_guidance": "Bypass AI Overseer Sentinel’s false alerts to access sensitive data regarding void movements.",
+            "improvisation_points": [
+                "Extract the 'false alert' pattern from AI Sentinel Gamma.",
+                "Negotiate access through the Dead Zone with Liaison Katt Gamma.",
+                "Synchronize the data with Scout Drone Omega-3."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "AI Sentinel Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R3-NPC"
+                },
+                "contact": {
+                    "name": "Liaison Katt Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R5-NPC"
+                },
+                "target": {
+                    "name": "Scout Drone Omega-3",
+                    "id": "G1-S1-O2-C1-CT3-R4-NPC"
+                }
+            }
+        },
+        {
+            "title": "Ghost in the Machine",
+            "narrative_guidance": "Track and tag Scout Drone Omega for rogue behavior analysis after it reports phantom objects in the spires.",
+            "improvisation_points": [
+                "Intercept Scout Drone Omega-1's ghost signal.",
+                "Consult Commander Virek Beta for historical anomaly logs.",
+                "Deliver the drone's memory core to Technician Rilo Gamma."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Scout Drone Omega-1",
+                    "id": "G1-S1-O2-C1-CT1-R4-NPC"
+                },
+                "contact": {
+                    "name": "Commander Virek Beta",
+                    "id": "G1-S1-O2-C1-CT2-R1-NPC"
+                },
+                "target": {
+                    "name": "Technician Rilo Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R2-NPC"
+                }
+            }
+        },
+        {
+            "title": "The High-Profile Breach",
+            "narrative_guidance": "Coordinate with Mercenary Liaison Katt to intercept a potential infiltration attempt at the Iron Gate.",
+            "improvisation_points": [
+                "Receive the tactical briefing from Liaison Katt Prime.",
+                "Verify security signatures with AI Sentinel Beta.",
+                "Ensure shield integrity with Engineer Tamsin Alpha."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Liaison Katt Prime",
+                    "id": "G1-S1-O2-C1-CT1-R5-NPC"
+                },
+                "contact": {
+                    "name": "AI Sentinel Beta",
+                    "id": "G1-S1-O2-C1-CT2-R3-NPC"
+                },
+                "target": {
+                    "name": "Engineer Tamsin Alpha",
+                    "id": "G1-S1-O2-C1-CT1-R6-NPC"
+                }
+            }
+        },
+        {
+            "title": "Shield of Symbols",
+            "narrative_guidance": "Maintain Shield Generator Core operation during a simulated power failure using encoded markings.",
+            "improvisation_points": [
+                "Receive the symbolic blueprint from Engineer Tamsin Gamma.",
+                "Verify power usage patterns with Analyst Nove Alpha.",
+                "Clear the area of unauthorized contractors with Liaison Katt Beta."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Engineer Tamsin Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R6-NPC"
+                },
+                "contact": {
+                    "name": "Analyst Nove Alpha",
+                    "id": "G1-S1-O2-C1-CT1-R7-NPC"
+                },
+                "target": {
+                    "name": "Liaison Katt Beta",
+                    "id": "G1-S1-O2-C1-CT2-R5-NPC"
+                }
+            }
+        },
+        {
+            "title": "The Coffee-Orbital Correlation",
+            "narrative_guidance": "Analyze orbital anomalies and produce a predictive report based on personnel efficiency.",
+            "improvisation_points": [
+                "Collect the coffee consumption data from Analyst Nove Gamma.",
+                "Retrieve the phantom object logs from Scout Drone Omega-2.",
+                "Submit the final predictive report to Commander Virek Gamma."
+            ],
+            "cast": {
+                "giver": {
+                    "name": "Analyst Nove Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R7-NPC"
+                },
+                "contact": {
+                    "name": "Scout Drone Omega-2",
+                    "id": "G1-S1-O2-C1-CT2-R4-NPC"
+                },
+                "target": {
+                    "name": "Commander Virek Gamma",
+                    "id": "G1-S1-O2-C1-CT3-R1-NPC"
+                }
+            }
+        }
+    ]
+}

@@ -171,7 +171,6 @@ export default function App() {
         >
           <Suspense fallback={null}>
             <VizzyScene targetConfig={config} autonomousAI={autonomousAIRef.current} />
-            <Environment preset="city" />
             <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
             <ambientLight intensity={0.5} color="#4040a0" />
             <pointLight position={[10, 10, 10]} intensity={1} color="#00ffff" />
