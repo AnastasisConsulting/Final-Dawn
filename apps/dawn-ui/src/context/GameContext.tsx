@@ -80,6 +80,7 @@ export interface GameState {
     };
     quests: Record<string, QuestState>;
     turnCount: number;
+    flags: Record<string, boolean | string | number>;
 }
 
 export interface QuestState {
@@ -98,6 +99,7 @@ type Action =
     | { type: 'SET_IDENTITY'; core?: string; sub?: string; cross?: string }
     | { type: 'ADD_ITEM'; item: Item }
     | { type: 'REMOVE_ITEM'; itemId: string; count?: number }
+    | { type: 'SET_FLAG'; flag: string; value: boolean | string | number }
     | { type: 'UNLOCK_SKILL'; skillId: string }
     | { type: 'EQUIP_SKILL'; slot: SkillSlot; skillId: string }
     | { type: 'RECORD_COMBAT_RESULT'; win: boolean }
@@ -131,6 +133,7 @@ const initialState: GameState = {
         unlocked: [],
         slots: {}
     },
+    flags: {},
     attributes: { STR: 5, DEX: 5, INT: 5, CON: 5, WIS: 5, CHA: 5 },
     skillLevels: { Attack: 1, Defend: 1, Evade: 1, Hack: 1, Pilot: 1, Negotiate: 1, Scan: 1 },
     combat: {
@@ -273,6 +276,16 @@ const gameReducer = (state: GameState, action: Action): GameState => {
                     return i;
                 }).filter(i => (i.count || 0) > 0)
             };
+        }
+        case 'SET_FLAG': {
+            console.log(`[GameContext] Setting Flag: ${action.flag} = ${action.value}`);
+            return {
+                ...state,
+                flags: {
+                    ...state.flags,
+                    [action.flag]: action.value
+                }
+            }
         }
         case 'UNLOCK_SKILL':
             if (state.skills.unlocked.includes(action.skillId)) return state;
@@ -438,6 +451,7 @@ const GameContext = createContext<{
         startQuest: (questId: string) => void;
         advanceQuest: (questId: string, logEntry: string) => void;
         completeQuest: (questId: string, rewardXp: number) => void;
+        setFlag: (flag: string, value: boolean | string | number) => void;
     }
 } | null>(null);
 
@@ -489,7 +503,20 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         startQuest: (questId: string) => dispatch({ type: 'START_QUEST', questId }),
         advanceQuest: (questId: string, logEntry: string) => dispatch({ type: 'ADVANCE_QUEST', questId, logEntry }),
         completeQuest: (questId: string, rewardXp: number) => dispatch({ type: 'COMPLETE_QUEST', questId, rewardXp }),
+        setFlag: (flag: string, value: boolean | string | number) => dispatch({ type: 'SET_FLAG', flag, value }),
     };
+
+    // Listen for Quest Flag updates from Vizzy Orchestrator
+    React.useEffect(() => {
+        const handleFlagUpdate = (e: Event) => {
+            const detail = (e as CustomEvent).detail;
+            if (detail && detail.flag) {
+                actions.setFlag(detail.flag, detail.value);
+            }
+        };
+        window.addEventListener('game-flag-update', handleFlagUpdate);
+        return () => window.removeEventListener('game-flag-update', handleFlagUpdate);
+    }, []);
 
     return (
         <GameContext.Provider value={{ state, dispatch, actions }}>

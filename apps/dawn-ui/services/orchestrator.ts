@@ -123,9 +123,48 @@ export async function runTurn(
                 return false;
             }) || data.outputs[0];
 
+            let responseText = myOutput ? myOutput.markdown : "(No response from entity)";
+            const toolCalls = myOutput?.tool_calls || data.tool_calls || [];
+
+            // --- CLIENT-SIDE PARSER for Text-based Tool Calls ---
+            // Regex to find [toolname(key="val", ...)]
+            const toolRegex = /\[(sc_[a-z_]+)\((.*?)\)\]/g;
+            let match;
+            // Check for matches first to avoid infinite loops if replacement logic is tricky, 
+            // but here we just iterate matches on the original string or modify carefully?
+            // Actually, exec interacts with lastIndex. If we modify string, we might mess up?
+            // Safer to collect matches from original string, then replace all.
+            const matches = Array.from(responseText.matchAll(toolRegex));
+
+            for (const m of matches) {
+                const fullMatch = m[0];
+                const toolName = m[1];
+                const paramsStr = m[2];
+
+                const params: any = {};
+                const paramRegex = /([a-z_]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^,)\s]+))/g;
+                let pMatch;
+                while ((pMatch = paramRegex.exec(paramsStr)) !== null) {
+                    const key = pMatch[1];
+                    const valStr = pMatch[2] || pMatch[3] || pMatch[4];
+                    let val: any = valStr;
+                    if (val === 'true') val = true;
+                    if (val === 'false') val = false;
+                    // Try number?
+                    if (!isNaN(Number(val)) && valStr.trim() !== "") val = Number(val);
+
+                    params[key] = val;
+                }
+
+                toolCalls.push({ name: toolName, params });
+                responseText = responseText.replace(fullMatch, "");
+            }
+
+            responseText = responseText.replace(/\n\s*\n/g, '\n\n').trim();
+
             return {
-                response: myOutput ? myOutput.markdown : "(No response from entity)",
-                tool_calls: myOutput?.tool_calls || data.tool_calls || [] // Extract from output or root
+                response: responseText,
+                tool_calls: toolCalls // Extract from output or root
             };
         }
 

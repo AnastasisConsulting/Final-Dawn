@@ -6,6 +6,7 @@ type PanelId = 'left' | 'center' | 'right';
 interface PanelState {
     color: 'cyan' | 'green' | 'fuchsia';
     stolen: boolean;
+    bonded: boolean; // Easter Egg: Permanently gifted to Vizzy
 }
 
 interface ColorStealingContextType {
@@ -13,13 +14,14 @@ interface ColorStealingContextType {
     isGuilty: boolean;
     stealColor: (panelId: PanelId) => void;
     returnColor: (panelId: PanelId) => void;
+    adoptColor: (panelId: PanelId) => void;
     catchVizzy: () => void;
 }
 
 const DEFAULT_COLORS: Record<PanelId, PanelState> = {
-    left: { color: 'cyan', stolen: false },
-    center: { color: 'green', stolen: false },
-    right: { color: 'fuchsia', stolen: false }
+    left: { color: 'cyan', stolen: false, bonded: false },
+    center: { color: 'green', stolen: false, bonded: false },
+    right: { color: 'fuchsia', stolen: false, bonded: false }
 };
 
 const ColorStealingContext = createContext<ColorStealingContextType | undefined>(undefined);
@@ -130,18 +132,77 @@ export const ColorStealingProvider: React.FC<{ children: React.ReactNode }> = ({
         window.dispatchEvent(new CustomEvent('vizzy-return-color'));
     };
 
-    const catchVizzy = () => {
+    const adoptColor = (panelId: PanelId) => {
+        setPanelColors(prev => {
+            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: false, bonded: true } };
+            localStorage.setItem('panel-colors', JSON.stringify(next));
+            return next;
+        });
+        setIsGuilty(false);
+        localStorage.setItem('vizzy-is-guilty', 'false');
+        window.dispatchEvent(new CustomEvent('vizzy-adopt', { detail: { color: panelColors[panelId].color } }));
+    };
+
+    const catchVizzy = useCallback(() => {
         if (!isGuilty) return;
         const stolenPanel = (Object.keys(panelColors) as PanelId[]).find(p => panelColors[p].stolen);
         if (stolenPanel) {
             returnColor(stolenPanel);
-            // Trigger shame animation
+            // Trigger shame/burp animation
             window.dispatchEvent(new CustomEvent('vizzy-shame'));
+            console.log('You caught Vizzy! He burped the color back.');
         }
-    };
+    }, [isGuilty, panelColors, returnColor]);
+
+    // AI-Triggered Steal/Return
+    useEffect(() => {
+        const handleAiSteal = (e: any) => {
+            const { color, panelId } = e.detail;
+            if (panelId) {
+                stealColor(panelId as PanelId);
+            } else {
+                // If no panelId, find first available
+                const panels: PanelId[] = ['left', 'center', 'right'];
+                const target = panels.find(p => !panelColors[p].stolen);
+                if (target) stealColor(target);
+            }
+        };
+
+        const handleAiReturn = (e: any) => {
+            const { panelId } = e.detail;
+            if (panelId) {
+                returnColor(panelId as PanelId);
+            } else {
+                // Return first stolen
+                const stolenPanel = (Object.keys(panelColors) as PanelId[]).find(p => panelColors[p].stolen);
+                if (stolenPanel) returnColor(stolenPanel);
+            }
+        };
+
+        const handleShame = () => {
+            catchVizzy();
+        };
+
+        const handleAiAdopt = (e: any) => {
+            const { panelId } = e.detail;
+            if (panelId) adoptColor(panelId as PanelId);
+        };
+
+        window.addEventListener('vizzy-logic-steal', handleAiSteal);
+        window.addEventListener('vizzy-logic-return', handleAiReturn);
+        window.addEventListener('vizzy-logic-adopt', handleAiAdopt);
+        window.addEventListener('vizzy-shame', handleShame);
+        return () => {
+            window.removeEventListener('vizzy-logic-steal', handleAiSteal);
+            window.removeEventListener('vizzy-logic-return', handleAiReturn);
+            window.removeEventListener('vizzy-logic-adopt', handleAiAdopt);
+            window.removeEventListener('vizzy-shame', handleShame);
+        };
+    }, [panelColors, stealColor, returnColor, adoptColor, catchVizzy]);
+
 
     return (
-        <ColorStealingContext.Provider value={{ panelColors, isGuilty, stealColor, returnColor, catchVizzy }}>
+        <ColorStealingContext.Provider value={{ panelColors, isGuilty, stealColor, returnColor, adoptColor, catchVizzy }}>
             {children}
         </ColorStealingContext.Provider>
     );

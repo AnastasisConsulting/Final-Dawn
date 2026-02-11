@@ -9,7 +9,6 @@ import { vizzyOrchestrator } from '../../src/services/VizzyOrchestrator';
 import { useKernel } from '../../hooks/useKernel';
 import { getDefaultLocationId } from 'eideus-routers';
 import { getTotalXpForLevel } from 'eideus-xp-system';
-import { JunkScatter } from '../Features/Vizzy/JunkScatter';
 import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 
 import { useGame } from '../../src/context/GameContext';
@@ -325,6 +324,14 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     setIsProcessing(true);
     gameActions.incrementTurn(); // Global Turn Counter
 
+    // VIZZY "DROP IT" CHECK: If the player scolds Vizzy, try to trigger a burp
+    const scoldKeywords = ['drop it', 'bad dog', 'bad vizzy', 'caught you', 'stop stealing', 'burp it up'];
+    if (scoldKeywords.some(kw => userText.toLowerCase().includes(kw))) {
+      console.log('[CenterPanel] Player caught Vizzy stealing!');
+      window.dispatchEvent(new CustomEvent('vizzy-shame'));
+      // We still process the turn, but we've pre-emptively triggered the shame animation
+    }
+
     const activeRecipients = targets.length ? targets : [activeTarget];
 
     try {
@@ -483,6 +490,30 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         id: generateMessageId('sys'),
         sender: 'navbot',
         content: `>> INITIATING LANDING GAME SEQUENCE...`,
+        type: 'text',
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      }]);
+      return;
+    }
+
+    if (text === '/catch' || text === '/drop-it') {
+      window.dispatchEvent(new CustomEvent('vizzy-shame'));
+      setMessages(prev => [...prev, {
+        id: generateMessageId('sys'),
+        sender: 'navbot',
+        content: `>> VIZZY REPRIMANDED. COLOR PURGE INITIATED.`,
+        type: 'text',
+        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+      }]);
+      return;
+    }
+
+    if (text === '/gift') {
+      window.dispatchEvent(new CustomEvent('vizzy-logic-adopt', { detail: { panelId: 'center' } }));
+      setMessages(prev => [...prev, {
+        id: generateMessageId('sys'),
+        sender: 'navbot',
+        content: `>> VIZZY BONDED WITH CENTER PANEL COLOR. PERMANENT ADOPTION REGISTERED.`,
         type: 'text',
         timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
       }]);
@@ -826,58 +857,59 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       if (rawArg) {
         setIsProcessing(true); // Lock UI
 
-        // Parse Address: e.g. "g1.s1.o1.c1.ct1.r1|s1.b1.c1.p1" or "G1-S1-O1"
+        // Parse Address: e.g. "G1-S1-O1-C1-CT1-R1" or "G1-S1-O1-NPC"
         // 1. Strip Temporal Data (everything after |)
         let cleanArg = rawArg.split('|')[0].trim();
 
         // 2. Normalize Separators (replace . and _ with -)
         cleanArg = cleanArg.replace(/[._]/g, '-');
 
+        // Correction: Ensure Object part uses 'O' instead of '0' if it looks like a coordinate
+        cleanArg = cleanArg.replace(/G(\d+)-S(\d+)-0(\d+)/gi, 'G$1-S$2-O$3');
+
         const parts = cleanArg.split('-');
         let targetKey = cleanArg;
-        let subCoords = { c: 0, ct: 0, r: 0 };
-        let hasExplicitSubCoords = false;
+        let subCoords = { c: -1, ct: 0, r: 0 }; // -1 = Not specified
+        let isNpcTarget = false;
 
         // 3. Extract Base Key (Gx-Sx-Ox)
-        // If we have at least 3 parts (G, S, O), the first 3 form the base key.
         if (parts.length >= 3) {
-          // Reconstruct base: G1-S1-O1
-          // Ensure upper case for base key lookup
           targetKey = parts.slice(0, 3).join('-').toUpperCase();
 
-          // 4. Extract Sub-Coordinates (C, CT, R) from remaining parts
+          // 4. Extract Sub-Coordinates (C, CT, R, NPC) from remaining parts
           const remainder = parts.slice(3);
           remainder.forEach(p => {
             const token = p.toUpperCase();
             if (token.startsWith('CT')) {
               const val = parseInt(token.replace('CT', ''), 10);
-              if (!isNaN(val)) { subCoords.ct = Math.max(0, val - 1); hasExplicitSubCoords = true; }
+              if (!isNaN(val)) subCoords.ct = Math.max(0, val - 1);
             } else if (token.startsWith('C')) {
               const val = parseInt(token.replace('C', ''), 10);
-              // Distinguish between City (CT) and Civ (C) if naming is ambiguous, 
-              // but strict token parsing handles it if they assume standard order.
-              // The user spec says "cX.ctX" so "c1" is Civ, "ct1" is City.
-              if (!isNaN(val)) { subCoords.c = Math.max(0, val - 1); hasExplicitSubCoords = true; }
+              if (!isNaN(val)) subCoords.c = Math.max(0, val - 1);
             } else if (token.startsWith('R')) {
               const val = parseInt(token.replace('R', ''), 10);
-              if (!isNaN(val)) { subCoords.r = Math.max(0, val - 1); hasExplicitSubCoords = true; }
+              if (!isNaN(val)) subCoords.r = Math.max(0, val - 1);
+            } else if (token.startsWith('NPC')) {
+              isNpcTarget = true;
             }
           });
         }
 
-        // 5. If no sub-coordinates provided, randomize for immersive landing
-        if (!hasExplicitSubCoords) {
-          subCoords = {
-            c: Math.floor(Math.random() * 3),   // Random civ (0-2)
-            ct: Math.floor(Math.random() * 5),  // Random city (0-4)
-            r: Math.floor(Math.random() * 8),   // Random region/loc (0-7)
-          };
+        // 5. Affinity-Based Entry Rule: If no civilization specified, pick the one matching player's highest affinity
+        if (subCoords.c === -1) {
+          const attrs = gameState.attributes;
+          const affs: Record<string, number> = { 'STR': 0, 'DEX': 1, 'INT': 2 };
+          const sorted = Object.keys(affs).sort((a, b) => (attrs[b] || 0) - (attrs[a] || 0));
+          subCoords.c = affs[sorted[0]];
+          console.log(`[Warp] No Civ specified. Matching highest affinity: ${sorted[0]} (Index ${subCoords.c})`);
         }
+
+        const coordString = `${targetKey}-C${subCoords.c + 1}-CT${subCoords.ct + 1}-R${subCoords.r + 1}${isNpcTarget ? '-NPC' : ''}`;
 
         setMessages(prev => [...prev, {
           id: generateMessageId('sys'),
           sender: 'navbot',
-          content: `>> OVERRIDE: QUANTUM JUMP INITIATED TO [${targetKey.toUpperCase()}-C${subCoords.c + 1}-CT${subCoords.ct + 1}-R${subCoords.r + 1}]`,
+          content: `>> OVERRIDE: QUANTUM JUMP INITIATED TO [${coordString}]`,
           type: 'text',
           timestamp: stamp
         }]);
@@ -904,7 +936,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
             setMessages(prev => [...prev, {
               id: generateMessageId('sys'),
               sender: 'navbot',
-              content: `>> JUMP COMPLETE. LINK ESTABLISHED AT [${targetKey}-C${subCoords.c + 1}-CT${subCoords.ct + 1}-R${subCoords.r + 1}].`,
+              content: `>> JUMP COMPLETE. LINK ESTABLISHED AT [${coordString}].`,
               type: 'text',
               timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
             }]);

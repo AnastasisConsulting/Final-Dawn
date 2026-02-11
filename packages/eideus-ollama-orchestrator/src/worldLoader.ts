@@ -59,6 +59,14 @@ export class WorldLoader {
       });
     });
 
+    // Populate Quest Cache - Crucial for the "Holographic" depth
+    bundle.quest_bindings.forEach((qb: any) => {
+      qb.npcIds.forEach((npcId: string) => {
+        const existing = worldCaches.quests.get(npcId) || [];
+        worldCaches.quests.set(npcId, [...existing, qb]);
+      });
+    });
+
 
 
     const defaultKey = parseSpatialKey("g1.s1.o1.c1.ct1.r1");

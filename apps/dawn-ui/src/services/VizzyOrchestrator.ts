@@ -138,6 +138,20 @@ export class VizzyOrchestrator {
                 this.handleTrace(params);
                 break;
 
+            // UI Interaction (Color Stealing)
+            case 'sc_steal_color':
+                this.handleStealColor(params);
+                break;
+            case 'sc_return_color':
+                this.handleReturnColor(params);
+                break;
+            case 'sc_adopt_color':
+                this.handleAdoptColor(params);
+                break;
+            case 'sc_set_quest_flag':
+                this.handleSetQuestFlag(params);
+                break;
+
             default:
                 console.warn(`[VizzyOrchestrator] Unknown tool: ${name}`);
         }
@@ -295,6 +309,49 @@ export class VizzyOrchestrator {
         const depth = params.depth || 10;
         const recent = this.toolCallHistory.slice(-depth);
         console.log(`[VizzyOrchestrator] 📜 Tool Call History (last ${depth}):`, recent);
+    }
+
+    // ========================================================================
+    // UI Interaction Handlers
+    // ========================================================================
+
+    private handleStealColor(params: { color?: string; target_panel?: string }): void {
+        console.log('[VizzyOrchestrator] 🎨 Vizzy is stealing a color!', params);
+        window.dispatchEvent(new CustomEvent('vizzy-logic-steal', {
+            detail: {
+                color: params.color,
+                panelId: params.target_panel
+            }
+        }));
+    }
+
+    private handleReturnColor(params: { target_panel?: string }): void {
+        console.log('[VizzyOrchestrator] 🎨 Vizzy is returning a color!', params);
+        window.dispatchEvent(new CustomEvent('vizzy-logic-return', {
+            detail: {
+                panelId: params.target_panel
+            }
+        }));
+    }
+
+    private handleAdoptColor(params: { color: string; target_panel: string }): void {
+        console.log('[VizzyOrchestrator] 🎨 Vizzy is adopting a color!', params);
+        window.dispatchEvent(new CustomEvent('vizzy-logic-adopt', {
+            detail: {
+                color: params.color,
+                panelId: params.target_panel
+            }
+        }));
+    }
+
+    private handleSetQuestFlag(params: { flag: string; value: boolean | string }): void {
+        console.log(`[VizzyOrchestrator] 🚩 Setting Quest Flag: ${params.flag} = ${params.value}`);
+        window.dispatchEvent(new CustomEvent('game-flag-update', {
+            detail: {
+                flag: params.flag,
+                value: params.value
+            }
+        }));
     }
 
     // ========================================================================

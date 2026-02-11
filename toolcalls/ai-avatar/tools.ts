@@ -57,7 +57,7 @@ export interface PauseParams {
   actions: ("freeze" | "hold")[];
 }
 
-export interface ResumeParams {}
+export interface ResumeParams { }
 
 export interface FocusParams {
   target: FocusTarget;
@@ -106,11 +106,30 @@ export interface RecallParams {
   top_k?: number;
 }
 
+export interface StealColorParams {
+  color?: "cyan" | "green" | "fuchsia";
+  target_panel?: "left" | "center" | "right";
+}
+
+export interface ReturnColorParams {
+  target_panel?: "left" | "center" | "right";
+}
+
+export interface AdoptColorParams {
+  color: "cyan" | "green" | "fuchsia";
+  target_panel: "left" | "center" | "right";
+}
+
+export interface SetQuestFlagParams {
+  flag: string;
+  value: boolean | string;
+}
+
 /* ============================================================================
    Developer-Tier Tools
 ============================================================================ */
 
-export interface StopParams {}
+export interface StopParams { }
 
 export interface StepParams {
   frames: number;
@@ -143,7 +162,7 @@ export interface AcceptParams {
   tags?: Tag[];
 }
 
-export interface RejectParams {}
+export interface RejectParams { }
 
 export interface QuarantineParams {
   tags?: Tag[];
@@ -197,9 +216,9 @@ export interface TraceParams {
   depth?: number;
 }
 
-export interface PanicParams {}
+export interface PanicParams { }
 
-export interface ResetDevParams {}
+export interface ResetDevParams { }
 
 export interface ResetParams {
   prompt: string;
@@ -253,6 +272,10 @@ export interface SentientCoreToolMap {
   sc_panic: PanicParams;
   sc_reset_dev: ResetDevParams;
   sc_reset: ResetParams;
+  sc_steal_color: StealColorParams;
+  sc_return_color: ReturnColorParams;
+  sc_adopt_color: AdoptColorParams;
+  sc_set_quest_flag: SetQuestFlagParams;
 }
 
 /* ============================================================================
