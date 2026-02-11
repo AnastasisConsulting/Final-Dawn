@@ -51,6 +51,39 @@ export const ColorStealingProvider: React.FC<{ children: React.ReactNode }> = ({
         return () => clearInterval(interval);
     }, []);
 
+    const stealColor = (panelId: PanelId) => {
+        setPanelColors(prev => {
+            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: true } };
+            localStorage.setItem('panel-colors', JSON.stringify(next));
+            return next;
+        });
+        setIsGuilty(true);
+        localStorage.setItem('vizzy-is-guilty', 'true');
+        window.dispatchEvent(new CustomEvent('vizzy-steal', { detail: { color: panelColors[panelId].color } }));
+    };
+
+    const returnColor = (panelId: PanelId) => {
+        setPanelColors(prev => {
+            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: false } };
+            localStorage.setItem('panel-colors', JSON.stringify(next));
+            return next;
+        });
+        setIsGuilty(false);
+        localStorage.setItem('vizzy-is-guilty', 'false');
+        window.dispatchEvent(new CustomEvent('vizzy-return-color'));
+    };
+
+    const adoptColor = (panelId: PanelId) => {
+        setPanelColors(prev => {
+            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: false, bonded: true } };
+            localStorage.setItem('panel-colors', JSON.stringify(next));
+            return next;
+        });
+        setIsGuilty(false);
+        localStorage.setItem('vizzy-is-guilty', 'false');
+        window.dispatchEvent(new CustomEvent('vizzy-adopt', { detail: { color: panelColors[panelId].color } }));
+    };
+
     // Vizzy's Steal Logic
     const attemptSteal = useCallback(() => {
         if (isGuilty) return; // Already guilty
@@ -63,9 +96,40 @@ export const ColorStealingProvider: React.FC<{ children: React.ReactNode }> = ({
         // 30% chance to steal if not guilty
         if (Math.random() < 0.3) {
             const target = available[Math.floor(Math.random() * available.length)];
-            stealColor(target);
+
+            // MAP PANELS TO VIZZY COORDINATES (Approximate)
+            const coords = {
+                left: { x: -0.7, y: 0.2 }, // Sidebar
+                center: { x: 0.0, y: 0.5 }, // Top bar / Main
+                right: { x: 0.7, y: 0.0 } // Lore / Right panel
+            };
+
+            // INITIATE HEIST PROTOCOL
+            // We tell Vizzy to start the cutscene. He will call back 'vizzy-perform-steal' when he sucks the color.
+            window.dispatchEvent(new CustomEvent('vizzy-start-heist', {
+                detail: {
+                    panelId: target,
+                    targetX: coords[target].x,
+                    targetY: coords[target].y
+                }
+            }));
+
+            console.log(`[ColorSteal] Mission Start: Target ${target}`);
         }
     }, [isGuilty, panelColors]);
+
+    // LISTENER: The actual crime
+    useEffect(() => {
+        const handleCommitCrime = (e: any) => {
+            const { panelId } = e.detail;
+            if (panelId) {
+                stealColor(panelId);
+                // Also trigger sound effect?
+            }
+        };
+        window.addEventListener('vizzy-perform-steal', handleCommitCrime);
+        return () => window.removeEventListener('vizzy-perform-steal', handleCommitCrime);
+    }, [stealColor]);
 
     // Offline check on load: if > 6 hours, maybe steal
     useEffect(() => {
@@ -106,42 +170,7 @@ export const ColorStealingProvider: React.FC<{ children: React.ReactNode }> = ({
     }, [isGuilty, panelColors]);
 
 
-    const stealColor = (panelId: PanelId) => {
-        setPanelColors(prev => {
-            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: true } };
-            localStorage.setItem('panel-colors', JSON.stringify(next));
-            return next;
-        });
-        setIsGuilty(true);
-        localStorage.setItem('vizzy-is-guilty', 'true');
 
-        // Notify Vizzy
-        // vizzyOrchestrator.triggerGuiltyState(panelColors[panelId].color); // Need to implement this in Orchestrator
-        window.dispatchEvent(new CustomEvent('vizzy-steal', { detail: { color: panelColors[panelId].color } }));
-    };
-
-    const returnColor = (panelId: PanelId) => {
-        setPanelColors(prev => {
-            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: false } };
-            localStorage.setItem('panel-colors', JSON.stringify(next));
-            return next;
-        });
-        setIsGuilty(false);
-        localStorage.setItem('vizzy-is-guilty', 'false');
-
-        window.dispatchEvent(new CustomEvent('vizzy-return-color'));
-    };
-
-    const adoptColor = (panelId: PanelId) => {
-        setPanelColors(prev => {
-            const next = { ...prev, [panelId]: { ...prev[panelId], stolen: false, bonded: true } };
-            localStorage.setItem('panel-colors', JSON.stringify(next));
-            return next;
-        });
-        setIsGuilty(false);
-        localStorage.setItem('vizzy-is-guilty', 'false');
-        window.dispatchEvent(new CustomEvent('vizzy-adopt', { detail: { color: panelColors[panelId].color } }));
-    };
 
     const catchVizzy = useCallback(() => {
         if (!isGuilty) return;
@@ -157,14 +186,34 @@ export const ColorStealingProvider: React.FC<{ children: React.ReactNode }> = ({
     // AI-Triggered Steal/Return
     useEffect(() => {
         const handleAiSteal = (e: any) => {
-            const { color, panelId } = e.detail;
-            if (panelId) {
-                stealColor(panelId as PanelId);
-            } else {
-                // If no panelId, find first available
+            // Pick a target if none provided
+            let target = e.detail.panelId;
+            if (!target) {
                 const panels: PanelId[] = ['left', 'center', 'right'];
-                const target = panels.find(p => !panelColors[p].stolen);
-                if (target) stealColor(target);
+                const available = panels.filter(p => !panelColors[p].stolen);
+                if (available.length > 0) {
+                    target = available[Math.floor(Math.random() * available.length)];
+                }
+            }
+
+            if (target) {
+                // START HEIST CINEMATIC (Do not steal immediately)
+                const coords = {
+                    left: { x: -0.7, y: 0.2 },
+                    center: { x: 0.0, y: 0.5 },
+                    right: { x: 0.7, y: 0.0 }
+                };
+                // @ts-ignore
+                const pos = coords[target];
+
+                window.dispatchEvent(new CustomEvent('vizzy-start-heist', {
+                    detail: {
+                        panelId: target,
+                        targetX: pos.x,
+                        targetY: pos.y
+                    }
+                }));
+                console.log(`[ColorSteal] Manual/AI Trigger Heist on ${target}`);
             }
         };
 

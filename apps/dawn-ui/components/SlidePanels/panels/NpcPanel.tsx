@@ -1,6 +1,6 @@
 // Final_Dawn_of_Eideus/apps/dawn-ui/components/SlidePanels/panels/NpcPanel.tsx
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useKernel } from '../../../hooks/useKernel';
 import { useGame } from '../../../src/context/GameContext';
 import { runTurn } from '../../../services/orchestrator';
@@ -17,6 +17,13 @@ type Npc = {
 };
 
 type ChatMsg = { role: 'user' | 'npc'; text: string };
+type EditableCard = CharacterCard & Partial<Npc> & {
+  title?: string;
+  traits?: string[];
+};
+
+const CHAT_STORAGE_KEY = 'eideus-npc-chat';
+const CARD_STORAGE_KEY = 'eideus-npc-cards';
 
 const NPCS: Npc[] = [
   {
@@ -65,13 +72,54 @@ const NPCS: Npc[] = [
  * Character Card Overlay Sub-component
  */
 const CharacterCardOverlay: React.FC<{
-  character: CharacterCard | any;
+  character: EditableCard;
   onClose: () => void;
   avatarUrl?: string;
   onAvatarClick: () => void;
   relationships: any;
-}> = ({ character, onClose, avatarUrl, onAvatarClick, relationships }) => {
+  onSave: (id: string, updates: Partial<EditableCard>) => void;
+}> = ({ character, onClose, avatarUrl, onAvatarClick, relationships, onSave }) => {
   const isMain = ['lyra', 'vizzy', 'navbot', 'gm'].includes(character.id);
+  const [isEditing, setIsEditing] = useState(false);
+  const [draft, setDraft] = useState({
+    name: character.name || '',
+    role: character.role || character.title || '',
+    faction: character.faction || '',
+    description: character.description || '',
+    backstory: character.backstory || '',
+    bio: character.bio || '',
+    personality: Array.isArray(character.personality) ? character.personality.join(', ') : ''
+  });
+
+  useEffect(() => {
+    setDraft({
+      name: character.name || '',
+      role: character.role || character.title || '',
+      faction: character.faction || '',
+      description: character.description || '',
+      backstory: character.backstory || '',
+      bio: character.bio || '',
+      personality: Array.isArray(character.personality) ? character.personality.join(', ') : ''
+    });
+    setIsEditing(false);
+  }, [character.id]);
+
+  const handleSave = () => {
+    const updates: Partial<EditableCard> = {
+      name: draft.name.trim() || character.name,
+      role: draft.role.trim() || character.role,
+      faction: draft.faction.trim() || character.faction,
+      description: draft.description.trim() || character.description,
+      backstory: draft.backstory.trim() || character.backstory,
+      bio: draft.bio.trim() || character.bio,
+      personality: draft.personality.trim()
+        ? draft.personality.split(',').map(p => p.trim()).filter(Boolean)
+        : []
+    };
+    if (!updates.faction) delete updates.faction;
+    onSave(character.id, updates);
+    setIsEditing(false);
+  };
 
   return (
     <div className="absolute inset-0 z-50 bg-[#0a0a0c] flex flex-col border border-purple-500/40 rounded-lg overflow-hidden animate-in fade-in slide-in-from-right-8 duration-300 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
@@ -80,13 +128,31 @@ const CharacterCardOverlay: React.FC<{
           <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
           <h3 className="text-sm font-bold text-purple-100 tracking-[0.3em] uppercase">Data_Node // {character.name}</h3>
         </div>
-        <button
-          onClick={onClose}
-          className="text-neutral-500 hover:text-red-400 hover:bg-neutral-800/50 p-1.5 rounded-md transition-all group"
-          title="Close Data Node"
-        >
-          <X size={18} />
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsEditing((prev) => !prev)}
+            className="text-neutral-400 hover:text-purple-200 hover:bg-neutral-800/50 px-2 py-1 rounded-md text-[10px] uppercase tracking-widest transition-all"
+            title="Edit Character Card"
+          >
+            {isEditing ? 'Cancel' : 'Edit'}
+          </button>
+          {isEditing && (
+            <button
+              onClick={handleSave}
+              className="text-green-300 hover:text-green-200 hover:bg-green-900/30 px-2 py-1 rounded-md text-[10px] uppercase tracking-widest transition-all"
+              title="Save Character Card"
+            >
+              Save
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="text-neutral-500 hover:text-red-400 hover:bg-neutral-800/50 p-1.5 rounded-md transition-all group"
+            title="Close Data Node"
+          >
+            <X size={18} />
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 flex overflow-hidden">
@@ -172,6 +238,67 @@ const CharacterCardOverlay: React.FC<{
         {/* Right Column: Backstory & Bio */}
         <div className="flex-1 p-10 overflow-y-auto custom-scrollbar bg-gradient-to-b from-black/20 to-transparent">
           <div className="max-w-xl">
+            {isEditing && (
+              <div className="mb-8 p-4 border border-purple-500/20 bg-purple-950/20 rounded space-y-3 text-xs font-mono">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-purple-300">Edit Card</div>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Name</span>
+                  <input
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1"
+                    value={draft.name}
+                    onChange={(e) => setDraft(prev => ({ ...prev, name: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Role / Title</span>
+                  <input
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1"
+                    value={draft.role}
+                    onChange={(e) => setDraft(prev => ({ ...prev, role: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Faction</span>
+                  <input
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1"
+                    value={draft.faction}
+                    onChange={(e) => setDraft(prev => ({ ...prev, faction: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Short Description</span>
+                  <input
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1"
+                    value={draft.description}
+                    onChange={(e) => setDraft(prev => ({ ...prev, description: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Backstory</span>
+                  <textarea
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1 min-h-[80px]"
+                    value={draft.backstory}
+                    onChange={(e) => setDraft(prev => ({ ...prev, backstory: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Bio</span>
+                  <textarea
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1 min-h-[80px]"
+                    value={draft.bio}
+                    onChange={(e) => setDraft(prev => ({ ...prev, bio: e.target.value }))}
+                  />
+                </label>
+                <label className="flex flex-col gap-1 text-neutral-300">
+                  <span className="text-[9px] uppercase tracking-widest text-neutral-500">Personality (comma-separated)</span>
+                  <input
+                    className="bg-black/40 border border-purple-900/50 text-purple-100 px-2 py-1"
+                    value={draft.personality}
+                    onChange={(e) => setDraft(prev => ({ ...prev, personality: e.target.value }))}
+                  />
+                </label>
+              </div>
+            )}
             <div className="relative mb-10">
               <div className="absolute -left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500/60 to-transparent" />
               <div className="font-mono text-xs text-purple-300/80 leading-relaxed uppercase tracking-wide">
@@ -203,39 +330,67 @@ const CharacterCardOverlay: React.FC<{
 export const NpcPanel: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(MAIN_CHARACTERS[0].id);
   const [input, setInput] = useState('');
-  const [history, setHistory] = useState<Record<string, ChatMsg[]>>(() => ({}));
+  const [history, setHistory] = useState<Record<string, ChatMsg[]>>(() => {
+    try {
+      const raw = localStorage.getItem(CHAT_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
 
   // Custom states for avatars and cards
   const [selectedCharCardId, setSelectedCharCardId] = useState<string | null>(null);
+  const [customCards, setCustomCards] = useState<Record<string, Partial<EditableCard>>>(() => {
+    try {
+      const raw = localStorage.getItem(CARD_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
   const [customAvatars, setCustomAvatars] = useState<Record<string, string>>(() => {
     const saved = localStorage.getItem('eideus-custom-avatars');
     return saved ? JSON.parse(saved) : {};
   });
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
-  const activeNpc = useMemo(() => {
-    const mainWrapped = MAIN_CHARACTERS.map(c => ({
+  useEffect(() => {
+    localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(history));
+  }, [history]);
+
+  useEffect(() => {
+    localStorage.setItem(CARD_STORAGE_KEY, JSON.stringify(customCards));
+  }, [customCards]);
+
+  const applyCardOverrides = <T extends { id: string }>(card: T): T & Partial<EditableCard> => {
+    const override = customCards[card.id] || {};
+    return { ...card, ...override };
+  };
+
+  const mainCharacters = useMemo(() => {
+    return MAIN_CHARACTERS.map(c => ({
       ...c,
       faction: 'System/Main',
       disposition: 'friendly' as const,
       description: c.role,
       personality: []
-    }));
-    const all = [...mainWrapped, ...NPCS];
+    })).map(applyCardOverrides);
+  }, [customCards]);
+
+  const localNpcs = useMemo(() => {
+    return NPCS.map(applyCardOverrides);
+  }, [customCards]);
+
+  const activeNpc = useMemo(() => {
+    const all = [...mainCharacters, ...localNpcs];
     return all.find((n) => n.id === activeId) ?? null;
-  }, [activeId]);
+  }, [activeId, mainCharacters, localNpcs]);
 
   const selectedCard = useMemo(() => {
-    const mainWrapped = MAIN_CHARACTERS.map(c => ({
-      ...c,
-      faction: 'System/Main',
-      disposition: 'friendly' as const,
-      description: c.role,
-      personality: []
-    }));
-    const all = [...mainWrapped, ...NPCS];
+    const all = [...mainCharacters, ...localNpcs];
     return all.find(n => n.id === selectedCharCardId) || null;
-  }, [selectedCharCardId]);
+  }, [selectedCharCardId, mainCharacters, localNpcs]);
 
   const chat = useMemo(() => (activeId ? history[activeId] ?? [] : []), [activeId, history]);
 
@@ -284,7 +439,8 @@ export const NpcPanel: React.FC = () => {
         civIndex: state.navContext.civIndex ?? 0,
         cityIndex: state.navContext.cityIndex ?? 0,
         locIndex: state.navContext.locIndex ?? 0,
-        llmConfig: gameState.settings.llm
+        llmConfig: gameState.settings.llm,
+        flags: gameState.flags
       };
 
       const recipientName = getRecipientName(activeNpc.id);
@@ -330,6 +486,13 @@ export const NpcPanel: React.FC = () => {
     fileInputRef.current?.click();
   };
 
+  const handleCardSave = (id: string, updates: Partial<EditableCard>) => {
+    setCustomCards(prev => ({
+      ...prev,
+      [id]: { ...(prev[id] || {}), ...updates }
+    }));
+  };
+
   return (
     <div className="p-4 h-full flex flex-col bg-gray-900/40">
       <div className="flex items-start justify-between gap-4 mb-4">
@@ -354,7 +517,7 @@ export const NpcPanel: React.FC = () => {
           <div className="mb-6">
             <div className="font-bold text-purple-400 text-[10px] uppercase tracking-[0.25em] mb-4 border-b border-purple-500/20 pb-1">Primary_AI_Modules</div>
             <div className="grid grid-cols-2 gap-3">
-              {MAIN_CHARACTERS.map((char) => {
+              {mainCharacters.map((char) => {
                 const active = char.id === activeId;
                 const rel = gameState.relationships[char.id as keyof typeof gameState.relationships] || 50;
                 const avatar = customAvatars[char.id];
@@ -396,7 +559,7 @@ export const NpcPanel: React.FC = () => {
 
           <div className="font-bold text-cyan-400 text-[10px] uppercase tracking-[0.25em] mb-2 border-b border-cyan-500/20 pb-1">Local_Node_Contacts</div>
           <ul className="space-y-2">
-            {NPCS.map((npc) => {
+            {localNpcs.map((npc) => {
               const active = npc.id === activeId;
               const avatar = customAvatars[npc.id];
               const disp =
@@ -445,6 +608,7 @@ export const NpcPanel: React.FC = () => {
               avatarUrl={customAvatars[selectedCard.id]}
               onAvatarClick={() => openAvatarBrowser(selectedCard.id)}
               relationships={gameState.relationships}
+              onSave={handleCardSave}
             />
           )}
 

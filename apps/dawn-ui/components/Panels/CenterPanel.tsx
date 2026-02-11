@@ -13,6 +13,8 @@ import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 
 import { useGame } from '../../src/context/GameContext';
 import { QuestManager } from '../../src/services/QuestManager';
+import { DevTerminal } from '../Features/Dev/DevTerminal';
+import { devLog, devLogClear, devLogEnable, devLogTimer } from '../../src/services/devLog';
 
 const getDefaultAddress = () => {
   return getDefaultLocationId();
@@ -57,7 +59,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       sender: 'navbot',
       content: 'System initialized. Neural link established. Waiting for command.',
       type: 'text',
-      timestamp: '08:00:01'
+      timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
     }
   ]);
 
@@ -99,6 +101,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
   const travelCountRef = useRef(0);
   const objectKeyRef = useRef<string>(getDefaultAddress());
   const [selectedTargets, setSelectedTargets] = useState<ChatTarget[]>(['navbot']);
+  const [devTerminalOpen, setDevTerminalOpen] = useState(false);
 
   // Tying session ID to a ref to avoid closure staleness during rapid interactions
   const sessionIdRef = useRef<string | undefined>(undefined);
@@ -222,6 +225,12 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       gameActions.incrementTurn(); // Global Turn Counter
 
       console.log(`[AutoPilot] Deciding move ${autoPilot.turnCount + 1}/${autoPilot.maxTurns || '∞'}... Boldness: ${autoPilot.boldness}`);
+      devLog("info", "beta.decide", "deciding move", {
+        turn: autoPilot.turnCount + 1,
+        maxTurns: autoPilot.maxTurns || "8",
+        boldness: autoPilot.boldness,
+        location: objectKeyRef.current,
+      });
 
       // Quest Logic
       // Construct a Quest ID based on location and affinity (assuming 1 quest per loc/affinity for now)
@@ -244,68 +253,29 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         objective = `NEW MISSION AVAILABLE: ${qData.title}. Seek out ${qData.cast.giver.name}.`;
         targetParams = `TARGET NPC: ${qData.cast.giver.name} (ID: ${qData.cast.giver.id})`;
       }
+      const pickAction = () => {
+        // Deterministic, fast planner (no extra LLM call). Keeps beta-test focused on the GM pipeline.
+        const cleanObjective = String(objective || "").replace(/<[^>]*>/g, "").trim();
+        const tgt = qData && activeQuest && activeQuest.status === 'active'
+          ? QuestManager.getTargetDetails(qData, activeQuest.stepIndex)
+          : qData?.cast?.giver;
 
-      // Boldness behavior injection
-      const boldnessDirective = autoPilot.boldness < 30
-        ? 'Be CAUTIOUS. Avoid risky actions. Prefer safe, defensive choices.'
-        : autoPilot.boldness > 70
-          ? 'Be BOLD! Take risks. Push boundaries. Pursue aggressive exploration.'
-          : 'Balance risk and reward. Act thoughtfully but don\'t shy from opportunity.';
-
-      const prompt = `
-        You are an autonomous player agent speed-running Eideus Dawn.
-        Role: Level 1 ${autoPilot.class} [${autoPilot.affinity}].
-        Goal: COMPLETE QUESTS. ACQUIRE LOOT. PROGRESS.
-
-        Current Location: ${objectKeyRef.current}
-        Current Objective: ${objective}
-        ${targetParams}
-        
-        Boldness Setting: ${autoPilot.boldness}/100
-
-        Last Message:
-        "${lastMsg.sender.toUpperCase()}: ${lastMsg.content.replace(/<[^>]*>/g, '')}"
-
-        INSTRUCTIONS:
-        1. DECIDE an immediate action based on the last message.
-        2. PRIORITIZE the Current Objective and Target NPC.
-        3. IF the objective is to find a specific NPC, try to "scan for" or "call out to" them.
-        4. IF a quest is offered, ACCEPT IT.
-        5. IF in combat, ATTACK or USE SKILL.
-        6. IF stuck or bored, warp to a neighbor system using "/warp G1-S1-O[1-7]".
-        7. DO NOT be passive. DO NOT "reflect" or "think". ACT.
-        
-        OUTPUT FORMAT:
-        - Output ONLY the action string.
-        - Examples: "I approach Overseer Prime and ask about the anomaly.", "I accept the job.", "I detailed scan the area.", "/warp G1-S1-O2"
-        - NO Markdown. NO explanations.
-      `;
-
-      try {
-        // Try to fetch from the configured model, fallback to a 4B-friendly one if needed
-        const modelToUse = 'llama3'; // User specified 4B, but llama3 is their current target.
-
-        const res = await fetch('http://localhost:11434/api/generate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: modelToUse,
-            prompt,
-            stream: false,
-            options: { temperature: 0.8, top_p: 0.9, num_predict: 64 }
-          })
-        });
-        const data = await res.json();
-        const action = data.response.trim();
-
-        if (action && !isProcessing) {
-          console.log('[AutoPilot] Action:', action);
-          void executeInput(action, true);
+        if (tgt?.name && qData?.title) {
+          return `I call out to ${tgt.name}, asking about ${qData.title}.`;
         }
-      } catch (err) {
-        console.error('[AutoPilot] Connection failed:', err);
-      }
-    };
+
+        if (cleanObjective.toLowerCase().includes("scan")) return "I rescan the area for any readable signage, terminals, or names.";
+        if (autoPilot.boldness > 70) return "I push deeper into the loudest, most restricted-looking corridor and see who stops me.";
+        if (autoPilot.boldness < 30) return "I keep my distance and quietly observe the nearest group, listening for useful details.";
+        return "I look around for someone in charge and ask what's going on here.";
+      };
+
+      const action = pickAction();
+      devLog("info", "beta.action", "action selected", { objective, targetParams, action });
+      if (action && !isProcessing) {
+        console.log('[AutoPilot] Action:', action);
+        void executeInput(action, true);
+      }};
 
     runBot();
   }, [autoPilot.enabled, isProcessing, messages, lastAutoAction, autoPilot.class, autoPilot.affinity, autoPilot.maxTurns, autoPilot.turnCount]);
@@ -332,7 +302,22 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       // We still process the turn, but we've pre-emptively triggered the shame animation
     }
 
-    const activeRecipients = targets.length ? targets : [activeTarget];
+    const inferRecipients = (text: string, requested: ChatTarget[]) => {
+      const t = text.toLowerCase();
+      const out: string[] = ["gm"];
+      const wants = new Set((requested.length ? requested : [activeTarget]).map((x) => String(x).toLowerCase()));
+
+      const named = (name: string) => t.includes(name.toLowerCase()) || t.startsWith(`/${name.toLowerCase()}`) || t.includes(`@${name.toLowerCase()}`);
+
+      if (wants.has("lyra") && named("lyra")) out.push("lyra");
+      if ((wants.has("navbot") || wants.has("nav")) && (named("navbot") || named("nav"))) out.push("nav");
+      if (wants.has("vizzy") && named("vizzy")) out.push("vizzy");
+
+      return out;
+    };
+
+    // Only request character voices if the player directly names/addresses them.
+    const activeRecipients = inferRecipients(userText, targets);
 
     try {
       const ensureSession = async () => {
@@ -361,40 +346,85 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
 
       const resolvedObjectKey = state.address.full || objectKeyRef.current;
 
-      const ctx = {
-        objectKey: resolvedObjectKey,
-        travelCount: travelCountRef.current,
-        quests: [],
-        questStatuses: {},
-        saga: 'default',
-        book: 'Act1',
-        chapter: 'C1',
-        civId: state.navContext.civId,
-        civIndex: state.navContext.civIndex ?? 0,
-        cityId: state.navContext.cityId,
-        locId: state.navContext.locId,
-        cityIndex: state.navContext.cityIndex ?? 0,
-        locIndex: state.navContext.locIndex ?? 0,
-        sessionId: ensuredSessionId,
+       const ctx = {
+         objectKey: resolvedObjectKey,
+         travelCount: travelCountRef.current,
+         quests: [],
+         questStatuses: {},
+         saga: 'default',
+         book: 'Act1',
+         chapter: 'C1',
+         civId: state.navContext.civId,
+         civIndex: state.navContext.civIndex ?? 0,
+         cityId: state.navContext.cityId,
+         locId: state.navContext.locId,
+         cityIndex: state.navContext.cityIndex ?? 0,
+         locIndex: state.navContext.locIndex ?? 0,
+         sessionId: ensuredSessionId,
+         llmConfig: gameState.settings.llm,
+         flags: gameState.flags
+       };
+
+       const turnTimer = devLogTimer("turn", "runTurn", {
+         sessionId: ensuredSessionId,
+         objectKey: resolvedObjectKey,
+         recipients: activeRecipients,
+         llmConfig: gameState.settings.llm,
+       });
+       const out = await runTurn(userText, activeRecipients, ctx);
+       turnTimer.end({ hasOutputs: !!out.outputs, toolCalls: out.tool_calls?.length ?? 0 });
+       const resTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+      const outputs = out.outputs && out.outputs.length
+        ? out.outputs
+        : [{ id: activeRecipients[0], label: activeRecipients[0], markdown: out.response || '(no response)' }];
+
+      let suggestionsBlock = '';
+      const nextMessages: Message[] = [];
+
+      const mapSender = (idOrLabel: string | undefined): Message['sender'] | null => {
+        const key = (idOrLabel || '').toLowerCase();
+        if (key === 'nav' || key === 'navbot') return 'navbot';
+        if (key === 'lyra') return 'lyra';
+        if (key === 'vizzy') return 'vizzy';
+        if (key === 'gm') return 'gm';
+        return null;
       };
 
-      for (const recipient of activeRecipients) {
-        const out = await runTurn(userText, recipient, ctx);
-        const resTime = new Date().toLocaleTimeString('en-US', { hour12: false });
-        const aiResponse: Message = {
-          id: generateMessageId(recipient),
-          sender: recipient,
+      for (const o of outputs) {
+        const key = (o.id || o.label || '').toLowerCase();
+        if (key === 'suggestions') {
+          suggestionsBlock = o.markdown || '';
+          continue;
+        }
+        const sender = mapSender(o.id || o.label);
+        if (!sender) continue;
+        nextMessages.push({
+          id: generateMessageId(sender),
+          sender,
           type: 'text',
           timestamp: resTime,
-          content: out.response || '(no response)',
-        };
-        setMessages(prev => [...prev, aiResponse]);
+          content: o.markdown || '(no response)'
+        });
+      }
 
-        // Process Vizzy tool calls if present
-        if (out.tool_calls && out.tool_calls.length > 0) {
-          console.log('[CenterPanel] Processing', out.tool_calls.length, 'tool calls');
-          vizzyOrchestrator.processToolCalls(out.tool_calls);
+      if (suggestionsBlock) {
+        const gmIdx = nextMessages.findIndex(m => m.sender === 'gm');
+        if (gmIdx !== -1) {
+          nextMessages[gmIdx] = {
+            ...nextMessages[gmIdx],
+            content: `${nextMessages[gmIdx].content}\n\n=== SUGGESTIONS ===\n${suggestionsBlock}`
+          };
         }
+      }
+
+      if (nextMessages.length) {
+        setMessages(prev => [...prev, ...nextMessages]);
+      }
+
+      if (out.tool_calls && out.tool_calls.length > 0) {
+        console.log('[CenterPanel] Processing', out.tool_calls.length, 'tool calls');
+        vizzyOrchestrator.processToolCalls(out.tool_calls);
       }
 
       // Trigger Vizzy procedural animation update
@@ -409,6 +439,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
       travelCountRef.current += 1;
     } catch (err: any) {
       const resTime = new Date().toLocaleTimeString('en-US', { hour12: false });
+      devLog("error", "turn", "runTurn failed", { err: String(err?.message || err) });
       setMessages(prev => [
         ...prev,
         {
@@ -427,10 +458,13 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
   const executeInput = async (text: string, isAutoPilotGenerated: boolean = false) => {
     if (!text.trim()) return;
 
+    devLog("info", "center.executeInput", "input", { text, isAutoPilotGenerated });
+
     // SAFEGUARD: Block AutoPilot from issuing meta-commands that could cause session resets
     const blockedPrefixes = ['/beta-test', '/stop-bot', '/warp', '/tp', '/land', '/export'];
     if (isAutoPilotGenerated && blockedPrefixes.some(prefix => text.toLowerCase().startsWith(prefix))) {
       console.warn(`[CenterPanel] AutoPilot blocked from issuing meta-command: ${text}`);
+      devLog("warn", "center.autopilot", "blocked meta-command", { text });
       return;
     }
 
@@ -443,6 +477,10 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
         const limitArg = parts[3];
         const maxTurns = limitArg ? parseInt(limitArg, 10) : 0; // 0 = infinite
 
+        devLogEnable(true);
+        setDevTerminalOpen(true);
+        devLog("info", "beta", "initiated", { cls, aff, maxTurns });
+
         setAutoPilot({ enabled: true, class: cls, affinity: aff, questsCompleted: 0, turnCount: 0, maxTurns, boldness: 50 });
         setMessages(prev => [...prev, {
           id: generateMessageId('sys'),
@@ -454,6 +492,28 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
 
         // Trigger initial Warp
         await executeInput('/warp G1-S1-O7');
+        return;
+      }
+    }
+
+    if (text.startsWith('/devlog')) {
+      const arg = text.replace('/devlog', '').trim().toLowerCase();
+      if (!arg || arg === 'toggle') {
+        devLogEnable(true);
+        setDevTerminalOpen((p) => !p);
+        return;
+      }
+      if (arg === 'on') {
+        devLogEnable(true);
+        setDevTerminalOpen(true);
+        return;
+      }
+      if (arg === 'off') {
+        setDevTerminalOpen(false);
+        return;
+      }
+      if (arg === 'clear') {
+        devLogClear();
         return;
       }
     }
@@ -1014,6 +1074,7 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({ activeTarget, onTarget
     <div className={`flex flex-col h-full max-h-full overflow-hidden gap-[1px] relative bg-neutral-950/20 p-0.5 ${isWarping ? 'scale-[0.05] opacity-0 blur-2xl translate-z-[-1000px]' : ''}`}
       style={{ transformStyle: 'preserve-3d' }}
     >
+      <DevTerminal open={devTerminalOpen} onClose={() => setDevTerminalOpen(false)} />
       {/* Auto-Pilot Indicator with Boldness Control */}
       {autoPilot.enabled && (
         <div className="absolute top-4 right-4 z-50 bg-red-900/80 border border-red-500 text-red-200 px-4 py-2 rounded font-mono text-xs animate-pulse flex flex-col gap-2">

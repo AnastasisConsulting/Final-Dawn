@@ -44,11 +44,20 @@ export class SessionManager {
 
     const loaded = await persistence.loadState(id);
     if (loaded) {
+      // JSON persistence can resurrect Maps via reviver, but older saves may still have plain objects.
+      // Ensure cache surfaces are Maps so TurnEngine can use .get/.entries safely.
+      const coerceMap = (v: any) => {
+        if (v instanceof Map) return v as Map<string, any>;
+        if (v && typeof v === "object") return new Map<string, any>(Object.entries(v));
+        return new Map<string, any>();
+      };
+
+      loaded.caches = loaded.caches || ({} as any);
+      (loaded.caches as any).lore = coerceMap((loaded.caches as any).lore);
+      (loaded.caches as any).quests = coerceMap((loaded.caches as any).quests);
+      (loaded.caches as any).cast = coerceMap((loaded.caches as any).cast);
+
       this.sessions.set(id, loaded);
-      // Rehydrate Maps (JSON logic usually kills Maps, we might need a reviver, 
-      // but for now we assume caches are transient or re-fetched. 
-      // Actually, WorldLoader caches need to be rebuilt. 
-      // For MVP, we'll let them re-init empty or rely on the Orchestrator to refill.)
       return loaded;
     }
     return undefined;

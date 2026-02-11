@@ -63,9 +63,88 @@ const App: React.FC = () => {
     timersRef.current = [];
   };
 
+  const [laserActive, setLaserActive] = useState(false);
+  const [laserPos, setLaserPos] = useState({ x: 0, y: 0 });
+  const scrollHistory = useRef<number[]>([]);
+  const lastScrollTime = useRef<number>(0);
+
   useEffect(() => {
     return () => clearTimers();
   }, []);
+
+  // LASER POINTER EASTER EGG
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      // Ignore if interacting with UI inputs
+      const activeTag = (document.activeElement as HTMLElement)?.tagName;
+      if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') return;
+
+      const now = Date.now();
+      // Reset sequence if more than 0.5s passes between scrolls (must be rapid)
+      if (now - lastScrollTime.current > 500) {
+        scrollHistory.current = [];
+      }
+      lastScrollTime.current = now;
+
+      const dir = Math.sign(e.deltaY);
+
+      // Simple Logic: Only care if direction CHANGED from last input
+      const lastDir = scrollHistory.current[scrollHistory.current.length - 1];
+      if (dir !== 0 && dir !== lastDir) {
+        scrollHistory.current.push(dir);
+      }
+
+      // Reduced Requirement: Just 5 alternations (Up-Down-Up-Down-Up)
+      if (scrollHistory.current.length >= 5) {
+        console.log("LASER MODE ACTIVATED!");
+        setLaserActive(true);
+        scrollHistory.current = [];
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel);
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  // Handle Laser Interaction
+  useEffect(() => {
+    if (!laserActive) {
+      window.dispatchEvent(new CustomEvent('vizzy-laser-update', { detail: { active: false, x: 0, y: 0 } }));
+      // Remove global cursor override if it exists
+      const existingStyle = document.getElementById('laser-cursor-style');
+      if (existingStyle) existingStyle.remove();
+      return;
+    }
+
+    // FORCE HIDE CURSOR GLOBALLY
+    // We inject a style tag because specific elements (buttons/inputs) will override body cursor
+    const style = document.createElement('style');
+    style.id = 'laser-cursor-style';
+    style.innerHTML = `* { cursor: none !important; }`;
+    document.head.appendChild(style);
+
+    const handleMove = (e: MouseEvent) => {
+      setLaserPos({ x: e.clientX, y: e.clientY });
+      // Normalize for Vizzy (-1 to 1)
+      const normX = (e.clientX / window.innerWidth) * 2 - 1;
+      const normY = -(e.clientY / window.innerHeight) * 2 + 1;
+
+      window.dispatchEvent(new CustomEvent('vizzy-laser-update', { detail: { active: true, x: normX, y: normY } }));
+    };
+
+    const handleExit = () => setLaserActive(false);
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mousedown', handleExit);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') handleExit(); });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mousedown', handleExit);
+      const existingStyle = document.getElementById('laser-cursor-style');
+      if (existingStyle) existingStyle.remove();
+    };
+  }, [laserActive]);
 
   const loadWorldAssets = useCallback((addressKey: string, galaxy: string, system: string, object: string) => {
     void loadLocationFromAddress(addressKey);
@@ -275,8 +354,20 @@ const App: React.FC = () => {
       onClickCapture={handleGlobalClick}
       style={{ perspective: '2000px' }}
     >
-      {/* Background Layer: Stars stretch toward edges during 'warping' */}
       <Starfield flightState={flightState} />
+
+      {/* LASER POINTER DOT */}
+      {laserActive && (
+        <div
+          className="fixed w-3 h-3 rounded-full bg-red-500 shadow-[0_0_15px_4px_rgba(255,0,0,0.9)] z-[99999] pointer-events-none"
+          style={{
+            left: laserPos.x,
+            top: laserPos.y,
+            transform: 'translate(-50%, -50%)',
+            boxShadow: '0 0 10px 2px rgba(255, 50, 50, 0.8), 0 0 20px 10px rgba(255, 0, 0, 0.4)'
+          }}
+        />
+      )}
 
       {/* VIZZY LAYER: Procedural 3D Object - Full screen behind UI panels, in front of starfield (z-5) */}
       <div className="absolute inset-0 z-[5] pointer-events-none">
@@ -458,6 +549,7 @@ const DevOverlay: React.FC<{ show: boolean }> = ({ show }) => {
         {/* MAIN MENU */}
         {betaStage === 0 && !isCustomInput && (
           <div className="grid grid-cols-2 gap-2">
+            <DevButton label="TEST HEIST (VISUAL)" onClick={() => window.dispatchEvent(new CustomEvent('vizzy-logic-steal', { detail: {} }))} color="red" />
             <DevButton label="BETA TEST WIZARD" onClick={() => setBetaStage(1)} color="yellow" />
             <DevButton label="STOP BOT" onClick={() => execute('/stop-bot')} color="red" />
             <DevButton label="LANDING GAME" onClick={() => execute('/landing-game')} />
@@ -467,6 +559,7 @@ const DevOverlay: React.FC<{ show: boolean }> = ({ show }) => {
             <DevButton label="SPAWN LOOT" onClick={() => execute('/spawn-loot RARE')} />
             <DevButton label="FORCE LEVEL..." onClick={() => { setCustomCommand('/force-level'); setIsCustomInput(true); }} />
             <DevButton label="QUEST STATUS" onClick={() => execute('/quest-status')} />
+            <DevButton label="TRIGGER HEIST" onClick={() => window.dispatchEvent(new CustomEvent('vizzy-logic-steal', { detail: {} }))} color="yellow" />
             <DevButton label="SAVE GAME" onClick={() => execute('/save')} color="green" />
             <DevButton label="RESET SAVE" onClick={() => execute('/reset-save')} color="red" />
             <DevButton label="EXPORT LOGS" onClick={() => execute('/export-logs')} />

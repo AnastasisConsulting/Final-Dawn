@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-export type ChatRole = 'system' | 'user' | 'navbot' | 'vizzy' | 'lyra';
+export type ChatRole = 'system' | 'user' | 'navbot' | 'vizzy' | 'lyra' | 'gm';
 export type ChatTarget = 'navbot' | 'vizzy' | 'lyra';
 
-export type ChatSender = ChatTarget | 'user';
+export type ChatSender = ChatTarget | 'user' | 'gm';
 
 export interface Message {
   id: string;
@@ -25,6 +25,7 @@ const SENDER_LABELS: Record<ChatSender, string> = {
   navbot: 'NAVBOT',
   vizzy: 'VIZZY',
   lyra: 'LYRA',
+  gm: 'GM'
 };
 
 export const ChatLog: React.FC<ChatLogProps> = ({ messages, onUpdateMessage }) => {

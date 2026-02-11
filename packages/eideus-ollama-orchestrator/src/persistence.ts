@@ -11,6 +11,28 @@ const EIDEUS_ROOT = path.join(HOME_DIR, ".eideus", "saves");
 export class PersistenceManager {
     private currentHash: string = "GENESIS_HASH";
 
+    private stringifyState(state: SessionState): string {
+        return JSON.stringify(
+            state,
+            (_key, value) => {
+                if (value instanceof Map) {
+                    return { __type: "Map", entries: Array.from(value.entries()) };
+                }
+                return value;
+            },
+            2
+        );
+    }
+
+    private parseState(raw: string): SessionState {
+        return JSON.parse(raw, (_key, value) => {
+            if (value && typeof value === "object" && value.__type === "Map" && Array.isArray(value.entries)) {
+                return new Map<string, any>(value.entries);
+            }
+            return value;
+        }) as SessionState;
+    }
+
     /**
      * Ensures the save directory exists for a given session.
      */
@@ -32,7 +54,7 @@ export class PersistenceManager {
         const file = path.join(dir, "state.json");
         const temp = path.join(dir, "state.tmp");
 
-        await fs.writeFile(temp, JSON.stringify(state, null, 2), "utf-8");
+        await fs.writeFile(temp, this.stringifyState(state), "utf-8");
         await fs.rename(temp, file);
     }
 
@@ -43,7 +65,7 @@ export class PersistenceManager {
         const file = path.join(EIDEUS_ROOT, sessionId, "state.json");
         try {
             const raw = await fs.readFile(file, "utf-8");
-            return JSON.parse(raw) as SessionState;
+            return this.parseState(raw);
         } catch (err) {
             return null;
         }

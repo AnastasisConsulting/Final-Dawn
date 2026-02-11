@@ -18,6 +18,7 @@ export const LeftDock: React.FC<LeftDockProps> = ({ activePanel, onPanelSelect }
     const BUTTONS = [
         { id: 'SIM', label: 'SIM', color: 'text-cyan-400', border: 'border-cyan-500/50' },
         { id: 'MEM', label: 'MEM', color: 'text-fuchsia-400', border: 'border-fuchsia-500/50' },
+        { id: 'NPC', label: 'NPC', color: 'text-amber-400', border: 'border-amber-500/50' },
         { id: 'SHOP', label: 'SHOP', color: 'text-green-400', border: 'border-green-500/50' },
         // BIO button hidden by default, logic can be added later to show it
         // { id: 'BIO', label: '', color: 'text-red-400', border: 'border-red-500/50' }, 

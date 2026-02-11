@@ -59,6 +59,7 @@ export const PanelContent: React.FC<PanelContentProps> = ({ panelId, onFlightMod
 
       // --- OTHERS ---
       case 'NET':
+      case 'NPC':
         return <NpcPanel />;
       case 'LOGS':
         return <MissionLogPanel />;

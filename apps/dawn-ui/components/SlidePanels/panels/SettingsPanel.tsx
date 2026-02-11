@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../../../src/context/GameContext';
 
 const DEFAULT_MODELS = [
+    'none',
     'llama3',
     'mistral',
     'gemma:2b',
@@ -40,6 +41,19 @@ export const SettingsPanel: React.FC = () => {
                 [key]: value
             }
         });
+    };
+
+    const handlePerformanceToggle = (enabled: boolean) => {
+        const next = {
+            ...settings.llm,
+            performanceMode: enabled
+        };
+        if (enabled) {
+            next.embeddingModel = 'none';
+            next.minEmbeddings = 0;
+            next.enableTagLLM = false;
+        }
+        actions.updateSettingsDeep({ llm: next });
     };
 
     return (
@@ -98,6 +112,7 @@ export const SettingsPanel: React.FC = () => {
                         </select>
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-600 pointer-events-none text-[10px]">▼</div>
                     </div>
+                    <div className="mt-2 text-[9px] text-emerald-400/70 uppercase tracking-widest">Set to NONE to disable embeddings</div>
                 </div>
             </section>
 
@@ -105,6 +120,19 @@ export const SettingsPanel: React.FC = () => {
                 <h3 className="text-sm font-bold text-yellow-400 uppercase border-l-2 border-yellow-500 pl-2">
                     Inference Settings
                 </h3>
+
+                <div className="flex justify-between items-center bg-black/40 p-2 rounded border border-white/10">
+                    <label className="text-xs text-neutral-400">Performance Mode</label>
+                    <input
+                        type="checkbox"
+                        checked={!!settings.llm.performanceMode}
+                        onChange={(e) => handlePerformanceToggle(e.target.checked)}
+                        className="h-4 w-4 accent-yellow-400"
+                    />
+                </div>
+                <div className="text-[10px] text-neutral-500 uppercase tracking-widest">
+                    Disables NPC/landmark scaffolding and embeddings for faster turns.
+                </div>
 
                 <div className="flex justify-between items-center bg-black/40 p-2 rounded border border-white/10">
                     <label className="text-xs text-neutral-400">Temperature</label>

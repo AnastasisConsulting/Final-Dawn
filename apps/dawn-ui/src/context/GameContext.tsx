@@ -71,6 +71,8 @@ export interface GameState {
             maxEmbeddings?: number;
             minTags?: number;
             maxTags?: number;
+            enableTagLLM?: boolean;
+            performanceMode?: boolean;
         };
     };
     relationships: {
@@ -160,6 +162,8 @@ const initialState: GameState = {
             maxEmbeddings: 7,
             minTags: 1,
             maxTags: 7,
+            enableTagLLM: false,
+            performanceMode: false,
         }
     },
     relationships: {
@@ -315,7 +319,18 @@ const gameReducer = (state: GameState, action: Action): GameState => {
                 }
             };
         case 'LOAD_GAME':
-            return { ...action.state };
+            return {
+                ...initialState,
+                ...action.state,
+                settings: {
+                    ...initialState.settings,
+                    ...(action.state.settings || {}),
+                    llm: {
+                        ...initialState.settings.llm,
+                        ...((action.state.settings && action.state.settings.llm) || {})
+                    }
+                }
+            };
         case 'BUY_ATTRIBUTE':
             if (state.xp < action.cost) return state;
             return {
@@ -461,8 +476,19 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             const saved = localStorage.getItem('eideus-gamestate');
             if (saved) {
                 const parsed = JSON.parse(saved);
-                // Merge with initial to ensure new schema fields exist
-                return { ...initial, ...parsed };
+                // Merge with initial to ensure new schema fields exist (deep-merge settings.llm)
+                return {
+                    ...initial,
+                    ...parsed,
+                    settings: {
+                        ...initial.settings,
+                        ...(parsed.settings || {}),
+                        llm: {
+                            ...initial.settings.llm,
+                            ...((parsed.settings && parsed.settings.llm) || {})
+                        }
+                    }
+                };
             }
         } catch (e) {
             console.error("Failed to load game state", e);

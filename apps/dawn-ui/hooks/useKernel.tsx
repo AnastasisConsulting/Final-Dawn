@@ -13,6 +13,7 @@ import {
 } from 'eideus-routers';
 import { bindWorldBundle } from '@eideus/world-bundle-binder';
 import { CoordinateMapper } from '@eideus/universe-mapper';
+import { devLog, devLogTimer } from '../src/services/devLog';
 
 /**
  * The Kernel is the central orchestration hook for the Dawn UI.
@@ -172,16 +173,18 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
         timestamp: Date.now()
       };
 
-      // INIT BACKEND SESSION
-      try {
-        const sessionId = `sess_${addressKey}_${Date.now()}`;
-        console.log('[Kernel] Initializing Orchestrator Session:', sessionId);
+        // INIT BACKEND SESSION
+        try {
+          const sessionId = `sess_${addressKey}_${Date.now()}`;
+          console.log('[Kernel] Initializing Orchestrator Session:', sessionId);
+          devLog('info', 'kernel.land', 'init session', { sessionId, addressKey });
 
-        console.log('[Kernel] Sending /land request...'); // DEBUG
-        const response = await fetch('http://localhost:4000/land', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+          console.log('[Kernel] Sending /land request...'); // DEBUG
+          const t = devLogTimer('kernel.land', 'POST /land', { sessionId, addressKey });
+          const response = await fetch('http://localhost:4000/land', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
             sessionId,
             planetCode: addressKey,
             playerAffinity: { buckets: [] }, // TODO: pulling real affinity
@@ -190,10 +193,11 @@ export const KernelProvider: React.FC<React.PropsWithChildren> = ({ children }) 
               sectorMap: map,
               quests: quests,
               sourceSeed: sourceSeed
-            }
-          })
-        });
-        console.log('[Kernel] /land response status:', response.status); // DEBUG
+             }
+           })
+         });
+          t.end({ status: response.status, sessionId, addressKey });
+          console.log('[Kernel] /land response status:', response.status); // DEBUG
 
         if (!response.ok) {
           const errorText = await response.text();

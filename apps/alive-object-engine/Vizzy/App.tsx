@@ -151,12 +151,24 @@ export default function App() {
       }
     };
 
+    const handleLaserUpdate = (event: CustomEvent<{ active: boolean; x: number; y: number }>) => {
+      autonomousAIRef.current.setLaserTarget(event.detail.active, event.detail.x, event.detail.y);
+    };
+
+    const handleHeistStart = (event: CustomEvent<{ panelId: string; targetX: number; targetY: number }>) => {
+      autonomousAIRef.current.startHeist(event.detail.panelId, event.detail.targetX, event.detail.targetY);
+    };
+
     window.addEventListener('vizzy-state-update' as any, handleStateUpdate);
+    window.addEventListener('vizzy-laser-update' as any, handleLaserUpdate);
+    window.addEventListener('vizzy-start-heist' as any, handleHeistStart);
 
     return () => {
       window.removeEventListener('vizzy-chat-update' as any, handleChatUpdate);
       window.removeEventListener('vizzy-sentiment' as any, handleSentiment);
       window.removeEventListener('vizzy-state-update' as any, handleStateUpdate);
+      window.removeEventListener('vizzy-laser-update' as any, handleLaserUpdate);
+      window.removeEventListener('vizzy-start-heist' as any, handleHeistStart);
     };
   }, []);
 

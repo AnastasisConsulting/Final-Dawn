@@ -8,6 +8,20 @@ import type { SpatialKey, TemporalKey, EntityCard, LoreContext, LandmarkCard } f
 import { buildMultiRecipientPrompt, parseLabeledSections, TurnRecipient } from "./prompts.js";
 import type { RecipientMode } from "./prompts";
 
+function coerceMapLike(v: any): Map<string, any> {
+  if (v instanceof Map) return v;
+  if (v && typeof v === "object") return new Map<string, any>(Object.entries(v));
+  return new Map<string, any>();
+}
+
+function normalizeCaches(raw: any): { lore: Map<string, any>; quests: Map<string, any>; cast: Map<string, any> } {
+  return {
+    lore: coerceMapLike(raw?.lore),
+    quests: coerceMapLike(raw?.quests),
+    cast: coerceMapLike(raw?.cast),
+  };
+}
+
 
 /**
  * Auto-resolve entities (NPCs) that should be at a given spatial location.
@@ -60,10 +74,11 @@ async function resolveDeterministicContext(args: {
   loreKey: string;
   entitiesPresent: EntityCard[];
   memoryOrchestrator: any;
-  caches: { lore: Map<string, any>; quests: Map<string, any>; cast: Map<string, any> };
+  caches: { lore: Map<string, any>; quests: Map<string, any>; cast: Map<string, any> } | any;
 }) {
+  const caches = normalizeCaches(args.caches);
   // 1. Resolve Immutable Lore (z-) from local cache
-  const loreEntry = args.caches.lore.get(args.loreKey) || null;
+  const loreEntry = caches.lore.get(args.loreKey) || null;
 
   // 2. Resolve Spacetime History (Stack) at this physical location
   const history = await args.memoryOrchestrator.lattice.expandTemporal({
@@ -74,7 +89,7 @@ async function resolveDeterministicContext(args: {
   // 3. Auto-resolve entities if not provided
   let entities = args.entitiesPresent;
   if (!entities || entities.length === 0) {
-    entities = resolveEntitiesFromLocation(args.spatial, args.caches);
+    entities = resolveEntitiesFromLocation(args.spatial, caches);
     if (entities.length > 0) {
       console.log(`[TurnEngine] Auto-resolved ${entities.length} entities at location:`, entities.map(e => e.name).join(', '));
     }
@@ -82,8 +97,8 @@ async function resolveDeterministicContext(args: {
 
   // 4. Resolve Immutable Entity Facts & Quest State via NPC Keys (z+)
   const activeQuests = entities.flatMap(ent => {
-    const quests = args.caches.quests.get(ent.id) || [];
-    const bio = args.caches.cast.get(ent.id) || null;
+    const quests = caches.quests.get(ent.id) || [];
+    const bio = caches.cast.get(ent.id) || null;
     return { entityId: ent.id, bio, quests };
   });
 
@@ -110,15 +125,24 @@ export type TurnRequest = {
   playerClass?: string;
   playerAffinity?: string;
   characterDirectives?: Record<string, string>;
+
+  // Persisted flags (quest progress, world toggles, etc.)
+  flags?: Record<string, boolean | string | number>;
+
+  // Optional debug tracing (server echoes timings when enabled)
+  debug?: { enabled?: boolean; traceId?: string };
   // Caches populated during World Entry ingestion
   caches: { lore: Map<string, any>; quests: Map<string, any>; cast: Map<string, any> };
   llmConfig?: {
     model?: string;
+    temperature?: number;
     embeddingModel?: string;
     minEmbeddings?: number;
     maxEmbeddings?: number;
     minTags?: number;
     maxTags?: number;
+    enableTagLLM?: boolean;
+    performanceMode?: boolean;
   };
 };
 
@@ -136,6 +160,7 @@ export type TurnResponse = {
   usedMemory: Array<{ id: string; spatial: SpatialKey; temporal: TemporalKey }>;
   generatedNpcs?: GeneratedNpc[];      // Procedurally scaffolded NPCs from this turn
   generatedLandmarks?: GeneratedLandmark[];  // Procedurally scaffolded landmarks from this turn
+  debug?: any;
 
   // --- NEW: Quest Update for Frontend ---
   questUpdates?: QuestUpdatePayload;
@@ -164,8 +189,8 @@ function deriveTags(text: string): string[] {
 }
 
 function clampRecipients(recipients?: TurnRecipient[]): TurnRecipient[] {
-  if (!recipients || recipients.length === 0) return [{ id: "lyra", label: "LYRA", mode: "lyra" }];
-  return recipients.slice(0, 3);
+  if (!recipients || recipients.length === 0) return [{ id: "gm", label: "GM", mode: "gm" }];
+  return recipients.slice(0, 5);
 }
 
 export function createTurnEngine(args: { ollama: OllamaClient }) {
@@ -177,6 +202,21 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
 
   async function processTurn(req: TurnRequest): Promise<TurnResponse> {
     if (!req.playerText?.trim()) throw new Error("playerText is required");
+
+    const debugEnabled = !!req.debug?.enabled;
+    const traceId = req.debug?.traceId || `tr_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+    const t0 = Date.now();
+    const marks: Record<string, number> = {};
+    const mark = (name: string) => {
+      if (!debugEnabled) return;
+      marks[name] = Date.now();
+    };
+    const msBetween = (a: string, b: string) => {
+      const aa = marks[a];
+      const bb = marks[b];
+      if (!aa || !bb) return undefined;
+      return Math.max(0, bb - aa);
+    };
 
     // Fallback: G9.S9.O9 (The Void)
     const spatial = req.spatial ?? NOWHERE_SPATIAL;
@@ -209,8 +249,12 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     const loreKey = req.loreKey?.trim() ? req.loreKey : "void.general";
     const recipients = clampRecipients(req.recipients);
     const currentTemporal = { ...temporalBase, page: startPage };
+    const caches = normalizeCaches(req.caches);
+
+    mark("start");
 
     // 1. Determine & Retrieve relevant associative memories
+    mark("memory.start");
     const memoryPieces = await mem.decideAndRetrieve({
       playerText: req.playerText,
       saga: temporalBase.saga,
@@ -220,16 +264,19 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       entityHints: req.entityHints,
       llmConfig: req.llmConfig
     });
+    mark("memory.end");
 
     // 2. Resolve Deterministic Immutable Facts for this coordinate
+    mark("deterministic.start");
     const deterministicContext = await resolveDeterministicContext({
       spatial: spatial,
       temporal: currentTemporal,
       loreKey: loreKey,
       entitiesPresent: req.entitiesPresent || [],
       memoryOrchestrator: mem,
-      caches: req.caches
+      caches
     });
+    mark("deterministic.end");
 
     // --- 2.5 THE DIRECTOR'S CUT (Logic Pass) ---
     let directorGuidance = "";
@@ -239,18 +286,16 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     // For MVP, we just grab the first available quest step from the first entity
     const currentActiveQuest = deterministicContext.activeQuests[0]?.quests?.[0];
 
-    // --- 2.5 THE DIRECTOR'S CUT (Logic Pass) ---
-    // (Quest Adjudication Removed)
-    let directorGuidance = "";
-    // Explicitly type this variable to match the TurnResponse interface
-    let questUpdateData: QuestUpdatePayload | null = null;
+
 
     // 3. Build stateless prompt with deterministic injection
+    mark("prompt.start");
     const { system, user, recipients: recSpec } = buildMultiRecipientPrompt({
       playerText: req.playerText,
       memories: memoryPieces as any,
       deterministicLore: deterministicContext.loreEntry,
       activeQuests: deterministicContext.activeQuests,
+      questFlags: req.flags,
       recipients,
       playerClass: req.playerClass,
       playerAffinity: req.playerAffinity,
@@ -259,13 +304,18 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         "GAME_LOGIC": directorGuidance // Inject the Director's instructions here
       }
     });
+    mark("prompt.end");
 
+    const narrativeModel = req.llmConfig?.model || CONFIG.LLM_MODEL;
+    const narrativeTemp = req.llmConfig?.temperature ?? 0.7;
+    mark("llm.main.start");
     const gen = await args.ollama.generate({
-      model: CONFIG.LLM_MODEL,
+      model: narrativeModel,
       system,
       prompt: user,
-      options: { temperature: 0.7 }
+      options: { temperature: narrativeTemp }
     });
+    mark("llm.main.end");
 
     const raw = gen.response.trim();
     const outputs = parseLabeledSections(raw, recSpec ?? recipients);
@@ -275,24 +325,30 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         ? raw
         : outputs.map((o) => `=== ${o.label} ===\n${o.markdown}`.trim()).join("\n\n");
 
+    const performanceMode = req.llmConfig?.performanceMode ?? false;
+
     // 4. Process narration for procedural NPC scaffolding
     const existingEntityNames = (req.entitiesPresent || []).map(e => e.name);
     npcGen.registerKnownEntities(existingEntityNames);
 
     const locationName = req.loreKey || `${spatial.g}-${spatial.s}-${spatial.o}`;
-    const generatedNpcs = await npcGen.processNarration(
-      narration,
-      {
-        objectKey: locationName,
-        spatial: spatial,
-        locationName: locationName,
-        locationType: "QUEST_LOCALE",
-      },
-      {
-        factionHint: req.caches.lore.get(req.loreKey)?.faction,
-        model: req.llmConfig?.model,
-      }
-    );
+    mark("npcgen.start");
+    const generatedNpcs = performanceMode
+      ? []
+      : await npcGen.processNarration(
+        narration,
+        {
+          objectKey: locationName,
+          spatial: spatial,
+          locationName: locationName,
+          locationType: "QUEST_LOCALE",
+        },
+        {
+          factionHint: caches.lore.get(req.loreKey)?.faction,
+          model: req.llmConfig?.model,
+        }
+      );
+    mark("npcgen.end");
 
     const allEntities: EntityCard[] = [
       ...(req.entitiesPresent || []),
@@ -305,17 +361,21 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     ];
 
     // 5. Process narration for procedural landmark scaffolding
-    const generatedLandmarks = await landmarkGen.processNarration(
-      narration,
-      {
-        objectKey: locationName,
-        spatial: spatial,
-        locationName: locationName,
-        locationType: "QUEST_LOCALE",
-      },
-      loreKey,
-      { model: req.llmConfig?.model }
-    );
+    mark("landmark.start");
+    const generatedLandmarks = performanceMode
+      ? []
+      : await landmarkGen.processNarration(
+        narration,
+        {
+          objectKey: locationName,
+          spatial: spatial,
+          locationName: locationName,
+          locationType: "QUEST_LOCALE",
+        },
+        loreKey,
+        { model: req.llmConfig?.model }
+      );
+    mark("landmark.end");
 
     // Build LoreContext for z- face (loreKey + procedural landmarks)
     const loreContext: LoreContext = {
@@ -335,65 +395,78 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     let voxel: any = null;
     let attempts = 0;
 
-    const embModel = req.llmConfig?.embeddingModel || "nomic-embed-text";
+    const embModel = req.llmConfig?.embeddingModel || CONFIG.EMBED_MODEL;
     const minTags = req.llmConfig?.minTags ?? 1;
     const maxTags = req.llmConfig?.maxTags ?? 7;
     const minEmbeddings = req.llmConfig?.minEmbeddings ?? 1;
+    const enableTagLLM = (req.llmConfig?.enableTagLLM ?? false) && !performanceMode;
 
-    // A. Generate Tags (LLM)
-    let tags: string[] = deriveTags(req.playerText); // Fallback
-    if (req.llmConfig) {
-      try {
-        const tagPrompt = `Analyze the following text and extract exactly ${maxTags} relevant conceptual tags (keywords). Return only the tags as a comma-separated list. text: "${req.playerText} ${narration}"`;
-        const tagRes = await args.ollama.generate({
-          model: req.llmConfig?.model || CONFIG.LLM_MODEL,
-          prompt: tagPrompt,
-          options: { temperature: 0.3 }
-        });
-        const extracted = tagRes.response.split(',').map(t => t.trim().toLowerCase()).filter(t => t.length > 2);
-        if (extracted.length >= minTags) {
-          tags = extracted.slice(0, maxTags);
+    // A. Generate Tags (LLM optional)
+    let tags: string[] = [];
+    if (maxTags > 0) {
+      mark("tags.start");
+      tags = deriveTags(req.playerText); // Fallback
+      if (enableTagLLM && req.llmConfig?.model) {
+        try {
+          const tagPrompt = `Analyze the following text and extract exactly ${maxTags} relevant conceptual tags (keywords). Return only the tags as a comma-separated list. text: "${req.playerText} ${narration}"`;
+          const tagRes = await args.ollama.generate({
+            model: req.llmConfig?.model || CONFIG.LLM_MODEL,
+            prompt: tagPrompt,
+            options: { temperature: 0.3 }
+          });
+          const extracted = tagRes.response.split(',').map(t => t.trim().toLowerCase()).filter(t => t.length > 2);
+          if (extracted.length >= minTags) {
+            tags = extracted.slice(0, maxTags);
+          }
+        } catch (err) {
+          console.warn("[TurnEngine] Tag Generation Failed, using fallback.", err);
         }
-      } catch (err) {
-        console.warn("[TurnEngine] Tag Generation Failed, using fallback.", err);
       }
+      mark("tags.end");
     }
 
     // B. Generate Embeddings (Embedding Model)
     let embeddings: number[][] = [];
-    console.log(`[TurnEngine] Starting embedding generation (model: ${embModel}, min: ${minEmbeddings})`);
-    try {
-      const fullContext = `User: ${req.playerText}\nAI: ${narration}`;
-      console.log(`[TurnEngine] Generating full context embedding...`);
-      const mainEmb = await args.ollama.embeddings({ model: embModel, prompt: fullContext });
-      if (mainEmb && mainEmb.embedding) {
-        embeddings.push(mainEmb.embedding);
-        console.log(`[TurnEngine] ✓ Full context embedding generated (length: ${mainEmb.embedding.length})`);
-      } else {
-        console.warn(`[TurnEngine] ✗ Full context embedding returned empty`);
-      }
+    if (!performanceMode && minEmbeddings > 0 && embModel && embModel !== 'none') {
+      console.log(`[TurnEngine] Starting embedding generation (model: ${embModel}, min: ${minEmbeddings})`);
+      try {
+        mark("emb.start");
+        const fullContext = `User: ${req.playerText}\nAI: ${narration}`;
+        console.log(`[TurnEngine] Generating full context embedding...`);
+        const mainEmb = await args.ollama.embeddings({ model: embModel, prompt: fullContext });
+        if (mainEmb && mainEmb.embedding) {
+          embeddings.push(mainEmb.embedding);
+          console.log(`[TurnEngine] ✓ Full context embedding generated (length: ${mainEmb.embedding.length})`);
+        } else {
+          console.warn(`[TurnEngine] ✗ Full context embedding returned empty`);
+        }
 
-      if (minEmbeddings > 1) {
-        console.log(`[TurnEngine] Generating user-specific embedding...`);
-        const userEmb = await args.ollama.embeddings({ model: embModel, prompt: req.playerText });
-        if (userEmb && userEmb.embedding) {
-          embeddings.push(userEmb.embedding);
-          console.log(`[TurnEngine] ✓ User embedding generated`);
+        if (minEmbeddings > 1) {
+          console.log(`[TurnEngine] Generating user-specific embedding...`);
+          const userEmb = await args.ollama.embeddings({ model: embModel, prompt: req.playerText });
+          if (userEmb && userEmb.embedding) {
+            embeddings.push(userEmb.embedding);
+            console.log(`[TurnEngine] ✓ User embedding generated`);
+          }
         }
-      }
-      if (minEmbeddings > 2) {
-        console.log(`[TurnEngine] Generating AI-specific embedding...`);
-        const aiEmb = await args.ollama.embeddings({ model: embModel, prompt: narration });
-        if (aiEmb && aiEmb.embedding) {
-          embeddings.push(aiEmb.embedding);
-          console.log(`[TurnEngine] ✓ AI embedding generated`);
+        if (minEmbeddings > 2) {
+          console.log(`[TurnEngine] Generating AI-specific embedding...`);
+          const aiEmb = await args.ollama.embeddings({ model: embModel, prompt: narration });
+          if (aiEmb && aiEmb.embedding) {
+            embeddings.push(aiEmb.embedding);
+            console.log(`[TurnEngine] ✓ AI embedding generated`);
+          }
         }
+        console.log(`[TurnEngine] Embedding generation complete. Total embeddings: ${embeddings.length}`);
+        mark("emb.end");
+      } catch (err) {
+        console.warn("[TurnEngine] Embedding Generation Failed:", err);
       }
-      console.log(`[TurnEngine] Embedding generation complete. Total embeddings: ${embeddings.length}`);
-    } catch (err) {
-      console.warn("[TurnEngine] Embedding Generation Failed:", err);
+    } else {
+      console.log("[TurnEngine] Embeddings disabled.");
     }
 
+    mark("voxel.write.start");
     while (!voxel && attempts < 10) {
       try {
         voxel = await mem.lattice.upsertVoxel({
@@ -420,6 +493,7 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         }
       }
     }
+    mark("voxel.write.end");
 
     if (!voxel) throw new Error("Failed to write memory voxel: Collision limit exceeded.");
 
@@ -430,6 +504,36 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       usedMemory: memoryPieces.map((m: any) => ({ id: m.id, spatial: m.spatial, temporal: m.temporal })),
       generatedNpcs: generatedNpcs.length > 0 ? generatedNpcs : undefined,
       generatedLandmarks: generatedLandmarks.length > 0 ? generatedLandmarks : undefined,
+      debug: debugEnabled
+        ? {
+          traceId,
+          model: narrativeModel,
+          temperature: narrativeTemp,
+          performanceMode,
+          embModel,
+          recipients: (recSpec ?? recipients).map((r: any) => r.label ?? r.id),
+          counts: {
+            memories: Array.isArray(memoryPieces) ? memoryPieces.length : 0,
+            entitiesPresent: (req.entitiesPresent || []).length,
+            generatedNpcs: generatedNpcs.length,
+            generatedLandmarks: generatedLandmarks.length,
+            tags: tags.length,
+            embeddings: embeddings.length,
+          },
+          ms: {
+            total: Date.now() - t0,
+            memory: msBetween("memory.start", "memory.end"),
+            deterministic: msBetween("deterministic.start", "deterministic.end"),
+            prompt: msBetween("prompt.start", "prompt.end"),
+            llmMain: msBetween("llm.main.start", "llm.main.end"),
+            npcGen: msBetween("npcgen.start", "npcgen.end"),
+            landmark: msBetween("landmark.start", "landmark.end"),
+            tags: msBetween("tags.start", "tags.end"),
+            embeddings: msBetween("emb.start", "emb.end"),
+            voxelWrite: msBetween("voxel.write.start", "voxel.write.end"),
+          },
+        }
+        : undefined,
       questUpdates: questUpdateData || undefined // Pass logic result back to frontend
     };
   }

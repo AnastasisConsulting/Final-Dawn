@@ -93,6 +93,8 @@ export function createMemoryOrchestrator(ollama: OllamaClient): MemoryOrchestrat
     entityHints?: string[];
     llmConfig?: {
       embeddingModel?: string;
+      minEmbeddings?: number;
+      performanceMode?: boolean;
     }
   }): Promise<MemoryContextPiece[]> {
     console.log("[MemoryOrchestrator] Retrieving context (Keywords + Location + Vectors)...");
@@ -115,10 +117,13 @@ export function createMemoryOrchestrator(ollama: OllamaClient): MemoryOrchestrat
 
     // Vector Search (Secondary mechanism)
     const vectorRanked: Ranked<{ spatial: SpatialKey; temporal: TemporalKey }>[] = [];
-    if (args.llmConfig?.embeddingModel) {
+    const embModel = args.llmConfig?.embeddingModel;
+    const minEmbeddings = args.llmConfig?.minEmbeddings ?? 1;
+    const perfMode = args.llmConfig?.performanceMode ?? false;
+    if (!perfMode && embModel && embModel !== 'none' && minEmbeddings > 0) {
       try {
         const embRes = await ollama.embeddings({
-          model: args.llmConfig.embeddingModel,
+          model: embModel,
           prompt: args.playerText
         });
         if (embRes && embRes.embedding) {

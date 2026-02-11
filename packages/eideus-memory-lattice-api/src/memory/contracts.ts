@@ -108,4 +108,5 @@ export interface MemoryLatticeApi {
   expandTemporal(req: ExpandTemporalRequest): Promise<ExpandTemporalResponse>;
   expandSpatial(req: ExpandSpatialRequest): Promise<ExpandSpatialResponse>;
   joinAndRerank(req: JoinAndRerankRequest): Promise<JoinAndRerankResponse>;
+  upsertVoxel(req: Omit<MemoryVoxel, "id" | "createdAtUnixMs">): Promise<MemoryVoxel>;
 }

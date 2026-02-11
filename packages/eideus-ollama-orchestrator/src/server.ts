@@ -7,6 +7,7 @@ import { createTurnEngine } from "./turnEngine.js";
 import { WorldLoader } from "./worldLoader.js";
 
 import { sessions } from "./session.js";
+import { persistence } from "./persistence.js";
 import type { TurnRecipient } from "./types";
 import type { TurnRequest as EngineTurnRequest } from "./turnEngine.js";
 import { parseSpatialKey, parseTemporalKey } from "eideus-memory-lattice-api";
@@ -148,6 +149,20 @@ app.post("/land", async (req: express.Request, res: express.Response) => {
     const existing = await sessions.load(sessionId);
     if (existing) {
       console.log(`[Server] Resuming Session: ${sessionId}`);
+
+      // If this session was loaded from an older save (Maps lost) we may have empty caches.
+      // Prefer rebuilding caches from provided worldFiles during /land so /turn stays deterministic.
+      const loreSize = (existing.caches?.lore instanceof Map) ? existing.caches.lore.size : 0;
+      if (loreSize === 0 && worldFiles) {
+        console.warn(`[Server] Session caches empty; rebuilding caches from worldFiles for ${sessionId}`);
+        const rebuilt = await loader.ingestWorld({
+          playerAffinity: playerAffinity || { buckets: [] },
+          worldFiles: worldFiles || {}
+        });
+        existing.caches = rebuilt.caches as any;
+        await persistence.saveState(existing as any);
+      }
+
       return res.json({
         ok: true,
         startKey: existing.location.spatial,
@@ -204,7 +219,11 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
     const { sessionId, input, recipients, meta } = req.body;
 
     // 1. Retrieve Session
-    const session = sessions.get(sessionId);
+    let session = sessions.get(sessionId);
+    if (!session) {
+      // Attempt to load from persistence on demand (e.g. after server restart)
+      session = await sessions.load(sessionId);
+    }
     if (!session) {
       console.warn(`[Server] Session Lookup Failed! Requested: "${sessionId}"`);
       console.warn(`[Server] Available Sessions:`, Array.from(sessions['sessions'].keys()));
@@ -231,7 +250,9 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
       recipients: normalizeRecipients(recipients),
       tagHints: meta?.tagHints,
       entityHints: meta?.entityHints,
-      llmConfig: meta?.llmConfig
+      llmConfig: meta?.llmConfig,
+      flags: meta?.flags,
+      debug: meta?.debug
     };
 
     // 3. Execute Engine
@@ -256,7 +277,8 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
     res.json({
       ok: true,
       outputs: out.outputs,
-      telemetry
+      telemetry,
+      debug: out.debug
     });
 
   } catch (err: any) {
@@ -322,6 +344,32 @@ app.post("/directSpatialSlice", async (req: express.Request, res: express.Respon
     res.json(r);
   } catch (err: any) {
     console.error("[Server] directSpatialSlice Error:", err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.post("/upsertVoxel", async (req: express.Request, res: express.Response) => {
+  try {
+    const voxel = req.body;
+    // Basic validation
+    if (!voxel.spatial || !voxel.temporal || !voxel.faces) {
+      return bad(res, "Missing voxel structure (spatial, temporal, faces)");
+    }
+    // Ensure numeric types
+    voxel.spatial = coerceSpatial(voxel.spatial);
+    voxel.temporal = coerceTemporal(voxel.temporal);
+
+    // Check if temporal exists in DB already to prevent overwrite if pure insert needed
+    // But InMemoryLattice.upsertVoxel handles ID generation.
+
+    const result = await memory.lattice.upsertVoxel(voxel);
+
+    // Broadcast update to anyone listening (e.g. memory-viz via SSE or polling)
+    // For now we just return the new voxel
+
+    res.json({ ok: true, voxel: result });
+  } catch (err: any) {
+    console.error("[Server] upsertVoxel Error:", err);
     res.status(500).json({ ok: false, error: err.message });
   }
 });
