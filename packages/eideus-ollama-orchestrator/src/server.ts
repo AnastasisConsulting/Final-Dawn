@@ -5,7 +5,8 @@ import { CONFIG } from "./config.js";
 import { OllamaClient } from "./ollama/client.js";
 import { createTurnEngine } from "./turnEngine.js";
 import { WorldLoader } from "./worldLoader.js";
-import { sessions } from "./session.js"; // <--- IMPORT THIS
+
+import { sessions } from "./session.js";
 import type { TurnRecipient } from "./types";
 import type { TurnRequest as EngineTurnRequest } from "./turnEngine.js";
 import { parseSpatialKey, parseTemporalKey } from "eideus-memory-lattice-api";
@@ -28,6 +29,7 @@ const ollama = new OllamaClient(CONFIG.OLLAMA_HOST);
 const engine = createTurnEngine({ ollama });
 const memory = engine.memory;
 const loader = new WorldLoader();
+
 
 // AFFINITY SYSTEM
 import { InMemoryAffinitySystem, defaultTickConfig, AffinityEntityRef } from "eideus-affinity-system";

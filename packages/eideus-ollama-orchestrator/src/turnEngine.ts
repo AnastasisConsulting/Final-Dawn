@@ -8,6 +8,7 @@ import type { SpatialKey, TemporalKey, EntityCard, LoreContext, LandmarkCard } f
 import { buildMultiRecipientPrompt, parseLabeledSections, TurnRecipient } from "./prompts.js";
 import type { RecipientMode } from "./prompts";
 
+
 /**
  * Auto-resolve entities (NPCs) that should be at a given spatial location.
  * Scans the cast cache for entity IDs matching the spatial key pattern.
@@ -121,6 +122,13 @@ export type TurnRequest = {
   };
 };
 
+// Define explicit types for quest updates to satisfy strict union checks
+export type QuestStatus = 'ADVANCE' | 'FAIL' | 'FREEPLAY';
+export type QuestUpdatePayload = {
+  status: QuestStatus;
+  message: string;
+};
+
 export type TurnResponse = {
   narration: string;
   outputs: Array<{ id: string; label: string; mode: RecipientMode; markdown: string }>;
@@ -128,6 +136,9 @@ export type TurnResponse = {
   usedMemory: Array<{ id: string; spatial: SpatialKey; temporal: TemporalKey }>;
   generatedNpcs?: GeneratedNpc[];      // Procedurally scaffolded NPCs from this turn
   generatedLandmarks?: GeneratedLandmark[];  // Procedurally scaffolded landmarks from this turn
+
+  // --- NEW: Quest Update for Frontend ---
+  questUpdates?: QuestUpdatePayload;
 };
 
 // Fallback "Nowhere" Constants
@@ -162,6 +173,8 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
   const npcGen = createNpcGenerator(args.ollama);
   const landmarkGen = createLandmarkGenerator(args.ollama);
 
+
+
   async function processTurn(req: TurnRequest): Promise<TurnResponse> {
     if (!req.playerText?.trim()) throw new Error("playerText is required");
 
@@ -172,35 +185,28 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     const temporalBase = req.temporalBase ?? NOWHERE_TEMPORAL_BASE;
 
     // --- FIX: Query lattice for highest existing page at this location ---
-    // This prevents collision errors when a session warps to an already-populated location
     let startPage: number;
     if (Number.isFinite(req.page) && req.page > 0) {
-      // If a specific page > 0 is requested, try it (but retry loop will increment if collision)
       startPage = req.page;
     } else {
-      // Query for the latest page at this spatial coordinate to continue the timeline
       try {
         const latest = await mem.lattice.latestAtLocation({
           spatial,
           scope: { saga: temporalBase.saga, book: temporalBase.book }
         });
         if (latest.voxels.length > 0 && latest.voxels[0].temporal) {
-          // Start from latest page + 1
           startPage = latest.voxels[0].temporal.page + 1;
-          console.log(`[TurnEngine] Found existing voxel at location. Continuing from page ${startPage}`);
+          console.log(`[TurnEngine] Found existing voxel. Continuing from page ${startPage}`);
         } else {
-          // No existing voxels, start at page 0
           startPage = 0;
         }
       } catch (err) {
-        // If query fails, fall back to timestamp-based page
         console.warn("[TurnEngine] Failed to query latest page, using timestamp:", err);
         startPage = Date.now();
       }
     }
 
     const loreKey = req.loreKey?.trim() ? req.loreKey : "void.general";
-
     const recipients = clampRecipients(req.recipients);
     const currentTemporal = { ...temporalBase, page: startPage };
 
@@ -225,6 +231,20 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       caches: req.caches
     });
 
+    // --- 2.5 THE DIRECTOR'S CUT (Logic Pass) ---
+    let directorGuidance = "";
+    // Explicitly type this variable to match the TurnResponse interface
+    let questUpdateData: QuestUpdatePayload | null = null;
+
+    // For MVP, we just grab the first available quest step from the first entity
+    const currentActiveQuest = deterministicContext.activeQuests[0]?.quests?.[0];
+
+    // --- 2.5 THE DIRECTOR'S CUT (Logic Pass) ---
+    // (Quest Adjudication Removed)
+    let directorGuidance = "";
+    // Explicitly type this variable to match the TurnResponse interface
+    let questUpdateData: QuestUpdatePayload | null = null;
+
     // 3. Build stateless prompt with deterministic injection
     const { system, user, recipients: recSpec } = buildMultiRecipientPrompt({
       playerText: req.playerText,
@@ -234,7 +254,10 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       recipients,
       playerClass: req.playerClass,
       playerAffinity: req.playerAffinity,
-      characterDirectives: req.characterDirectives
+      characterDirectives: {
+        ...req.characterDirectives,
+        "GAME_LOGIC": directorGuidance // Inject the Director's instructions here
+      }
     });
 
     const gen = await args.ollama.generate({
@@ -253,11 +276,9 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         : outputs.map((o) => `=== ${o.label} ===\n${o.markdown}`.trim()).join("\n\n");
 
     // 4. Process narration for procedural NPC scaffolding
-    // Register existing entities so they won't be re-generated
     const existingEntityNames = (req.entitiesPresent || []).map(e => e.name);
     npcGen.registerKnownEntities(existingEntityNames);
 
-    // Determine location context for NPC generation
     const locationName = req.loreKey || `${spatial.g}-${spatial.s}-${spatial.o}`;
     const generatedNpcs = await npcGen.processNarration(
       narration,
@@ -273,7 +294,6 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       }
     );
 
-    // Add newly generated NPCs to the entities list for this voxel
     const allEntities: EntityCard[] = [
       ...(req.entitiesPresent || []),
       ...generatedNpcs.map(npc => ({
@@ -311,17 +331,14 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       })),
     };
 
-    // 6. Record new memory voxel (stacking at physical location)
-    // Retry Loop for Immutability Violations (Auto-increment page)
+    // 6. Record new memory voxel
     let voxel: any = null;
     let attempts = 0;
 
-    // --- Generate Dynamic Tags & Embeddings ---
     const embModel = req.llmConfig?.embeddingModel || "nomic-embed-text";
     const minTags = req.llmConfig?.minTags ?? 1;
     const maxTags = req.llmConfig?.maxTags ?? 7;
     const minEmbeddings = req.llmConfig?.minEmbeddings ?? 1;
-    // const maxEmbeddings = req.llmConfig?.maxEmbeddings ?? 7; // Currently unused logic-wise, but available
 
     // A. Generate Tags (LLM)
     let tags: string[] = deriveTags(req.playerText); // Fallback
@@ -346,7 +363,6 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
     let embeddings: number[][] = [];
     console.log(`[TurnEngine] Starting embedding generation (model: ${embModel}, min: ${minEmbeddings})`);
     try {
-      // Always embed the full context (User + Narrative)
       const fullContext = `User: ${req.playerText}\nAI: ${narration}`;
       console.log(`[TurnEngine] Generating full context embedding...`);
       const mainEmb = await args.ollama.embeddings({ model: embModel, prompt: fullContext });
@@ -357,7 +373,6 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         console.warn(`[TurnEngine] ✗ Full context embedding returned empty`);
       }
 
-      // If minEmbeddings > 1, try to embed distinct parts
       if (minEmbeddings > 1) {
         console.log(`[TurnEngine] Generating user-specific embedding...`);
         const userEmb = await args.ollama.embeddings({ model: embModel, prompt: req.playerText });
@@ -397,7 +412,6 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         const msg = (err.message || String(err)).toLowerCase();
         if (msg.includes('immutability') || msg.includes('voxel already exists')) {
           console.log(`[TurnEngine] Immutability Collision (Page ${currentTemporal.page}). Retrying with Page ${currentTemporal.page + 1}...`);
-          // Voxel exists (collision) -> Increment page (time marches forward)
           currentTemporal.page += 1;
           attempts++;
         } else {
@@ -416,6 +430,7 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       usedMemory: memoryPieces.map((m: any) => ({ id: m.id, spatial: m.spatial, temporal: m.temporal })),
       generatedNpcs: generatedNpcs.length > 0 ? generatedNpcs : undefined,
       generatedLandmarks: generatedLandmarks.length > 0 ? generatedLandmarks : undefined,
+      questUpdates: questUpdateData || undefined // Pass logic result back to frontend
     };
   }
 

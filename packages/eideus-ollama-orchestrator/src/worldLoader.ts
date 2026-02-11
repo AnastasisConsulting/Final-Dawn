@@ -59,12 +59,7 @@ export class WorldLoader {
       });
     });
 
-    bundle.quest_bindings.forEach((q: any) => {
-      q.npcIds.forEach((npcId: string) => {
-        if (!worldCaches.quests.has(npcId)) worldCaches.quests.set(npcId, []);
-        worldCaches.quests.get(npcId).push({ title: q.title, id: q.questId, tags: q.tags });
-      });
-    });
+
 
     const defaultKey = parseSpatialKey("g1.s1.o1.c1.ct1.r1");
 

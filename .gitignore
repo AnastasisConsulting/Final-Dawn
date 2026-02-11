@@ -140,3 +140,6 @@ $RECYCLE.BIN/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
+
+# .node_modules directory
+.node_modules/
