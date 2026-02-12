@@ -10,6 +10,7 @@ export interface FlightStatus {
   flightAssist: boolean;
   weaponLevel: number;
   shieldActive: boolean;
+  wave: number;
   distanceToTarget?: number;
   landingGear?: number; // 0 to 1
 }

@@ -112,5 +112,73 @@ export const PersistenceService = {
             console.error('[Persistence] Failed to get visited locations:', err);
             return [];
         }
+    },
+
+    /**
+     * Export the current save data to a local file
+     */
+    exportToDisk() {
+        try {
+            const data = localStorage.getItem(SAVE_KEY);
+            if (!data) {
+                console.error('[Persistence] No save data found to export.');
+                return;
+            }
+
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+
+            link.href = url;
+            link.download = `eideus_save_${timestamp}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            console.log('[Persistence] Save exported to disk.');
+        } catch (err) {
+            console.error('[Persistence] Export failed:', err);
+        }
+    },
+
+    /**
+     * Import save data from a local file
+     */
+    async importFromDisk(): Promise<SaveData | null> {
+        return new Promise((resolve) => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+
+            input.onchange = async (e: Event) => {
+                const file = (e.target as HTMLInputElement).files?.[0];
+                if (!file) {
+                    resolve(null);
+                    return;
+                }
+
+                try {
+                    const text = await file.text();
+                    const parsed = JSON.parse(text) as SaveData;
+
+                    // Basic validation
+                    if (!parsed.gameState || !parsed.kernel) {
+                        throw new Error('Invalid save file format');
+                    }
+
+                    // Save to localStorage immediately
+                    localStorage.setItem(SAVE_KEY, text);
+                    console.log('[Persistence] Save imported from disk.');
+                    resolve(parsed);
+                } catch (err) {
+                    console.error('[Persistence] Import failed:', err);
+                    alert('Failed to import save file: Invalid format.');
+                    resolve(null);
+                }
+            };
+
+            input.click();
+        });
     }
 };

@@ -137,13 +137,15 @@ We welcome contributions! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for d
 
 ## ⚖️ License
 
-**STRICTLY NON-COMMERCIAL / PROPRIETARY SYSTEM ARCHITECTURE**
+**EIDEUS COMMUNITY & COMMERCIAL LICENSE (Dual-License Model)**
 
-This project is licensed under a custom agreement:
-1.  **The Game**: Free for personal use and non-commercial modding.
-2.  **The Fractal System**: **PROPRIETARY**.
-    -   Includes the **3x3x7 Recursive Architecture**, `Galaxies_Folder` structure, Memory Lattice, and Simulation Logic.
-    -   *Do not extract, replicate, or reuse this architectural pattern without permission.*
-3.  **Commercial Use**: Requires a purchased license. Contact the author for rates.
+This project is licensed under a custom agreement designed to protect the system's architecture while encouraging community innovation:
 
-See [LICENSE](./LICENSE) for full legal text.
+1.  **Community License (Free)**: Free for **non-commercial** use and modding.
+    -   **CRITICAL**: You **MUST** post your source code publicly if you distribute modifications under this license.
+2.  **Commercial License (Paid)**: Required for any revenue-generating activity.
+    -   Waives the requirement to share source code.
+    -   Allows commercial distribution and monetization.
+3.  **Fractal System**: The **3x3x7 Recursive Architecture** (Memory Lattice, `Galaxies_Folder`) remains proprietary property.
+
+See [LICENSE](./LICENSE) for full legal text and licensing inquiries.

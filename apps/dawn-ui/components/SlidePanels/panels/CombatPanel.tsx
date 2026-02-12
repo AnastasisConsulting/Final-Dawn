@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { rollD10Pool } from 'eideus-combat';
+import { useGame } from '../../../src/context/GameContext';
 
 type Category = 'attack' | 'defend' | 'items' | 'skills' | 'tech';
 
@@ -21,6 +22,7 @@ const ACTIONS: Record<Category, string[]> = {
 const TARGETS = ['Self', 'Ally', 'Enemy A', 'Enemy B', 'Enemy C'];
 
 export const CombatPanel: React.FC<CombatPanelProps> = ({ path = 'STR', systemLevel = 3, lawfulness = 0.4, entropy = 0.5 }) => {
+  const player = useGame();
   const [category, setCategory] = useState<Category>('attack');
   const [selectedAction, setSelectedAction] = useState<string | null>(null);
   const [selectedTarget, setSelectedTarget] = useState<string>('Enemy A');
@@ -132,17 +134,30 @@ export const CombatPanel: React.FC<CombatPanelProps> = ({ path = 'STR', systemLe
               className="w-full px-3 py-2 border border-cyan-600 text-cyan-100 text-xs uppercase tracking-widest bg-cyan-900/20 hover:bg-cyan-900/40 active:scale-95 disabled:opacity-50"
               onClick={() => {
                 const difficulty = 8;
-                const playerPool = path === 'STR' ? 8 : path === 'DEX' ? 6 : 7;
-                const enemyPool = Math.max(2, Math.round(systemLevel * 1.5));
+                // Use player stats from context
+                const dominantAttr = player.state.attributes[path] || 5;
+                const relevantSkill = category === 'attack' ? player.state.skillLevels['Attack'] : player.state.skillLevels['Defend'];
+
+                const playerPool = dominantAttr + (relevantSkill || 1);
+                const enemyPool = Math.max(3, Math.round(systemLevel * 2));
 
                 const playerResult = rollD10Pool(playerPool, difficulty);
                 const enemyResult = rollD10Pool(enemyPool, difficulty);
 
-                const outcome = playerResult.successes >= enemyResult.successes ? 'Victory' : 'Defeat';
+                const isWin = playerResult.successes >= enemyResult.successes && !playerResult.isBotch;
+                const outcome = isWin ? 'Victory' : 'Defeat';
                 const botchText = playerResult.isBotch ? ' (BOTCH!)' : '';
 
+                if (isWin) {
+                  player.actions.recordCombatResult(true);
+                  player.actions.recordKill('WORLD', 'STANDARD', 'G1S1_COMMON_THUG', 'G1-S1');
+                  player.actions.gainXp(120);
+                } else {
+                  player.actions.recordCombatResult(false);
+                }
+
                 setLog(prev => [
-                  `${selectedAction || 'Action'} vs ${selectedTarget}: ${playerResult.successes}${botchText} vs ${enemyResult.successes}. [${playerResult.dice.join(',')}] vs [${enemyResult.dice.join(',')}]. Result: ${outcome}`,
+                  `${selectedAction || 'Action'} vs ${selectedTarget}: ${playerResult.successes}${botchText} vs ${enemyResult.successes}. [Pool: ${playerPool}v${enemyPool}]. Result: ${outcome}`,
                   ...prev,
                 ].slice(0, 5));
               }}

@@ -10,28 +10,16 @@ export const useAutoSave = () => {
     const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (!settings.autoSaveEnabled) {
-            if (saveTimerRef.current) {
-                clearInterval(saveTimerRef.current);
-                saveTimerRef.current = null;
-            }
-            return;
-        }
+        if (!settings.autoSaveEnabled) return;
 
-        const intervalMs = settings.autoSaveInterval * 60 * 1000;
-
-        saveTimerRef.current = setInterval(() => {
-            console.log('[AutoSave] Saving game state...');
+        const handleSave = setTimeout(() => {
+            console.log('[AutoSave] Debounced save triggered...');
             PersistenceService.saveGame(gameState, {
                 lastAddress: kernelState.address.full,
                 visitedNodes: kernelState.visitedNodes
             });
-        }, intervalMs);
+        }, 1000); // 1s debounce
 
-        return () => {
-            if (saveTimerRef.current) {
-                clearInterval(saveTimerRef.current);
-            }
-        };
-    }, [settings.autoSaveEnabled, settings.autoSaveInterval, gameState, kernelState]);
+        return () => clearTimeout(handleSave);
+    }, [settings.autoSaveEnabled, gameState, kernelState]);
 };

@@ -1,64 +1,106 @@
+
+let audioCtx: AudioContext | null = null;
+let masterGain: GainNode | null = null;
+
+const getContext = () => {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.4;
+    masterGain.connect(audioCtx.destination);
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return { ctx: audioCtx, master: masterGain! };
+};
+
 export class EngineSound {
   private ctx: AudioContext | null = null;
   private osc: OscillatorNode | null = null;
   private gain: GainNode | null = null;
+  private filter: BiquadFilterNode | null = null;
 
   start() {
-    if (typeof window === 'undefined') return;
-    this.ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-    this.osc = this.ctx.createOscillator();
-    this.gain = this.ctx.createGain();
-    
-    this.osc.type = 'sawtooth';
-    this.osc.frequency.value = 60;
-    this.gain.gain.value = 0.05;
+    const { ctx, master } = getContext();
+    this.ctx = ctx;
+    this.osc = ctx.createOscillator();
+    this.gain = ctx.createGain();
+    this.filter = ctx.createBiquadFilter();
 
-    this.osc.connect(this.gain);
-    this.gain.connect(this.ctx.destination);
+    this.osc.type = 'sawtooth';
+    this.osc.frequency.value = 40;
+    this.filter.type = 'lowpass';
+    this.filter.frequency.value = 200;
+
+    this.gain.gain.value = 0;
+
+    this.osc.connect(this.filter);
+    this.filter.connect(this.gain);
+    this.gain.connect(master);
     this.osc.start();
   }
 
   update(speedRatio: number, boosting: boolean) {
     if (!this.osc || !this.gain || !this.ctx) return;
-    const targetFreq = 60 + (speedRatio * 100) + (boosting ? 100 : 0);
-    this.osc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.1);
+    const t = this.ctx.currentTime;
+    const targetFreq = 40 + (speedRatio * 80) + (boosting ? 120 : 0);
+    this.osc.frequency.setTargetAtTime(targetFreq, t, 0.1);
+    this.gain.gain.setTargetAtTime(0.15 + (speedRatio * 0.1), t, 0.1);
+    this.filter!.frequency.setTargetAtTime(200 + (speedRatio * 1000), t, 0.1);
   }
 
   stop() {
     this.osc?.stop();
-    this.ctx?.close();
   }
 }
 
-const playTone = (freq: number, type: OscillatorType, duration: number, vol: number = 0.1) => {
-  const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+export const playLaserSound = () => {
+  const { ctx, master } = getContext();
   const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = type;
-  osc.frequency.value = freq;
-  gain.gain.value = vol;
-  osc.connect(gain);
-  gain.connect(ctx.destination);
+  const g = ctx.createGain();
+  osc.type = 'sawtooth';
+  osc.frequency.setValueAtTime(800, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.1);
+  g.gain.setValueAtTime(0.1, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+  osc.connect(g);
+  g.connect(master);
   osc.start();
-  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-  osc.stop(ctx.currentTime + duration);
+  osc.stop(ctx.currentTime + 0.1);
 };
 
-export const playChaffSound = () => playTone(800, 'noise' as any, 0.5, 0.2);
-export const playLockWarningSound = () => playTone(1200, 'square', 0.1, 0.1);
-export const playMissileAlertSound = () => playTone(1500, 'sawtooth', 0.2, 0.2);
-export const playLaserSound = () => {
-    // Simple zap
-    const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.frequency.setValueAtTime(800, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.1);
-    gain.gain.setValueAtTime(0.1, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.1);
+export const playImpactSound = () => {
+  const { ctx, master } = getContext();
+  const bufferSize = ctx.sampleRate * 0.2;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+  const src = ctx.createBufferSource();
+  src.buffer = buffer;
+  const g = ctx.createGain();
+  const f = ctx.createBiquadFilter();
+  f.type = 'lowpass';
+  f.frequency.value = 400;
+  g.gain.setValueAtTime(0.3, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+  src.connect(f);
+  f.connect(g);
+  g.connect(master);
+  src.start();
 };
-export const playExplosionSound = () => playTone(50, 'square', 0.4, 0.3);
+
+export const playChaffSound = () => {
+  const { ctx, master } = getContext();
+  const osc = ctx.createOscillator();
+  osc.type = 'square';
+  osc.frequency.value = 2000;
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.05, ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
+  osc.connect(g);
+  g.connect(master);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.05);
+};
+
+export const playLockWarningSound = () => playLaserSound(); // Placeholder
+export const playMissileAlertSound = () => playLaserSound(); // Placeholder

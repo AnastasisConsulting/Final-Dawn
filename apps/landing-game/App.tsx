@@ -38,8 +38,8 @@ export default function App({ landingContext, onLandingComplete }: { landingCont
             worldId={worldId}
           />
         </Suspense>
-        {/* Adjusted Fog: Starts further out to allow high-orbit visibility of the planet */}
-        <fog attach="fog" args={['#050b14', 2000, 25000]} />
+        {/* Deep space fog for depth perception */}
+        <fog attach="fog" args={['#020617', 5000, 30000]} />
       </Canvas>
 
       {gameState === 'PLAYING' && <HUD data={hudData} />}
@@ -63,12 +63,12 @@ export default function App({ landingContext, onLandingComplete }: { landingCont
                 Execute orbital entry maneuver. Follow the <span className="text-yellow-400">Guidance Ribbon</span> to the designated landing zone.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                <div><span className="text-yellow-500">W/S</span> Pitch</div>
+                <div><span className="text-yellow-500">W/S</span> Thrust</div>
                 <div><span className="text-yellow-500">A/D</span> Roll</div>
                 <div><span className="text-yellow-500">MOUSE</span> Vector</div>
                 <div><span className="text-yellow-500">L-CLICK</span> Plasma</div>
-                <div><span className="text-yellow-500">SHIFT</span> Burner</div>
-                <div><span className="text-yellow-500">SPACE</span> Brake</div>
+                <div><span className="text-yellow-500">SHIFT</span> Booster</div>
+                <div><span className="text-yellow-500">SPACE</span> Air-Brake</div>
               </div>
             </div>
             <button

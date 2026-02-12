@@ -4,7 +4,7 @@ import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber';
 import { Vector3, Quaternion } from 'three';
 import { Environment } from './components/Environment';
-import { Aircraft } from './components/Aircraft';
+import { SpaceFighter } from './components/SpaceFighter';
 import { Interface } from './components/Interface';
 import { CombatSystem } from './components/CombatSystem';
 import { Universe } from './components/Universe';
@@ -80,6 +80,7 @@ const App: React.FC<FlightAppProps> = ({
 
     // Targeting Alert State
     const [targetingStatus, setTargetingStatus] = useState({ locked: false, missileTracking: false });
+    const [isBoosting, setIsBoosting] = useState(false);
 
     // Landing Mode State
     const [isLanding, setIsLanding] = useState(false);
@@ -412,7 +413,7 @@ const App: React.FC<FlightAppProps> = ({
 
                 {!isLanding && (
                     <>
-                        <Environment />
+                        <Environment isBoosting={isBoosting} shipPosition={shipPosVector} />
                         {activeSystem ? (
                             <SolarSystem
                                 system={activeSystem}
@@ -444,11 +445,11 @@ const App: React.FC<FlightAppProps> = ({
                             />
                         )}
 
-                        <Aircraft
+                        <SpaceFighter
                             status={status}
                             onUpdateStatus={handleUpdateStatus}
                             onFire={handleFire}
-                            navTarget={navTarget ? new Vector3(...(navTarget.absolutePosition || [0, 0, 0])) : null}
+                            navTarget={navTarget ? new Vector3(...navTarget.position!) : null}
                             autopilot={autopilot || isAutoLanding}
                             onAutopilotDisengage={() => setAutopilot(false)}
                             activeSystem={activeSystem}
@@ -459,6 +460,7 @@ const App: React.FC<FlightAppProps> = ({
                             activeTargets={activeTargets}
                             onChaff={handleChaff}
                             targetingStatus={targetingStatus}
+                            onBoostChange={setIsBoosting}
                         />
                     </>
                 )}

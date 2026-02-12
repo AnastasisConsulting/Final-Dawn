@@ -1,3 +1,8 @@
+/**
+ * UI STABILITY WARNING: 
+ * This component is part of the established "High-Density / Professional Sleek" UI standard.
+ * DO NOT modify the dock width (50px), font sizes (text-[8px]), or layout proportions.
+ */
 // Final_Dawn_of_Eideus/apps/dawn-ui/components/Panels/RightPanel.tsx
 
 import React from 'react';
@@ -7,14 +12,21 @@ import { useColorStealing } from '../../src/contexts/ColorStealingContext';
 interface RightPanelProps {
   activePanel?: string | null;
   onPanelSelect?: (id: string) => void;
-  // REMOVED: onFlightMode prop as it is now handled via Kernel SET_WARP_STATE in NavBot
+  devTerminalOpen: boolean;
+  setDevTerminalOpen: (open: boolean) => void;
 }
 
 import { useGame } from '../../src/context/GameContext';
+import { DevTerminal } from '../Features/Dev/DevTerminal';
 
 // ...
 
-export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSelect }) => {
+export const RightPanel: React.FC<RightPanelProps> = ({
+  activePanel,
+  onPanelSelect,
+  devTerminalOpen,
+  setDevTerminalOpen
+}) => {
   const { state: gameState } = useGame();
   const { panelColors } = useColorStealing();
   const rightColor = panelColors.right;
@@ -31,19 +43,12 @@ export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSele
 
   return (
     <div className={`
-        h-full w-full bg-[#0a0a0a]/70 backdrop-blur-sm p-1 flex flex-col shadow-2xl z-30 relative gap-1 transition-all duration-300
+        h-full w-full bg-[#0a0a0a]/70 backdrop-blur-sm p-0.5 flex flex-col shadow-2xl z-30 relative gap-1 transition-all duration-300
         ${rightColor.stolen
         ? 'border border-neutral-800 hover:bg-[#111]/80 hover:border-neutral-700'
         : 'border border-fuchsia-500/30 hover:bg-[#111]/80 hover:border-fuchsia-500/50 hover:shadow-[0_0_20px_rgba(217,70,239,0.1)]'
       }
     `}>
-      {/* Space Junk Decorations */}
-
-
-      {/* CLEANUP: The "FLIGHT" button was removed from this stack to prevent redundant UI triggers.
-          Immersion is now driven by the Nav_Implant terminal.
-      */}
-
       {/* Standard System Buttons */}
       {BUTTONS.map((btn) => {
         const isActive = activePanel === btn.id;
@@ -63,7 +68,7 @@ export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSele
             {/* LED Status Light */}
             <div className={`absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full ${isActive ? 'bg-orange-500 shadow-[0_0_5px_orange]' : 'bg-neutral-900 group-hover:bg-neutral-600'}`} />
 
-            <span className="writing-mode-vertical text-[9px] font-bold tracking-[0.2em] uppercase text-shadow-sm mt-2" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
+            <span className="writing-mode-vertical text-[8px] font-bold tracking-[0.2em] uppercase text-shadow-sm mt-1" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}>
               {btn.label}
             </span>
 
@@ -75,6 +80,22 @@ export const RightPanel: React.FC<RightPanelProps> = ({ activePanel, onPanelSele
           </button>
         );
       })}
+
+      {/* Dev Terminal Slot */}
+      {devTerminalOpen && (
+        <div className="flex-[2] mt-2 border-t border-fuchsia-900/40 pt-2 overflow-hidden flex flex-col">
+          <div className="flex items-center justify-between px-1 mb-1">
+            <span className="text-[8px] font-bold text-fuchsia-400 tracking-widest uppercase">Dev_Link</span>
+            <button onClick={() => setDevTerminalOpen(false)} className="text-[10px] text-neutral-600 hover:text-white">×</button>
+          </div>
+          <div className="flex-1 bg-black/60 rounded border border-fuchsia-500/20 overflow-hidden relative">
+            {/* We use a specialized view of the terminal here */}
+            <div className="absolute inset-0 scale-[0.75] origin-top-left w-[133%] h-[133%]">
+              <DevTerminal open={true} onClose={() => setDevTerminalOpen(false)} embedded={true} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

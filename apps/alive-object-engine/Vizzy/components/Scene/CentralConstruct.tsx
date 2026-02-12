@@ -9,6 +9,7 @@ const ConstructShaderMaterial = {
   uniforms: {
     uTime: { value: 0 },
     uColor: { value: new THREE.Color(0.0, 1.0, 1.0) },
+    uSecondaryColor: { value: new THREE.Color(0.0, 0.4, 0.6) },
     uLuminosity: { value: 1.0 },
     uPulseAmp: { value: 0.0 },
     uPulseSpeed: { value: 1.0 },
@@ -96,6 +97,7 @@ const ConstructShaderMaterial = {
     varying vec3 vNormal;
     varying float vDisplace;
     uniform vec3 uColor;
+    uniform vec3 uSecondaryColor;
     uniform float uLuminosity;
     uniform float uTime;
     uniform float uLumaScale;
@@ -109,9 +111,12 @@ const ConstructShaderMaterial = {
       float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0,0,1))), 3.0);
       vec3 spectrum = vec3(sin(vDisplace * 8.0), sin(vDisplace * 8.0 + 2.0), sin(vDisplace * 8.0 + 4.0));
       
-      vec3 base = mix(uColor, spectrum, 0.2);
-      vec3 final = base * uLuminosity * (0.5 + pattern);
-      final += fresnel * vec3(0.8, 0.9, 1.0) * (1.0 + pattern); 
+      // Procedural secondary color blending for emotional depth
+      vec3 colorMix = mix(uColor, uSecondaryColor, pattern * 0.5);
+      vec3 base = mix(colorMix, spectrum, 0.15); // Reduced spectrum slightly for cleaner look
+      
+      vec3 final = base * uLuminosity * (0.6 + pattern * 0.4);
+      final += fresnel * uColor * 0.5 * (1.0 + pattern); // Fresnel follows primary color for mood
       
       gl_FragColor = vec4(final, uOpacity);
     }
@@ -122,6 +127,7 @@ const ConstructShaderMaterial = {
 const createUniforms = () => ({
   uTime: { value: 0 },
   uColor: { value: new THREE.Color(0.0, 1.0, 1.0) },
+  uSecondaryColor: { value: new THREE.Color(0.0, 0.4, 0.6) },
   uLuminosity: { value: 1.0 },
   uPulseAmp: { value: 0.0 },
   uPulseSpeed: { value: 1.0 },
@@ -194,6 +200,7 @@ export const CentralConstruct: React.FC<{ config: SphereConfig, transform: Trans
     if (solidMatRef.current) {
       solidMatRef.current.uniforms.uTime.value = t;
       solidMatRef.current.uniforms.uColor.value.set(config.color);
+      if (config.secondaryColor) solidMatRef.current.uniforms.uSecondaryColor.value.set(config.secondaryColor);
       solidMatRef.current.uniforms.uLuminosity.value = config.luminosity;
       solidMatRef.current.uniforms.uPulseAmp.value = config.pulseAmplitude;
       solidMatRef.current.uniforms.uPulseAmp.value = config.pulseAmplitude + feedPulse;
@@ -209,6 +216,7 @@ export const CentralConstruct: React.FC<{ config: SphereConfig, transform: Trans
     if (wireMatRef.current) {
       wireMatRef.current.uniforms.uTime.value = t;
       wireMatRef.current.uniforms.uColor.value.set(config.color);
+      if (config.secondaryColor) wireMatRef.current.uniforms.uSecondaryColor.value.set(config.secondaryColor);
       wireMatRef.current.uniforms.uLuminosity.value = config.luminosity * 1.5; // Brighter wire
       wireMatRef.current.uniforms.uPulseAmp.value = config.pulseAmplitude + feedPulse;
       wireMatRef.current.uniforms.uPulseSpeed.value = config.pulseSpeed;

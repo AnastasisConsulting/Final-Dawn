@@ -1,1 +1,0 @@
-{"version":3,"file":"worldLoader.d.ts","sourceRoot":"","sources":["worldLoader.ts"],"names":[],"mappings":"AAMA,qBAAa,WAAW;IACtB;;OAEG;IACG,WAAW,CAAC,MAAM,EAAE;QACxB,cAAc,EAAE,GAAG,CAAC;QACpB,UAAU,EAAE;YAAE,QAAQ,EAAE,GAAG,CAAC;YAAC,SAAS,EAAE,GAAG,CAAC;YAAC,MAAM,EAAE,GAAG,CAAC;YAAC,UAAU,EAAE,GAAG,CAAA;SAAE,CAAC;KAC7E;;;;;;;;;CAoDF"}

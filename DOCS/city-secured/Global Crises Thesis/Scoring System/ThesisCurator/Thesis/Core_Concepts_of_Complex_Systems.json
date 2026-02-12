@@ -1,0 +1,67 @@
+{
+    "core_concepts_of_complex_systems": {
+      "state_variables": {
+        "definition": "The measurable components or properties of a system at a given point in time.",
+        "example": "Sea level, infrastructure stability, population density."
+      },
+      "interaction_rules": {
+        "definition": "The cause-effect dynamics between state variables that define how changes in one variable impact others.",
+        "example": "Rising sea levels increase coastal erosion."
+      },
+      "rate_of_change": {
+        "definition": "The speed and direction of change for each state variable over time, influenced by both internal system dynamics and external forces.",
+        "example": "Sea levels rising at 3 mm/year."
+      },
+      "feedback_loops": {
+        "definition": "Cyclical interactions where changes in one variable accelerate or decelerate changes in another, creating compounding effects.",
+        "example": "Coastal erosion increases flood risk, which in turn accelerates further erosion."
+      },
+      "degree_of_impact": {
+        "definition": "The quantified impact of changing state variables on key human or ecological interests (e.g. economy, infrastructure, health).",
+        "example": "Flood risk reduces GDP by 2% for every 10% increase in risk."
+      },
+      "proportional_weighting": {
+        "definition": "Adjusting the importance of each variable based on its significance to the overall system, including economic or population scaling.",
+        "example": "Infrastructure risk in a densely populated area carries more weight than in a sparsely populated one."
+      }
+    },
+    "related_concepts": {
+      "systems_thinking": {
+        "definition": "A well-established approach that focuses on understanding how different parts of a system interact with each other. It emphasizes feedback loops, causal relationships, and the interdependence of components.",
+        "related_to": "State variables and interaction rules."
+      },
+      "systems_dynamics": {
+        "definition": "A method for modeling and simulating complex systems using differential equations to represent changes over time. Systems dynamics is used to study how systems evolve and how feedback loops work.",
+        "related_to": "Rate of change and feedback loops."
+      },
+      "complex_adaptive_systems": {
+        "definition": "Dynamic systems composed of multiple interacting components that adapt and evolve based on their interactions. Emergent behavior and self-organization are key features of CAS.",
+        "related_to": "Non-linear interactions and feedback effects."
+      },
+      "control_theory_and_cybernetics": {
+        "definition": "A field that deals with the regulation and control of systems through feedback mechanisms, commonly applied in engineering and biology.",
+        "related_to": "Controlling variables and adjusting their rate of change through external inputs."
+      },
+      "proportional_weighting_and_economic_scaling": {
+        "definition": "A concept often used in economic modeling and decision-making frameworks where factors are weighted according to their importance or potential impact.",
+        "related_to": "Adjusting variables based on their relative importance."
+      }
+    },
+    "framework_novelty_assessment": {
+      "unique_aspects": {
+        "integration_of_state_variables_interaction_rules_and_rate_of_change": {
+          "existing_methods": "Current risk assessment models often focus on specific domains and tend to use static models.",
+          "novelty": "This framework integrates variables across multiple domains (environmental, infrastructural, social, economic) allowing for cross-domain evaluation."
+        },
+        "proportional_weighting_and_scalability_across_systems": {
+          "existing_methods": "Proportional weighting is used in economic models but is not systematically applied to complex systems.",
+          "novelty": "Incorporates proportional weighting based on factors like population density and regional vulnerabilities for adaptable risk assessments."
+        },
+        "cross_disciplinary_adaptability": {
+          "existing_methods": "Most risk assessment models are domain-specific, using specialized metrics.",
+          "novelty": "Standardizes and quantifies complex systems across fields for cross-disciplinary risk assessment, adaptable to environmental crises, economic collapses, and social unrest."
+        }
+      }
+    }
+  }
+  

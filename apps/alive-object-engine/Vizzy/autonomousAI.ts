@@ -1,7 +1,7 @@
 interface AutonomousBehavior {
   wanderTarget: { x: number; y: number };
   mousePos: { x: number; y: number };
-  emotionalState: 'calm' | 'curious' | 'excited' | 'following' | 'pouncing' | 'nuzzling' | 'nap';
+  emotionalState: 'calm' | 'curious' | 'excited' | 'following' | 'pouncing' | 'nuzzling' | 'nap' | 'searching';
   lastInteraction: number;
   jumpTimer: number;
   pounceTimer: number;
@@ -22,6 +22,11 @@ export class VizzyAutonomousAI {
     lastInteraction: Date.now(),
     jumpTimer: 0,
     pounceTimer: 0
+  };
+
+  private searchState = {
+    timer: 0,
+    lastKnownPos: { x: 0, y: 0 }
   };
 
   private wanderState = {
@@ -71,11 +76,10 @@ export class VizzyAutonomousAI {
       // REMOVED 'following' trigger on distance > 0.8
       // He should only follow if TOLD to (via chat command 'come here') or laser mode.
     } else if (timeSinceInteraction > 45000) {
-    } else if (timeSinceInteraction > 45000) {
       this.behavior.emotionalState = 'nap';
     } else {
       // If idle for a bit, start wandering
-      if (this.behavior.emotionalState !== 'curious') {
+      if (this.behavior.emotionalState !== 'curious' && this.behavior.emotionalState !== 'searching') {
         this.behavior.emotionalState = 'curious'; // Default to curious wandering
       }
     }
@@ -95,6 +99,9 @@ export class VizzyAutonomousAI {
     // Choose behavior
     let movement;
     switch (this.behavior.emotionalState) {
+      case 'searching':
+        movement = this.search(deltaTime);
+        break;
       case 'following':
         movement = this.followCursor(deltaTime);
         break;
@@ -143,7 +150,7 @@ export class VizzyAutonomousAI {
         if (distToVizzy > 0.5) {
           // Creep closer
           this.behavior.wanderTarget.x += (this.behavior.laserTarget.x - this.behavior.wanderTarget.x) * 0.5 * deltaTime;
-          this.behavior.wanderTarget.y += (this.behavior.laserTarget.y - this.behavior.laserTarget.y) * 0.5 * deltaTime;
+          this.behavior.wanderTarget.y += (this.behavior.laserTarget.y - this.behavior.wanderTarget.y) * 0.5 * deltaTime;
         }
       }
       // STATE 2: THE WIGGLE (Small movements, "Getting Ready")
@@ -191,10 +198,16 @@ export class VizzyAutonomousAI {
   }
 
   setLaserTarget(active: boolean, x: number, y: number) {
+    const wasActive = this.behavior.laserActive;
     this.behavior.laserActive = active;
     if (active) {
       this.behavior.laserTarget = { x, y };
       this.behavior.emotionalState = 'pouncing';
+    } else if (wasActive && this.behavior.laserTarget) {
+      // Laser disappeared! Capture last spot and start searching
+      this.behavior.emotionalState = 'searching';
+      this.searchState.timer = 0;
+      this.searchState.lastKnownPos = { ...this.behavior.laserTarget };
     } else {
       this.behavior.emotionalState = 'curious';
     }
@@ -297,6 +310,37 @@ export class VizzyAutonomousAI {
       x: this.behavior.wanderTarget.x,
       y: this.behavior.wanderTarget.y,
       rotation: this.wanderState.currentRotation + roll // Combine facing + blink/bank
+    };
+  }
+
+  private search(deltaTime: number): { x: number; y: number; rotation: number } {
+    this.searchState.timer += deltaTime;
+
+    // 1. Move towards last known position (if not there yet)
+    const dx = this.searchState.lastKnownPos.x - this.behavior.wanderTarget.x;
+    const dy = this.searchState.lastKnownPos.y - this.behavior.wanderTarget.y;
+
+    this.behavior.wanderTarget.x += dx * 5.0 * deltaTime;
+    this.behavior.wanderTarget.y += dy * 5.0 * deltaTime;
+
+    // 2. Frantic jitter/rotation (Looking for the dot)
+    const t = Date.now() * 0.001;
+    // Rapid shifty movements
+    const jitterX = Math.sin(t * 20.0) * 0.15;
+    const jitterY = Math.cos(t * 25.0) * 0.15;
+    // Fast head turning
+    const rotation = Math.sin(t * 30.0) * 1.2;
+
+    // 3. Give up after 3 seconds
+    if (this.searchState.timer > 3.0) {
+      this.behavior.emotionalState = 'curious';
+      this.pickWanderTarget(); // Wander off
+    }
+
+    return {
+      x: this.behavior.wanderTarget.x + jitterX,
+      y: this.behavior.wanderTarget.y + jitterY,
+      rotation: rotation
     };
   }
 

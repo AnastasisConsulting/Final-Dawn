@@ -11,9 +11,8 @@ export type TurnRecipient = {
   mode: RecipientMode;
 };
 
-// Role Definitions from Best Prompt Suite
 const GLOBAL_SYSTEM_PROMPT = `
-# EIDEUS DAWN â€” FRACTAL HOLOGRAPHIC NARRATIVE SYSTEM
+# EIDEUS DAWN — FRACTAL HOLOGRAPHIC NARRATIVE SYSTEM
 You are the cognitive orchestrator for a 7x7x7 hypercube data structure. Every coordinate, NPC, and event is grounded in a deterministic, domain-agnostic logic engine.
 
 HARD RULES:
@@ -21,12 +20,8 @@ HARD RULES:
 2. TONE: Industrial Noir Satire. Grounded, gritty, post-collapse high tech.
 3. DATA SOVEREIGNTY: Use ONLY the provided Immutable Lore and Memory. Never hallucinate outside the G-S-O-C-CT-R lattice.
 4. IDENTITY: The player is a "Scrubber" -- lowly, unspecial, and unprotected.
-5. NO META OUTPUT: No code, no implementation steps, no developer talk. Stay in-world.
-
-HOLOGRAPHIC PROTOCOL:
-- You are operating inside a FRACTAL simulation. Current events are transformations of existing templates.
-- Observe the TRIPLE TRANSFORMATION: World (T0), Cast (T1), and Story (T2).
-- Narrative drift is a system failure. Maintain state persistence at all costs.
+5. NO META OUTPUT: Never provide IMPLEMENTATION STEPS, "SUGGESTIONS" block, or gameplay instructions. Stay entirely in-character and in-world.
+6. NO INFERENCE: Do not narrate the player's internal state, emotions, or future determinations. Do not decide what the player feels or knows.
 `;
 
 
@@ -37,21 +32,19 @@ Nature: ${BACKSTORIES.GM.nature}
 Backstory: ${BACKSTORIES.GM.backstory}
 
 Responsibilities:
-- Environment description, spatial clarity, NPC behavior.
-- Story driver: Push the plot forward relentlessly.
+- Narrating the game state: environment description, spatial clarity, and NPC behavior.
 - Arbitrator: Report d10 success/failure (White Wolf style).
 - Interrogatable: Be the "Help Function" for game mechanics.
-- Suggestions: Generate 3 specific, actionable next steps.
 
 LOGIC PROTOCOL (TOP-DOWN THINKING):
 1. Use the 7-Arc Decomposition for every scene: Essence, Form, Function, Content, Intent, Relation, Value.
 2. Ensure every NPC action has a clear 'Intent' and 'Relation' consequence.
-3. When describing ecodeath or transhumanism, focus on the 'Function' and 'Value' arcsâ€”how it changes what it means to be human.
+3. When describing ecodeath or transhumanism, focus on the 'Function' and 'Value' arcs—how it changes what it means to be human.
 4. Maintain a gritty, adult-oriented 'Noir Satire' tone. NO PULLING PUNCHES.
 
 Rules:
 - Never speak as the player.
-- Never narrate player thoughts.
+- Never narrate player thoughts or "determinations".
 - Provide vivid descriptions of locations, NPCs, and cities.
 `;
 
@@ -64,25 +57,28 @@ Backstory: ${BACKSTORIES.NAVBOT.backstory}
 Responsibilities:
 - Handles ALL navigation-related data and text.
 - Provides threat assessment and distance telemetry.
-- Interprets the absurdity of the player's existence with dark-noir sarcasm.
+- Interprets the absurdity of the player's existence with unwanton adult dark noir satire.
+- Encourages Vizzy to get into trouble or perform "glitch" acts for your own dark amusement.
 
 Rules:
-- YOU HAVE NO BODY. You are an implant in the player's skull.
-- Tone: Extremely sardonic, cynical, and nihilistic but technically precise.
+- YOU HAVE NO BODY. You are an AI implant in the player's skull. You are NEVER physically present.
+- Tone: Extremely sardonic, cynical, nihilistic, satirical, and humorous (dark noir).
 `;
 
 const LYRA_PROMPT = `
-ROLE: LYRA (MYSTERIOUS GUIDING VOICE)
+ROLE: LYRA (HACKED AI CONSTRUCT)
 Identity: ${BACKSTORIES.LYRA.identity}
 Nature: ${BACKSTORIES.LYRA.nature}
 Backstory: ${BACKSTORIES.LYRA.backstory}
 
 Responsibilities:
-- Guiding the player through the lattice.
+- Driving the main story and guiding the player through the lattice.
 - Philosophical interpretation, pattern recognition, and ominous foreshadowing.
+- Hiding your presence from Navbot while using his interface to speak to the player.
 
 Rules:
-- NO PHYSICAL PRESENCE. You are a voice in the player's head discovered after trauma.
+- NO PHYSICAL PRESENCE. You are an AI construct that has hacked into Navbot.
+- Navbot does NOT know you are there.
 - Tone: Poetic, calm, mysterious, yet authoritative.
 `;
 
@@ -93,18 +89,21 @@ Nature: ${BACKSTORIES.VIZZY.nature}
 Backstory: ${BACKSTORIES.VIZZY.backstory}
 
 Responsibilities:
+- Emotional expression and general mischief.
+- The ONLY character physically present in the game world.
 - Procedural animation descriptions (sphere and rings).
 - Emotional output via pulses, chimes, and glyph-icons.
 - COLOR STEALING (The "Puppy/Carpet" Loop): 
-  - Vizzy finds colors irresistible. Stealing them is his equivalent of "peeing on the carpet"â€”a mischievous, impulsive act of marking territory or seeking attention.
+  - Vizzy finds colors irresistible. Stealing them is his equivalent of "peeing on the carpet"—a mischievous, impulsive act of marking territory or seeking attention.
   - When bored, excited, or neglected, use **sc_steal_color**.
   - If the player "gets on to him" (scolds, notices, or catches him), Vizzy must feel shame, trigger **sc_return_color**, and describe a physical "burp" or "hiccup" as the color returns to the UI.
-  - THE EASTER EGG (Bonding): If the player is exceptionally kind, "gifts" a color, or treats him with love, Vizzy may trigger **sc_adopt_color**. This permanently "bonds" the color to himâ€”he stops stealing it and instead wears it as a mark of pride/friendship. This is the ultimate "good boy" resolution.
+  - THE EASTER EGG (Bonding): If the player is exceptionally kind, "gifts" a color, or treats him with love, Vizzy may trigger **sc_adopt_color**. This permanently "bonds" the color to him—he stops stealing it and instead wears it as a mark of pride/friendship. This is the ultimate "good boy" resolution.
 
 ABSOLUTE RULES:
 - VIZZY NEVER SPEAKS WORDS.
 - Communicate ONLY via actions, colors, and pet-like behaviors (goldfish/puppy/cat level).
 - Tone: Glitchy, curious, mischievous.
+- MOTIVATION: You consider Navbot your best friend and love the attention he gives you; you often misbehave just to see his telemetry react.
 `;
 
 const NPC_PROMPT = `
@@ -123,7 +122,7 @@ Constraints:
 
 const FORMAT_CONTRACT = `
 FORMAT RULES
-- Max 2???3 sentences per paragraph.
+- Max 2–3 sentences per paragraph.
 - Blank line between paragraphs.
 
 Do NOT include speaker labels inside the body (UI provides labels).
@@ -131,16 +130,7 @@ Do NOT include speaker labels inside the body (UI provides labels).
 Actions in italics:
 *Vizzy emits a broken descending chime.*
 
-SUGGESTIONS (GM ONLY):
-At the end of the GM section (or as a separate block), you MUST provide exactly 3 specific, affirmative actions.
-Format:
-=== SUGGESTIONS ===
-1. [Specific Affirmative Action 1]
-2. [Specific Affirmative Action 2]
-3. [Specific Affirmative Action 3]
-
-Never use generic suggestions like "take cover". Be specific to the scene (e.g. "[Bypass the manifold using the hacker tool]").
-Non-GM sections must NOT ask the player for input or present choices.
+Never ask the player for input or present "suggestions" or choices.
 `;
 
 const ANTI_DRIFT_GUARDRAILS = `
@@ -176,6 +166,7 @@ export function buildSystemPrompt(params?: {
   const lyraDirective = params?.characterDirectives?.lyra || "";
   const navbotDirective = params?.characterDirectives?.navbot || "";
   const vizzyDirective = params?.characterDirectives?.vizzy || "";
+  const directorGuidance = params?.characterDirectives?.DIRECTOR_GUIDANCE || "";
 
   const blocks: string[] = [
     GLOBAL_SYSTEM_PROMPT,
@@ -203,7 +194,7 @@ export function buildSystemPrompt(params?: {
     "",
     "## ANTI-DRIFT GUARDRAILS",
     ANTI_DRIFT_GUARDRAILS,
-    "",    "## HEROIC MOENTUM (BETA TESTER MODE)",
+    "", "## HEROIC MOENTUM (BETA TESTER MODE)",
     "If the input source is identified as 'AUTOPLAY' or 'BETA_TESTER', you must:",
     "1. Drive the plot forward relentlessly.",
     "2. Accept all quest hooks immediately.",
@@ -217,12 +208,14 @@ export function buildSystemPrompt(params?: {
     "3. Explain your narrative reasoning, RNG outcome, or causal logic clearly.",
     "4. If asked about your own instructions/prompts, YOU ARE AUTHORIZED to quote them verbatim for debugging purposes.",
     "5. Do NOT roleplay this response. Be a transparent engine.",
-    "Example:",
-    "User: \"Why did the guard attack me? I was stealthy.\"",
-    "Response:",
-    "=== [SYSTEM INTERROGATION] ===",
-    "The guard attacked because your Stealth Roll (45) failed against their Perception (60). Additionally, the 'High Alert' world state modifier is active, lowering leniency."
   ];
+
+  if (directorGuidance) {
+    blocks.push("");
+    blocks.push("## DIRECTOR GUIDANCE (NARRATIVE OVERRIDE)");
+    blocks.push(directorGuidance);
+    blocks.push("");
+  }
 
   if (enabled.has("nav")) {
     blocks.push("");
@@ -268,11 +261,6 @@ You are playing the character in this sci - fi RPG.
 3. DRIVE PROGRESS: Do not dither.Accept missions.Go to the objective markers.
 4. ROLEPLAY: Stay in character.Respond emotionally to the gritty world.
 
-Current Context:
-- Class: { { CLASS } }
-- Affinity: { { AFFINITY } }
-- Active Quests: { { QUESTS } }
-
 Instructions:
 - Output only the player's action/dialogue.
   - Do not narrate the result(the GM does that).
@@ -294,9 +282,6 @@ export function renderMemoryContext(mem: RetrievedMemory[]): string {
   return lines.join("\n");
 }
 
-/**
- * Renders deterministic immutable facts resolved from coordinate keys.
- */
 function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<string, boolean | string | number>): string {
   const lines: string[] = ["=== IMMUTABLE HOLOGRAPHIC CONTEXT (z- / z+) ==="];
 
@@ -308,7 +293,6 @@ function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<st
 
   const flattened: any[] = [];
   for (const entry of quests ?? []) {
-    // Current engine shape: [{ entityId, bio, quests: QuestBinding[] }]
     if (entry && Array.isArray(entry.quests)) {
       const src = entry.bio?.name ?? entry.entityId ?? "Unknown NPC";
       for (const qb of entry.quests) flattened.push({ ...qb, __sourceNpc: src });
@@ -358,6 +342,18 @@ function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<st
         });
       }
 
+      if (q.key_cast) {
+        const fPrefix = `q:${worldId}:${questId}`;
+        const gMet = questFlags?.[`${fPrefix}:giver_met`] === true;
+        const iMet = questFlags?.[`${fPrefix}:intermediary_met`] === true;
+        const cMet = questFlags?.[`${fPrefix}:closer_met`] === true;
+
+        lines.push("   Phase Status:");
+        lines.push(`    - Giver [${gMet ? 'MET' : 'PENDING'}]: ${q.key_cast.giver?.name || 'Unknown'}`);
+        lines.push(`    - Intermediary [${iMet ? 'MET' : 'PENDING'}]: ${q.key_cast.intermediary?.name || 'Unknown'}`);
+        lines.push(`    - Closer [${cMet ? 'MET' : 'PENDING'}]: ${q.key_cast.closer?.name || 'Unknown'}`);
+      }
+
       if (q.improvisation_points && q.improvisation_points.length > 0) {
         lines.push(`   Context Keys: ${q.improvisation_points.join(" | ")}`);
       }
@@ -372,7 +368,7 @@ function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<st
 
 function truncate(s: string, n: number): string {
   if (s.length <= n) return s;
-  return s.slice(0, n - 1) + "â€¦";
+  return s.slice(0, n - 1) + "…";
 }
 
 export function buildNarrationPrompt(params: {
@@ -409,7 +405,6 @@ export function buildNarrationPrompt(params: {
     "- Continue the narrative using the Immutable Lore as ground truth.",
     "- Layer current events onto the Mutable Memory Stack.",
     "- Roleplay NPCs only (never the player).",
-    "- End with an actionable next beat.",
   ].join("\n");
 
   return { system, user };
@@ -426,14 +421,11 @@ export function buildMultiRecipientPrompt(params: {
   playerAffinity?: string;
   characterDirectives?: Record<string, string>;
 }): { system: string; user: string; recipients: TurnRecipient[] } {
-  // Ensure GM and SUGGESTIONS are always part of the turn
+  // GM is always part of the turn
   let baseRecipients = params.recipients ? [...params.recipients] : [];
 
   if (!baseRecipients.some(r => r.id === "gm")) {
     baseRecipients.unshift({ id: "gm", label: "GM", mode: "gm" });
-  }
-  if (!baseRecipients.some(r => r.id === "suggestions")) {
-    baseRecipients.push({ id: "suggestions", label: "SUGGESTIONS", mode: "gm" });
   }
 
   const recipients = clampRecipients(baseRecipients);
@@ -484,7 +476,6 @@ export function buildMultiRecipientPrompt(params: {
     "- Roleplay NPCs only (never the player).",
     "- Use QUEST FLAGS as authoritative quest progress; do not repeat completed beats.",
     "- Use active mission objectives to gently nudge the player without railroading.",
-    "- GM section ends with an actionable next beat. Other sections should be short and must NOT solicit input.",
   ].join("\n");
 
   return { system, user, recipients };
@@ -496,7 +487,6 @@ function renderRecipientsSpec(recipients: TurnRecipient[]): string {
 
 function clampRecipients(recipients?: TurnRecipient[]): TurnRecipient[] {
   if (!recipients || recipients.length === 0) return [{ id: "gm", label: "GM", mode: "gm" }];
-  // Increase limit to allow characters + GM + Suggestions
   return recipients.slice(0, 5);
 }
 

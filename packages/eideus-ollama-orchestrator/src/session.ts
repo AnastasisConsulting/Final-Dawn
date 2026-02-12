@@ -23,6 +23,8 @@ export type SessionState = {
   };
   credits: number;
   inventory: string[];
+  // Persisted flags (quest progress, world toggles, etc.)
+  flags: Record<string, boolean | string | number>;
 };
 
 export class SessionManager {
@@ -56,6 +58,9 @@ export class SessionManager {
       (loaded.caches as any).lore = coerceMap((loaded.caches as any).lore);
       (loaded.caches as any).quests = coerceMap((loaded.caches as any).quests);
       (loaded.caches as any).cast = coerceMap((loaded.caches as any).cast);
+
+      // Ensure flags exist
+      loaded.flags = loaded.flags || {};
 
       this.sessions.set(id, loaded);
       return loaded;

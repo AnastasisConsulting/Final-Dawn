@@ -1,32 +1,59 @@
 // packages/eideus-orchestrator-core/src/types.ts
 
 // --- MEMORY LATTICE TYPES ---
+export interface EntityCard {
+  id: string;
+  name: string;
+  class: string;
+  aliases: string[];
+}
+
+export interface LandmarkCard {
+  id: string;
+  name: string;
+  type: string;
+  description: string;
+  tags: string[];
+  isProcedural: boolean;
+  parentLoreKey?: string;
+}
+
+export interface LoreContext {
+  loreKey: string;
+  landmarks: LandmarkCard[];
+}
+
 export interface VoxelFaces {
-  x_plus: string;    // Input Sum (User Action)
-  x_minus: string;   // Output Sum (Narrative Result)
-  y_plus: string[];  // Embeddings (Semantic Vectors)
-  y_minus: string[]; // Associative Tags (Thematic Links)
-  z_plus: string[];  // Entities (Who is here)
-  z_minus: string;   // Lore Key (Where we are)
+  "x+": string;      // Input Sum (User Action)
+  "x-": string;      // Output Sum (Narrative Result)
+  "y+": number[][];  // Embeddings (Semantic Vectors)
+  "y-": string[];    // Associative Tags (Thematic Links)
+  "z+": EntityCard[]; // Entities (Who is here)
+  "z-": LoreContext | string; // Lore Key or Context
 }
 
 export interface VoxelCoordinate {
-  galaxy: number;
-  system: number;
-  object: number;
-  city: number;
-  district: number;
-  room: number;
+  g: number;
+  s: number;
+  o: number;
+  c: number;
+  ct: number;
+  r: number;
+}
+
+export interface TemporalKey {
+  saga: number;
+  book: number;
+  chapter: number;
+  page: number;
 }
 
 export interface VoxelSnapshot {
-  coordinate: string; // "G1.S1.O1..."
-  timestamp: string;  // "S1.B1.C1.P15"
+  id: string;
+  spatial: VoxelCoordinate;
+  temporal: TemporalKey;
   faces: VoxelFaces;
-  // Optional legacy field used by older orchestration prototypes.
-  input?: string;
-  // Computed relevance for this turn
-  relevanceScore: number; 
+  relevanceScore?: number;
 }
 
 // --- AFFINITY (M.O.S.S.) TYPES ---
@@ -38,49 +65,67 @@ export interface MossProfile {
 }
 
 // --- ORCHESTRATION TYPES ---
-export type AgentRole = 'GM' | 'LYRA' | 'VIZZY' | 'NAV' | 'NPC';
+export type RecipientMode = "gm" | "lyra" | "vizzy" | "nav" | "npc";
 
+export interface TurnRecipient {
+  id: string;
+  label: string;
+  mode: RecipientMode;
+}
 
 export interface TurnContext {
-  // Who is speaking?
-  agentRole: AgentRole;
-  // Where/When are we?
-  currentVoxel: VoxelSnapshot;
-  // What just happened? (The user's input)
-  userIntent: string;
-  // What constraints apply?
-  activeQuestId?: string;
+  playerText: string;
+  spatial: VoxelCoordinate;
+  temporal: TemporalKey;
+  loreKey: string;
 
-  // Back-compat for older Pipeline code paths
-  questState?: any;
-  mossProfile?: MossProfile;
-  allowedTools: string[];
-}
+  // Memories retrieved from lattice
+  memories: VoxelSnapshot[];
 
-export interface AgentOutput {
-  thought: string;      // Internal reasoning (hidden from user)
-  dialogue: string;     // The actual text to display
-  state_update?: {      // Optional: Does this turn change the world state?
-    new_tags?: string[];
-    affinity_shift?: Partial<MossProfile>;
-    }
-}
-
-export interface NavData {
-  hazards: string[];
-  waypoints: Array<{
-    label: string;
-    type: "LOOT" | "EXIT" | "NPC" | "OBJECTIVE";
+  // Current local entities & lore resolved deterministically
+  entitiesPresent: EntityCard[];
+  loreEntry?: any;
+  activeQuests: Array<{
+    entityId: string;
+    bio: any;
+    quests: any[];
   }>;
-  log_entry: string;
+
+  // State
+  flags: Record<string, boolean | string | number>;
+  mossProfile?: MossProfile;
+
+  // Metadata
+  playerClass?: string;
+  playerAffinity?: string;
+  characterDirectives?: Record<string, string>;
+
+  // Config
+  recipients: TurnRecipient[];
+  llmConfig?: {
+    model?: string;
+    temperature?: number;
+    performanceMode?: boolean;
+  };
 }
 
-export interface PipelineResult {
-  gm_narrative: string;         // The World
-  lyra_dialogue: string | null; // The Heart
-  nav_update: NavData | null;   // The UI/Tactical
-  vizzy_interjection: string | null; // The Comic Relief
-  state_delta: any;             // The Database Update
+export type QuestStatus = 'ADVANCE' | 'FAIL' | 'FREEPLAY';
+export interface QuestUpdatePayload {
+  status: QuestStatus;
+  message: string;
 }
 
+export interface AgentOutputSection {
+  id: string;
+  label: string;
+  mode: RecipientMode;
+  markdown: string;
+}
 
+export interface TurnResult {
+  narration: string;
+  outputs: AgentOutputSection[];
+  questUpdates?: QuestUpdatePayload;
+  newFlags?: Record<string, boolean | string | number>;
+  debug?: any;
+}

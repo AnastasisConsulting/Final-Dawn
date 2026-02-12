@@ -1,5 +1,17 @@
+/**
+ * UI STABILITY WARNING: 
+ * This component is part of the established "High-Density / Professional Sleek" UI standard.
+ * DO NOT modify the core scaling (h-11), font sizes (text-xl/text-[8px]), or padding (px-4) 
+ * without explicit user authorization. Maintain the compact terminal aesthetic.
+ */
 // Final_Dawn_of_Eideus/apps/dawn-ui/components/Layout/Header.tsx
 
+/**
+ * UI STABILITY WARNING: 
+ * This component is part of the established "High-Density / Professional Sleek" UI standard.
+ * DO NOT modify the height (h-8), font sizes (text-[10px]/text-[8px]), or marquee scaling.
+ * Maintain the low-profile status bar aesthetic.
+ */
 import React, { useState, useEffect } from 'react';
 import { useKernel } from '../../hooks/useKernel';
 
@@ -58,7 +70,7 @@ export const Header: React.FC<{ onLaunchFlight?: () => void; onToggleDev?: () =>
 
   return (
     <header
-      className={`h-16 shrink-0 z-50 bg-[#050505] shadow-[0_10px_30px_rgba(0,0,0,1)] flex items-center justify-between px-6 relative border-b border-[#1a1a1a] transition-all duration-[1500ms] cubic-bezier(0.4, 0, 0.2, 1)`}
+      className={`h-11 shrink-0 z-50 bg-[#050505] shadow-[0_10px_30px_rgba(0,0,0,1)] flex items-center justify-between px-4 relative border-b border-[#1a1a1a] transition-all duration-[1500ms] cubic-bezier(0.4, 0, 0.2, 1)`}
       style={{
         transformStyle: 'preserve-3d',
         backgroundColor: isWarping ? '#000' : '#050505',
@@ -68,53 +80,53 @@ export const Header: React.FC<{ onLaunchFlight?: () => void; onToggleDev?: () =>
     >
       {/* Left decorative bits */}
       <div className="flex flex-col gap-0.5 opacity-30">
-        <div className={`w-16 h-[2px] transition-colors duration-500 ${isWarping ? 'bg-cyan-500' : 'bg-red-800'}`} />
-        <div className="w-8 h-[2px] bg-neutral-600" />
+        <div className={`w-12 h-[1px] transition-colors duration-500 ${isWarping ? 'bg-cyan-500' : 'bg-red-800'}`} />
+        <div className="w-6 h-[1px] bg-neutral-600" />
       </div>
 
       <div className="flex flex-col items-center">
         <h1
-          className={`text-4xl font-bold tracking-[0.2em] font-['Orbitron'] transition-all duration-700 ${isGlitching || isWarping ? 'glitch-active text-cyan-400' : 'text-neutral-300'}`}
+          className={`text-xl font-bold tracking-[0.3em] font-['Orbitron'] transition-all duration-700 ${isGlitching || isWarping ? 'glitch-active text-cyan-400' : 'text-neutral-300'}`}
           data-text={displayText}
           style={{
-            textShadow: (isGlitching || isWarping) ? '2px 0 #06b6d4, -2px 0 #3b82f6' : '0 0 10px rgba(255,255,255,0.1)',
+            textShadow: (isGlitching || isWarping) ? '1px 0 #06b6d4, -1px 0 #3b82f6' : '0 0 10px rgba(255,255,255,0.1)',
             transform: isWarping ? 'scale(0.8) translateZ(-50px)' : 'none'
           }}
         >
           {isWarping ? "TRANSITIONING" : displayText}
         </h1>
-        <div className="text-[8px] text-neutral-600 tracking-[0.5em] mt-[-4px]">
+        <div className="text-[7px] text-neutral-600 tracking-[0.4em] mt-[-2px]">
           {isWarping ? "ORBITAL // INSERTION // ACTIVE" : "CORPORATE // SANCTIONED // REALITY"}
         </div>
       </div>
 
       {/* Right decorative bits & Save/Load */}
-      <div className="flex items-center gap-6">
-        <div className="flex gap-2">
+      <div className="flex items-center gap-4">
+        <div className="flex gap-1.5">
           {/* DEV Button */}
           <button
             onClick={onToggleDev}
-            className="px-2 py-1 border border-neutral-800 text-[9px] uppercase tracking-widest text-yellow-600 hover:border-yellow-500/50 hover:text-yellow-400 transition-all bg-black/20"
+            className="px-1.5 py-0.5 border border-neutral-800 text-[8px] uppercase tracking-widest text-yellow-600 hover:border-yellow-500/50 hover:text-yellow-400 transition-all bg-black/20"
           >
             CMD
           </button>
           <button
             onClick={handleSave}
-            className="px-2 py-1 border border-neutral-800 text-[9px] uppercase tracking-widest text-neutral-500 hover:border-cyan-500/50 hover:text-cyan-400 transition-all bg-black/20"
+            className="px-1.5 py-0.5 border border-neutral-800 text-[8px] uppercase tracking-widest text-neutral-500 hover:border-cyan-500/50 hover:text-cyan-400 transition-all bg-black/20"
           >
-            Save_State
+            Save
           </button>
           <button
             onClick={handleLoad}
-            className="px-2 py-1 border border-neutral-800 text-[9px] uppercase tracking-widest text-neutral-500 hover:border-magenta-500/50 hover:text-magenta-400 transition-all bg-black/20"
+            className="px-1.5 py-0.5 border border-neutral-800 text-[8px] uppercase tracking-widest text-neutral-500 hover:border-magenta-500/50 hover:text-magenta-400 transition-all bg-black/20"
           >
-            Load_State
+            Load
           </button>
         </div>
-        <div className="text-[9px] text-neutral-700 font-mono text-right leading-tight">
+        <div className="text-[8px] text-neutral-700 font-mono text-right leading-none">
           SYS_VER: 0.9.4 // <span className="text-cyan-600">TURN: {gameState.turnCount || 0}</span><br />
-          <span className={`${isWarping ? 'text-cyan-900' : 'text-red-900/50'}`}>
-            {isWarping ? "STABILIZING_FLIGHT_ONE" : "UNAUTHORIZED_ACCESS"}
+          <span className={`${isWarping ? 'text-cyan-900' : 'text-red-900/40'}`}>
+            {isWarping ? "STABILIZING" : "UNAUTHORIZED"}
           </span>
         </div>
       </div>

@@ -1,3 +1,9 @@
+/**
+ * UI STABILITY WARNING: 
+ * This component defines the master layout (20/60/20 grid). 
+ * DO NOT modify the dock widths (50px) or panel proportions. 
+ * The professional, high-density layout must remain stable.
+ */
 import React, { useEffect, useMemo, useState } from 'react';
 import { CenterPanel } from '../Panels/CenterPanel';
 import { RightPanel } from '../Panels/RightPanel';
@@ -21,6 +27,8 @@ interface MainGridProps {
     activeChatTarget: 'navbot' | 'vizzy' | 'lyra';
     setActiveChatTarget: (t: 'navbot' | 'vizzy' | 'lyra') => void;
     chatInjection?: any;
+    devTerminalOpen: boolean;
+    setDevTerminalOpen: (open: boolean) => void;
 }
 
 export const MainGrid: React.FC<MainGridProps> = ({
@@ -29,7 +37,9 @@ export const MainGrid: React.FC<MainGridProps> = ({
     onClearLandingPayload,
     activeChatTarget,
     setActiveChatTarget,
-    chatInjection
+    chatInjection,
+    devTerminalOpen,
+    setDevTerminalOpen
 }) => {
     const { state } = useKernel();
     const isWarping = state.isWarping;
@@ -118,9 +128,9 @@ export const MainGrid: React.FC<MainGridProps> = ({
         >
             {/* --- LEFT ZONE (20%) --- */}
             <div className="w-[20%] min-w-[20%] max-w-[20%] h-full relative flex flex-row z-30 shrink-0">
-                {/* DOCK (15% of 20% = 3% screen width) - TAILORED FOR "TALL AND SKINNY" */}
+                {/* DOCK (Fixed 50px) */}
                 <div
-                    className="w-[15%] h-full relative z-30"
+                    className="w-[50px] h-full relative z-30"
                     onMouseEnter={() => !isWarping && setHoveredPanel('left')}
                     onMouseLeave={() => setHoveredPanel(null)}
                 >
@@ -135,8 +145,8 @@ export const MainGrid: React.FC<MainGridProps> = ({
                     </div>
                 </div>
 
-                {/* PANEL AREA (85% of 20% = 17% screen width) */}
-                <div className="w-[85%] h-full relative z-20 pointer-events-none">
+                {/* PANEL AREA (Remaining 20% Zone) */}
+                <div className="flex-1 h-full relative z-20 pointer-events-none">
                     <SlidePanel
                         isOpen={!!activeLeftPanel && !isWarping}
                         title={activeLeftPanel || ''}
@@ -151,21 +161,23 @@ export const MainGrid: React.FC<MainGridProps> = ({
 
             {/* --- CENTER ZONE (60%) --- */}
             <div
-                className="w-[60%] min-w-[60%] max-w-[60%] h-full relative z-10 px-2 shrink-0"
+                className="w-[60%] min-w-[60%] max-w-[60%] h-full relative z-10 px-1 shrink-0"
                 style={getCenterStyle()}
             >
                 <CenterPanel
                     activeTarget={activeChatTarget}
                     onTargetSelect={setActiveChatTarget}
                     injection={chatInjection}
+                    devTerminalOpen={devTerminalOpen}
+                    setDevTerminalOpen={setDevTerminalOpen}
                 />
             </div>
 
             {/* --- RIGHT ZONE (20%) --- */}
             <div className="w-[20%] min-w-[20%] max-w-[20%] h-full relative flex flex-row-reverse z-30 shrink-0">
-                {/* DOCK (15% of 20% = 3% screen width) */}
+                {/* DOCK (Fixed 50px) */}
                 <div
-                    className="w-[15%] h-full relative z-30"
+                    className="w-[50px] h-full relative z-30"
                     onMouseEnter={() => !isWarping && setHoveredPanel('right')}
                     onMouseLeave={() => setHoveredPanel(null)}
                 >
@@ -176,12 +188,17 @@ export const MainGrid: React.FC<MainGridProps> = ({
                             opacity: isWarping ? 0 : 1
                         }}
                     >
-                        <RightPanel activePanel={activeRightPanel} onPanelSelect={handleRightPanelSelect} />
+                        <RightPanel
+                            activePanel={activeRightPanel}
+                            onPanelSelect={handleRightPanelSelect}
+                            devTerminalOpen={devTerminalOpen}
+                            setDevTerminalOpen={setDevTerminalOpen}
+                        />
                     </div>
                 </div>
 
-                {/* PANEL AREA (85% of 20% = 17% screen width) */}
-                <div className="w-[85%] h-full relative z-20 pointer-events-none">
+                {/* PANEL AREA (Remaining 20% Zone) */}
+                <div className="flex-1 h-full relative z-20 pointer-events-none">
                     <SlidePanel
                         isOpen={!!activeRightPanel && !isWarping}
                         title={activeRightPanel || ''}

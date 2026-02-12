@@ -63,88 +63,105 @@ export class VizzyAnimationEngine {
         const { sentiment, intensity, context, procedural } = request;
 
         // Base color palette mapping - rogue implant style
-        const colorMap: Record<string, string> = {
-            happy: '#bfff00',     // Acid Green
-            excited: '#ffcc00',   // Vivid Yellow
-            alert: '#ff0000',     // pure Red
-            thinking: '#9900ff',  // Electric Purple
-            sad: '#1a1a1a',       // Near Black
-            calm: '#00ffff',      // Cyan
-            curious: '#ffaa00',   // Amber
-            neutral: '#222222',   // dark grey
-            idle: '#333333',      // Graphite
+        const colorMap: Record<string, { primary: string, secondary: string }> = {
+            happy: { primary: '#bfff00', secondary: '#446600' },     // Acid Green -> Deep Moss
+            excited: { primary: '#ffcc00', secondary: '#664400' },   // Vivid Yellow -> Burnt Umber
+            alert: { primary: '#ff0000', secondary: '#440000' },     // Pure Red -> Blood Red
+            thinking: { primary: '#9900ff', secondary: '#220044' },  // Electric Purple -> Deep Void
+            sad: { primary: '#1a1a1a', secondary: '#0a0a0a' },       // Near Black
+            calm: { primary: '#00ffff', secondary: '#003344' },      // Cyan -> Deep Teal
+            curious: { primary: '#ffaa00', secondary: '#442200' },   // Amber -> Deep Bronze
+            neutral: { primary: '#222222', secondary: '#111111' },   // Dark Grey
+            idle: { primary: '#333333', secondary: '#181818' },      // Graphite
         };
 
-        const baseColor = procedural?.color || colorMap[sentiment.toLowerCase()] || colorMap.neutral;
-        const normalizedIntensity = Math.max(0.1, Math.min(1.2, intensity)); // Peak above 1.0 for excitement
+        const sentimentKey = sentiment.toLowerCase();
+        const palette = colorMap[sentimentKey] || colorMap.neutral;
+
+        let primaryColor = procedural?.color || palette.primary;
+        let secondaryColor = palette.secondary;
+
+        // Apply procedural color jitter based on intensity for extra expressiveness
+        if (intensity > 0.8) {
+            // Shift towards white/glow if very intense
+            primaryColor = this.adjustColorBrightness(primaryColor, 0.2);
+        } else if (intensity < 0.3) {
+            // Dim it down if low energy
+            primaryColor = this.adjustColorBrightness(primaryColor, -0.3);
+            secondaryColor = this.adjustColorBrightness(secondaryColor, -0.5);
+        }
+
+        const normalizedIntensity = Math.max(0.1, Math.min(1.0, intensity)); // Capped at 1.0 to prevent over-brightness
 
         // 1. Sphere Configuration (expressing through fold and luminosity)
         const sphereConfig = {
             ...this.baseConfig.sphere,
-            color: baseColor,
-            metalness: 0.8 + (normalizedIntensity * 0.2),
-            roughness: 0.05,
+            color: primaryColor,
+            secondaryColor: secondaryColor,
+            metalness: 0.7 + (normalizedIntensity * 0.2),
+            roughness: 0.1,
             pulseSpeed: procedural?.pulseSpeed || (context?.isThinking
-                ? 0.5
+                ? 0.4
                 : context?.isAlert
-                    ? 4.0
-                    : 1.0 + (normalizedIntensity * 3.0)),
+                    ? 5.0
+                    : 0.8 + (normalizedIntensity * 2.5)),
             foldAmount: procedural?.foldAmount !== undefined ? procedural.foldAmount : (context?.isThinking
-                ? 1.2
+                ? 1.5
                 : context?.isAlert
-                    ? 0.02
-                    : 0.2 + (normalizedIntensity * 0.8)),
-            foldSpeed: procedural?.foldSpeed || (0.2 + (normalizedIntensity * 0.5)),
-            luminosity: procedural?.luminosity || (1.0 + (normalizedIntensity * 1.5)),
+                    ? 0.01
+                    : 0.15 + (normalizedIntensity * 0.7)),
+            foldSpeed: procedural?.foldSpeed || (0.15 + (normalizedIntensity * 0.45)),
+            luminosity: procedural?.luminosity || (0.6 + (normalizedIntensity * 0.6)), // Ceil at 1.2 instead of 2.8
         };
 
         const ringMult = procedural?.ringSpeedMultiplier || 1.0;
 
         // 2. Three Independent Ring Configurations
+        // VIZZY PROTECTED: Ring speed and color calculations
         const ringsConfig = {
             ...this.baseConfig.rings,
             // Ring 1: Primary X-axis, reduced Y/Z wobble
             ring1Speed: context?.isAlert
-                ? { x: 4.0 * ringMult, y: 1.0 * ringMult, z: 0.5 * ringMult }
+                ? { x: 3.5 * ringMult, y: 0.8 * ringMult, z: 0.4 * ringMult }
                 : {
-                    x: (0.2 + (normalizedIntensity * 0.8)) * ringMult,
-                    y: (0.1 * normalizedIntensity) * ringMult,
-                    z: (0.05 * normalizedIntensity) * ringMult
+                    x: (0.15 + (normalizedIntensity * 0.7)) * ringMult,
+                    y: (0.08 * normalizedIntensity) * ringMult,
+                    z: (0.04 * normalizedIntensity) * ringMult
                 },
             // Ring 2: Primary Y-axis, reduced X/Z wobble
             ring2Speed: context?.isThinking
-                ? { x: 0.1 * ringMult, y: 0.5 * ringMult, z: 0.1 * ringMult }
+                ? { x: 0.05 * ringMult, y: 0.4 * ringMult, z: 0.05 * ringMult }
                 : {
-                    x: (0.1 * normalizedIntensity) * ringMult,
-                    y: (0.4 + (normalizedIntensity * 0.6)) * ringMult,
-                    z: (0.1 * normalizedIntensity) * ringMult
+                    x: (0.08 * normalizedIntensity) * ringMult,
+                    y: (0.3 + (normalizedIntensity * 0.5)) * ringMult,
+                    z: (0.08 * normalizedIntensity) * ringMult
                 },
             // Ring 3: Primary Z-axis, reduced X/Y wobble
             ring3Speed: {
-                x: (0.05 * normalizedIntensity) * ringMult,
-                y: (0.1 * normalizedIntensity) * ringMult,
-                z: (0.3 + (normalizedIntensity * 0.4)) * ringMult,
+                x: (0.04 * normalizedIntensity) * ringMult,
+                y: (0.08 * normalizedIntensity) * ringMult,
+                z: (0.25 + (normalizedIntensity * 0.35)) * ringMult,
             },
-            color: baseColor,
-            emissive: this.adjustColorBrightness(baseColor, 0.5),
+            color: primaryColor,
+            emissive: this.adjustColorBrightness(primaryColor, 0.4),
         };
 
         // 3. Particle System (inner + outer via count/radius/size)
         const particlesConfig = {
             ...this.baseConfig.particles,
-            color: baseColor,
+            color: primaryColor,
             speed: procedural?.particleSpeed || (context?.isAlert
-                ? 2.0
+                ? 1.5
                 : context?.isThinking
-                    ? 0.1
-                    : 0.5 + (normalizedIntensity * 1.5)),
-            count: Math.floor(1000 + (normalizedIntensity * 1500)),
-            noiseStrength: 1.0 + (normalizedIntensity * 1.0),
+                    ? 0.08
+                    : 0.4 + (normalizedIntensity * 1.2)),
+            count: Math.floor(800 + (normalizedIntensity * 1200)), // Slightly lowered count
+            noiseStrength: 0.8 + (normalizedIntensity * 1.0),
             size: procedural?.particleSize || (context?.isAlert
-                ? 0.1
-                : 0.04 + (normalizedIntensity * 0.06)),
-            opacity: 0.6 + (normalizedIntensity * 0.4),
-            radius: 10 + (normalizedIntensity * 15),
+                ? 0.08
+                : 0.03 + (normalizedIntensity * 0.05)),
+            opacity: 0.5 + (normalizedIntensity * 0.4),
+            radius: 8 + (normalizedIntensity * 12),
         };
 
         const config: Partial<AppState> = {

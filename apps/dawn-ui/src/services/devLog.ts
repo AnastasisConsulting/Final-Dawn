@@ -36,13 +36,18 @@ function safeJson(v: any): string | undefined {
   }
 }
 
+let persistTimeout: any = null;
 function persistBuffer() {
-  try {
-    const trimmed = buffer.slice(-MAX_ENTRIES);
-    localStorage.setItem(STORAGE_BUFFER_KEY, JSON.stringify(trimmed));
-  } catch {
-    // ignore
-  }
+  if (persistTimeout) return;
+  persistTimeout = setTimeout(() => {
+    persistTimeout = null;
+    try {
+      const trimmed = buffer.slice(-MAX_ENTRIES);
+      localStorage.setItem(STORAGE_BUFFER_KEY, JSON.stringify(trimmed));
+    } catch {
+      // ignore
+    }
+  }, 1000); // Persist at most once per second
 }
 
 function restoreBuffer() {

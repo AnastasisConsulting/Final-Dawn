@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-ynthetic Labs | Cognitive Infrastructure for Artificial Life</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #00f0ff;
+            --secondary: #ff0055;
+            --grid: rgba(0, 240, 255, 0.1);
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', monospace; /* Deep Tech aesthetic */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            background: rgba(10, 10, 10, 0.95);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+        }
+        h2 {
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 10px;
+            font-weight: normal;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #333;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 10px; height: 10px;
+            border-top: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        h3 {
+            color: var(--secondary);
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        p {
+            line-height: 1.6;
+            color: #ccc;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 20px var(--accent);
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #555;
+            font-size: 0.8rem;
+            border-top: 1px solid #333;
+        }
+        .status-badge {
+            background: #222;
+            color: #0f0;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            border: 1px solid #0f0;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>G-ynthetic Labs</h1>
+        <h2>Foundational Cognitive Infrastructure for Artificial Life</h2>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h3>Mission Statement</h3>
+            <p><strong>G-ynthetic</strong> is an applied research laboratory dedicated to the creation of persistent, deterministic, and emotionally resonant synthetic cognition. We bridge the gap between Large Language Models (LLMs) and true Artificial General Intelligence (AGI) through federated memory architectures and spontaneous association experiments.</p>
+        </div>
+
+        <div class="card">
+            <h3>Core Technology: The Memory Lattice <span class="status-badge">PATENT PENDING</span></h3>
+            <p>Our proprietary <strong>Holographic Memory Core</strong> utilizes a 7x7x7 voxel grid to store conversation history not as linear text, but as spatial relationships. This allows for "Quantum Slice" retrieval—instantly accessing 49 contextually relevant memories across a user's entire history using vector embeddings.</p>
+            <p><em>Available as a React Module: `useMemoryCore`</em></p>
+        </div>
+
+        <div class="card">
+            <h3>Flagship Product: Eideus Dawn <span class="status-badge">IN BETA</span></h3>
+            <p>A deep-tech simulation engine that proves our architecture at scale. Eideus Dawn features emergent NPC behavior, political economy simulation, and orbital mechanics, all driven by a decentralized AI orchestrator.</p>
+            <a href="#" class="btn">View Technical Demo</a>
+        </div>
+
+        <div class="card">
+            <h3>B2B Infrastructure: City SeCUReD <span class="status-badge">ENTERPRISE</span></h3>
+            <p>The "Cognitive Operating System" for smart cities. Utilizing the same core engine as Eideus Dawn, City SeCUReD manages urban resilience through Circadian Rhythm data processing (Sleep/Wake cycles) and predictive "Dream State" simulations of crisis scenarios.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 G-ynthetic Labs. All Rights Reserved.</p>
+        <p>Founder: William Wallace Morehead</p>
+        <p>Contact: founder@g-ynthetic.com (Placeholder)</p>
+    </footer>
+
+</body>
+</html>

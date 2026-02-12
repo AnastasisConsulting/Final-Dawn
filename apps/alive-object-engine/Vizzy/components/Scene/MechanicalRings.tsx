@@ -38,9 +38,13 @@ const ComplexRing = ({ name, radius, thickness, segments, axis, speed, config, o
         // Internal mechanics animation
         if (innerTrack.current) {
             innerTrack.current.rotation.z = -t * 4;
-            // Blinking effect logic
+            // ========================================================================
+            // VIZZY PROTECTED BLOCK: The "Purplish Strobe" Effect
+            // DO NOT ALTER THIS LOGIC. IT CREATES THE STROBE USER LOVES.
+            // ========================================================================
             const blink = Math.sin(t * 15) > 0.8 ? 2.5 : 1.0;
             (innerTrack.current.material as THREE.MeshStandardMaterial).emissiveIntensity = config.emissiveIntensity !== undefined ? config.emissiveIntensity * blink : 1.5 * blink;
+            // ========================================================================
         }
 
         if (outerRail.current) outerRail.current.rotation.z = t * 1.5;
@@ -70,6 +74,7 @@ const ComplexRing = ({ name, radius, thickness, segments, axis, speed, config, o
                 </mesh>
                 <mesh ref={innerTrack} rotation={[Math.PI / 2, 0, 0]}>
                     <torusGeometry args={[radius - thickness * 1.5, thickness * 0.4, 8, segments]} />
+                    {/* VIZZY PROTECTED: Inner Ring Material (The "Thin Rings" user likes) */}
                     <meshStandardMaterial color={config.emissive} emissive={config.emissive} emissiveIntensity={1.5} wireframe={config.wireframe} />
                 </mesh>
                 <group ref={outerRail}>

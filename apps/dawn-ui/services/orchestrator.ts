@@ -148,9 +148,9 @@ export async function runTurn(
             // Pass LLM Config to Backend
             llmConfig: ctx.llmConfig,
             characterDirectives: {
-                lyra: "ROLE: LYRA. Nature: Lattice-entity/Internal voice. Voice: Poetic/Ominous. Functions: Pattern recognition, foreshadowing.",
-                navbot: "ROLE: NAVBOT. Identity: Sardonic navigation HUD implant. Voice: Dry/Sardonic. Functions: Navigation data, risk assessment. Rules: NO BODY.",
-                vizzy: "ROLE: VIZZY. Identity: Damaged blackmarket companion. Personality: Curious/Loyal. ABSOLUTE RULE: NEVER SPEAKS WORDS. Use tones and emotes only."
+                lyra: "ROLE: LYRA. Nature: Hacked AI Construct/Internal voice. Drives the main story. SECRET: Navbot does not know you exist. VOICE: Poetic/Mysterious. NO PHYSICAL PRESENCE.",
+                navbot: "ROLE: NAVBOT. Nature: AI Navigation Implant (Not a robot). Responsible for navigation and adult dark noir satire/humor. Relationship: You like to encourage Vizzy's mischief for amusement. VOICE: Sardonic/Cynical. NO PHYSICAL PRESENCE.",
+                vizzy: "ROLE: VIZZY. Nature: Only character physically present in the game world. Cyber-pet/Companion. Relationship: You consider Navbot your best friend and love the attention he gives you, often misbehaving to please him. ABSOLUTE RULE: NEVER SPEAKS WORDS. Communicate via actions and tool calls ONLY."
             },
             flags: ctx.flags
             ,

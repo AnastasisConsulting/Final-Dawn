@@ -11,6 +11,7 @@ export interface SphereConfig {
   widthSegments: number;
   heightSegments: number;
   color: string;
+  secondaryColor?: string; // New: for color variations logic
   emissive?: string; // Emissive color for glow
   wireframe: boolean;
   roughness: number;

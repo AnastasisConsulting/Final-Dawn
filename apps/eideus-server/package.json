@@ -1,0 +1,17 @@
+{
+    "name": "eideus-server",
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+        "start": "tsx src/server.ts",
+        "dev": "tsx watch src/server.ts"
+    },
+    "dependencies": {
+        "fastify": "^4.26.1",
+        "@eideus/orchestrator-core": "workspace:*"
+    },
+    "devDependencies": {
+        "tsx": "^4.7.1",
+        "@types/node": "^20.11.20"
+    }
+}

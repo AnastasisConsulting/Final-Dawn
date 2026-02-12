@@ -12,6 +12,7 @@ export const DEFAULT_STATE: AppState = {
     widthSegments: 128,
     heightSegments: 128,
     color: '#00ffff',
+    secondaryColor: '#004466', // Deep cyan for emotional depth
     wireframe: false,
     roughness: 0.2,
     metalness: 0.8,
@@ -20,11 +21,16 @@ export const DEFAULT_STATE: AppState = {
     foldAmount: 0.3,
     foldSpeed: 0.2,
     foldNoiseScale: 0.2,
-    luminosity: 1.2,
+    luminosity: 0.8, // Reduced brightness per user request
     lumaPatternScale: 5.0,
     lumaPatternSpeed: 0.2,
   },
   rings: {
+    // ========================================================================
+    // VIZZY PROTECTED BLOCK: Ring Aesthetics
+    // THE USER LOVES THE CURRENT LOOK (Purplish strobe, thinner rings).
+    // DO NOT PERMANENTLY ALTER WITHOUT EXPLICIT PERMISSION.
+    // ========================================================================
     ring1Speed: { x: 0.2, y: 0, z: 0 },
     ring2Speed: { x: 0, y: 0.3, z: 0 },
     ring3Speed: { x: 0, y: 0, z: 0.1 },

@@ -164,6 +164,7 @@ export type TurnResponse = {
 
   // --- NEW: Quest Update for Frontend ---
   questUpdates?: QuestUpdatePayload;
+  newFlags?: Record<string, boolean | string | number>;
 };
 
 // Fallback "Nowhere" Constants
@@ -191,6 +192,36 @@ function deriveTags(text: string): string[] {
 function clampRecipients(recipients?: TurnRecipient[]): TurnRecipient[] {
   if (!recipients || recipients.length === 0) return [{ id: "gm", label: "GM", mode: "gm" }];
   return recipients.slice(0, 5);
+}
+
+/**
+ * 3-Part Quest Logic: Resolve flags based on currently present NPCs
+ */
+function resolveNewFlags(currentFlags: Record<string, any>, quest: any, entities: EntityCard[]): Record<string, any> | undefined {
+  const worldId = quest.worldId || "G1-S1-O1";
+  const questId = quest.questId || quest.id;
+  const fPrefix = `q:${worldId}:${questId}`;
+  const cast = quest.key_cast;
+  if (!cast) return undefined;
+
+  const currentIds = entities.map(e => e.id);
+  const updates: Record<string, any> = {};
+
+  // Phase 1: Giver
+  if (cast.giver?.npc_key && currentIds.includes(cast.giver.npc_key) && !currentFlags[`${fPrefix}:giver_met`]) {
+    updates[`${fPrefix}:giver_met`] = true;
+  }
+  // Phase 2: Intermediary (only if Giver met)
+  if (currentFlags[`${fPrefix}:giver_met`] && cast.intermediary?.npc_key && currentIds.includes(cast.intermediary.npc_key) && !currentFlags[`${fPrefix}:intermediary_met`]) {
+    updates[`${fPrefix}:intermediary_met`] = true;
+  }
+  // Phase 3: Closer (only if Intermediary met)
+  if (currentFlags[`${fPrefix}:intermediary_met`] && cast.closer?.npc_key && currentIds.includes(cast.closer.npc_key) && !currentFlags[`${fPrefix}:closer_met`]) {
+    updates[`${fPrefix}:closer_met`] = true;
+    updates[`${fPrefix}:complete`] = true;
+  }
+
+  return Object.keys(updates).length > 0 ? updates : undefined;
 }
 
 export function createTurnEngine(args: { ollama: OllamaClient }) {
@@ -280,11 +311,43 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
 
     // --- 2.5 THE DIRECTOR'S CUT (Logic Pass) ---
     let directorGuidance = "";
-    // Explicitly type this variable to match the TurnResponse interface
     let questUpdateData: QuestUpdatePayload | null = null;
 
-    // For MVP, we just grab the first available quest step from the first entity
-    const currentActiveQuest = deterministicContext.activeQuests[0]?.quests?.[0];
+    // Scan all unique quests in the local context to find active mission guidance
+    const worldQuests = new Set<any>();
+    for (const qEntry of deterministicContext.activeQuests) {
+      if (Array.isArray(qEntry.quests)) {
+        qEntry.quests.forEach((q: any) => worldQuests.add(q));
+      }
+    }
+
+    const activeQuestList = Array.from(worldQuests);
+    const activeQuest = activeQuestList[0]; // MVP: Focus on the first available quest in the sector
+
+    if (activeQuest) {
+      const worldId = activeQuest.worldId || "G1-S1-O1";
+      const questId = activeQuest.questId || activeQuest.id;
+      const fPrefix = `q:${worldId}:${questId}`;
+
+      const giverMet = !!req.flags?.[`${fPrefix}:giver_met`];
+      const intermediaryMet = !!req.flags?.[`${fPrefix}:intermediary_met`];
+      const isComplete = !!req.flags?.[`${fPrefix}:complete`];
+
+      const cast = activeQuest.key_cast;
+
+      if (isComplete) {
+        directorGuidance = `GM DIRECTIVE: Quest "${activeQuest.title}" is COMPLETED. The objective is cleared. Narrative focus shifts to secondary fallout or new rewards.`;
+      } else if (!giverMet) {
+        const tgt = cast?.giver?.name || "the quest giver";
+        directorGuidance = `GM DIRECTIVE (PHASE 1 - INITIATION): Drive the player toward ${tgt} to begin the mission. Maintain atmospheric tension. NPCs should nudge the player toward this contact.`;
+      } else if (!intermediaryMet) {
+        const tgt = cast?.intermediary?.name || "the intermediary contact";
+        directorGuidance = `GM DIRECTIVE (PHASE 2 - DEVELOPMENT): The Giver was met. Now "fill the space" between contacts. Guide the player toward ${tgt} to advance the mission. Focus on the journey and industrial obstacles.`;
+      } else {
+        const tgt = cast?.closer?.name || "the closer";
+        directorGuidance = `GM DIRECTIVE (PHASE 3 - RESOLUTION): Nuance the quest to completion. Guide the player to ${tgt} for final hand-off or resolution.`;
+      }
+    }
 
 
 
@@ -301,7 +364,7 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
       playerAffinity: req.playerAffinity,
       characterDirectives: {
         ...req.characterDirectives,
-        "GAME_LOGIC": directorGuidance // Inject the Director's instructions here
+        "DIRECTOR_GUIDANCE": directorGuidance // Inject the 3-part event system instructions
       }
     });
     mark("prompt.end");
@@ -359,6 +422,18 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
         aliases: npc.entityRef.aliases,
       })),
     ];
+
+    // Evaluate flag updates after LLM pass
+    const newFlags = (activeQuest && !performanceMode)
+      ? resolveNewFlags(req.flags || {}, activeQuest, allEntities)
+      : undefined;
+
+    if (newFlags) {
+      console.log(`[TurnEngine] Flipping Quest Flags:`, JSON.stringify(newFlags));
+      if (newFlags[`q:${activeQuest.worldId}:${activeQuest.questId || activeQuest.id}:complete`]) {
+        questUpdateData = { status: 'ADVANCE', message: `Quest "${activeQuest.title}" Completed.` };
+      }
+    }
 
     // 5. Process narration for procedural landmark scaffolding
     mark("landmark.start");
@@ -534,7 +609,8 @@ export function createTurnEngine(args: { ollama: OllamaClient }) {
           },
         }
         : undefined,
-      questUpdates: questUpdateData || undefined // Pass logic result back to frontend
+      questUpdates: questUpdateData || undefined,
+      newFlags: newFlags || undefined
     };
   }
 

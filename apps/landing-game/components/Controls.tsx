@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 export interface FlightInput {
-  move: { x: number; y: number; z: number }; 
+  move: { x: number; y: number; z: number };
   mouse: { x: number; y: number };
   active: boolean;
   firePrimary: boolean;
@@ -9,7 +9,7 @@ export interface FlightInput {
   boost: boolean;
   mediumSpeed: boolean;
   flightAssist: boolean;
-  barrelRoll: number; 
+  barrelRoll: number;
   verticalFlip: boolean;
   dropChaff: boolean;
 }
@@ -23,7 +23,7 @@ export const useFlightControls = () => {
     fireSecondary: false,
     boost: false,
     mediumSpeed: false,
-    flightAssist: true, 
+    flightAssist: true,
     barrelRoll: 0,
     verticalFlip: false,
     dropChaff: false
@@ -65,8 +65,8 @@ export const useFlightControls = () => {
         if (e.button === 0) input.current.firePrimary = true;
         if (e.button === 2) input.current.fireSecondary = true;
         if (e.button === 1) {
-            e.preventDefault();
-            input.current.mediumSpeed = true;
+          e.preventDefault();
+          input.current.mediumSpeed = true;
         }
       }
     };
@@ -75,20 +75,26 @@ export const useFlightControls = () => {
       if (e.button === 0) input.current.firePrimary = false;
       if (e.button === 2) input.current.fireSecondary = false;
       if (e.button === 1) {
-          e.preventDefault();
-          input.current.mediumSpeed = false;
+        e.preventDefault();
+        input.current.mediumSpeed = false;
       }
     };
 
     const handlePointerLockChange = () => {
       input.current.active = !!document.pointerLockElement;
       if (!input.current.active) {
-          input.current.mouse = { x: 0, y: 0 }; 
-          input.current.firePrimary = false;
-          input.current.fireSecondary = false;
-          input.current.mediumSpeed = false;
-          keys.clear();
-          updateMoveVector();
+        input.current.mouse = { x: 0, y: 0 };
+        input.current.firePrimary = false;
+        input.current.fireSecondary = false;
+        input.current.mediumSpeed = false;
+        keys.clear();
+        updateMoveVector();
+      }
+    };
+
+    const handleClick = () => {
+      if (!document.pointerLockElement) {
+        requestPointerLock();
       }
     };
 
@@ -97,6 +103,7 @@ export const useFlightControls = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('click', handleClick);
     window.addEventListener('contextmenu', (e) => e.preventDefault());
     document.addEventListener('pointerlockchange', handlePointerLockChange);
 
@@ -106,6 +113,7 @@ export const useFlightControls = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('click', handleClick);
       document.removeEventListener('pointerlockchange', handlePointerLockChange);
     };
   }, []);
@@ -117,8 +125,8 @@ export const requestPointerLock = async () => {
   const canvas = document.querySelector('canvas');
   if (canvas && !document.pointerLockElement) {
     try {
-        // @ts-ignore
-        await canvas.requestPointerLock({ unadjustedMovement: true });
+      // @ts-ignore
+      await canvas.requestPointerLock({ unadjustedMovement: true });
     } catch (e) { console.debug("Pointer lock failed:", e); }
   }
 };

@@ -1,8 +1,12 @@
-// Final_Dawn_of_Eideus/apps/dawn-ui/components/Layout/Footer.tsx
-
+/**
+ * UI STABILITY WARNING: 
+ * This component is part of the established "High-Density / Professional Sleek" UI standard.
+ * DO NOT modify the height (h-8), font sizes (text-[10px]/text-[8px]), or marquee scaling.
+ * Maintain the low-profile status bar aesthetic.
+ */
 import React, { useRef, useState } from 'react';
 import { useKernel } from '../../hooks/useKernel';
-import { createSimulation, AffinitySimulation } from 'eideus-affinity-system';
+import { createSimulation, AffinitySimulation, HierarchyLevel } from 'eideus-affinity-system';
 
 /**
  * Footer: The lower status bar of the Eideus Dawn interface.
@@ -23,7 +27,7 @@ export const Footer: React.FC = () => {
     "O2: 88%",
     "STRESS: 92%",
     "WARRANT: ACTIVE",
-    "NET: MONITORED"
+    "LICENSING: COMMUNITY"
   ];
 
   const handleSimTrigger = () => {
@@ -49,7 +53,7 @@ export const Footer: React.FC = () => {
         if (simRef.current) {
           simRef.current.tick();
           const tick = simRef.current.getGlobalTick();
-          console.log(`[Affinity Sim] Tick ${tick} | Unrest: ${simRef.current.getLevelAggregate(1).unrest.toFixed(2)}`); // Level 1 = INTERSTELLAR approx check
+          console.log(`[Affinity Sim] Tick ${tick} | Unrest: ${simRef.current.getLevelAggregate(HierarchyLevel.INTERSTELLAR).unrest.toFixed(2)}`);
         }
       }, 2500); // 2.5s per tick
     }
@@ -57,10 +61,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer
-      className="h-12 shrink-0 flex w-full text-xs font-mono bg-[#020202] transition-all duration-[1500ms] cubic-bezier(0.4, 0, 0.2, 1)"
+      className="h-8 shrink-0 flex w-full text-[10px] font-mono bg-[#020202] transition-all duration-[1500ms] cubic-bezier(0.4, 0, 0.2, 1)"
       style={{
         transformStyle: 'preserve-3d',
-        // Visual feedback for warp sequence: becomes a solid black bar that collapses
         backgroundColor: isWarping ? '#000' : '#020202',
         borderTop: isWarping ? '1px solid #06b6d4' : 'none',
         opacity: isWarping ? 0 : 1
@@ -70,15 +73,15 @@ export const Footer: React.FC = () => {
       <div className="w-[10%] bg-[#050505] border-r border-[#111] flex items-center justify-center relative shadow-[inset_-5px_0_10px_black] overflow-hidden">
         <button
           onClick={handleSimTrigger}
-          className={`p-2 font-bold transition-colors w-full h-full text-[10px] ${isSimRunning ? 'bg-orange-500 text-black animate-pulse' : 'bg-cyan-500 text-black hover:bg-cyan-400'}`}
+          className={`font-bold transition-colors w-full h-full text-[9px] tracking-tighter ${isSimRunning ? 'bg-orange-500 text-black animate-pulse' : 'bg-cyan-500/80 text-black hover:bg-cyan-400'}`}
         >
-          {isSimRunning ? 'STOP SIM' : 'START FRACTAL SIM'}
+          {isSimRunning ? 'STOP SIM' : 'SIMULATE'}
         </button>
       </div>
 
       {/* Center 80%: Raised/Shadowed - Horizontal Marquee */}
-      <div className="w-[80%] bg-[#080808] border-t border-neutral-900 relative flex items-center px-4 overflow-hidden">
-        <div className={`whitespace-nowrap ${isWarping ? 'opacity-0' : 'animate-marquee'} text-neutral-300 font-['VT323'] text-sm tracking-wider transition-opacity duration-500`}>
+      <div className="w-[80%] bg-[#080808] border-t border-neutral-900/50 relative flex items-center px-4 overflow-hidden text-neutral-400">
+        <div className={`whitespace-nowrap ${isWarping ? 'opacity-0' : 'animate-marquee'} font-['VT323'] text-[12px] tracking-wide transition-opacity duration-500`}>
           * OBEY THE ALGORITHM * CONSUME MORE PRODUCT * REPORT DISSENT TO YOUR LOCAL MAGISTRATE * SUNLIGHT IS A SUBSCRIPTION SERVICE * HAPPINESS IS MANDATORY * YOUR DEBT IS YOUR VALUE *
         </div>
 
@@ -87,18 +90,15 @@ export const Footer: React.FC = () => {
             <div className="w-full h-0.5 bg-cyan-500 animate-pulse shadow-[0_0_15px_#06b6d4]" />
           </div>
         )}
-
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-felt.png')] opacity-20 pointer-events-none mix-blend-overlay" />
       </div>
 
-      {/* Right 10%: Inset/Sunken - Vertical Scroll Status */}
+      {/* Right 10%: Inset/Sunken - Vertical Status */}
       <div className="w-[10%] bg-[#030303] shadow-[inset_5px_0_10px_black] border-l border-[#111] overflow-hidden relative">
-        <div className={`flex flex-col items-center justify-center w-full ${isWarping ? 'opacity-0' : 'animate-vertical-scroll'} py-2 transition-opacity duration-500`}>
+        <div className={`flex flex-col items-center justify-center w-full h-full ${isWarping ? 'opacity-0' : 'animate-vertical-scroll'} space-y-0.5 transition-opacity duration-500 px-1`}>
           {statusItems.map((item, i) => (
-            <span key={i} className="text-red-400 leading-tight block text-[10px] font-semibold">{item}</span>
+            <span key={i} className="text-red-400 text-[8px] font-bold whitespace-nowrap">{item}</span>
           ))}
         </div>
-        <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.8)_100%)] pointer-events-none" />
       </div>
     </footer>
   );

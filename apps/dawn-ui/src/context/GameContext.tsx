@@ -92,8 +92,6 @@ export interface QuestState {
     log: string[];
 }
 
-// ... existing interfaces ...
-
 type Action =
     | { type: 'ADD_XP'; amount: number }
     | { type: 'INCREMENT_TURN' }
@@ -115,7 +113,8 @@ type Action =
     | { type: 'UPDATE_RELATIONSHIP'; target: 'lyra' | 'vizzy' | 'navbot'; value: number }
     | { type: 'START_QUEST'; questId: string }
     | { type: 'ADVANCE_QUEST'; questId: string; logEntry: string }
-    | { type: 'COMPLETE_QUEST'; questId: string; rewardXp: number };
+    | { type: 'COMPLETE_QUEST'; questId: string; rewardXp: number }
+    | { type: 'INITIALIZE_NEW_GAME'; name: string; core: string; sub?: string; affinity: string };
 
 // --- Initial State ---
 
@@ -437,6 +436,26 @@ const gameReducer = (state: GameState, action: Action): GameState => {
                 }
             };
         }
+        case 'INITIALIZE_NEW_GAME': {
+            const bonuses = { ...initialState.attributes };
+            if (action.affinity === 'STR') bonuses.STR += 3;
+            if (action.affinity === 'DEX') bonuses.DEX += 3;
+            if (action.affinity === 'INT') bonuses.INT += 3;
+
+            return {
+                ...initialState,
+                identity: {
+                    ...initialState.identity,
+                    name: action.name,
+                    core: action.core,
+                    sub: action.sub || null,
+                },
+                attributes: bonuses,
+                inventory: [],
+                xp: 0,
+                level: 1,
+            };
+        }
         default:
             return state;
     }
@@ -467,15 +486,22 @@ const GameContext = createContext<{
         advanceQuest: (questId: string, logEntry: string) => void;
         completeQuest: (questId: string, rewardXp: number) => void;
         setFlag: (flag: string, value: boolean | string | number) => void;
+        initializeNewGame: (name: string, core: string, affinity: string, sub?: string) => void;
     }
 } | null>(null);
+
+import { PersistenceService } from '../services/PersistenceService';
+
+// ... (existing code, just showing the change in Provider) ...
 
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [state, dispatch] = useReducer(gameReducer, initialState, (initial) => {
         try {
-            const saved = localStorage.getItem('eideus-gamestate');
-            if (saved) {
-                const parsed = JSON.parse(saved);
+            const savedData = PersistenceService.loadGame();
+            const legacySaved = localStorage.getItem('eideus-gamestate');
+            const parsed = savedData?.gameState || (legacySaved ? JSON.parse(legacySaved) : null);
+
+            if (parsed) {
                 // Merge with initial to ensure new schema fields exist (deep-merge settings.llm)
                 return {
                     ...initial,
@@ -496,16 +522,6 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return initial;
     });
 
-    // Auto-Save
-    React.useEffect(() => {
-        if (state.settings.autoSaveEnabled) {
-            const saveHandler = setTimeout(() => {
-                localStorage.setItem('eideus-gamestate', JSON.stringify(state));
-                console.log('[GameContext] Auto-saved game state.');
-            }, 1000); // 1s debounce
-            return () => clearTimeout(saveHandler);
-        }
-    }, [state]);
 
     // Helper actions for cleaner usage
     const actions = {
@@ -530,6 +546,8 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         advanceQuest: (questId: string, logEntry: string) => dispatch({ type: 'ADVANCE_QUEST', questId, logEntry }),
         completeQuest: (questId: string, rewardXp: number) => dispatch({ type: 'COMPLETE_QUEST', questId, rewardXp }),
         setFlag: (flag: string, value: boolean | string | number) => dispatch({ type: 'SET_FLAG', flag, value }),
+        initializeNewGame: (name: string, core: string, affinity: string, sub?: string) =>
+            dispatch({ type: 'INITIALIZE_NEW_GAME', name, core, affinity, sub }),
     };
 
     // Listen for Quest Flag updates from Vizzy Orchestrator
