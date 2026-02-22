@@ -1,0 +1,618 @@
+{
+  "file": {
+    "path": "/script/act2.json",
+    "schema_version": "1.0.0",
+    "source": "act_2-chapters_SentinelDome.txt",
+    "updated": {
+      "npc_key_suffix": "-NPC"
+    }
+  },
+  "act": {
+    "id": "ACT_II",
+    "title": "The Sentinel Dome",
+    "world_id": "G1-S1-O2",
+    "setting": "Sentinel Dome. A monolithic surveillance fortress encasing the planet's primary sensor arrays.",
+    "theme": [
+      "Paranoia",
+      "Surveillance",
+      "The 04:00 Log Review"
+    ],
+    "canonical_key_format": "[Gx-Sx-Ox-CIV-Cx-CTx-Rx-NPC]"
+  },
+  "paths": [
+    {
+      "id": "A",
+      "attribute": "STRENGTH",
+      "faction": "The Aegis Hegemony",
+      "civilization_id": "C1",
+      "global_hook": "Enforce martial law and secure the perimeter against phantom signals.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The 04:00 Ghost Drill",
+          "mission": "Repell a simulated breach during the daily 04:00 log review.",
+          "key_cast": {
+            "giver": {
+              "name": "Commander Virek Alpha",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R1-NPC",
+              "role": "Chief of Plaza Security"
+            },
+            "intermediary": {
+              "name": "Commander Virek Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R1-NPC",
+              "role": "Borehole Security Lead"
+            },
+            "closer": {
+              "name": "Commander Virek Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R1-NPC",
+              "role": "Array Security Officer"
+            }
+          },
+          "objectives": [
+            "Report for the 04:00 review at Central Command Plaza.",
+            "Secure the deep-bore perimeter at Borehole Primary.",
+            "Confirm the \"all-clear\" at Signal Array Alpha."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "Filter Emergency",
+          "mission": "Recalibrate the optical filters before the steam conduits rupture.",
+          "key_cast": {
+            "giver": {
+              "name": "Technician Rilo Alpha",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R2-NPC",
+              "role": "Aura Maintenance Lead"
+            },
+            "intermediary": {
+              "name": "Technician Rilo Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R2-NPC",
+              "role": "Steam Conduit Tech"
+            },
+            "closer": {
+              "name": "Technician Rilo Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R2-NPC",
+              "role": "Shield Filter Specialist"
+            }
+          },
+          "objectives": [
+            "Align the lenses at The Eye of Aura.",
+            "Vent the pressure at The Steam Tunnels.",
+            "Install the new filters at The Perimeter Shield."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "The Phantom Fleet Protocol",
+          "mission": "Distinguish between a simulated invasion and a real ghost signal.",
+          "key_cast": {
+            "giver": {
+              "name": "AI Sentinel Prime",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R3-NPC",
+              "role": "Heights Tactical Overseer"
+            },
+            "intermediary": {
+              "name": "AI Sentinel Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R3-NPC",
+              "role": "Foundry Logistics Core"
+            },
+            "closer": {
+              "name": "AI Sentinel Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R3-NPC",
+              "role": "Overlook Defense System"
+            }
+          },
+          "objectives": [
+            "Analyze the threat logic at Strategos Heights.",
+            "Stress-test the manufacturing response at Foundry Row.",
+            "Engage the phantom targets at Scout's Overlook."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Ghost in the Machine",
+          "mission": "Track a rogue drone that is reporting objects that don't exist.",
+          "key_cast": {
+            "giver": {
+              "name": "Scout Drone Omega-1",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R4-NPC",
+              "role": "Archive Recon Unit"
+            },
+            "intermediary": {
+              "name": "Scout Drone Omega-2",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R4-NPC",
+              "role": "Rest Area Monitor"
+            },
+            "closer": {
+              "name": "Scout Drone Omega-3",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R4-NPC",
+              "role": "Battery Surveillance Unit"
+            }
+          },
+          "objectives": [
+            "Download the glitch logs at Archive Spires.",
+            "Chase the drone through Miner's Rest.",
+            "Corner and reboot the unit at Battery Point."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The High-Profile Breach",
+          "mission": "Intercept a Cartel infiltration attempt at the slag reclamation site.",
+          "key_cast": {
+            "giver": {
+              "name": "Liaison Katt Prime",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R5-NPC",
+              "role": "Gate Enforcement Contractor"
+            },
+            "intermediary": {
+              "name": "Liaison Katt Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R5-NPC",
+              "role": "Slag Reclamation Guard"
+            },
+            "closer": {
+              "name": "Liaison Katt Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R5-NPC",
+              "role": "Dead Zone Enforcer"
+            }
+          },
+          "objectives": [
+            "Arm up at The Iron Gate.",
+            "Ambush the smugglers at Slag Reclamation.",
+            "Execute the contract in The Dead Zone."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Shield of Symbols",
+          "mission": "Encode shield generators with maintenance sigils to prevent overload.",
+          "key_cast": {
+            "giver": {
+              "name": "Engineer Tamsin Alpha",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R6-NPC",
+              "role": "Energy Management Officer"
+            },
+            "intermediary": {
+              "name": "Engineer Tamsin Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R6-NPC",
+              "role": "Structural Engineer"
+            },
+            "closer": {
+              "name": "Engineer Tamsin Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R6-NPC",
+              "role": "Relay Frequency Manager"
+            }
+          },
+          "objectives": [
+            "Paint the first sigil at Officer's Mess.",
+            "Reinforce the struts at The Gear-Mill.",
+            "Activate the resonance at Signal Relay Gamma."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "The Coffee-Orbital Correlation",
+          "mission": "Predict the World Boss arrival using caffeine logs and orbital traffic data.",
+          "key_cast": {
+            "giver": {
+              "name": "Analyst Nove Alpha",
+              "npc_key": "G1-S1-O2-CIV_C1-CT1-R7-NPC",
+              "role": "Response Pattern Analyst"
+            },
+            "intermediary": {
+              "name": "Analyst Nove Beta",
+              "npc_key": "G1-S1-O2-CIV_C1-CT2-R7-NPC",
+              "role": "Transit Flow Auditor"
+            },
+            "closer": {
+              "name": "Analyst Nove Gamma",
+              "npc_key": "G1-S1-O2-CIV_C1-CT3-R7-NPC",
+              "role": "Trench Logistics Analyst"
+            }
+          },
+          "objectives": [
+            "Collect consumption data at Response Hub One.",
+            "Correlate with transit times at Transit Tube Beta.",
+            "Finalize the prediction at The Low Trench."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "attribute": "DEXTERITY",
+      "faction": "The Aegis Directive",
+      "civilization_id": "C2",
+      "global_hook": "Maintain kinetic precision in a world of varying gravity and pressure.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Phantasmal Breach",
+          "mission": "Verify a simulated breach that is moving faster than the sensors can track.",
+          "key_cast": {
+            "giver": {
+              "name": "Commander Virek-Alpha",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R1-NPC",
+              "role": "Tactical Lead"
+            },
+            "intermediary": {
+              "name": "Virek-Beta",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R1-NPC",
+              "role": "Subterranean Security"
+            },
+            "closer": {
+              "name": "Virek-Gamma",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R1-NPC",
+              "role": "Border Commander"
+            }
+          },
+          "objectives": [
+            "Sync tactical HUD at The Signal Spire.",
+            "Rappel down The Deep Shaft.",
+            "Secure the line at The Perimeter Walk."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "Calibrating the Void",
+          "mission": "Manually realign the turret servos while under fire from debris.",
+          "key_cast": {
+            "giver": {
+              "name": "Technician Rilo-Prime",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R2-NPC",
+              "role": "Visual Technician"
+            },
+            "intermediary": {
+              "name": "Rilo-Mantle",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R2-NPC",
+              "role": "Pressure Technician"
+            },
+            "closer": {
+              "name": "Rilo-Rim",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R2-NPC",
+              "role": "Weapon Systems Tech"
+            }
+          },
+          "objectives": [
+            "Focus the lenses at Optic Garden.",
+            "Stabilize the pressure valves in Piston Alley.",
+            "Lock the targeting array at Turret Row."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "The False Signal",
+          "mission": "Trace a digital ghost through the digital gates and steam pipes.",
+          "key_cast": {
+            "giver": {
+              "name": "Sentinel-Core",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R3-NPC",
+              "role": "Digital Gatekeeper"
+            },
+            "intermediary": {
+              "name": "Sentinel-V3",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R3-NPC",
+              "role": "Flow Controller"
+            },
+            "closer": {
+              "name": "Sentinel-Edge",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R3-NPC",
+              "role": "Boundary AI"
+            }
+          },
+          "objectives": [
+            "Hack the gate at The Synapse Bridge.",
+            "Navigate the Valve District.",
+            "Confront the AI at The Outer Scrim."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Deep Pressure Drift",
+          "mission": "Recon a heat signature that is moving through solid rock.",
+          "key_cast": {
+            "giver": {
+              "name": "Omega-01",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R4-NPC",
+              "role": "Recon Unit"
+            },
+            "intermediary": {
+              "name": "Omega-02",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R4-NPC",
+              "role": "Heat-Shielded Drone"
+            },
+            "closer": {
+              "name": "Omega-03",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R4-NPC",
+              "role": "Long-Range Recon"
+            }
+          },
+          "objectives": [
+            "Launch recon from Latency Row.",
+            "Scan the magma at Slag Foundry.",
+            "Triangulate the target at Scout Bay 7."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The Shielding Secret",
+          "mission": "Smuggle a salvage team through the secure upper decks.",
+          "key_cast": {
+            "giver": {
+              "name": "Katt-V",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R5-NPC",
+              "role": "Contract Enforcer"
+            },
+            "intermediary": {
+              "name": "Katt-Deep",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R5-NPC",
+              "role": "Salvage Liaison"
+            },
+            "closer": {
+              "name": "Katt-Rim",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R5-NPC",
+              "role": "Mercenary Scout"
+            }
+          },
+          "objectives": [
+            "Bribe the guard at Zenith Observation Deck.",
+            "Secure the scrap at The Gearworks.",
+            "Extract via The Echo Trench."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Mercenary's Gambit",
+          "mission": "Encode a kinetic barrier with secret maintenance glyphs.",
+          "key_cast": {
+            "giver": {
+              "name": "Tamsin-A",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R6-NPC",
+              "role": "Shield Expert"
+            },
+            "intermediary": {
+              "name": "Tamsin-M",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R6-NPC",
+              "role": "Flux Engineer"
+            },
+            "closer": {
+              "name": "Tamsin-Z",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R6-NPC",
+              "role": "Structural Engineer"
+            }
+          },
+          "objectives": [
+            "Paint the glyphs at The Buffer Zone.",
+            "Energize the maze at Conduit Maze.",
+            "Reinforce the walls at Garrison Yards."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Orbital Prediction",
+          "mission": "Analyze the Watchman's Gate for the World Boss arrival vector.",
+          "key_cast": {
+            "giver": {
+              "name": "Nove-One",
+              "npc_key": "G1-S1-O2-CIV_C2-CT1-R7-NPC",
+              "role": "Traffic Analyst"
+            },
+            "intermediary": {
+              "name": "Nove-Reach",
+              "npc_key": "G1-S1-O2-CIV_C2-CT2-R7-NPC",
+              "role": "Seismic Analyst"
+            },
+            "closer": {
+              "name": "Nove-Seven",
+              "npc_key": "G1-S1-O2-CIV_C2-CT3-R7-NPC",
+              "role": "Threat Evaluator"
+            }
+          },
+          "objectives": [
+            "Monitor the pulse at Pulse Command.",
+            "Check for tremors in Resonance Vault.",
+            "Sound the alarm at The Watchman's Gate."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "attribute": "INTELLIGENCE",
+      "faction": "The Oversight Directorate",
+      "civilization_id": "C3",
+      "global_hook": "Treat the planet as a data stream and optimize the extraction process.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The 04:00 Anomaly",
+          "mission": "Investigate a statistical impossibility in the morning logs.",
+          "key_cast": {
+            "giver": {
+              "name": "Commander Virek Prime",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R1-NPC",
+              "role": "Security Commander"
+            },
+            "intermediary": {
+              "name": "Commander Virek Core",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R1-NPC",
+              "role": "Heavy Guard Commander"
+            },
+            "closer": {
+              "name": "Commander Virek Aegis",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R1-NPC",
+              "role": "Wall Commander"
+            }
+          },
+          "objectives": [
+            "Pull the files at Eye of the Dome.",
+            "Inspect the troops at The Maw.",
+            "Verify the battery logs at Shield Wall."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "Shadow Logistics",
+          "mission": "Trace a resource leak using thermal sensor calibration.",
+          "key_cast": {
+            "giver": {
+              "name": "Technician Rilo Apex",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R2-NPC",
+              "role": "Lead Sensor Technician"
+            },
+            "intermediary": {
+              "name": "Technician Rilo Core",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R2-NPC",
+              "role": "Kiln Technician"
+            },
+            "closer": {
+              "name": "Technician Rilo Aegis",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R2-NPC",
+              "role": "Battery Technician"
+            }
+          },
+          "objectives": [
+            "Calibrate the lens at Signal Spire.",
+            "Check the kilns at Refinement Kilns.",
+            "Align the cannons at Flak Batteries."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "The Ghost in the Cliffs",
+          "mission": "Run a simulation to see if the barracks are compromised by an AI virus.",
+          "key_cast": {
+            "giver": {
+              "name": "Sentinel A-1",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R3-NPC",
+              "role": "AI Custodian"
+            },
+            "intermediary": {
+              "name": "Sentinel B-1",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R3-NPC",
+              "role": "Slum Overseer AI"
+            },
+            "closer": {
+              "name": "Sentinel C-1",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R3-NPC",
+              "role": "Barracks AI"
+            }
+          },
+          "objectives": [
+            "Initiate the test at Archive Vaults.",
+            "Monitor the slums at Piston Slums.",
+            "Lock down Barrack Blocks."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Efficiency Protocol Beta",
+          "mission": "Deploy autonomous scouts to map the unknown heat signatures.",
+          "key_cast": {
+            "giver": {
+              "name": "Unit Omega-01",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R4-NPC",
+              "role": "Autonomous Scout"
+            },
+            "intermediary": {
+              "name": "Unit Omega-02",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R4-NPC",
+              "role": "Thermal Scout"
+            },
+            "closer": {
+              "name": "Unit Omega-03",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R4-NPC",
+              "role": "Long-Range Scout"
+            }
+          },
+          "objectives": [
+            "Launch from Logic Gates.",
+            "Scan Heat Sinks.",
+            "Patrol Radar Cliffs."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "Synthetic Purity Drill",
+          "mission": "Force a contractor compliance check using mercenary intimidation.",
+          "key_cast": {
+            "giver": {
+              "name": "Liaison Katt Prime",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R5-NPC",
+              "role": "Mercenary Liaison"
+            },
+            "intermediary": {
+              "name": "Liaison Katt Core",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R5-NPC",
+              "role": "Cartel Contractor"
+            },
+            "closer": {
+              "name": "Liaison Katt Aegis",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R5-NPC",
+              "role": "Defense Liaison"
+            }
+          },
+          "objectives": [
+            "Issue the warrant at Command Tier.",
+            "Raid the Ore Belts.",
+            "Secure the Landing Pads."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "The Lens of Truth",
+          "mission": "Encode the containment cells with high-pressure shielding glyphs.",
+          "key_cast": {
+            "giver": {
+              "name": "Engineer Tamsin Apex",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R6-NPC",
+              "role": "Shielding Specialist"
+            },
+            "intermediary": {
+              "name": "Engineer Tamsin Core",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R6-NPC",
+              "role": "Pressure Engineer"
+            },
+            "closer": {
+              "name": "Engineer Tamsin Aegis",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R6-NPC",
+              "role": "Containment Engineer"
+            }
+          },
+          "objectives": [
+            "Draft the blueprint at Monitor Flats.",
+            "Seal the Pressure Chambers.",
+            "Reinforce Interrogation Cells."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Interrogation Cipher",
+          "mission": "Calculate the final probability of the World Boss breach event.",
+          "key_cast": {
+            "giver": {
+              "name": "Analyst Nove-Alpha",
+              "npc_key": "G1-S1-O2-CIV_C3-CT1-R7-NPC",
+              "role": "Security Analyst"
+            },
+            "intermediary": {
+              "name": "Analyst Nove-Beta",
+              "npc_key": "G1-S1-O2-CIV_C3-CT2-R7-NPC",
+              "role": "Efficiency Analyst"
+            },
+            "closer": {
+              "name": "Analyst Nove-Gamma",
+              "npc_key": "G1-S1-O2-CIV_C3-CT3-R7-NPC",
+              "role": "Border Analyst"
+            }
+          },
+          "objectives": [
+            "Gather data at Sensor Fields.",
+            "Audit the Geodesic Foundries.",
+            "Finalize the report at Perimeter Trench."
+          ]
+        }
+      ]
+    }
+  ]
+}

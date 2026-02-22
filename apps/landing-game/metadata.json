@@ -1,5 +1,5 @@
 {
-  "name": "Star Viper: Dogfight Arena",
-  "description": "A dystopian sci-fi arcade shooter. Pilot the Star Viper above a sprawling noir megapolis, 2000 years in the future. Survive the endless drone waves in the upper atmosphere.",
+  "name": "landing-game",
+  "description": "A space combat simulator extending into planetary atmospheres. Evade enemy radar, dogfight in the skies, and perform safe landings.",
   "requestFramePermissions": []
 }

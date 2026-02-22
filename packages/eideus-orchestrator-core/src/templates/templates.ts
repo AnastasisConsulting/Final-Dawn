@@ -9,10 +9,23 @@ import type {
 import {
   GLOBAL_INVARIANTS,
   ROLE_INSTRUCTIONS,
-  MOSS_INJECTION
+  MOSS_INJECTION,
+  SEVEN_ARCS_DECOMPOSITION,
+  ANTI_DRIFT_GUARDRAILS,
+  SCENE_ADVANCEMENT_PROTOCOL,
+  HEROIC_MOMENTUM
 } from '../prompts/system.js';
 import { renderQuestFlags } from '../eideus/questFlags.js';
 import { KLEVEL_KEY_PROTOCOL, QUEST_PERSISTENCE_PROTOCOL } from '../eideus/klevel.js';
+
+function tryParseAffinity(raw?: string): any {
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
 
 export const NOIR_SATIRE_TONE = `
 ## TONE: INDUSTRIAL NOIR SATIRE
@@ -39,8 +52,17 @@ export function buildMultiRecipientPrompt(params: {
   const system = [
     GLOBAL_INVARIANTS,
     NOIR_SATIRE_TONE,
+    SEVEN_ARCS_DECOMPOSITION,
+    ANTI_DRIFT_GUARDRAILS,
+    SCENE_ADVANCEMENT_PROTOCOL,
+    HEROIC_MOMENTUM,
+    params.playerAffinity ? MOSS_INJECTION({
+      M: 50, O: 50, S: 50, S_prime: 50, // Defaults (TODO: Resolve from playerAffinity/flags)
+      ...tryParseAffinity(params.playerAffinity)
+    }) : "",
     KLEVEL_KEY_PROTOCOL,
     QUEST_PERSISTENCE_PROTOCOL,
+    params.playerText.includes("[BETA_BOT]") ? "## BETA TESTER OVERRIDE\nThe player is currently a BETA_TESTER. Apply HEROIC MOMENTUM rules strictly." : "",
     "## CORE CHARACTER GUIDELINES",
     ...enabledModes.map(mode => {
       const instr = ROLE_INSTRUCTIONS[mode.toUpperCase() as keyof typeof ROLE_INSTRUCTIONS];
@@ -50,10 +72,30 @@ export function buildMultiRecipientPrompt(params: {
     "## DIRECTOR GUIDANCE (OVERRIDE)",
     params.characterDirectives?.DIRECTOR_GUIDANCE || "Maintain standard dystopian pacing.",
     "",
-    "## OUTPUT FORMAT (STRICT)",
-    "You MUST output exactly one section per recipient label provided, in order.",
-    "Use header syntax: === [LABEL] ===",
-    "No extra conversational text outside these sections."
+    // BOT-only: completely different, ultra-strict output instruction
+    (enabledModes.length === 1 && enabledModes[0] === 'bot') ? [
+      "## OUTPUT FORMAT (ABSOLUTE — BOT ROLE ONLY)",
+      "CRITICAL: You are the PNS sub-routine. Your ONLY job is to output ONE action line.",
+      "FORBIDDEN: Do NOT output === THOUGHT ===, === GM ===, or any other section headers.",
+      "FORBIDDEN: Do NOT narrate the world, describe scenes, or give GM-style responses.",
+      "FORBIDDEN: Do NOT use RECIPIENTS:, bullets, or numbered lists.",
+      "FORBIDDEN: Do NOT start with 'As the', 'Based on', 'Here is', 'I will', 'I'll respond'.",
+      "FORBIDDEN: Do NOT add 'Please let me know', 'What would you like to do next?', or any questions.",
+      "REQUIRED: Output EXACTLY ONE sentence starting with 'I' that describes the player's next action.",
+      "EXAMPLE VALID OUTPUT: I slip through the maintenance corridor and scan the terminal for Chief Hara-V1's last access log.",
+      "EXAMPLE VALID OUTPUT: I stride toward the mission contact and demand a full briefing on the Xenon Core coordinates.",
+      "OUTPUT NOTHING ELSE. ONE SENTENCE. FIRST PERSON. STARTS WITH 'I'."
+    ].join("\n") : [
+      "## OUTPUT FORMAT (STRICT)",
+      "You MUST output a THOUGHT section followed by the recipient sections.",
+      "=== [THOUGHT] ===",
+      "[Internal reasoning using Seven Arcs protocol]",
+      "",
+      "=== [LABEL] ===",
+      "[Dialogue/Action for this recipient]",
+      "",
+      "No extra conversational text outside these sections."
+    ].join("\n")
   ].join("\n");
 
   const memoryBlock = renderMemories(params.memories);
@@ -83,10 +125,45 @@ export function buildMultiRecipientPrompt(params: {
 }
 
 function renderMemories(memories: VoxelSnapshot[]): string {
-  if (!memories.length) return "MEMORY: (none retrieved)";
-  return memories.map(m => {
-    return `- @${m.id} [${m.spatial.g}.${m.spatial.s}.${m.spatial.o}] x+: ${m.faces["x+"]} | x-: ${m.faces["x-"]}`;
-  }).join("\n");
+  if (!memories.length) return "MEMORY LATTICE: (no prior context retrieved)";
+
+  const rendered = memories.map(m => {
+    const { spatial: sp, temporal: tm, faces } = m;
+
+    // Coordinates
+    const spatialAddr = `G${sp.g}.S${sp.s}.O${sp.o}.C${sp.c}.CT${sp.ct}.R${sp.r}`;
+    const temporalAddr = `S${tm.saga}.B${tm.book}.C${tm.chapter}.P${tm.page}`;
+
+    // x+ = player input (what the player said/did)    [spec: Voxels.md]
+    const playerAction = (faces["x+"] || "").trim();
+    // x- = narration output (what the world responded)
+    const narration = (faces["x-"] || "").trim();
+
+    // y- = associative tags (thematic hooks, up to 7 per spec)
+    const tags = Array.isArray(faces["y-"]) && faces["y-"].length
+      ? `[tags: ${faces["y-"].slice(0, 7).join(", ")}]`
+      : "";
+
+    // z+ = entity cards (who was present)
+    const entities = Array.isArray(faces["z+"]) && faces["z+"].length
+      ? `[entities: ${faces["z+"].map((e: any) => e.name || e.id).slice(0, 4).join(", ")}]`
+      : "";
+
+    // z- = lore key (location address in lorebook)
+    const loreKey = faces["z-"]
+      ? (typeof faces["z-"] === "string" ? faces["z-"] : (faces["z-"] as any).loreKey || "")
+      : "";
+    const loreStr = loreKey ? `[lore: ${loreKey}]` : "";
+
+    const meta = [temporalAddr, spatialAddr, loreStr, tags, entities].filter(Boolean).join(" | ");
+
+    const lines = [`[MEMORY ${meta}]`];
+    if (playerAction) lines.push(`> ACTION: ${playerAction}`);
+    if (narration) lines.push(`> WORLD:  ${narration}`);
+    return lines.join("\n");
+  });
+
+  return `## MEMORY LATTICE (${memories.length} voxel${memories.length > 1 ? 's' : ''} retrieved)\n` + rendered.join("\n\n");
 }
 
 function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<string, any>): string {
@@ -114,19 +191,29 @@ function renderImmutableContext(lore: any, quests: any[], questFlags?: Record<st
   return lines.join("\n");
 }
 
-export function parseLabeledSections(raw: string, recipients: TurnRecipient[]): AgentOutputSection[] {
+export interface ParsedSections {
+  sections: AgentOutputSection[];
+  thought?: string;
+}
+
+export function parseLabeledSections(raw: string, recipients: TurnRecipient[]): ParsedSections {
   const sections: AgentOutputSection[] = [];
   const lines = raw.split("\n");
   const headerRe = /^={2,}\s*\[?([A-Za-z0-9_:\- ]+)\]?\s*={2,}\s*$/;
 
   let currentLabel: string | null = null;
   let currentContent: string[] = [];
+  let thought: string | undefined;
 
   for (const line of lines) {
     const match = line.match(headerRe);
     if (match) {
       if (currentLabel) {
-        saveSection(currentLabel, currentContent, sections, recipients);
+        if (currentLabel === "THOUGHT") {
+          thought = currentContent.join("\n").trim();
+        } else {
+          saveSection(currentLabel, currentContent, sections, recipients);
+        }
       }
       currentLabel = match[1].trim().toUpperCase();
       currentContent = [];
@@ -134,8 +221,13 @@ export function parseLabeledSections(raw: string, recipients: TurnRecipient[]): 
       currentContent.push(line);
     }
   }
+
   if (currentLabel) {
-    saveSection(currentLabel, currentContent, sections, recipients);
+    if (currentLabel === "THOUGHT") {
+      thought = currentContent.join("\n").trim();
+    } else {
+      saveSection(currentLabel, currentContent, sections, recipients);
+    }
   }
 
   // Fallback if no headers found
@@ -148,7 +240,7 @@ export function parseLabeledSections(raw: string, recipients: TurnRecipient[]): 
     });
   }
 
-  return sections;
+  return { sections, thought };
 }
 
 function saveSection(label: string, content: string[], sections: AgentOutputSection[], recipients: TurnRecipient[]) {

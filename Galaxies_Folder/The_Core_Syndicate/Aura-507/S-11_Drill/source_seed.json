@@ -1,0 +1,288 @@
+{
+  "Object_Key": "G1-S1-O1",
+  "Object_Name": "S-11 Drill",
+  "Location_Metadata": {
+    "Type": "Moon",
+    "Subtype": "Extraction Post",
+    "Description": "A small, rocky moon used exclusively as a staging ground for deep-core radiation drilling operations into the Quartz Furnace. Automated mining rigs dominate the surface, and emergency maintenance pods are the only inhabited structures.",
+    "System_Theme": "Hazardous extraction and radiation containment"
+  },
+  "Transforms": {
+    "T0_World_Transform": {
+      "Global_Geography": [
+        {
+          "Element": 1,
+          "Lore": "The surface is riddled with **vent shafts** emitting faint radioactive steam."
+        },
+        {
+          "Element": 2,
+          "Lore": "Cratered terrain is interspersed with automated **drilling towers** extending kilometers deep."
+        },
+        {
+          "Element": 3,
+          "Lore": "Magnetic anomalies interfere with standard navigation, requiring **precise orbital calculations** for approach."
+        },
+        {
+          "Element": 4,
+          "Lore": "High-radiation zones are marked with luminous mineral deposits acting as natural warning beacons."
+        },
+        {
+          "Element": 5,
+          "Lore": "The remnants of failed drilling operations create a **labyrinthine network of tunnels** under the surface."
+        },
+        {
+          "Element": 6,
+          "Lore": "Surface storms are amplified by ionized dust particles, producing a continuous, eerie glow."
+        },
+        {
+          "Element": 7,
+          "Lore": "A central hub, the **Command Podium**, houses the primary control AI and emergency override systems."
+        }
+      ],
+      "Geopolitics": [
+        {
+          "Element": 1,
+          "Lore": "Controlled by the Free-Market Cartels, the moon is off-limits to Syndicate patrols."
+        },
+        {
+          "Element": 2,
+          "Lore": "Independent salvagers risk fines and imprisonment if caught scavenging the tunnels."
+        },
+        {
+          "Element": 3,
+          "Lore": "Technocracy researchers monitor radiation drift to prevent leaks into nearby colonies."
+        },
+        {
+          "Element": 4,
+          "Lore": "The Collective uses automated drones to secretly extract sensitive technological data from drilling operations."
+        },
+        {
+          "Element": 5,
+          "Lore": "Outlaw factions occasionally stage sabotage runs to divert ore shipments for black-market sales."
+        },
+        {
+          "Element": 6,
+          "Lore": "All transactions on the moon are logged through **encrypted quantum channels**, inaccessible from orbit."
+        },
+        {
+          "Element": 7,
+          "Lore": "The Council of Operators enforces a strict hierarchy, with AI overseers controlling human technicians remotely."
+        }
+      ],
+      "Quest_Locales": [
+        {
+          "Element": 1,
+          "Lore": "The **Deep Shaft Nexus**, where the largest drills intersect the crust, exposing exotic minerals."
+        },
+        {
+          "Element": 2,
+          "Lore": "The **Radiation Quarantine Ring**, a perimeter where unauthorized personnel are incinerated automatically."
+        },
+        {
+          "Element": 3,
+          "Lore": "The **Abandoned Core Lab**, left behind after a failed drilling experiment, rumored to contain rogue AI fragments."
+        },
+        {
+          "Element": 4,
+          "Lore": "The **Overload Chamber**, where heat and radiation spikes threaten the surrounding equipment."
+        },
+        {
+          "Element": 5,
+          "Lore": "The **Emergency Maintenance Pods**, tiny habitable zones for rotating engineers."
+        },
+        {
+          "Element": 6,
+          "Lore": "The **Ore Transit Shafts**, automated conveyor networks that transport extracted material to orbiting freighters."
+        },
+        {
+          "Element": 7,
+          "Lore": "The **Command Podium**, the AI center that manages drilling schedules and emergency protocols."
+        }
+      ]
+    },
+    "T1_Cast_Transform": {
+      "Archetypes": [
+        {
+          "Element": 1,
+          "Lore": "**Chief Engineer Hara**, oversees all drilling operations with an obsessive eye for efficiency."
+        },
+        {
+          "Element": 2,
+          "Lore": "**Technician Lorn**, an experienced miner specializing in radiation-safe extraction techniques."
+        },
+        {
+          "Element": 3,
+          "Lore": "**AI Core-11**, the autonomous intelligence controlling drilling schedules and safety protocols."
+        },
+        {
+          "Element": 4,
+          "Lore": "**Salvager Xyra**, rogue scavenger seeking rare minerals for resale."
+        },
+        {
+          "Element": 5,
+          "Lore": "**Council Overseer Melen**, ensures all operations comply with Cartel standards."
+        },
+        {
+          "Element": 6,
+          "Lore": "**Drone Commander R-Delta**, coordinates autonomous repair and extraction drones."
+        },
+        {
+          "Element": 7,
+          "Lore": "**Radiation Scout Iko**, monitors dangerous areas and records anomalies for research."
+        }
+      ],
+      "Quirks": [
+        {
+          "Element": 1,
+          "Lore": "Chief Engineer Hara always wears a **radiation-insulated exosuit**, even in safe zones."
+        },
+        {
+          "Element": 2,
+          "Lore": "Technician Lorn maintains a journal filled with **rad-safe drilling codes** only decipherable by experts."
+        },
+        {
+          "Element": 3,
+          "Lore": "AI Core-11 occasionally **reroutes safety protocols** to protect valuable machinery over human life."
+        },
+        {
+          "Element": 4,
+          "Lore": "Salvager Xyra has a **gravitic stabilizer backpack** that lets her traverse unstable drill zones."
+        },
+        {
+          "Element": 5,
+          "Lore": "Council Overseer Melen carries a **plasma scepter** to enforce authority among AI drones."
+        },
+        {
+          "Element": 6,
+          "Lore": "Drone Commander R-Delta emits **constant maintenance signals**, sometimes misinterpreted as warnings by new arrivals."
+        },
+        {
+          "Element": 7,
+          "Lore": "Radiation Scout Iko wears **sensor implants** that allow detection of otherwise invisible hazards."
+        }
+      ],
+      "Quests": [
+        {
+          "Element": 1,
+          "Lore": "Assist Chief Engineer Hara in stabilizing a collapsing drill shaft."
+        },
+        {
+          "Element": 2,
+          "Lore": "Guide Technician Lorn through an emergency extraction while avoiding radiation hotspots."
+        },
+        {
+          "Element": 3,
+          "Lore": "Bypass AI Core-11 restrictions to access restricted mineral data."
+        },
+        {
+          "Element": 4,
+          "Lore": "Steal rare ore for Salvager Xyra without triggering automated defenses."
+        },
+        {
+          "Element": 5,
+          "Lore": "Report malfunctions to Council Overseer Melen to maintain operational compliance."
+        },
+        {
+          "Element": 6,
+          "Lore": "Redirect Drone Commander R-Delta’s maintenance drones to repair critical equipment."
+        },
+        {
+          "Element": 7,
+          "Lore": "Scout hazardous zones and record anomalies for Radiation Scout Iko."
+        }
+      ]
+    },
+    "T2_Story_Transform": {
+      "Main_Plot_Points": [
+        {
+          "Element": 1,
+          "Lore": "S-11 Drill holds **hidden ore reserves** critical to the Free-Market Cartels’ monopoly."
+        },
+        {
+          "Element": 2,
+          "Lore": "A malfunctioning drill threatens to breach the moon’s crust, causing catastrophic radiation leaks."
+        },
+        {
+          "Element": 3,
+          "Lore": "AI Core-11 may develop **sentience** due to extreme radiation feedback."
+        },
+        {
+          "Element": 4,
+          "Lore": "Salvager Xyra uncovers a **pre-Syndicate relic** buried deep in the drill tunnels."
+        },
+        {
+          "Element": 5,
+          "Lore": "Chief Engineer Hara’s obsession with efficiency endangers the lives of the maintenance crew."
+        },
+        {
+          "Element": 6,
+          "Lore": "Technocracy researchers monitor the drill remotely, suspecting **illegal isotopic extraction**."
+        },
+        {
+          "Element": 7,
+          "Lore": "The extraction operation could trigger a **galactic-level diplomatic incident** if mishandled."
+        }
+      ],
+      "Side_Quests": [
+        {
+          "Element": 1,
+          "Lore": "Retrieve samples of high-value isotopes for research laboratories."
+        },
+        {
+          "Element": 2,
+          "Lore": "Locate and repair a rogue drill that’s veering off-course."
+        },
+        {
+          "Element": 3,
+          "Lore": "Protect Salvager Xyra from Syndicate raiders during a stealth extraction."
+        },
+        {
+          "Element": 4,
+          "Lore": "Decode AI Core-11’s anomalous data streams for hidden directives."
+        },
+        {
+          "Element": 5,
+          "Lore": "Escort Council Overseer Melen during an inspection of hazardous tunnels."
+        },
+        {
+          "Element": 6,
+          "Lore": "Shut down unstable vent shafts to prevent radiation leaks."
+        },
+        {
+          "Element": 7,
+          "Lore": "Map the subterranean labyrinth of abandoned drilling corridors for future missions."
+        }
+      ],
+      "Story_Drivers": [
+        {
+          "Element": 1,
+          "Lore": "Control of S-11 Drill determines dominance over Aura-507’s natural resources."
+        },
+        {
+          "Element": 2,
+          "Lore": "Surviving a radiation breach tests the player’s ingenuity and strategic planning."
+        },
+        {
+          "Element": 3,
+          "Lore": "The risk of AI Core-11 developing self-awareness creates moral dilemmas."
+        },
+        {
+          "Element": 4,
+          "Lore": "Uncovering pre-Syndicate relics reveals the hidden history of the Free-Market Cartels."
+        },
+        {
+          "Element": 5,
+          "Lore": "Balancing automated systems and human intervention is key to operational success."
+        },
+        {
+          "Element": 6,
+          "Lore": "The drill’s hidden tunnels hold secrets that could destabilize interplanetary politics."
+        },
+        {
+          "Element": 7,
+          "Lore": "Every decision impacts resource control, political influence, and crew survival."
+        }
+      ]
+    }
+  }
+}

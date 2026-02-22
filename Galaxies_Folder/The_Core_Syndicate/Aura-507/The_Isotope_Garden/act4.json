@@ -1,0 +1,618 @@
+{
+  "file": {
+    "path": "/script/act4.json",
+    "schema_version": "1.0.0",
+    "source": "act_4-chapters_IsotopeGarden.txt",
+    "updated": {
+      "npc_key_suffix": "-NPC"
+    }
+  },
+  "act": {
+    "id": "ACT_IV",
+    "title": "The Isotope Garden",
+    "world_id": "G1-S1-O4",
+    "setting": "The Isotope Garden. A cathedral of toxic beauty where flora feeds on unstable isotopes and the soil glows with a lethal, violet hue.",
+    "theme": [
+      "Mutation",
+      "Radiant Vitalism",
+      "The Harvest of Poison"
+    ],
+    "canonical_key_format": "[Gx-Sx-Ox-CIV-Cx-CTx-Rx-NPC]"
+  },
+  "paths": [
+    {
+      "id": "A",
+      "attribute": "STRENGTH",
+      "faction": "The Radian Concordat",
+      "civilization_id": "C1",
+      "global_hook": "Dominate the mutated wilds and harvest the raw energy of the garden through brute industrial force.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Isotope Sabotage",
+          "mission": "Trace a non-accidental leak in the Refinery and recover the stolen isotopes.",
+          "key_cast": {
+            "giver": {
+              "name": "Refinery-Sec Drax",
+              "npc_key": "G1-S1-O4-C1-CT1-R4-NPC",
+              "role": "Security Overseer"
+            },
+            "contact": {
+              "name": "Watchman Silas",
+              "npc_key": "G1-S1-O4-C1-CT2-R6-NPC",
+              "role": "Ridge Sentry"
+            },
+            "target": {
+              "name": "Splicer-Novice Riven",
+              "npc_key": "G1-S1-O4-C1-CT3-R3-NPC",
+              "role": "Genetic Operative"
+            }
+          },
+          "objectives": [
+            "Scan for leaks at Isotope Refinery 09.",
+            "Track the thief at Sentinel Ridge.",
+            "Apprehend the target at The Splicing Chambers."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Holy Mutation",
+          "mission": "Secure a specific strain of lead-resistant flora for a ritual.",
+          "key_cast": {
+            "giver": {
+              "name": "Deacon Spore",
+              "npc_key": "G1-S1-O4-C1-CT3-R1-NPC",
+              "role": "Cult Priestess"
+            },
+            "contact": {
+              "name": "Gardener Lys",
+              "npc_key": "G1-S1-O4-C1-CT1-R5-NPC",
+              "role": "Botanical Researcher"
+            },
+            "target": {
+              "name": "Vault-Keep Tor",
+              "npc_key": "G1-S1-O4-C1-CT2-R5-NPC",
+              "role": "Obsidian Guardian"
+            }
+          },
+          "objectives": [
+            "Receive the vessel at The Neon Cathedral.",
+            "Harvest the strain at The Lead-Glass Canopy.",
+            "Secure the sample at The Obsidian Vaults."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Crimson Smuggle",
+          "mission": "Move a shipment of isotopic pollen across borders without Exarch oversight.",
+          "key_cast": {
+            "giver": {
+              "name": "Slinker Korr",
+              "npc_key": "G1-S1-O4-C1-CT1-R6-NPC",
+              "role": "Smuggler"
+            },
+            "contact": {
+              "name": "Gatekeeper Kragg",
+              "npc_key": "G1-S1-O4-C1-CT2-R7-NPC",
+              "role": "Entrywarden"
+            },
+            "target": {
+              "name": "Lume-Stalker Zek",
+              "npc_key": "G1-S1-O4-C1-CT3-R5-NPC",
+              "role": "Alley Predator"
+            }
+          },
+          "objectives": [
+            "Collect the stash at Rad-Worker Shanty.",
+            "Bypass the checkpoint at Tungsten Gate.",
+            "Deliver the goods at Bioluminescent Alleys."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Grit-Iron Trials",
+          "mission": "Test a new mutagenic enhancement serum in live combat.",
+          "key_cast": {
+            "giver": {
+              "name": "Drillmaster Gort",
+              "npc_key": "G1-S1-O4-C1-CT2-R4-NPC",
+              "role": "Combat Instructor"
+            },
+            "contact": {
+              "name": "Trader Jool",
+              "npc_key": "G1-S1-O4-C1-CT1-R7-NPC",
+              "role": "Market Broker"
+            },
+            "target": {
+              "name": "Culler-Chief Yorrik",
+              "npc_key": "G1-S1-O4-C1-CT3-R6-NPC",
+              "role": "Gene Overseer"
+            }
+          },
+          "objectives": [
+            "Enroll at Grit-Iron Training Grounds.",
+            "Buy the serum at The Kinetic Market.",
+            "Demonstrate power at Gene-Cullers' Walk."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "Archivist's Preservation",
+          "mission": "Extract a dying mutation's genetic code before it fades forever.",
+          "key_cast": {
+            "giver": {
+              "name": "Scribe Juno",
+              "npc_key": "G1-S1-O4-C1-CT3-R7-NPC",
+              "role": "Mutation Archivist"
+            },
+            "contact": {
+              "name": "Scout-Major Nix",
+              "npc_key": "G1-S1-O4-C1-CT2-R2-NPC",
+              "role": "Aerial Recon"
+            },
+            "target": {
+              "name": "Dredge-Worker Milo",
+              "npc_key": "G1-S1-O4-C1-CT1-R1-NPC",
+              "role": "Piston Engineer"
+            }
+          },
+          "objectives": [
+            "Get the tablets at The Transmutation Spire.",
+            "Locate the beast at Stinger's Perch.",
+            "Extract the sample at The Piston Groves."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "The Heavy-Water Deal",
+          "mission": "Resolve a dispute over heavy water rights slowing production.",
+          "key_cast": {
+            "giver": {
+              "name": "Dockmaster Vane",
+              "npc_key": "G1-S1-O4-C1-CT1-R3-NPC",
+              "role": "Liquid Logistics"
+            },
+            "contact": {
+              "name": "Knight-Captain Harl",
+              "npc_key": "G1-S1-O4-C1-CT2-R1-NPC",
+              "role": "Bastion Commander"
+            },
+            "target": {
+              "name": "Font-Guard Kael",
+              "npc_key": "G1-S1-O4-C1-CT3-R4-NPC",
+              "role": "Isotope Keeper"
+            }
+          },
+          "objectives": [
+            "Negotiate terms at The Heavy-Water Docks.",
+            "Secure an escort at The Iron Bastion.",
+            "Deliver the shipment to Isotope Font."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Mutagen Harvest",
+          "mission": "Channel excess garden energy into armor plating (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Bloom-Tender Elara",
+              "npc_key": "G1-S1-O4-C1-CT3-R2-NPC",
+              "role": "Mutagen Gardener"
+            },
+            "contact": {
+              "name": "Scav-Chief Rek",
+              "npc_key": "G1-S1-O4-C1-CT1-R2-NPC",
+              "role": "Chemical Scavenger"
+            },
+            "target": {
+              "name": "Sergeant Brawn",
+              "npc_key": "G1-S1-O4-C1-CT2-R3-NPC",
+              "role": "Infantry Drill"
+            }
+          },
+          "objectives": [
+            "Harvest mutagen at Mutagen Gardens.",
+            "Filter sludge at Sulphur Flats.",
+            "Apply coating at The Shield-Wall Barracks."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "attribute": "DEXTERITY",
+      "faction": "The Radian Collective",
+      "civilization_id": "C2",
+      "global_hook": "Navigate the hazardous flora with precision and manipulate the delicate balance of the bloom.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "Harvest Crimson Spores",
+          "mission": "Collect rare Crimson Bloom spores for a weapons experiment.",
+          "key_cast": {
+            "giver": {
+              "name": "Dr. Lys Arkan",
+              "npc_key": "G1-S1-O4-C2-CT1-R3-NPC",
+              "role": "Lead Botanist"
+            },
+            "contact": {
+              "name": "Mother Spore",
+              "npc_key": "G1-S1-O4-C2-CT2-R4-NPC",
+              "role": "Fungal Priestess"
+            },
+            "target": {
+              "name": "Gardener Sol",
+              "npc_key": "G1-S1-O4-C2-CT3-R3-NPC",
+              "role": "Floral Curator"
+            }
+          },
+          "objectives": [
+            "Get shielded vials at The Gilded Petal Lab.",
+            "Bless the container at The Fossil-Fuel Fungi.",
+            "Harvest spores at The Echoing Greenhouse."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Isotopic Run",
+          "mission": "Smuggle a batch of refined isotopic pollen past sentries.",
+          "key_cast": {
+            "giver": {
+              "name": "Korr Malek",
+              "npc_key": "G1-S1-O4-C2-CT2-R6-NPC",
+              "role": "Smuggler"
+            },
+            "contact": {
+              "name": "Sentry Glass-Eye",
+              "npc_key": "G1-S1-O4-C2-CT1-R1-NPC",
+              "role": "Security Scout"
+            },
+            "target": {
+              "name": "Trader Dax",
+              "npc_key": "G1-S1-O4-C2-CT3-R6-NPC",
+              "role": "Mutation Merchant"
+            }
+          },
+          "objectives": [
+            "Pickup package at Scintillation Scrapyard.",
+            "Evade detection at Lead-Glass Atrium.",
+            "Sell goods at Spectral-Cusp Market."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "The Holy Mutation",
+          "mission": "Facilitate the growth of a new fungal strain mirroring the Bloom Child.",
+          "key_cast": {
+            "giver": {
+              "name": "The Bloom Child",
+              "npc_key": "G1-S1-O4-C2-CT3-R5-NPC",
+              "role": "Mutant Prophet"
+            },
+            "contact": {
+              "name": "Archivist Juno",
+              "npc_key": "G1-S1-O4-C2-CT3-R7-NPC",
+              "role": "Holy Scholar"
+            },
+            "target": {
+              "name": "Harvester Tish",
+              "npc_key": "G1-S1-O4-C2-CT2-R1-NPC",
+              "role": "Lichen Gatherer"
+            }
+          },
+          "objectives": [
+            "Commune at The Soft-Glow Gardens.",
+            "Record the prophecy at The Lead-Lined Cloisters.",
+            "Plant the seed at The Bone-Lichen Fields."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Sabotage the Reactor",
+          "mission": "Infiltrate the cooling system to disrupt rival isotope production.",
+          "key_cast": {
+            "giver": {
+              "name": "Riven-88",
+              "npc_key": "G1-S1-O4-C2-CT1-R2-NPC",
+              "role": "Infiltration Specialist"
+            },
+            "contact": {
+              "name": "Diver Myra",
+              "npc_key": "G1-S1-O4-C2-CT1-R7-NPC",
+              "role": "Maintenance Specialist"
+            },
+            "target": {
+              "name": "Loader Brix",
+              "npc_key": "G1-S1-O4-C2-CT1-R6-NPC",
+              "role": "Logistics Handler"
+            }
+          },
+          "objectives": [
+            "Plan the route at Isotope Refinery Alpha.",
+            "Plant the device at The Cooling Canal.",
+            "Trigger the alarm at Gamma-Sift Silos."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The Child's Shield",
+          "mission": "Escort a VIP through the gardens under threat from dissenters.",
+          "key_cast": {
+            "giver": {
+              "name": "Prism-Guard Val",
+              "npc_key": "G1-S1-O4-C2-CT3-R2-NPC",
+              "role": "Light Sentinel"
+            },
+            "contact": {
+              "name": "Tunneler Nox",
+              "npc_key": "G1-S1-O4-C2-CT2-R5-NPC",
+              "role": "Subterranean Scout"
+            },
+            "target": {
+              "name": "Glider Pip",
+              "npc_key": "G1-S1-O4-C2-CT3-R1-NPC",
+              "role": "Aerial Observer"
+            }
+          },
+          "objectives": [
+            "Secure the perimeter at Refraction Plaza.",
+            "Navigate the tunnels at Marrow-Root Depths.",
+            "Signal the extraction at The Neon Canopy."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Yorrik's Salvation",
+          "mission": "Stabilize a foreman's rapidly mutating body using heavy water.",
+          "key_cast": {
+            "giver": {
+              "name": "Foreman Yorrik",
+              "npc_key": "G1-S1-O4-C2-CT2-R2-NPC",
+              "role": "Excavation Overseer"
+            },
+            "contact": {
+              "name": "Pumper Finn",
+              "npc_key": "G1-S1-O4-C2-CT2-R3-NPC",
+              "role": "Fluid Manager"
+            },
+            "target": {
+              "name": "Carver Rhia",
+              "npc_key": "G1-S1-O4-C2-CT2-R7-NPC",
+              "role": "Crystal Shaper"
+            }
+          },
+          "objectives": [
+            "Assess the mutation at Decay-Point Quarry.",
+            "Extract the cure at Heavy-Water Wells.",
+            "Seal the chamber at The Obsidian Shards."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "The Bone Chronicle",
+          "mission": "Preserve the memory of a collapsing mutation (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Dredger Kael",
+              "npc_key": "G1-S1-O4-C2-CT1-R4-NPC",
+              "role": "Resource Extractor"
+            },
+            "contact": {
+              "name": "Artisan Jory",
+              "npc_key": "G1-S1-O4-C2-CT1-R5-NPC",
+              "role": "Clockwork Technician"
+            },
+            "target": {
+              "name": "Weaver Lyss",
+              "npc_key": "G1-S1-O4-C2-CT3-R4-NPC",
+              "role": "Textile Specialist"
+            }
+          },
+          "objectives": [
+            "Recover the sample at Chrono-Silt Reservoirs.",
+            "Process the container at The Precision Terrace.",
+            "Weave the record at Prism-Silk Weaving District."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "attribute": "INTELLIGENCE",
+      "faction": "The Isotope Synthesis",
+      "civilization_id": "C3",
+      "global_hook": "Engineer the ultimate biological reactor through atomic alchemy.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Isotope Smuggle",
+          "mission": "Transport illegal isotopic pollen for clandestine study.",
+          "key_cast": {
+            "giver": {
+              "name": "Tracker Korr",
+              "npc_key": "G1-S1-O4-C3-CT2-R2-NPC",
+              "role": "Isotope Scout"
+            },
+            "contact": {
+              "name": "Docker Jax",
+              "npc_key": "G1-S1-O4-C3-CT2-R7-NPC",
+              "role": "Lead-Docks Foreman"
+            },
+            "target": {
+              "name": "Sidera",
+              "npc_key": "G1-S1-O4-C3-CT1-R1-NPC",
+              "role": "Lead Researcher"
+            }
+          },
+          "objectives": [
+            "Secure the pollen at Polonium Flats.",
+            "Bypass customs at The Leaden Docks.",
+            "Deliver to Core Lab Alpha."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Holy Mutation",
+          "mission": "Record the emergence of a new biological strain.",
+          "key_cast": {
+            "giver": {
+              "name": "Archivist Juno",
+              "npc_key": "G1-S1-O4-C3-CT3-R1-NPC",
+              "role": "Sacred Scholar"
+            },
+            "contact": {
+              "name": "Monk Silas",
+              "npc_key": "G1-S1-O4-C3-CT3-R2-NPC",
+              "role": "Cloister Guardian"
+            },
+            "target": {
+              "name": "Bloom Child",
+              "npc_key": "G1-S1-O4-C3-CT3-R3-NPC",
+              "role": "Spore Manifestation"
+            }
+          },
+          "objectives": [
+            "Get tablets at Pharmanon Heights.",
+            "Obtain bismuth at The Bismuth Cloisters.",
+            "Observe growth at Crystal-Ion Gardens."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Heart-Reactor Sabotage",
+          "mission": "Disrupt cooling systems to force a grid recalibration.",
+          "key_cast": {
+            "giver": {
+              "name": "Sentinel Riven",
+              "npc_key": "G1-S1-O4-C3-CT3-R4-NPC",
+              "role": "Bunker Guardian"
+            },
+            "contact": {
+              "name": "Voron",
+              "npc_key": "G1-S1-O4-C3-CT1-R3-NPC",
+              "role": "Fission Technician"
+            },
+            "target": {
+              "name": "Elara",
+              "npc_key": "G1-S1-O4-C3-CT1-R4-NPC",
+              "role": "Cooling Supervisor"
+            }
+          },
+          "objectives": [
+            "Get codes at The Gilded Bunkers.",
+            "Access controls at Fission Plaza.",
+            "Disable pumps at The Cooling Terraces."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Fungal Data Retrieval",
+          "mission": "Extract raw data from a mutated spore cluster.",
+          "key_cast": {
+            "giver": {
+              "name": "Pax",
+              "npc_key": "G1-S1-O4-C3-CT1-R5-NPC",
+              "role": "Data Scrubber"
+            },
+            "contact": {
+              "name": "Spore-Warden Mira",
+              "npc_key": "G1-S1-O4-C3-CT2-R5-NPC",
+              "role": "Enrichment Specialist"
+            },
+            "target": {
+              "name": "Alchemist Vex",
+              "npc_key": "G1-S1-O4-C3-CT3-R5-NPC",
+              "role": "Synthesis Specialist"
+            }
+          },
+          "objectives": [
+            "Prep probes at Data-Scrub Wards.",
+            "Extract samples at The Enrichment Spines.",
+            "Synthesize data at Synthesis Square."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The Lead-Glass Catalyst",
+          "mission": "Craft a reinforced lens to focus gamma rays.",
+          "key_cast": {
+            "giver": {
+              "name": "Kaelen",
+              "npc_key": "G1-S1-O4-C3-CT1-R2-NPC",
+              "role": "Lead-Glass Master"
+            },
+            "contact": {
+              "name": "Harbormaster Goyle",
+              "npc_key": "G1-S1-O4-C3-CT2-R3-NPC",
+              "role": "Gamma-Tide Logistics"
+            },
+            "target": {
+              "name": "Botanist Lys",
+              "npc_key": "G1-S1-O4-C3-CT2-R1-NPC",
+              "role": "Radiation Botanist"
+            }
+          },
+          "objectives": [
+            "Cast mold at The Lead-Glass Atrium.",
+            "Harden glass at Gamma-Tide Harbor.",
+            "Install lens at The Thallium Groves."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Cure the Veins",
+          "mission": "Develop a serum to slow lethal radiation poisoning.",
+          "key_cast": {
+            "giver": {
+              "name": "Foreman Yorrik",
+              "npc_key": "G1-S1-O4-C3-CT2-R4-NPC",
+              "role": "Dormitory Overseer"
+            },
+            "contact": {
+              "name": "Apothecary Zoya",
+              "npc_key": "G1-S1-O4-C3-CT3-R7-NPC",
+              "role": "Mutagen Chemist"
+            },
+            "target": {
+              "name": "Dr. Aris",
+              "npc_key": "G1-S1-O4-C3-CT1-R7-NPC",
+              "role": "Chief Virologist"
+            }
+          },
+          "objectives": [
+            "Draw blood at Harvest-Hand Dorms.",
+            "Mix serum at Apothecary Lane.",
+            "Administer cure at Quarantine Sector 9."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Scintillation Harvesting",
+          "mission": "Capture pure light-energy for high-density storage (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Scintillator Krell",
+              "npc_key": "G1-S1-O4-C3-CT2-R6-NPC",
+              "role": "Light Harvester"
+            },
+            "contact": {
+              "name": "Vane",
+              "npc_key": "G1-S1-O4-C3-CT1-R6-NPC",
+              "role": "Vault Keeper"
+            },
+            "target": {
+              "name": "Watcher Sol",
+              "npc_key": "G1-S1-O4-C3-CT3-R6-NPC",
+              "role": "Observation Specialist"
+            }
+          },
+          "objectives": [
+            "Calibrate catchers at Scintillation Fields.",
+            "Secure transport at The Isotope Vaults.",
+            "Analyze frequency at The Observation Spire."
+          ]
+        }
+      ]
+    }
+  ]
+}

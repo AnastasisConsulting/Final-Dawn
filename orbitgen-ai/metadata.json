@@ -1,5 +1,0 @@
-{
-  "name": "OrbitGen AI",
-  "description": "An interactive 3D space visualizer. Orbit a procedurally generated planet and use Gemini AI to generate new planetary surfaces on demand.",
-  "requestFramePermissions": []
-}

@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Radian Concordat",
+      "civilization_id": "G1-S1-O4-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Isotope Sabotage",
+            "narrative_guidance": "The Refinery's security has detected a leak that isn't accidental. Trace the stolen isotopes.",
+            "improvisation_points": [
+              "Consult with Refinery-Sec Drax about the missing isotopes in Argent-Thrive.",
+              "Meet Watchman Silas at Sentinel Ridge to track the thief's escape path.",
+              "Apprehend Splicer-Novice Riven in the Splicing Chambers before the isotopes are consumed."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Refinery-Sec Drax",
+                "id": "G1-S1-O4-C1-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Watchman Silas",
+                "id": "G1-S1-O4-C1-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Splicer-Novice Riven",
+                "id": "G1-S1-O4-C1-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Holy Mutation",
+            "narrative_guidance": "Mother Spore requires a specific strain of lead-resistant flora to complete a ritual.",
+            "improvisation_points": [
+              "Receive the ritual requirements from Deacon Spore at the Neon Cathedral.",
+              "Acquire the experimental seeds from Gardener Lys at the Lead-Glass Canopy.",
+              "Deliver the finalized samples to Vault-Keep Tor for safe storage in the Obsidian Vaults."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Deacon Spore",
+                "id": "G1-S1-O4-C1-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Gardener Lys",
+                "id": "G1-S1-O4-C1-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Vault-Keep Tor",
+                "id": "G1-S1-O4-C1-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Crimson Smuggle",
+            "narrative_guidance": "Korr Malek needs a shipment of isotopic pollen moved across borders without the Exarch knowing.",
+            "improvisation_points": [
+              "Pick up the pollen stash from Slinker Korr in the Rad-Worker Shanty.",
+              "Bribe or bypass Gatekeeper Kragg at the Tungsten Gate of Lead-Fastness.",
+              "Deliver the goods to Lume-Stalker Zek in the Bioluminescent Alleys."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Slinker Korr",
+                "id": "G1-S1-O4-C1-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Gatekeeper Kragg",
+                "id": "G1-S1-O4-C1-CT2-R7-NPC"
+              },
+              "target": {
+                "name": "Lume-Stalker Zek",
+                "id": "G1-S1-O4-C1-CT3-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Grit-Iron Trials",
+            "narrative_guidance": "The Concordat needs a champion to test the new mutagenic enhancement serum in combat.",
+            "improvisation_points": [
+              "Enroll in the trials with Drillmaster Gort at the Grit-Iron Training Grounds.",
+              "Acquire the 'Performance Enhancers' from Trader Jool at the Kinetic Market.",
+              "Demonstrate the serum's power to Culler-Chief Yorrik at Gene-Cullers' Walk."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Drillmaster Gort",
+                "id": "G1-S1-O4-C1-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Trader Jool",
+                "id": "G1-S1-O4-C1-CT1-R7-NPC"
+              },
+              "target": {
+                "name": "Culler-Chief Yorrik",
+                "id": "G1-S1-O4-C1-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Archivist's Preservation",
+            "narrative_guidance": "A rare mutation is dying out, and its genetic code must be carved into bone before it fades.",
+            "improvisation_points": [
+              "Receive the preservation task from Scribe Juno at the Transmutation Spire.",
+              "Locate the dying specimen using the aerial data from Scout-Major Nix.",
+              "Use the heavy-machinery of Dredge-Worker Milo to extract the specimen safely."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scribe Juno",
+                "id": "G1-S1-O4-C1-CT3-R7-NPC"
+              },
+              "contact": {
+                "name": "Scout-Major Nix",
+                "id": "G1-S1-O4-C1-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Dredge-Worker Milo",
+                "id": "G1-S1-O4-C1-CT1-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Heavy-Water Deal",
+            "narrative_guidance": "A dispute over water rights is slowing production in the refinery.",
+            "improvisation_points": [
+              "Negotiate terms with Dockmaster Vane at the Heavy-Water Docks.",
+              "Secure an escort from Knight-Captain Harl to ensure the shipment's safety.",
+              "Deliver the purified water to Font-Guard Kael to stabilize the Isotope Font."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Dockmaster Vane",
+                "id": "G1-S1-O4-C1-CT1-R3-NPC"
+              },
+              "contact": {
+                "name": "Knight-Captain Harl",
+                "id": "G1-S1-O4-C1-CT2-R1-NPC"
+              },
+              "target": {
+                "name": "Font-Guard Kael",
+                "id": "G1-S1-O4-C1-CT3-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Mutagen Harvest",
+            "narrative_guidance": "The gardens are over-producing, and the excess energy must be channeled into armor plating.",
+            "improvisation_points": [
+              "Harvest the excess mutagen from Bloom-Tender Elara in the Mutagen Gardens.",
+              "Filter the mutagenic sludge with Scav-Chief Rek in the Sulphur Flats.",
+              "Apply the coating to the infantry shields under the supervision of Sergeant Brawn."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Bloom-Tender Elara",
+                "id": "G1-S1-O4-C1-CT3-R2-NPC"
+              },
+              "contact": {
+                "name": "Scav-Chief Rek",
+                "id": "G1-S1-O4-C1-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Sergeant Brawn",
+                "id": "G1-S1-O4-C1-CT2-R3-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Radian Collective",
+      "civilization_id": "G1-S1-O4-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "Harvest Crimson Spores",
+            "narrative_guidance": "Collect rare Crimson Bloom spores for a weapons experiment while avoiding the heavy radiation of the refinery.",
+            "improvisation_points": [
+              "Meet Riven-88 at the refinery to obtain a radiation-shielded container.",
+              "Deliver the container to Mother Spore to have it filled with consecrated spores.",
+              "Bring the filled container to Dr. Lys Arkan for final processing."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Riven-88",
+                "id": "G1-S1-O4-C2-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Mother Spore",
+                "id": "G1-S1-O4-C2-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Dr. Lys Arkan",
+                "id": "G1-S1-O4-C2-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Isotopic Run",
+            "narrative_guidance": "Smuggle a batch of refined isotopic pollen past the local sentries to the market.",
+            "improvisation_points": [
+              "Receive the pollen package from Korr Malek in the Scrapyard.",
+              "Bribe or bypass Sentry Glass-Eye at the Lead-Glass Atrium.",
+              "Hand off the package to Trader Dax at the Spectral-Cusp Market."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Korr Malek",
+                "id": "G1-S1-O4-C2-CT2-R6-NPC"
+              },
+              "contact": {
+                "name": "Sentry Glass-Eye",
+                "id": "G1-S1-O4-C2-CT1-R1-NPC"
+              },
+              "target": {
+                "name": "Trader Dax",
+                "id": "G1-S1-O4-C2-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Holy Mutation",
+            "narrative_guidance": "Facilitate the ritualistic growth of a new fungal strain that mirrors the Bloom Child's nature.",
+            "improvisation_points": [
+              "Obtain a starter seed from Gardener Sol's Echoing Greenhouse.",
+              "Introduce the seed to the Bloom Child to be enriched by their spore cloud.",
+              "Record the resulting mutation's data with Archivist Juno."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Gardener Sol",
+                "id": "G1-S1-O4-C2-CT3-R3-NPC"
+              },
+              "contact": {
+                "name": "The Bloom Child",
+                "id": "G1-S1-O4-C2-CT3-R5-NPC"
+              },
+              "target": {
+                "name": "Archivist Juno",
+                "id": "G1-S1-O4-C2-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Sabotage the Reactor",
+            "narrative_guidance": "Infiltrate the cooling system to disrupt a rival's isotope production.",
+            "improvisation_points": [
+              "Coordinate with Riven-88 to identify the weak point in the reactor.",
+              "Swim through the Cooling Canal with Diver Myra to plant the disruptive device.",
+              "Escalate the confusion by reporting a false emergency to Loader Brix."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Riven-88",
+                "id": "G1-S1-O4-C2-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Diver Myra",
+                "id": "G1-S1-O4-C2-CT1-R7-NPC"
+              },
+              "target": {
+                "name": "Loader Brix",
+                "id": "G1-S1-O4-C2-CT1-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Child's Shield",
+            "narrative_guidance": "Ensure the Bloom Child is safely transported to the Gardens while under threat from dissenters.",
+            "improvisation_points": [
+              "Escort The Bloom Child from the refinery through the Bone-Lichen Fields.",
+              "Defend the path alongside Prism-Guard Val near the Refraction Plaza.",
+              "Safe delivery to Gardener Sol in the Echoing Greenhouse."
+            ],
+            "cast": {
+              "giver": {
+                "name": "The Bloom Child",
+                "id": "G1-S1-O4-C2-CT3-R5-NPC"
+              },
+              "contact": {
+                "name": "Prism-Guard Val",
+                "id": "G1-S1-O4-C2-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Gardener Sol",
+                "id": "G1-S1-O4-C2-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Yorrik's Salvation",
+            "narrative_guidance": "Attempt to stabilize Foreman Yorrik's rapidly mutating body using heavy water treatments.",
+            "improvisation_points": [
+              "Retrieve a request for help from a delirious Foreman Yorrik.",
+              "Collect high-purity heavy water from Pumper Finn.",
+              "Deliver the water to Carver Rhia to create a localized obsidian cooling chamber."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Foreman Yorrik",
+                "id": "G1-S1-O4-C2-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Pumper Finn",
+                "id": "G1-S1-O4-C2-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Carver Rhia",
+                "id": "G1-S1-O4-C2-CT2-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Bone Chronicle",
+            "narrative_guidance": "Help Archivist Juno preserve the memory of a collapsing mutation found in the reservoirs.",
+            "improvisation_points": [
+              "Consult Archivist Juno to identify which bone tablets are needed.",
+              "Retrieve a 'living' sample from Dredger Kael at the Chrono-Silt Reservoirs.",
+              "Bring the sample to Weaver Lyss to have its spectral patterns woven into a permanent record."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Archivist Juno",
+                "id": "G1-S1-O4-C2-CT3-R7-NPC"
+              },
+              "contact": {
+                "name": "Dredger Kael",
+                "id": "G1-S1-O4-C2-CT1-R4-NPC"
+              },
+              "target": {
+                "name": "Weaver Lyss",
+                "id": "G1-S1-O4-C2-CT3-R4-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Isotope Synthesis",
+      "civilization_id": "G1-S1-O4-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Isotope Smuggle",
+            "narrative_guidance": "Transport illegal isotopic pollen from the flats to the core labs for clandestine study.",
+            "improvisation_points": [
+              "Recover the pollen cache from Tracker Korr in the Polonium Flats.",
+              "Secure passage through the docks with Docker Jax's assistance.",
+              "Deliver the sample to Sidera in Core Lab Alpha for analysis."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Tracker Korr",
+                "id": "G1-S1-O4-C3-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Docker Jax",
+                "id": "G1-S1-O4-C3-CT2-R7-NPC"
+              },
+              "target": {
+                "name": "Sidera",
+                "id": "G1-S1-O4-C3-CT1-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Holy Mutation",
+            "narrative_guidance": "Preserve and record the emergence of a new biological strain within the Spires.",
+            "improvisation_points": [
+              "Receive the record tablets from Archivist Juno at Pharmanon Heights.",
+              "Obtain the sanctified bismuth from Monk Silas to protect the tablets.",
+              "Observe and record the Bloom Child's latest growth in the Gardens."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Archivist Juno",
+                "id": "G1-S1-O4-C3-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Monk Silas",
+                "id": "G1-S1-O4-C3-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Bloom Child",
+                "id": "G1-S1-O4-C3-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Heart-Reactor Sabotage",
+            "narrative_guidance": "Disrupt the cooling systems to force a recalibration of the city's power grid.",
+            "improvisation_points": [
+              "Obtain the override codes from Sentinel Riven.",
+              "Access the fission controls via Voron in Fission Plaza.",
+              "Disable the primary cooling pumps monitored by Elara."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Sentinel Riven",
+                "id": "G1-S1-O4-C3-CT3-R4-NPC"
+              },
+              "contact": {
+                "name": "Voron",
+                "id": "G1-S1-O4-C3-CT1-R3-NPC"
+              },
+              "target": {
+                "name": "Elara",
+                "id": "G1-S1-O4-C3-CT1-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Fungal Data Retrieval",
+            "narrative_guidance": "Extract raw data from a mutated spore cluster and synthesize it into a digital format.",
+            "improvisation_points": [
+              "Deploy the scrubbing probes provided by Pax in the Data-Scrub Wards.",
+              "Extract the spore samples from Spore-Warden Mira's enrichment spines.",
+              "Synthesize the final data package with Alchemist Vex in Synthesis Square."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Pax",
+                "id": "G1-S1-O4-C3-CT1-R5-NPC"
+              },
+              "contact": {
+                "name": "Spore-Warden Mira",
+                "id": "G1-S1-O4-C3-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Alchemist Vex",
+                "id": "G1-S1-O4-C3-CT3-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Lead-Glass Catalyst",
+            "narrative_guidance": "Craft a reinforced lead-glass lens to focus gamma rays for botanical acceleration.",
+            "improvisation_points": [
+              "Retrieve the tempered glass mold from Kaelen at the Lead-Glass Atrium.",
+              "Harden the mold using the gamma-tide currents at Goyle's harbor.",
+              "Apply the lens to Botanist Lys's glowing gardens in the Thallium Groves."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Kaelen",
+                "id": "G1-S1-O4-C3-CT1-R2-NPC"
+              },
+              "contact": {
+                "name": "Harbormaster Goyle",
+                "id": "G1-S1-O4-C3-CT2-R3-NPC"
+              },
+              "target": {
+                "name": "Botanist Lys",
+                "id": "G1-S1-O4-C3-CT2-R1-NPC"
+              }
+            }
+          },
+          {
+            "title": "Cure the Veins",
+            "narrative_guidance": "Develop a serum to slow the lethal radiation poisoning affecting the harvest workers.",
+            "improvisation_points": [
+              "Collect blood samples from Foreman Yorrik's glowing veins.",
+              "Process the samples with Apothecary Zoya to create a mutagenic buffer.",
+              "Administer the final serum to Dr. Aris in Quarantine Sector 9 for mass production."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Foreman Yorrik",
+                "id": "G1-S1-O4-C3-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Apothecary Zoya",
+                "id": "G1-S1-O4-C3-CT3-R7-NPC"
+              },
+              "target": {
+                "name": "Dr. Aris",
+                "id": "G1-S1-O4-C3-CT1-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "Scintillation Harvesting",
+            "narrative_guidance": "Capture pure light-energy from the fields and store it in the high-density vaults.",
+            "improvisation_points": [
+              "Calibrate the light-catchers with Scintillator Krell in the fields.",
+              "Escort the energy canisters past the vault security managed by Vane.",
+              "Analyze the energy frequency with Watcher Sol at the Observation Spire."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scintillator Krell",
+                "id": "G1-S1-O4-C3-CT2-R6-NPC"
+              },
+              "contact": {
+                "name": "Vane",
+                "id": "G1-S1-O4-C3-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Watcher Sol",
+                "id": "G1-S1-O4-C3-CT3-R6-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

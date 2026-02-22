@@ -71,9 +71,9 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({
   );
 
   const { executeInput } = useCommandRouter(
-    gameState, gameActions, setMessages, setIsProcessing, setDevTerminalOpen,
+    gameState, gameActions, messages, setMessages, setIsProcessing, setDevTerminalOpen,
     generateMessageId, setAutoPilot,
-    (t, r, a, o) => processTransaction(t, r, a, o)
+    (t, r, a, o, s, rec) => processTransaction(t, r, a, o, s, rec)
   );
 
   executeRef.current = executeInput;
@@ -110,6 +110,16 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({
     });
   };
 
+  // Dev Command Listener
+  useEffect(() => {
+    const handleDevCommand = (e: any) => {
+      const cmd = e.detail;
+      executeInput(cmd, false, activeTarget, objectKeyRef.current, autoPilot);
+    };
+    window.addEventListener('execute-dev-command', handleDevCommand);
+    return () => window.removeEventListener('execute-dev-command', handleDevCommand);
+  }, [executeInput, activeTarget, autoPilot]);
+
   return (
     <div className="flex flex-col h-full bg-[#050505]/80 border-x border-cyan-500/10 relative overflow-hidden">
       <div className="flex-1 overflow-hidden relative">
@@ -133,8 +143,6 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({
           placeholder={autoPilot.enabled ? "AUTOPILOT ENGAGED..." : "ENTER NEURAL COMMAND..."}
         />
       </div>
-
-      <DevTerminal open={devTerminalOpen} onClose={() => setDevTerminalOpen(false)} />
     </div>
   );
 };

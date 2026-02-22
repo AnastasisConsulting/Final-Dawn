@@ -10,7 +10,7 @@
 ## 2. Eideus Dawn: The flagship Simulation
 **"Emergent Artificial Life Engine"**
 *   **Federated Hybrid Architecture:** Runs reactive AI locally (Vector/Lattice) and strategic AI on Google Vertex AI (Gemini Pro).
-*   **M.O.S.S. System:** Emotional state machine (Moral/Social/Safety) that overrides dialogue generation.
+*   **M.O.S.S. System:** Emotional state machine (Motive Operandi Style System) that overrides dialogue generation.
 *   **High-Density UI:** Professional 20/60/20 grid layout inspired by aerospace HUDs.
 *   **Vizzy Protocol:** Non-verbal AI companion with autonomous "Physical Agency" logic.
 

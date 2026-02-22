@@ -1,0 +1,515 @@
+{
+  "meta": {
+    "instruction": "The player's chosen Primary Attribute (STR, DEX, or INT) determines their starting civilization and quest line.",
+    "usage": "Ingest the specific key matching the player's stat to retrieve the narrative path."
+  },
+  "paths": {
+    "STR": {
+      "civilization_target": "The Ionized Syndicates",
+      "civilization_id": "G1-S1-O7-C1",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "Xenon Core Heist",
+            "narrative_guidance": "Recover and stabilize stolen xenon cores to power the syndicate's local grid.",
+            "improvisation_points": [
+              "Seize the stolen cores from the enforcers at The Iron Lip.",
+              "Transport the volatile cores to Researcher Kael in the Ionization Chambers for stabilization.",
+              "Deliver the stabilized cores to Vex the Lookout at the Outcast's Perch for distribution."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Jakk the Grinder",
+                "id": "G1-S1-O7-C1-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Researcher Kael",
+                "id": "G1-S1-O7-C1-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Vex the Lookout",
+                "id": "G1-S1-O7-C1-CT1-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Splicer’s Gambit",
+            "narrative_guidance": "Create a new hybrid xenon-fungal strain to enhance syndicate soldiers.",
+            "improvisation_points": [
+              "Obtain high-grade biological samples from Surgeon Vahn's lab.",
+              "Collect nerve-vine samples from Tangle-Twitch in the Gardens.",
+              "Assist Fungal-Sage Mo in brewing the final hybrid serum in the Grotto."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Surgeon Vahn",
+                "id": "G1-S1-O7-C1-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Tangle-Twitch",
+                "id": "G1-S1-O7-C1-CT3-R4-NPC"
+              },
+              "target": {
+                "name": "Fungal-Sage Mo",
+                "id": "G1-S1-O7-C1-CT3-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Bazaar Blackmail",
+            "narrative_guidance": "Clean up the paper trail of a smuggling deal gone wrong in the market.",
+            "improvisation_points": [
+              "Acquire the ledger from Lyla the Lush in the Blue-Mist Bazaar.",
+              "Bypass the security protocols monitored by Unit 702.",
+              "Stash the ledger in a secure crate at Scrap-Yard Plaza for Scrap-Heap Sam."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Lyla the Lush",
+                "id": "G1-S1-O7-C1-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Unit 702",
+                "id": "G1-S1-O7-C1-CT2-R1-NPC"
+              },
+              "target": {
+                "name": "Scrap-Heap Sam",
+                "id": "G1-S1-O7-C1-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Pit Fight Rigging",
+            "narrative_guidance": "Ensure the high-stakes fight in the Spark-Gap Pit goes exactly as planned.",
+            "improvisation_points": [
+              "Receive the betting instructions and chemicals from Gnasher.",
+              "Administer the enhancers to the fighters under the nose of Sergeant Surge.",
+              "Report the successful outcome to Mira the Hollow to collect the winnings."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Gnasher",
+                "id": "G1-S1-O7-C1-CT1-R7-NPC"
+              },
+              "contact": {
+                "name": "Sergeant Surge",
+                "id": "G1-S1-O7-C1-CT1-R5-NPC"
+              },
+              "target": {
+                "name": "Mira the Hollow",
+                "id": "G1-S1-O7-C1-CT1-R2-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Digital Ghost",
+            "narrative_guidance": "Infiltrate the Nexus network using a virus provided by a rogue AI.",
+            "improvisation_points": [
+              "Receive the encrypted virus shard from Cipher-Jade.",
+              "Navigate the Mycelium Bridges with Root-Walker Rin to find the terminal.",
+              "Upload the virus into the Neural-Link Linkage and speak with The Luminous Shade."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Cipher-Jade",
+                "id": "G1-S1-O7-C1-CT2-R4-NPC"
+              },
+              "contact": {
+                "name": "Root-Walker Rin",
+                "id": "G1-S1-O7-C1-CT3-R1-NPC"
+              },
+              "target": {
+                "name": "The Luminous Shade",
+                "id": "G1-S1-O7-C1-CT2-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Prototype Test",
+            "narrative_guidance": "Test a devastating new weapon powered by the heartbeat of the canyon.",
+            "improvisation_points": [
+              "Pick up the prototype weapon from Blast-Master Bo at the Range.",
+              "Charge the weapon using the energy resonance from Heart-Guard Horg’s post.",
+              "Deposit the test data and the weapon in the Cryo-Vaults with Frost-Bit."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Blast-Master Bo",
+                "id": "G1-S1-O7-C1-CT2-R6-NPC"
+              },
+              "contact": {
+                "name": "Heart-Guard Horg",
+                "id": "G1-S1-O7-C1-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Frost-Bit",
+                "id": "G1-S1-O7-C1-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Deep Maw Sacrifice",
+            "narrative_guidance": "Clear the way for a holy ritual that requires pure xenon samples.",
+            "improvisation_points": [
+              "Clear the infestation in Vein-Tunnel Alpha for Burrower Bill.",
+              "Collect purified pool water from Glow-Watcher Nia.",
+              "Present the offerings to Silence-Bringer Sol at the edge of The Deep Maw."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Burrower Bill",
+                "id": "G1-S1-O7-C1-CT3-R5-NPC"
+              },
+              "contact": {
+                "name": "Glow-Watcher Nia",
+                "id": "G1-S1-O7-C1-CT3-R6-NPC"
+              },
+              "target": {
+                "name": "Silence-Bringer Sol",
+                "id": "G1-S1-O7-C1-CT3-R7-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "DEX": {
+      "civilization_target": "The Ion-Drifters of Aura-507",
+      "civilization_id": "G1-S1-O7-C2",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Crystallized Equation",
+            "narrative_guidance": "Recover a rare xenon growth that links organic and synthetic data before the storms reset the crystal's memory.",
+            "improvisation_points": [
+              "Retrieve the resonant sample from Aris Thorne in the Siphon Spines.",
+              "Deliver the sample to Root-Tender Silas in Graft-Nexus for biological decryption.",
+              "Return the decrypted data crystal to Seer Lyra at the Ion-Gaze Observatory."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Aris Thorne",
+                "id": "G1-S1-O7-C2-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Root-Tender Silas",
+                "id": "G1-S1-O7-C2-CT2-R1-NPC"
+              },
+              "target": {
+                "name": "Seer Lyra",
+                "id": "G1-S1-O7-C2-CT1-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Silent Pulse",
+            "narrative_guidance": "Synchronize the city's pulse with the local grid to prevent a catastrophic overload in the Graft-Nexus.",
+            "improvisation_points": [
+              "Obtain the frequency tuner from Pulse-Master Rez.",
+              "Calibrate the main capacitor with Volt-Runner Mika in Arclight Perch.",
+              "Take the calibrated tuner to Dr. Hekt to stabilize the Marrow Labs."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Pulse-Master Rez",
+                "id": "G1-S1-O7-C2-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Volt-Runner Mika",
+                "id": "G1-S1-O7-C2-CT1-R6-NPC"
+              },
+              "target": {
+                "name": "Dr. Hekt",
+                "id": "G1-S1-O7-C2-CT2-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Smuggler's Run",
+            "narrative_guidance": "Move illicit energy cells from the high roosts of Arclight to the depths of the Static Rim.",
+            "improvisation_points": [
+              "Collect the energy cells from Slick Corin in Black-Market Bay.",
+              "Bypass the air patrol by meeting Captain Vane at the Glider Launchpads.",
+              "Deliver the smuggled cells to Dockmaster Kael at Outlaw’s Anchor."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Slick Corin",
+                "id": "G1-S1-O7-C2-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Captain Vane",
+                "id": "G1-S1-O7-C2-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Dockmaster Kael",
+                "id": "G1-S1-O7-C2-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Marrow Graft",
+            "narrative_guidance": "Retrieve high-altitude marrow samples scavenged from the Void-Drop for a specialized integration experiment.",
+            "improvisation_points": [
+              "Consult Vora the Carver about the specific marrow requirements.",
+              "Retrieve the rare samples from Jumper Nix at the Void-Drop.",
+              "Deliver the samples to Linker Gantz to finalize the neural bridge."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Vora the Carver",
+                "id": "G1-S1-O7-C2-CT2-R2-NPC"
+              },
+              "contact": {
+                "name": "Jumper Nix",
+                "id": "G1-S1-O7-C2-CT3-R7-NPC"
+              },
+              "target": {
+                "name": "Linker Gantz",
+                "id": "G1-S1-O7-C2-CT2-R4-NPC"
+              }
+            }
+          },
+          {
+            "title": "Static Interference",
+            "narrative_guidance": "Neutralize a military jammer that is interfering with the Junk-Bazaar's scanners and trade routes.",
+            "improvisation_points": [
+              "Receive the location of the jammer from Rat-King Rolo.",
+              "Acquire the override codes from Sergeant Flux at the Wind-Shear Battery.",
+              "Report the successful shutdown to Trader Ma at the Junk-Bazaar."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Rat-King Rolo",
+                "id": "G1-S1-O7-C2-CT3-R2-NPC"
+              },
+              "contact": {
+                "name": "Sergeant Flux",
+                "id": "G1-S1-O7-C2-CT1-R7-NPC"
+              },
+              "target": {
+                "name": "Trader Ma",
+                "id": "G1-S1-O7-C2-CT3-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "Gantry Sabotage",
+            "narrative_guidance": "Use organic acids to loosen structural bolts on a rival refinery's platform.",
+            "improvisation_points": [
+              "Collect the engineering plans from Foreman Jax on the Silvered Gantry.",
+              "Acquire the biological corrosive from Drip-Watcher Mara in Graft-Nexus.",
+              "Apply the corrosive and report back to Kelso at the Refined Vein."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Foreman Jax",
+                "id": "G1-S1-O7-C2-CT1-R5-NPC"
+              },
+              "contact": {
+                "name": "Drip-Watcher Mara",
+                "id": "G1-S1-O7-C2-CT2-R6-NPC"
+              },
+              "target": {
+                "name": "Kelso",
+                "id": "G1-S1-O7-C2-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Synapse Circuit",
+            "narrative_guidance": "Install a neural relay in the Flicker-Light District to monitor illegal pit fights for Cipher-Jade.",
+            "improvisation_points": [
+              "Take the neural relay from Warden Orl at the Living Mantel.",
+              "Hook the relay into the power grid with Neon-Fixer Pip.",
+              "Confirm the data transmission with Brawler Brigg at the Scrapper’s Gauntlet."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Warden Orl",
+                "id": "G1-S1-O7-C2-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Neon-Fixer Pip",
+                "id": "G1-S1-O7-C2-CT3-R4-NPC"
+              },
+              "target": {
+                "name": "Brawler Brigg",
+                "id": "G1-S1-O7-C2-CT3-R3-NPC"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "INT": {
+      "civilization_target": "The Ion-Shriven Hegemony",
+      "civilization_id": "G1-S1-O7-C3",
+      "campaign_outline": {
+        "quests": [
+          {
+            "title": "The Xenon Core Heist",
+            "narrative_guidance": "Recover stolen xenon cores from unauthorized scavengers to secure the city's flux-shielding.",
+            "improvisation_points": [
+              "Infiltrate the scavenger camp in the Scrapper's Gulch.",
+              "Secure the cores using specialized containment units.",
+              "Deliver the cores to the Vault for immediate stabilization."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Warden Vax",
+                "id": "G1-S1-O7-C3-CT1-R1-NPC"
+              },
+              "contact": {
+                "name": "Foreman Grog",
+                "id": "G1-S1-O7-C3-CT2-R2-NPC"
+              },
+              "target": {
+                "name": "Guard-Captain Jory",
+                "id": "G1-S1-O7-C3-CT1-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Crystal Equation",
+            "narrative_guidance": "Collect and analyze stabilized xenon crystal samples to solve the Prime-Flux equation.",
+            "improvisation_points": [
+              "Retrieve raw samples from the Accelerator Ring.",
+              "Run the data through the Synaptic Corridors processing hub.",
+              "Archive the final results in the Archive of the Blue Pulse."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Researcher Nox",
+                "id": "G1-S1-O7-C3-CT1-R6-NPC"
+              },
+              "contact": {
+                "name": "Analyst Miri",
+                "id": "G1-S1-O7-C3-CT1-R2-NPC"
+              },
+              "target": {
+                "name": "Archivist Thal",
+                "id": "G1-S1-O7-C3-CT1-R5-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Smuggler's Run",
+            "narrative_guidance": "Escort a shipment of distilled blue-drip through the Smuggler's Rift to the Neon Bazaar.",
+            "improvisation_points": [
+              "Collect the purified batch from the Distillery.",
+              "Navigate the hazards of the Smuggler's Rift.",
+              "Exchange the goods for credits at the Neon Bazaar."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Merchant Jax",
+                "id": "G1-S1-O7-C3-CT2-R1-NPC"
+              },
+              "contact": {
+                "name": "Runner Kess",
+                "id": "G1-S1-O7-C3-CT2-R5-NPC"
+              },
+              "target": {
+                "name": "Brewer Hobb",
+                "id": "G1-S1-O7-C3-CT2-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Flesh-Suture Breach",
+            "narrative_guidance": "Eliminate rival mercenary bands that are disrupting the Tendril Bridges and Suture Maw.",
+            "improvisation_points": [
+              "Track the mercenaries from the Dead-Zone Perimeter.",
+              "Defend the Tendril Bridges from a targeted sabotage attempt.",
+              "Clear the remaining hostiles from the Suture Maw."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Scout Rinn",
+                "id": "G1-S1-O7-C3-CT2-R7-NPC"
+              },
+              "contact": {
+                "name": "Bridge-Keep Zof",
+                "id": "G1-S1-O7-C3-CT3-R2-NPC"
+              },
+              "target": {
+                "name": "Pit-Boss Krag",
+                "id": "G1-S1-O7-C3-CT3-R7-NPC"
+              }
+            }
+          },
+          {
+            "title": "The Isotope Transit",
+            "narrative_guidance": "Safely transport unstable isotopes through a high-interference signal zone.",
+            "improvisation_points": [
+              "Extract the isotopes from the Cooling Spines.",
+              "Synchronize with the Signal Jammer Spire to mask the transport.",
+              "Deliver the package to the Lead-Glass Habitats for processing."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Technician Rez",
+                "id": "G1-S1-O7-C3-CT1-R4-NPC"
+              },
+              "contact": {
+                "name": "Operator Silas",
+                "id": "G1-S1-O7-C3-CT2-R4-NPC"
+              },
+              "target": {
+                "name": "Curator Elen",
+                "id": "G1-S1-O7-C3-CT1-R3-NPC"
+              }
+            }
+          },
+          {
+            "title": "Mycelial Mutation",
+            "narrative_guidance": "Collect biomechanical samples from the Lab-Farms to improve neural linking efficiency.",
+            "improvisation_points": [
+              "Harvest the mutated samples from the Mycelial Lab-Farms.",
+              "Process the samples through the Nerve-Root Junctions.",
+              "Monitor the canopy growth patterns for signs of stabilization."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Botanist Fenn",
+                "id": "G1-S1-O7-C3-CT3-R1-NPC"
+              },
+              "contact": {
+                "name": "Neural-Linker Osi",
+                "id": "G1-S1-O7-C3-CT3-R4-NPC"
+              },
+              "target": {
+                "name": "Watcher Bree",
+                "id": "G1-S1-O7-C3-CT3-R6-NPC"
+              }
+            }
+          },
+          {
+            "title": "Static Whispers",
+            "narrative_guidance": "Decrypt a ghostly signal from the Static Shanty Town and deliver the data to the Basin.",
+            "improvisation_points": [
+              "Record the static frequency in the Shanty Town.",
+              "Purify the signal in the Spore-Mist Chambers.",
+              "Apply the data to the Harvester's production schedule."
+            ],
+            "cast": {
+              "giver": {
+                "name": "Elder Pim",
+                "id": "G1-S1-O7-C3-CT2-R3-NPC"
+              },
+              "contact": {
+                "name": "Vapor-Smith Urn",
+                "id": "G1-S1-O7-C3-CT3-R3-NPC"
+              },
+              "target": {
+                "name": "Harvester Ty",
+                "id": "G1-S1-O7-C3-CT3-R5-NPC"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

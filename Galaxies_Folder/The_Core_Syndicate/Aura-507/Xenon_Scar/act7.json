@@ -1,0 +1,618 @@
+{
+  "file": {
+    "path": "/script/act7.json",
+    "schema_version": "1.0.0",
+    "source": "act_7-chapters_XenonScar.txt",
+    "notes": {
+      "canonical_key_format": "[Gx-Sx-Ox-CIV-Cx-CTx-Rx-NPC]"
+    }
+  },
+  "act": {
+    "id": "ACT_VII",
+    "title": "The Xenon Scar",
+    "world_id": "G1-S1-O7",
+    "setting": "The Xenon Scar. A jagged, thousand-mile trench bleeding perpetual blue-white radiation, where the planet's marrow is harvested by the desperate.",
+    "theme": [
+      "Radioactive Evolution",
+      "Survivalist Might",
+      "The Eideus Merger"
+    ],
+    "canonical_key_format": "[Gx-Sx-Ox-Cx-CTx-Rx-NPC]"
+  },
+  "paths": [
+    {
+      "id": "A",
+      "attribute": "STRENGTH",
+      "faction": "The Ionized Syndicates",
+      "civilization_id": "C1",
+      "global_hook": "Dominate the Scar through brute force and stabilized xenon weaponry.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "Xenon Core Heist",
+          "mission": "Recover and stabilize stolen xenon cores to power the syndicate's grid.",
+          "key_cast": {
+            "giver": {
+              "name": "Jakk the Grinder",
+              "npc_key": "G1-S1-O7-C1-CT1-R1-NPC",
+              "role": "Enforcer"
+            },
+            "contact": {
+              "name": "Researcher Kael",
+              "npc_key": "G1-S1-O7-C1-CT2-R2-NPC",
+              "role": "Technician"
+            },
+            "target": {
+              "name": "Vex the Lookout",
+              "npc_key": "G1-S1-O7-C1-CT1-R6-NPC",
+              "role": "Scout"
+            }
+          },
+          "objectives": [
+            "Seize cores at The Iron Lip.",
+            "Stabilize energy at Ionization Chambers.",
+            "Distribute supply at Outcast's Perch."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Splicer’s Gambit",
+          "mission": "Create a hybrid xenon-fungal strain to enhance soldiers.",
+          "key_cast": {
+            "giver": {
+              "name": "Surgeon Vahn",
+              "npc_key": "G1-S1-O7-C1-CT2-R3-NPC",
+              "role": "Bio-Engineer"
+            },
+            "contact": {
+              "name": "Tangle-Twitch",
+              "npc_key": "G1-S1-O7-C1-CT3-R4-NPC",
+              "role": "Vine Harvester"
+            },
+            "target": {
+              "name": "Fungal-Sage Mo",
+              "npc_key": "G1-S1-O7-C1-CT3-R3-NPC",
+              "role": "Alchemist"
+            }
+          },
+          "objectives": [
+            "Get bio-samples at Gene-Splicer’s Ward.",
+            "Harvest vines at Nerve-Vine Gardens.",
+            "Brew serum at Spore-Cloud Grotto."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Bazaar Blackmail",
+          "mission": "Clean up a smuggling deal gone wrong to secure market loyalty.",
+          "key_cast": {
+            "giver": {
+              "name": "Lyla the Lush",
+              "npc_key": "G1-S1-O7-C1-CT1-R4-NPC",
+              "role": "Fence"
+            },
+            "contact": {
+              "name": "Unit 702",
+              "npc_key": "G1-S1-O7-C1-CT2-R1-NPC",
+              "role": "Sentry"
+            },
+            "target": {
+              "name": "Scrap-Heap Sam",
+              "npc_key": "G1-S1-O7-C1-CT1-R3-NPC",
+              "role": "Quartermaster"
+            }
+          },
+          "objectives": [
+            "Get ledger at The Blue-Mist Bazaar.",
+            "Bypass security at The Sterile Hallways.",
+            "Stash evidence at Scrap-Yard Plaza."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Pit Fight Rigging",
+          "mission": "Ensure a high-stakes fight result to fund the war effort.",
+          "key_cast": {
+            "giver": {
+              "name": "Gnasher",
+              "npc_key": "G1-S1-O7-C1-CT1-R7-NPC",
+              "role": "Pit Boss"
+            },
+            "contact": {
+              "name": "Sergeant Surge",
+              "npc_key": "G1-S1-O7-C1-CT1-R5-NPC",
+              "role": "Drillmaster"
+            },
+            "target": {
+              "name": "Mira the Hollow",
+              "npc_key": "G1-S1-O7-C1-CT1-R2-NPC",
+              "role": "Mercenary Liaison"
+            }
+          },
+          "objectives": [
+            "Get chemicals at Spark-Gap Pit.",
+            "Dose fighters at Battery Barracks.",
+            "Collect payout at Rust-Fall Plunge."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The Digital Ghost",
+          "mission": "Infiltrate the Nexus network to weaponize a rogue AI.",
+          "key_cast": {
+            "giver": {
+              "name": "Cipher-Jade",
+              "npc_key": "G1-S1-O7-C1-CT2-R4-NPC",
+              "role": "Data Operative"
+            },
+            "contact": {
+              "name": "Root-Walker Rin",
+              "npc_key": "G1-S1-O7-C1-CT3-R1-NPC",
+              "role": "Pathfinder"
+            },
+            "target": {
+              "name": "The Luminous Shade",
+              "npc_key": "G1-S1-O7-C1-CT2-R7-NPC",
+              "role": "Digital Entity"
+            }
+          },
+          "objectives": [
+            "Get virus shard at Data-Hive Core.",
+            "Navigate Mycelium Bridges.",
+            "Upload virus at Neural-Link Linkage."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "The Prototype Test",
+          "mission": "Field test a weapon powered by the canyon’s heartbeat.",
+          "key_cast": {
+            "giver": {
+              "name": "Blast-Master Bo",
+              "npc_key": "G1-S1-O7-C1-CT2-R6-NPC",
+              "role": "Weapon Tester"
+            },
+            "contact": {
+              "name": "Heart-Guard Horg",
+              "npc_key": "G1-S1-O7-C1-CT3-R2-NPC",
+              "role": "Holy Sentinel"
+            },
+            "target": {
+              "name": "Frost-Bit",
+              "npc_key": "G1-S1-O7-C1-CT2-R5-NPC",
+              "role": "Containment Officer"
+            }
+          },
+          "objectives": [
+            "Equip weapon at Prototype Range.",
+            "Charge energy at The Thumping Heart.",
+            "Secure data at The Cryo-Vaults."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "The Deep Maw Sacrifice",
+          "mission": "Clear the path for a holy ritual to awaken the Planet’s Marrow (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Burrower Bill",
+              "npc_key": "G1-S1-O7-C1-CT3-R5-NPC",
+              "role": "Excavator"
+            },
+            "contact": {
+              "name": "Glow-Watcher Nia",
+              "npc_key": "G1-S1-O7-C1-CT3-R6-NPC",
+              "role": "Acolyte"
+            },
+            "target": {
+              "name": "Silence-Bringer Sol",
+              "npc_key": "G1-S1-O7-C1-CT3-R7-NPC",
+              "role": "Executioner"
+            }
+          },
+          "objectives": [
+            "Clear tunnels at Vein-Tunnel Alpha.",
+            "Purify water at Chlorophyll-Ion Pools.",
+            "Begin ritual at The Deep Maw."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "attribute": "DEXTERITY",
+      "faction": "The Ion-Drifters",
+      "civilization_id": "C2",
+      "global_hook": "Navigate the vertical scar with speed and neural precision.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Crystallized Equation",
+          "mission": "Recover a rare xenon growth before ion-storms wipe its data.",
+          "key_cast": {
+            "giver": {
+              "name": "Aris Thorne",
+              "npc_key": "G1-S1-O7-C2-CT1-R1-NPC",
+              "role": "Energy Harvester"
+            },
+            "contact": {
+              "name": "Root-Tender Silas",
+              "npc_key": "G1-S1-O7-C2-CT2-R1-NPC",
+              "role": "Botano-Technician"
+            },
+            "target": {
+              "name": "Seer Lyra",
+              "npc_key": "G1-S1-O7-C2-CT1-R4-NPC",
+              "role": "Star-Gazer"
+            }
+          },
+          "objectives": [
+            "Extract crystal at Siphon Spines.",
+            "Decrypt bio-data at The Neural Grove.",
+            "Deliver to Ion-Gaze Observatory."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Silent Pulse",
+          "mission": "Synchronize the city's pulse to prevent a grid overload.",
+          "key_cast": {
+            "giver": {
+              "name": "Pulse-Master Rez",
+              "npc_key": "G1-S1-O7-C2-CT2-R3-NPC",
+              "role": "Frequency Tuner"
+            },
+            "contact": {
+              "name": "Volt-Runner Mika",
+              "npc_key": "G1-S1-O7-C2-CT1-R6-NPC",
+              "role": "Grid Maintenance"
+            },
+            "target": {
+              "name": "Dr. Hekt",
+              "npc_key": "G1-S1-O7-C2-CT2-R5-NPC",
+              "role": "Bone-Grafter"
+            }
+          },
+          "objectives": [
+            "Get tuner at Xenon Pulse Chamber.",
+            "Calibrate at Capacitor Plaza.",
+            "Stabilize at Marrow Labs."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "Smuggler's Run",
+          "mission": "Transport illicit energy cells across the vertical expanse.",
+          "key_cast": {
+            "giver": {
+              "name": "Slick Corin",
+              "npc_key": "G1-S1-O7-C2-CT3-R1-NPC",
+              "role": "Trade Negotiator"
+            },
+            "contact": {
+              "name": "Captain Vane",
+              "npc_key": "G1-S1-O7-C2-CT1-R2-NPC",
+              "role": "Wing-Commander"
+            },
+            "target": {
+              "name": "Dockmaster Kael",
+              "npc_key": "G1-S1-O7-C2-CT3-R6-NPC",
+              "role": "Smuggling Liaison"
+            }
+          },
+          "objectives": [
+            "Pickup at Black-Market Bay.",
+            "Fly from Glider Launchpads.",
+            "Drop off at Outlaw’s Anchor."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "The Marrow Graft",
+          "mission": "Integrate void-scavenged marrow into the city's infrastructure.",
+          "key_cast": {
+            "giver": {
+              "name": "Vora the Carver",
+              "npc_key": "G1-S1-O7-C2-CT2-R2-NPC",
+              "role": "Flesh-Sculptor"
+            },
+            "contact": {
+              "name": "Jumper Nix",
+              "npc_key": "G1-S1-O7-C2-CT3-R7-NPC",
+              "role": "High-Altitude Scavenger"
+            },
+            "target": {
+              "name": "Linker Gantz",
+              "npc_key": "G1-S1-O7-C2-CT2-R4-NPC",
+              "role": "Neural Liaison"
+            }
+          },
+          "objectives": [
+            "Consult at Flesh-Forge Vats.",
+            "Dive The Void-Drop.",
+            "Install graft at Synapse Bridge."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "Static Interference",
+          "mission": "Neutralize a military jammer disrupting trade routes.",
+          "key_cast": {
+            "giver": {
+              "name": "Rat-King Rolo",
+              "npc_key": "G1-S1-O7-C2-CT3-R2-NPC",
+              "role": "Slum Overseer"
+            },
+            "contact": {
+              "name": "Sergeant Flux",
+              "npc_key": "G1-S1-O7-C2-CT1-R7-NPC",
+              "role": "Battery Guard"
+            },
+            "target": {
+              "name": "Trader Ma",
+              "npc_key": "G1-S1-O7-C2-CT3-R5-NPC",
+              "role": "Scrap Dealer"
+            }
+          },
+          "objectives": [
+            "Locate jammer in Rust-Spire Slums.",
+            "Override codes at Wind-Shear Defensive Battery.",
+            "Report to The Junk-Bazaar."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Gantry Sabotage",
+          "mission": "Weaken a rival platform using organic corrosives.",
+          "key_cast": {
+            "giver": {
+              "name": "Foreman Jax",
+              "npc_key": "G1-S1-O7-C2-CT1-R5-NPC",
+              "role": "Structural Engineer"
+            },
+            "contact": {
+              "name": "Drip-Watcher Mara",
+              "npc_key": "G1-S1-O7-C2-CT2-R6-NPC",
+              "role": "Fluid Dynamics Specialist"
+            },
+            "target": {
+              "name": "Kelso",
+              "npc_key": "G1-S1-O7-C2-CT1-R3-NPC",
+              "role": "Refinery Overseer"
+            }
+          },
+          "objectives": [
+            "Steal plans from The Silvered Gantry.",
+            "Mix acid at The Weeping Tubules.",
+            "Sabotage The Refined Vein."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "The Synapse Circuit",
+          "mission": "Install a neural relay to monitor the underworld flow (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Warden Orl",
+              "npc_key": "G1-S1-O7-C2-CT2-R7-NPC",
+              "role": "Bio-Structure Guardian"
+            },
+            "contact": {
+              "name": "Neon-Fixer Pip",
+              "npc_key": "G1-S1-O7-C2-CT3-R4-NPC",
+              "role": "Illumination Tech"
+            },
+            "target": {
+              "name": "Brawler Brigg",
+              "npc_key": "G1-S1-O7-C2-CT3-R3-NPC",
+              "role": "Arena Master"
+            }
+          },
+          "objectives": [
+            "Retrieve relay from The Living Mantel.",
+            "Hack grid at Flicker-Light District.",
+            "Trigger event at The Scrapper’s Gauntlet."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "attribute": "INTELLIGENCE",
+      "faction": "The Ion-Shriven Hegemony",
+      "civilization_id": "C3",
+      "global_hook": "Calculate the perfect energy harvest through ruthless logic.",
+      "chapters": [
+        {
+          "chapter": 1,
+          "title": "The Xenon Core Heist",
+          "mission": "Reclaim stolen cores from unauthorized scavengers.",
+          "key_cast": {
+            "giver": {
+              "name": "Warden Vax",
+              "npc_key": "G1-S1-O7-C3-CT1-R1-NPC",
+              "role": "Security Chief"
+            },
+            "contact": {
+              "name": "Foreman Grog",
+              "npc_key": "G1-S1-O7-C3-CT2-R2-NPC",
+              "role": "Salvage Master"
+            },
+            "target": {
+              "name": "Guard-Captain Jory",
+              "npc_key": "G1-S1-O7-C3-CT1-R7-NPC",
+              "role": "Isotope Sentinel"
+            }
+          },
+          "objectives": [
+            "Tactical raid on Scrapper's Gulch.",
+            "Secure containment at High-Flux Plaza.",
+            "Deposit at Vault of Unstable Isotopes."
+          ]
+        },
+        {
+          "chapter": 2,
+          "title": "The Crystal Equation",
+          "mission": "Solve the Prime-Flux equation using raw accelerator data.",
+          "key_cast": {
+            "giver": {
+              "name": "Researcher Nox",
+              "npc_key": "G1-S1-O7-C3-CT1-R6-NPC",
+              "role": "Particle Physicist"
+            },
+            "contact": {
+              "name": "Analyst Miri",
+              "npc_key": "G1-S1-O7-C3-CT1-R2-NPC",
+              "role": "Data Processor"
+            },
+            "target": {
+              "name": "Archivist Thal",
+              "npc_key": "G1-S1-O7-C3-CT1-R5-NPC",
+              "role": "Historical Record Keeper"
+            }
+          },
+          "objectives": [
+            "Collect data at Particle Accelerator Ring.",
+            "Process at Synaptic Corridors.",
+            "Archive solution at Archive of the Blue Pulse."
+          ]
+        },
+        {
+          "chapter": 3,
+          "title": "The Smuggler's Run",
+          "mission": "Transport experimental blue-drip for testing.",
+          "key_cast": {
+            "giver": {
+              "name": "Merchant Jax",
+              "npc_key": "G1-S1-O7-C3-CT2-R1-NPC",
+              "role": "Trade Facilitator"
+            },
+            "contact": {
+              "name": "Runner Kess",
+              "npc_key": "G1-S1-O7-C3-CT2-R5-NPC",
+              "role": "Courier"
+            },
+            "target": {
+              "name": "Brewer Hobb",
+              "npc_key": "G1-S1-O7-C3-CT2-R6-NPC",
+              "role": "Chemical Alchemist"
+            }
+          },
+          "objectives": [
+            "Secure cargo at Blue-Drip Distillery.",
+            "Traverse Smuggler's Rift.",
+            "Complete transaction at The Neon Bazaar."
+          ]
+        },
+        {
+          "chapter": 4,
+          "title": "Flesh-Suture Breach",
+          "mission": "Eliminate mercenaries threatening biological integration.",
+          "key_cast": {
+            "giver": {
+              "name": "Scout Rinn",
+              "npc_key": "G1-S1-O7-C3-CT2-R7-NPC",
+              "role": "Perimeter Guard"
+            },
+            "contact": {
+              "name": "Bridge-Keep Zof",
+              "npc_key": "G1-S1-O7-C3-CT3-R2-NPC",
+              "role": "Transit Sentinel"
+            },
+            "target": {
+              "name": "Pit-Boss Krag",
+              "npc_key": "G1-S1-O7-C3-CT3-R7-NPC",
+              "role": "Waste Reclamation"
+            }
+          },
+          "objectives": [
+            "Track targets at The Dead-Zone Perimeter.",
+            "Defend Tendril Bridges.",
+            "Purge Suture Maw."
+          ]
+        },
+        {
+          "chapter": 5,
+          "title": "The Isotope Transit",
+          "mission": "Transport unstable isotopes through a high-interference zone.",
+          "key_cast": {
+            "giver": {
+              "name": "Technician Rez",
+              "npc_key": "G1-S1-O7-C3-CT1-R4-NPC",
+              "role": "Cooling Engineer"
+            },
+            "contact": {
+              "name": "Operator Silas",
+              "npc_key": "G1-S1-O7-C3-CT2-R4-NPC",
+              "role": "Communications Technician"
+            },
+            "target": {
+              "name": "Curator Elen",
+              "npc_key": "G1-S1-O7-C3-CT1-R3-NPC",
+              "role": "Logistics Coordinator"
+            }
+          },
+          "objectives": [
+            "Extract isotopes at The Cooling Spines.",
+            "Mask signal at The Signal Jammer Spire.",
+            "Deliver to Lead-Glass Habitats."
+          ]
+        },
+        {
+          "chapter": 6,
+          "title": "Mycelial Mutation",
+          "mission": "Harvest mutated samples to improve neural linking.",
+          "key_cast": {
+            "giver": {
+              "name": "Botanist Fenn",
+              "npc_key": "G1-S1-O7-C3-CT3-R1-NPC",
+              "role": "Growth Supervisor"
+            },
+            "contact": {
+              "name": "Neural-Linker Osi",
+              "npc_key": "G1-S1-O7-C3-CT3-R4-NPC",
+              "role": "Synapse Connector"
+            },
+            "target": {
+              "name": "Watcher Bree",
+              "npc_key": "G1-S1-O7-C3-CT3-R6-NPC",
+              "role": "Canopy Observer"
+            }
+          },
+          "objectives": [
+            "Harvest at Mycelial Lab-Farms.",
+            "Process at Nerve-Root Junctions.",
+            "Monitor results at The Calcified Canopy."
+          ]
+        },
+        {
+          "chapter": 7,
+          "title": "Static Whispers",
+          "mission": "Decrypt a ghost signal to locate the final coordinate (World Boss Trigger).",
+          "key_cast": {
+            "giver": {
+              "name": "Elder Pim",
+              "npc_key": "G1-S1-O7-C3-CT2-R3-NPC",
+              "role": "Static Prophet"
+            },
+            "contact": {
+              "name": "Vapor-Smith Urn",
+              "npc_key": "G1-S1-O7-C3-CT3-R3-NPC",
+              "role": "Atmospheric Specialist"
+            },
+            "target": {
+              "name": "Harvester Ty",
+              "npc_key": "G1-S1-O7-C3-CT3-R5-NPC",
+              "role": "Production Manager"
+            }
+          },
+          "objectives": [
+            "Record signal at Static Shanty Town.",
+            "Purify data at The Spore-Mist Chambers.",
+            "Initiate sequence at Cultivator's Basin."
+          ]
+        }
+      ]
+    }
+  ]
+}

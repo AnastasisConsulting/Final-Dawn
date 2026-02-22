@@ -28,6 +28,7 @@ import { useWarpSequence, FlightState } from './src/hooks/useWarpSequence';
 
 // Components
 import { DevOverlay } from './components/Features/Dev/DevOverlay';
+import { DevTerminal } from './components/Features/Dev/DevTerminal';
 import { LandingContext } from './types/landingContext';
 
 type LandingPayload = {
@@ -235,6 +236,15 @@ const App: React.FC = () => {
     setLandingContext(null);
   };
 
+  const handleTakeoffComplete = (handoffData: any) => {
+    console.log('[Flight Handoff] Takeoff complete, returning to orbital view:', handoffData);
+    setShowLandingGame(false);
+    setShowFlight(true);
+    setFlightState('flying');
+    // Create handoff token for flight-one to position ship
+    setHandoffToken(`TAKEOFF:${handoffData.address}`);
+  };
+
   const isUIActive = flightState === 'idle' && !showLandingGame;
 
   // Dev Overlay Toggle
@@ -328,7 +338,7 @@ const App: React.FC = () => {
       {showFlight && (
         <div className={`absolute inset-0 z-50 transition-opacity duration-1000 ${flightState === 'flying' ? 'opacity-100' : 'opacity-0'}`}>
           <FlightApp
-            handoffToken={handoffToken}
+            handoffToken={handoffToken?.toString() || null}
             onHandoffComplete={handleFlightHandoffComplete}
             onReturnToDawn={handleReturnToDawn}
             onLaunchLandingGame={handleLaunchLandingGame}
@@ -364,9 +374,13 @@ const App: React.FC = () => {
           <LandingApp
             landingContext={landingContext}
             onLandingComplete={handleLandingGameComplete}
+            onTakeoffComplete={handleTakeoffComplete}
           />
         </div>
       )}
+
+      {/* DEV TERMINAL (ROOT LAYER) */}
+      <DevTerminal open={devTerminalOpen} onClose={() => setDevTerminalOpen(false)} />
     </div>
   );
 };

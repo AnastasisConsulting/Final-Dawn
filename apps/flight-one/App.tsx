@@ -119,6 +119,19 @@ const App: React.FC<FlightAppProps> = ({
 
         if (handoffToken && onHandoffComplete) {
             console.log('[Flight] Handoff detected, token:', handoffToken);
+
+            if (handoffToken.startsWith('TAKEOFF:')) {
+                const targetAddress = handoffToken.replace('TAKEOFF:', '');
+                // Position ship in orbit above the target
+                setStatus(prev => ({
+                    ...prev,
+                    position: [0, 2000, -8000],
+                    heading: 180,
+                    speed: 100
+                }));
+                addNotification('INFO', 'ORBITAL INSERTION COMPLETE', 'Welcome back, Pilot.');
+            }
+
             onHandoffComplete();
         }
     }, [universeLayout, handoffToken, onHandoffComplete, activeSystem]);

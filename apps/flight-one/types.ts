@@ -16,7 +16,7 @@ export interface NotificationItem {
   id: string;
   message: string;
   subtext?: string;
-  type: 'LOOT' | 'ACHIEVEMENT' | 'MISSION' | 'WARNING';
+  type: 'LOOT' | 'ACHIEVEMENT' | 'MISSION' | 'WARNING' | 'INFO';
 }
 
 export interface Quest {
@@ -156,7 +156,7 @@ export interface SystemNode {
 }
 
 export interface FlightAppProps {
-  handoffToken?: number | null;
+  handoffToken?: string | null;
   onHandoffComplete?: () => void;
   onReturnToDawn?: (payload: {
     target: { name: string; address?: string };

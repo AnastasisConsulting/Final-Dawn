@@ -1,8 +1,9 @@
 
 import React, { useRef, useMemo } from 'react';
-import { Stars, Sparkles, Float } from '@react-three/drei';
+import { Sparkles, Float } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { RealisticStarField } from './RealisticStarField';
 import '../types';
 
 interface EnvironmentProps {
@@ -165,7 +166,7 @@ const MovingStarField = () => {
 
   return (
     <group ref={groupRef}>
-      <Stars radius={5000} depth={50} count={7000} factor={4} saturation={0.5} fade speed={0.5} />
+      <RealisticStarField count={12000} radius={8000} clusters={80} />
     </group>
   );
 };

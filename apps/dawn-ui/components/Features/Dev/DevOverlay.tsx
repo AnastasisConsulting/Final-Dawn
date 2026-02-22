@@ -73,7 +73,6 @@ export const DevOverlay: React.FC<{ show: boolean }> = ({ show }) => {
                         <DevButton label="SPAWN LOOT" onClick={() => execute('/spawn-loot RARE')} />
                         <DevButton label="FORCE LEVEL..." onClick={() => { setCustomCommand('/force-level'); setIsCustomInput(true); }} />
                         <DevButton label="QUEST STATUS" onClick={() => execute('/quest-status')} />
-                        <DevButton label="TRIGGER HEIST" onClick={() => window.dispatchEvent(new CustomEvent('vizzy-logic-steal', { detail: {} }))} color="yellow" />
                         <DevButton label="SAVE GAME" onClick={() => execute('/save')} color="green" />
                         <DevButton label="RESET SAVE" onClick={() => execute('/reset-save')} color="red" />
                         <DevButton label="EXPORT LOGS" onClick={() => execute('/export-logs')} />

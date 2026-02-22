@@ -36,7 +36,8 @@ export function useTurnExecution(
         targets: ChatTarget[],
         activeTarget: 'navbot' | 'vizzy' | 'lyra',
         objectKey: string,
-        overrideSessionId?: string
+        overrideSessionId?: string,
+        overrideRecipients?: string[]
     ) => {
         const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
         const userMsg: Message = {
@@ -112,10 +113,10 @@ export function useTurnExecution(
             const turnTimer = devLogTimer("turn", "runTurn", {
                 sessionId: ensuredSessionId,
                 objectKey,
-                recipients: activeRecipients,
+                recipients: overrideRecipients || activeRecipients,
                 llmConfig: gameState.settings.llm,
             });
-            const out = await runTurn(userText, activeRecipients, ctx);
+            const out = await runTurn(userText, overrideRecipients || activeRecipients, ctx);
             turnTimer.end({ hasOutputs: !!out.outputs, toolCalls: out.tool_calls?.length ?? 0 });
             const resTime = new Date().toLocaleTimeString('en-US', { hour12: false });
 
@@ -124,14 +125,16 @@ export function useTurnExecution(
                 : [{ id: activeRecipients[0], label: activeRecipients[0], markdown: out.response || '(no response)' }];
 
             let suggestionsBlock = '';
+            let botIntent = '';
             const nextMessages: Message[] = [];
 
             const mapSender = (idOrLabel: string | undefined): Message['sender'] | null => {
                 const key = (idOrLabel || '').toLowerCase();
                 if (key === 'nav' || key === 'navbot') return 'navbot';
                 if (key === 'lyra') return 'lyra';
-                if (key === 'vizzy') return 'vizzy';
+                if (key === 'vizzy') return null; // SILENCED: User requested Vizzy never speaks
                 if (key === 'gm') return 'gm';
+                if (key === 'bot') return null; // Bot intent is captured separately
                 return null;
             };
 
@@ -139,6 +142,10 @@ export function useTurnExecution(
                 const key = (o.id || o.label || '').toLowerCase();
                 if (key === 'suggestions') {
                     suggestionsBlock = o.markdown || '';
+                    continue;
+                }
+                if (key === 'bot') {
+                    botIntent = o.markdown || '';
                     continue;
                 }
                 const sender = mapSender(o.id || o.label);
@@ -174,6 +181,7 @@ export function useTurnExecution(
             }));
 
             travelCountRef.current += 1;
+            return { botIntent };
         } catch (err: any) {
             const resTime = new Date().toLocaleTimeString('en-US', { hour12: false });
             devLog("error", "turn", "runTurn failed", { err: String(err?.message || err) });

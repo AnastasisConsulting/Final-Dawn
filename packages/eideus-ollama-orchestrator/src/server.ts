@@ -1,37 +1,37 @@
-// packages/eideus-ollama-orchestrator/src/server.ts
 import express from "express";
 import cors from "cors";
 import { CONFIG } from "./config.js";
-import { OllamaClient } from "./ollama/client.js";
-import { WorldLoader } from "./worldLoader.js";
-
-import { sessions } from "./session.js";
-import { persistence } from "./persistence.js";
-import { parseSpatialKey, parseTemporalKey } from "eideus-memory-lattice-api";
-import type { SpatialKey, TemporalKey } from "eideus-memory-lattice-api";
-import * as path from "path";
-import * as fs from "fs/promises";
+import { Ollama } from "ollama";
 
 // New Core Orchestrator
-import { TurnEngine } from "@eideus/orchestrator-core";
-import type { TurnContext as EngineTurnContext, TurnRecipient } from "@eideus/orchestrator-core";
+import {
+  TurnEngine,
+  MemoryService,
+  SessionService,
+  WorldService,
+  TurnContext as EngineTurnContext,
+  TurnRecipient
+} from "@eideus/orchestrator-core";
+import { InMemoryLattice, parseSpatialKey, parseTemporalKey } from "eideus-memory-lattice-api";
+import type { SpatialKey, TemporalKey } from "eideus-memory-lattice-api";
 
 const app = express();
 app.use(cors({ origin: "*", methods: ["GET", "POST", "OPTIONS"] }));
 app.use(express.json({ limit: "50mb" }));
 
-// Initialize Services
-const ollama = new OllamaClient(CONFIG.OLLAMA_HOST);
-const coreEngine = new TurnEngine(CONFIG.OLLAMA_HOST);
+// Initialize Services (New Core Engine)
+const ollama = new Ollama({ host: CONFIG.OLLAMA_HOST });
+const lattice = new InMemoryLattice();
 
-// Local Utilities (Resolution, Scaffolding, Memory)
-import { createTurnEngine as createLocalPrototypes } from "./turnEngine.js";
-import { resolveDeterministicContext, normalizeCaches } from "./resolver.js";
-const localProto = createLocalPrototypes({ ollama });
-const memory = localProto.memory;
-const npcGen = localProto.npcGenerator;
-const landmarkGen = localProto.landmarkGenerator;
-const loader = new WorldLoader();
+const memory = new MemoryService({ ollama, lattice, embedModel: CONFIG.EMBED_MODEL });
+const sessions = new SessionService();
+const world = new WorldService();
+const coreEngine = new TurnEngine({
+  ollama,
+  lattice,
+  embedModel: CONFIG.EMBED_MODEL || "mxbai-embed-large",
+  llmModel: "llama3:latest"
+});
 
 // AFFINITY SYSTEM
 import { InMemoryAffinitySystem, defaultTickConfig } from "eideus-affinity-system";
@@ -95,11 +95,10 @@ app.post("/land", async (req: express.Request, res: express.Response) => {
     let existing = await sessions.load(sessionId);
 
     if (existing) {
-      // Rebuild caches if needed...
       return res.json({ ok: true, startKey: existing.location.spatial, startLore: "Session Resumed." });
     }
 
-    const result = await loader.ingestWorld({
+    const result = await world.ingestWorld({
       playerAffinity: playerAffinity || { buckets: [] },
       worldFiles: worldFiles || {}
     });
@@ -131,19 +130,12 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
 
     let session = sessions.get(sessionId) || await sessions.load(sessionId);
 
-    // FALLBACK: If "global_void" or similar is requested, try to find ANY session that matches the meta.loreKey
-    // This allows the beta-tester to function even if it loses the exact sessionId.
     if (!session && meta?.loreKey) {
-      const allSessions = Array.from(sessions['sessions'].values());
-      session = allSessions.find(s => s.planetCode === meta.loreKey || String(meta.loreKey).startsWith(s.planetCode));
-      if (session) {
-        console.log(`[Server] Fallback session found for ${meta.loreKey}: ${session.sessionId}`);
-      }
+      // Fallback logic could go here if needed
     }
 
     if (!session) {
       console.warn(`[Server] Session NOT FOUND: ${sessionId}. Initializing transient session.`);
-      // If we still have no session, we create a dummy one so the engine doesn't crash
       session = {
         sessionId: sessionId || "transient",
         planetCode: meta?.loreKey || "O1",
@@ -156,15 +148,14 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
         credits: 0,
         inventory: [],
         flags: {},
-        caches: { lore: {}, quests: {}, cast: {} }
-      } as any;
+        caches: { lore: new Map(), quests: new Map(), cast: new Map() }
+      };
     }
 
-    const spatial = session!.location.spatial;
-    const temporal = { ...session!.location.temporal };
-    const caches = normalizeCaches(session!.caches);
+    const spatial = session.location.spatial;
+    const temporal = { ...session.location.temporal };
 
-    // 1. Resolve Retrieval Data
+    // 1. Memory Retrieval via new MemoryService
     const memories = await memory.decideAndRetrieve({
       playerText: input,
       saga: temporal.saga,
@@ -173,93 +164,48 @@ app.post("/turn", async (req: express.Request, res: express.Response) => {
       llmConfig: meta?.llmConfig
     });
 
-    const deterministic = await resolveDeterministicContext({
-      spatial,
-      temporal,
-      loreKey: meta?.loreKey || "O1.intro",
-      entitiesPresent: [], // Auto-resolve from caches
-      memoryOrchestrator: memory,
-      caches
-    });
-
-    // 2. Execute Core Multi-Recipient Logic (The Megablock)
+    // 2. Prepare Core Context
     const context: EngineTurnContext = {
       playerText: input,
       spatial: spatial as any,
       temporal: temporal as any,
       loreKey: meta?.loreKey || "O1.intro",
-      memories: memories.map(m => ({
-        id: m.id,
-        spatial: m.spatial as any,
-        temporal: m.temporal as any,
-        faces: {
-          "x+": m.xPlus,
-          "x-": m.xMinus,
-          "y+": [], // optional for prompt
-          "y-": m.tags,
-          "z+": m.entities as any,
-          "z-": m.loreKey
-        }
-      })),
-      entitiesPresent: deterministic.entitiesResolved.map(e => ({
-        id: e.id,
-        name: e.name,
-        class: e.class || "NPC",
-        aliases: e.aliases || []
-      })),
-      loreEntry: deterministic.loreEntry,
-      activeQuests: deterministic.activeQuests,
-      flags: { ...session!.flags, ...(meta?.flags || {}) },
+      memories: memories,
+      entitiesPresent: [],
+      flags: { ...session.flags, ...(meta?.flags || {}) },
       recipients: normalizeRecipients(recipients || meta?.recipients),
-      playerClass: session!.playerClass,
-      playerAffinity: session!.playerAffinity,
+      playerClass: session.playerClass,
+      playerAffinity: session.playerAffinity,
       characterDirectives: meta?.characterDirectives,
       llmConfig: meta?.llmConfig
     };
 
-    const coreOut = await coreEngine.processTurn(context);
+    // 3. Process Turn via Core Engine
+    const coreOut = await coreEngine.processTurn(context, session.caches);
 
-    // 3. Post-Process Procedural Generation (NPCs/Landmarks)
-    const generatedNpcs = await npcGen.processNarration(coreOut.narration, {
-      objectKey: meta?.loreKey, spatial, locationName: meta?.loreKey, locationType: "QUEST_LOCALE"
-    });
-    const generatedLandmarks = await landmarkGen.processNarration(coreOut.narration, {
-      objectKey: meta?.loreKey, spatial, locationName: meta?.loreKey, locationType: "QUEST_LOCALE"
-    }, meta?.loreKey);
-
-    // 4. Record to Lattice
-    await memory.lattice.upsertVoxel({
-      spatial,
-      temporal,
-      faces: {
-        "x+": input,
-        "x-": coreOut.narration,
-        "y+": [], // Todo: embeddings
-        "y-": [], // Todo: tags
-        "z+": [...deterministic.entitiesResolved, ...generatedNpcs.map(n => n.entityRef)],
-        "z-": { loreKey: meta?.loreKey, landmarks: generatedLandmarks.map(l => l.landmarkRef) } as any
-      }
-    });
-
-    // 5. Update State
+    // 4. Update Session State
     if (coreOut.newFlags) {
-      session!.flags = { ...session!.flags, ...coreOut.newFlags };
+      session.flags = { ...session.flags, ...coreOut.newFlags };
     }
-    await sessions.tick(sessionId);
 
-    // 6. World Sim
+    session.location.temporal.page += 1;
+    // BETA: Skip disk persistence — lattice memory is the source of truth during testing.
+    // await sessions.save(session);
+
+    // 5. World Sim
     await affinity.tick({ tick: 1 });
     const worldState = await affinity.getLatestSnapshot({});
 
     res.json({
       ok: true,
       outputs: coreOut.outputs,
+      thought: coreOut.thought,
       telemetry: {
-        credits: session!.credits,
-        inventory: session!.inventory,
-        location: session!.location,
+        credits: session.credits,
+        inventory: session.inventory,
+        location: session.location,
         affinity: worldState,
-        flags: session!.flags
+        flags: session.flags
       },
       questUpdates: coreOut.questUpdates
     });

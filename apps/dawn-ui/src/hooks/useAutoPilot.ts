@@ -84,19 +84,16 @@ export function useAutoPilot(
             const questId = `${objectKey}-${autoPilot.affinity}`;
             const activeQuest = gameState.quests?.[questId];
             let objective = "Explore the area. Look for opportunities.";
-            let targetParams = "";
             const qData = QuestManager.getQuest(objectKey, autoPilot.affinity);
 
             if (activeQuest && activeQuest.status === 'active' && qData) {
-                const target = QuestManager.getTargetDetails(qData, activeQuest.stepIndex);
                 objective = QuestManager.getObjective(qData, activeQuest.stepIndex);
-                if (target) targetParams = `CURRENT TARGET NPC: ${target.name} (ID: ${target.id})`;
             } else if (qData && (!activeQuest || activeQuest.status !== 'completed')) {
                 objective = `NEW MISSION AVAILABLE: ${qData.title}. Seek out ${qData.cast.giver.name}.`;
-                targetParams = `TARGET NPC: ${qData.cast.giver.name} (ID: ${qData.cast.giver.id})`;
             }
 
-            const pickAction = () => {
+            // Fallback Heuristic
+            const pickActionFallback = () => {
                 const cleanObjective = String(objective || "").replace(/<[^>]*>/g, "").trim();
                 const tgt = qData && activeQuest && activeQuest.status === 'active'
                     ? QuestManager.getTargetDetails(qData, activeQuest.stepIndex)
@@ -109,10 +106,26 @@ export function useAutoPilot(
                 return "I look around for someone in charge and ask what's going on here.";
             };
 
-            const action = pickAction();
-            devLog("info", "beta.action", "action selected", { objective, targetParams, action });
-            if (action && !isProcessing) {
-                void executeInput(action, true);
+            if (!isProcessing) {
+                try {
+                    // 1. Ask Orchestrator for Intent
+                    const query = `[BETA_BOT]: My current objective is: ${objective}. What is the single best next action I should take? Respond as me in the first person.`;
+                    const result = await (executeInput as any)(query, true, undefined, undefined, undefined, ['bot']);
+
+                    if (result && result.botIntent) {
+                        devLog("info", "beta.action", "orchestrator intent received", { action: result.botIntent });
+                        void executeInput(result.botIntent, true);
+                    } else {
+                        // 2. Fallback to Heuristic
+                        const action = pickActionFallback();
+                        devLog("info", "beta.action", "heuristic fallback", { action });
+                        void executeInput(action, true);
+                    }
+                } catch (err) {
+                    const action = pickActionFallback();
+                    devLog("error", "beta.action", "orchestrator intent failed, using fallback", { err: String(err) });
+                    void executeInput(action, true);
+                }
             }
         };
 

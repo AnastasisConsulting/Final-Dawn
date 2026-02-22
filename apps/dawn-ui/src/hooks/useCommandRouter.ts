@@ -7,12 +7,13 @@ import { QuestManager } from '../../src/services/QuestManager';
 export function useCommandRouter(
     gameState: any,
     gameActions: any,
+    messages: Message[],
     setMessages: any,
     setIsProcessing: any,
     setDevTerminalOpen: any,
     generateMessageId: (prefix?: string) => string,
     setAutoPilot: any,
-    processTransaction: (userText: string, targets: ChatTarget[], activeTarget: 'navbot' | 'vizzy' | 'lyra', objectKey: string) => Promise<void>
+    processTransaction: (userText: string, targets: ChatTarget[], activeTarget: 'navbot' | 'vizzy' | 'lyra', objectKey: string, overrideSessionId?: string, overrideRecipients?: string[]) => Promise<any>
 ) {
     const objectKeyRef = useRef<string>('');
 
@@ -21,7 +22,8 @@ export function useCommandRouter(
         isAutoPilotGenerated: boolean = false,
         activeTarget: 'navbot' | 'vizzy' | 'lyra',
         objectKey: string,
-        autoPilot: any
+        autoPilot: any,
+        overrideRecipients?: string[]
     ) => {
         if (!text.trim()) return;
         objectKeyRef.current = objectKey;
@@ -193,14 +195,67 @@ export function useCommandRouter(
         if (text.startsWith('/sim-combat ')) {
             const diff = parseInt(text.split(' ')[1]) || 1;
             const xp = diff * 150;
+            const killCount = Math.ceil(diff / 2);
+
             gameActions.gainXp(xp);
             gameActions.recordCombatResult(true);
+
+            // Record some procedural kills for the ledger
+            for (let i = 0; i < killCount; i++) {
+                gameActions.recordKill('COMBAT', 'STANDARD', `SIM_DRONE_${i}`, objectKey);
+            }
+
             setMessages((prev: Message[]) => [...prev, {
                 id: generateMessageId('sys'),
                 sender: 'lyra' as const,
                 type: 'text' as const,
                 timestamp: new Date().toLocaleTimeString('en-US', { hour12: false }),
-                content: `<b>Combat Simulation (Diff ${diff})</b><br/>Enemies neutralized. Gained <b>${xp} XP</b>.`
+                content: `<b>Combat Simulation (Diff ${diff})</b><br/>
+                Status: <b>VICTORY</b><br/>
+                Hostiles Neutralized: ${killCount}<br/>
+                Combat XP: <b>${xp}</b><br/>
+                Ledger Updated with SIM data.`
+            }]);
+            return;
+        }
+
+        if (text.startsWith('/spawn-loot')) {
+            const parts = text.split(' ');
+            const rarity = (parts[1] || 'RARE').toLowerCase() as any;
+            const newItem = {
+                id: `dev_loot_${Date.now()}`,
+                name: `XENON ${rarity.toUpperCase()} CORE`,
+                type: 'RESOURCE' as const,
+                rarity: rarity,
+                count: 1
+            };
+            gameActions.addItem(newItem);
+            setMessages((prev: Message[]) => [...prev, {
+                id: generateMessageId('sys'),
+                sender: 'navbot' as const,
+                content: `>> DEV OVERRIDE: INJECTING ${rarity.toUpperCase()} LOOT INTO MANIFEST.`,
+                type: 'text' as const,
+                timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+            }]);
+            return;
+        }
+
+        if (text === '/export-logs') {
+            const historyText = messages.map((m: Message) => `[${m.timestamp}] ${m.sender.toUpperCase()}: ${m.content.replace(/<[^>]*>/g, '')}`).join('\n');
+            const blob = new Blob([historyText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dawn-of-eideus-chat-${Date.now()}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            setMessages((prev: Message[]) => [...prev, {
+                id: generateMessageId('sys'),
+                sender: 'navbot' as const,
+                content: `>> EXPORTING CHAT HISTORY... DOWNLOAD TRIGGERED.`,
+                type: 'text' as const,
+                timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
             }]);
             return;
         }
@@ -237,7 +292,7 @@ export function useCommandRouter(
         }
 
         // Default to turn transaction
-        await processTransaction(text, [], activeTarget, objectKey);
+        return await processTransaction(text, [], activeTarget, objectKey, undefined, overrideRecipients);
     };
 
     return { executeInput };

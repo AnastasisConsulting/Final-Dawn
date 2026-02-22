@@ -22,7 +22,7 @@ The architecture distributes cognitive load across a hybrid Local/Cloud topology
 
 ### C. The Orchestrator (Middleware)
 *   **Logic:** A provider-agnostic state machine that enforces deterministic game rules (Physics, quest flags, inventory) over the probabilistic LLM output.
-*   **Safety:** The **M.O.S.S. System** (Moral/Obedience/Safety/Sanity) acts as a final output filter, intercepting hallucinations or policy violations before rendering.
+*   **Safety:** The **M.O.S.S. System** (Motive Operandi Style System) acts as a final output filter, intercepting hallucinations or policy violations before rendering.
 
 ---
 

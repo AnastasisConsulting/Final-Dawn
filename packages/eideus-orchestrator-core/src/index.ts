@@ -5,6 +5,9 @@ export * from "./templates/templates.js";
 export * from "./eideus/klevel.js";
 export * from "./eideus/questFlags.js";
 export * from "./prompts/system.js";
+export * from "./resolver.js";
+export * from "./persistence.js";
+export * from "./scaffolding/ScaffoldingService.js";
+export * from "./scaffolding/types.js";
 
 // Legacy exports (for back-compat during transition)
-

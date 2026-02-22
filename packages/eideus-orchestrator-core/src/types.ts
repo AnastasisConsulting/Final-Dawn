@@ -4,18 +4,20 @@
 export interface EntityCard {
   id: string;
   name: string;
-  class: string;
-  aliases: string[];
+  class?: string;
+  aliases?: string[];
+  meta?: Record<string, unknown>;
 }
 
 export interface LandmarkCard {
   id: string;
   name: string;
-  type: string;
-  description: string;
-  tags: string[];
+  type: "LOCATION" | "OBJECT" | "POI" | "STRUCTURE" | "VEHICLE" | "OTHER";
+  description?: string;
+  tags?: string[];
   isProcedural: boolean;
   parentLoreKey?: string;
+  meta?: Record<string, unknown>;
 }
 
 export interface LoreContext {
@@ -24,12 +26,12 @@ export interface LoreContext {
 }
 
 export interface VoxelFaces {
-  "x+": string;      // Input Sum (User Action)
-  "x-": string;      // Output Sum (Narrative Result)
+  "x+": string;      // LLM-generated narration text
+  "x-": string;      // Parsed story events / Input sum
   "y+": number[][];  // Embeddings (Semantic Vectors)
   "y-": string[];    // Associative Tags (Thematic Links)
   "z+": EntityCard[]; // Entities (Who is here)
-  "z-": LoreContext | string; // Lore Key or Context
+  "z-": LoreContext; // Lore Context
 }
 
 export interface VoxelCoordinate {
@@ -40,6 +42,7 @@ export interface VoxelCoordinate {
   ct: number;
   r: number;
 }
+export type SpatialKey = VoxelCoordinate;
 
 export interface TemporalKey {
   saga: number;
@@ -65,7 +68,7 @@ export interface MossProfile {
 }
 
 // --- ORCHESTRATION TYPES ---
-export type RecipientMode = "gm" | "lyra" | "vizzy" | "nav" | "npc";
+export type RecipientMode = "gm" | "lyra" | "vizzy" | "nav" | "npc" | "bot";
 
 export interface TurnRecipient {
   id: string;
@@ -82,10 +85,10 @@ export interface TurnContext {
   // Memories retrieved from lattice
   memories: VoxelSnapshot[];
 
-  // Current local entities & lore resolved deterministically
-  entitiesPresent: EntityCard[];
+  // Current local entities & lore resolved deterministically (Optional if engine resolves)
+  entitiesPresent?: EntityCard[];
   loreEntry?: any;
-  activeQuests: Array<{
+  activeQuests?: Array<{
     entityId: string;
     bio: any;
     quests: any[];
@@ -104,6 +107,7 @@ export interface TurnContext {
   recipients: TurnRecipient[];
   llmConfig?: {
     model?: string;
+    baseUrl?: string;
     temperature?: number;
     performanceMode?: boolean;
   };
@@ -125,6 +129,7 @@ export interface AgentOutputSection {
 export interface TurnResult {
   narration: string;
   outputs: AgentOutputSection[];
+  thought?: string;
   questUpdates?: QuestUpdatePayload;
   newFlags?: Record<string, boolean | string | number>;
   debug?: any;

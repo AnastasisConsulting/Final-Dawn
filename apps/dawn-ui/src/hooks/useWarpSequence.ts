@@ -5,7 +5,7 @@ export type FlightState = 'idle' | 'retracting' | 'warping' | 'flying';
 export function useWarpSequence(isWarping: boolean, onWarpComplete?: () => void) {
     const [flightState, setFlightState] = useState<FlightState>('idle');
     const [showFlight, setShowFlight] = useState(false);
-    const [handoffToken, setHandoffToken] = useState<number | null>(null);
+    const [handoffToken, setHandoffToken] = useState<string | number | null>(null);
     const timersRef = useRef<number[]>([]);
 
     const clearTimers = () => {

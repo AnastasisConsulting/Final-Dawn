@@ -41,6 +41,8 @@ export const DevTerminal: React.FC<{
     }
   });
 
+  const [copySuccess, setCopySuccess] = useState(false);
+
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
     try {
       const raw = localStorage.getItem(LS_POS);
@@ -132,7 +134,7 @@ export const DevTerminal: React.FC<{
   return (
     <div
       ref={containerRef}
-      className={embedded ? "w-full h-full flex flex-col" : "fixed z-[100] w-[520px] max-w-[calc(100vw-1rem)]"}
+      className={embedded ? "w-full h-full flex flex-col" : "fixed z-[100] w-[520px] max-w-[calc(100vw-1rem)] pointer-events-auto"}
       style={embedded ? {} : { left: pos.x, top: pos.y }}
     >
       <div className={`bg-black/80 border border-cyan-700/40 shadow-[0_0_30px_rgba(34,211,238,0.12)] rounded-md overflow-hidden backdrop-blur-sm font-mono flex flex-col ${embedded ? 'h-full border-none shadow-none bg-transparent' : ''}`}>
@@ -189,27 +191,28 @@ export const DevTerminal: React.FC<{
           <div className="text-xs tracking-[0.25em] uppercase text-cyan-200">
             Dev Terminal{collapsed ? " (collapsed)" : ""}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={() => setCollapsed((c) => !c)}
-              className="text-[10px] uppercase tracking-widest text-neutral-300 hover:text-white"
+              className="px-2 py-1 text-[9px] uppercase tracking-tighter text-neutral-400 hover:text-white hover:bg-white/10 rounded transition-colors"
             >
               {collapsed ? "Expand" : "Collapse"}
             </button>
-            <label className="text-[10px] uppercase tracking-widest text-neutral-400 flex items-center gap-2">
-              <span>Log</span>
+            <div className="h-4 w-[1px] bg-white/10 mx-1" />
+            <label className="text-[10px] uppercase tracking-widest text-neutral-400 flex items-center gap-2 cursor-pointer hover:text-cyan-400 transition-colors px-1">
               <input
                 type="checkbox"
                 checked={enabled}
                 onChange={(e) => setEnabled(e.target.checked)}
-                className="h-3.5 w-3.5 accent-cyan-400"
+                className="h-3.5 w-3.5 accent-cyan-400 cursor-pointer"
               />
+              <span className="text-[9px]">LOG</span>
             </label>
             <button
               onClick={() => {
                 devLogClear();
               }}
-              className="text-[10px] uppercase tracking-widest text-neutral-300 hover:text-white"
+              className="px-2 py-1 text-[9px] uppercase tracking-wider text-neutral-400 hover:text-white hover:bg-red-500/20 rounded transition-colors"
             >
               Clear
             </button>
@@ -217,17 +220,19 @@ export const DevTerminal: React.FC<{
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(devLogExportText());
+                  setCopySuccess(true);
+                  setTimeout(() => setCopySuccess(false), 2000);
                 } catch {
                   // ignore
                 }
               }}
-              className="text-[10px] uppercase tracking-widest text-neutral-300 hover:text-white"
+              className={`px-2 py-1 text-[9px] uppercase tracking-wider rounded transition-all ${copySuccess ? 'bg-green-500/40 text-green-100 border border-green-500/50' : 'text-neutral-400 hover:text-white hover:bg-white/10'}`}
             >
-              Copy
+              {copySuccess ? "COPIED!" : "Copy"}
             </button>
             <button
               onClick={onClose}
-              className="text-[10px] uppercase tracking-widest text-neutral-300 hover:text-white"
+              className="px-2 py-1 text-[9px] uppercase tracking-wider text-neutral-400 hover:text-white hover:bg-red-500/40 rounded transition-colors"
             >
               Close
             </button>

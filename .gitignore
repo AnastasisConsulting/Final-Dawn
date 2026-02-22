@@ -141,5 +141,26 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 
-# .node_modules directory
 .node_modules/
+
+# FAILURE PREVENTION: Generated Content Protection
+# These are ignored so they are NOT deleted by 'git clean -fd'
+Galaxies_Folder/*
+!Galaxies_Folder/The_Core_Syndicate/
+!Galaxies_Folder/The_Core_Syndicate/Aura-507
+!Galaxies_Folder/The_Core_Syndicate/Aura-507/**
+Galaxies_Folder/The_Core_Syndicate/The_Foundry_Core/
+Galaxies_Folder/The_Core_Syndicate/The_Regulators_Eye/
+Galaxies_Folder/The_Fading_Echo/
+Galaxies_Folder/The_Void_Sea/
+WorldBundles/
+*.gen
+*.zip
+
+
+# Internal design documentation — not for release
+.DOCS/
+
+
+# OrbitGen-AI — separate project, not part of this repo
+orbitgen-ai/
