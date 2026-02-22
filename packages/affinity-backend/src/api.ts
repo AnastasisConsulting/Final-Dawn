@@ -3,11 +3,11 @@ import { SimulationEngine } from "./simEngine.js";
 
 export const engine = new SimulationEngine();
 
-export function registerEntity(entity) {
+export function registerEntity(entity: any) {
   engine.addEntity(entity);
 }
 
-export function applyDelta(delta) {
+export function applyDelta(delta: any) {
   engine.applyRelationalDelta(delta);
 }
 

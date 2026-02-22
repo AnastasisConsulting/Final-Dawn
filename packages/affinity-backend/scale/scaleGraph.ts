@@ -1,5 +1,6 @@
 import { ScaleNode } from "./scaleNode";
 import { Scale } from "./scaleTypes";
+import { tickMultiplier } from "./scaleSpeed";
 
 export class ScaleGraph {
     nodes: ScaleNode[] = [];
