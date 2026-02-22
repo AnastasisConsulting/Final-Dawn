@@ -37,17 +37,20 @@ export function useTurnExecution(
         activeTarget: 'navbot' | 'vizzy' | 'lyra',
         objectKey: string,
         overrideSessionId?: string,
-        overrideRecipients?: string[]
+        overrideRecipients?: string[],
+        silent: boolean = false
     ) => {
         const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
-        const userMsg: Message = {
-            id: generateMessageId('user'),
-            sender: 'user',
-            content: userText,
-            type: 'text',
-            timestamp,
-        };
-        setMessages(prev => [...prev, userMsg]);
+        if (!silent) {
+            const userMsg: Message = {
+                id: generateMessageId('user'),
+                sender: 'user',
+                content: userText,
+                type: 'text',
+                timestamp,
+            };
+            setMessages(prev => [...prev, userMsg]);
+        }
         setIsProcessing(true);
         gameActions.incrementTurn();
 

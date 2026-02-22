@@ -23,7 +23,8 @@
     "eideus-memory-lattice-api": "workspace:*",
     "eideus-universe-mapper": "workspace:*",
     "eideus-world-bundle-binder": "workspace:*",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "ollama": "^0.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",

@@ -19,7 +19,7 @@ export function useAutoPilot(
     objectKey: string,
     gameState: any,
     gameActions: any,
-    executeInput: (text: string, isAutoPilotGenerated: boolean) => Promise<void>,
+    executeInput: (text: string, isAutoPilotGenerated: boolean, activeTarget?: any, objectKey?: string, autoPilot?: any, overrideRecipients?: string[], silent?: boolean) => Promise<any>,
     generateMessageId: (prefix?: string) => string
 ) {
     const [autoPilot, setAutoPilot] = useState<AutoPilotState>(() => {
@@ -109,12 +109,61 @@ export function useAutoPilot(
             if (!isProcessing) {
                 try {
                     // 1. Ask Orchestrator for Intent
-                    const query = `[BETA_BOT]: My current objective is: ${objective}. What is the single best next action I should take? Respond as me in the first person.`;
-                    const result = await (executeInput as any)(query, true, undefined, undefined, undefined, ['bot']);
+                    const cleanObj = String(objective || "").replace(/\(.*\)/g, "").trim();
+                    const query = `[BETA_BOT]: [PNS_OVERRIDE]: OBJECTIVE: ${cleanObj} | STATUS: HEROIC_MOMENTUM | ACTION_PREDICTION_REQUESTED`;
+                    const result = await (executeInput as any)(query, true, undefined, undefined, undefined, ['bot'], true);
 
                     if (result && result.botIntent) {
-                        devLog("info", "beta.action", "orchestrator intent received", { action: result.botIntent });
-                        void executeInput(result.botIntent, true);
+                        const raw = String(result.botIntent);
+
+                        // --- Stage 1: Strip memory contamination (| x-: and everything after) ---
+                        const decontaminated = raw.split(/\s*\|\s*x-:/)[0].trim();
+
+                        // --- Stage 2: Strip all === SECTION === blocks entirely ---
+                        const noSections = decontaminated
+                            .replace(/={2,}\s*\[?[A-Z0-9_ :\-]+\]?\s*={2,}[\s\S]*?(?=={2,}|$)/gi, '')
+                            .trim();
+
+                        // --- Stage 3: Extract candidate lines ---
+                        const lines = noSections
+                            .split('\n')
+                            .map(l => l.trim())
+                            // Remove markdown bold/italic markers, RECIPIENTS, bullets, asterisks
+                            .map(l => l.replace(/^\*+\s*/, '').replace(/\*+$/g, '').replace(/^\d+\.\s+/, ''))
+                            .filter(l => l.length > 8 && l.length < 220);
+
+                        // --- Stage 4: LLM meta-preamble rejection patterns ---
+                        const junkStarters = [
+                            /^as the\s+(gm|beta_bot|bot|player|narrator)/i,
+                            /^based on (your|the|my)/i,
+                            /^here('?s| is) my/i,
+                            /^i('?ll|'?m going to) respond/i,
+                            /^i will (continue|respond|provide)/i,
+                            /^please let me know/i,
+                            /^what would you like/i,
+                            /^the (gm|narrat|world|eideus)/i,
+                            /^you (decide|notice|see|move|navigate|hear)/i,
+                            /^recipients:/i,
+                            /^\*\*(gm|nav|bot)\*\*/i,
+                        ];
+
+                        const isJunk = (line: string) => junkStarters.some(rx => rx.test(line));
+
+                        // Prefer a line starting with "I " that isn't junk
+                        const actionLine = lines.find(l => /^I\s+[a-z]/i.test(l) && !isJunk(l));
+                        // As last resort, take first non-junk line
+                        const fallbackLine = lines.find(l => !isJunk(l));
+                        const finalAction = actionLine || fallbackLine || null;
+
+                        if (finalAction && !isJunk(finalAction)) {
+                            devLog("info", "beta.action", "orchestrator intent received", { action: finalAction });
+                            void executeInput(finalAction, true, undefined, undefined, undefined, undefined, false);
+                        } else {
+                            // 2. Fallback to Heuristic
+                            const action = pickActionFallback();
+                            devLog("info", "beta.action", "heuristic fallback (bad intent)", { action });
+                            void executeInput(action, true);
+                        }
                     } else {
                         // 2. Fallback to Heuristic
                         const action = pickActionFallback();

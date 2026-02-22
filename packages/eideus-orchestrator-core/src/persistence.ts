@@ -1,13 +1,15 @@
 import type { VoxelCoordinate, TemporalKey, VoxelFaces } from "./types.js";
+import type { Ollama } from "ollama";
+import { InMemoryLattice } from "eideus-memory-lattice-api";
 
 export interface PersistenceOptions {
-    ollama: any; // OllamaClient
+    ollama: Ollama;
     embedModel?: string;
     llmModel?: string;
 }
 
 export class VoxelWriter {
-    private ollama: any;
+    private ollama: Ollama;
     private embedModel: string;
     private llmModel: string;
 
@@ -59,8 +61,10 @@ export class VoxelWriter {
      * Generates embeddings for text.
      */
     async generateEmbeddings(text: string): Promise<number[][]> {
+        const client = this.ollama;
+        if (!client || typeof client.embeddings !== 'function') return [];
         try {
-            const res = await this.ollama.embeddings({ model: this.embedModel, prompt: text });
+            const res = await client.embeddings({ model: this.embedModel, prompt: text });
             if (res && res.embedding) {
                 return [res.embedding];
             }
@@ -74,7 +78,7 @@ export class VoxelWriter {
     /**
      * Writes or updates a voxel with collision retry logic.
      */
-    async upsertWithRetry(lattice: any, spatial: VoxelCoordinate, temporal: TemporalKey, faces: VoxelFaces, maxRetries: number = 10): Promise<any> {
+    async upsertWithRetry(lattice: InMemoryLattice, spatial: VoxelCoordinate, temporal: TemporalKey, faces: VoxelFaces, maxRetries: number = 10): Promise<any> {
         let currentTemporal = { ...temporal };
         let attempts = 0;
         let voxel = null;

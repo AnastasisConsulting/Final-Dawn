@@ -60,12 +60,12 @@ export type BootstrapVoxel = {
   spatialKey0: SpatialKey0;
   temporalKey: { s: number; b: number; c: number; p: number };
   faces: {
-    xPlus: string;
-    xMinus: string;
-    yPlus: number[][]; // embeddings placeholder
-    yMinus: string[];  // tags
-    zPlus: any[];      // entity cards
-    zMinus: string;    // loreKey
+    "x+": string;
+    "x-": string;
+    "y+": number[][];
+    "y-": string[];
+    "z+": any[];
+    "z-": string;
   };
 };
 

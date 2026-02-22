@@ -53,8 +53,8 @@ export type LoreContext = {
 export type EmbeddingVector = number[];
 
 export type VoxelFaces = {
-  "x+": string; // summed input (player text)
-  "x-": string; // summed output (narration)
+  "x+": string; // summed output (narration)
+  "x-": string; // summed input (player text)
   "y+": EmbeddingVector[]; // up to 7 embeddings
   "y-": string[]; // up to 7 tags
   "z+": EntityCard[]; // entities present (NPCs)

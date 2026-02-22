@@ -13,6 +13,12 @@ body,
   height: 100%;
 }
 
+::selection {
+  background: rgba(6, 182, 212, 0.25);
+  color: #fff;
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
 body {
   margin: 0;
 }

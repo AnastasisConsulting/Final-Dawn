@@ -1,5 +1,6 @@
 {
   "name": "eideus-unified-workspace",
+  "description": "Unified sci-fi simulation demonstrating the Fractal Template System (3x3x7). Reactive cyberpunk dashboards meet generative AI narratives.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,6 +8,10 @@
     "packages/*",
     "apps/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnastasisConsulting/Final-Dawn.git"
+  },
   "scripts": {
     "build": "pnpm -r run build",
     "build:packages": "pnpm --filter \"./packages/**\" run build",

@@ -63,16 +63,16 @@ export const CenterPanel: React.FC<CenterPanelProps> = ({
 
   const { autoPilot, setAutoPilot } = useAutoPilot(
     isProcessing, messages, objectKeyRef.current, gameState, gameActions,
-    async (t, a) => {
+    async (t, a, rt, ok, ap, rec, sil) => {
       if (executeRef.current) {
-        return executeRef.current(t, a, activeTarget, objectKeyRef.current, autoPilot);
+        return executeRef.current(t, a, rt ?? activeTarget, ok ?? objectKeyRef.current, ap ?? autoPilot, rec, sil);
       }
     }, generateMessageId
   );
 
   const { executeInput } = useCommandRouter(
     gameState, gameActions, messages, setMessages, setIsProcessing, setDevTerminalOpen,
-    generateMessageId, setAutoPilot,
+    generateMessageId, setAutoPilot, loadLocationFromAddress,
     (t, r, a, o, s, rec) => processTransaction(t, r, a, o, s, rec)
   );
 

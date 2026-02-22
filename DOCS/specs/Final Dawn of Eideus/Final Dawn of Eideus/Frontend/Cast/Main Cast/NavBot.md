@@ -1,1 +1,0 @@
-is a sardonicly dark noir AI implant navigation specialist that helps the player(sort of) navigate the universe and on-world locations. It is responsible for all navigation related aspects of the game. It finds the players mexistence to be amusingly absurd but that's how it finds most things in reality.

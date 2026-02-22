@@ -13,7 +13,8 @@ export function useCommandRouter(
     setDevTerminalOpen: any,
     generateMessageId: (prefix?: string) => string,
     setAutoPilot: any,
-    processTransaction: (userText: string, targets: ChatTarget[], activeTarget: 'navbot' | 'vizzy' | 'lyra', objectKey: string, overrideSessionId?: string, overrideRecipients?: string[]) => Promise<any>
+    loadLocationFromAddress: (address: string) => Promise<string | undefined>,
+    processTransaction: (userText: string, targets: ChatTarget[], activeTarget: 'navbot' | 'vizzy' | 'lyra', objectKey: string, overrideSessionId?: string, overrideRecipients?: string[], silent?: boolean) => Promise<any>
 ) {
     const objectKeyRef = useRef<string>('');
 
@@ -23,7 +24,8 @@ export function useCommandRouter(
         activeTarget: 'navbot' | 'vizzy' | 'lyra',
         objectKey: string,
         autoPilot: any,
-        overrideRecipients?: string[]
+        overrideRecipients?: string[],
+        silent: boolean = false
     ) => {
         if (!text.trim()) return;
         objectKeyRef.current = objectKey;
@@ -108,6 +110,47 @@ export function useCommandRouter(
                 type: 'text' as const,
                 timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
             }]);
+            return;
+        }
+
+        if (text.startsWith('/warp ') || text.startsWith('/land ')) {
+            const isWarp = text.startsWith('/warp ');
+            const address = text.split(' ')[1];
+            if (!address) return;
+
+            setMessages((prev: Message[]) => [...prev, {
+                id: generateMessageId('sys'),
+                sender: 'navbot' as const,
+                content: `>> ${isWarp ? 'WARP' : 'LANDING'} PROTOCOL ENGAGED: [${address}]...`,
+                type: 'text' as const,
+                timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+            }]);
+
+            setIsProcessing(true);
+            try {
+                const sessionId = await loadLocationFromAddress(address);
+                if (sessionId) {
+                    setMessages((prev: Message[]) => [...prev, {
+                        id: generateMessageId('sys'),
+                        sender: 'navbot' as const,
+                        content: `>> SUCCESS. UNIVERSE ANCHOR ESTABLISHED. SESSION: ${sessionId}`,
+                        type: 'text' as const,
+                        timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+                    }]);
+                } else {
+                    throw new Error("COULD NOT ESTABLISH ANCHOR.");
+                }
+            } catch (err) {
+                setMessages((prev: Message[]) => [...prev, {
+                    id: generateMessageId('sys'),
+                    sender: 'navbot' as const,
+                    content: `>> ERROR: ${String(err)}`,
+                    type: 'text' as const,
+                    timestamp: new Date().toLocaleTimeString('en-US', { hour12: false })
+                }]);
+            } finally {
+                setIsProcessing(false);
+            }
             return;
         }
 
@@ -292,7 +335,7 @@ export function useCommandRouter(
         }
 
         // Default to turn transaction
-        return await processTransaction(text, [], activeTarget, objectKey, undefined, overrideRecipients);
+        return await processTransaction(text, [], activeTarget, objectKey, undefined, overrideRecipients, silent);
     };
 
     return { executeInput };

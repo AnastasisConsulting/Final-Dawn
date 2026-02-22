@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "zod": "^3.22.0",
-    "ollama": "^0.5.0"
+    "ollama": "^0.5.0",
+    "eideus-affinity-system": "workspace:*",
+    "eideus-world-bundle-binder": "workspace:*",
+    "eideus-memory-lattice-api": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.0.0"

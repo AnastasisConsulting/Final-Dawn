@@ -9,5 +9,8 @@ export * from "./resolver.js";
 export * from "./persistence.js";
 export * from "./scaffolding/ScaffoldingService.js";
 export * from "./scaffolding/types.js";
+export * from "./memory/MemoryService.js";
+export * from "./session/SessionService.js";
+export * from "./world/WorldService.js";
 
 // Legacy exports (for back-compat during transition)

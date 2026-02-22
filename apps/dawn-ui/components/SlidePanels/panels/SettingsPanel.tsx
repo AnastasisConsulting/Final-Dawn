@@ -181,13 +181,13 @@ export const SettingsPanel: React.FC = () => {
                 </h3>
                 <div className="flex flex-col gap-2">
                     <button
-                        onClick={() => window.open('https://github.com/your-username/final-dawn-of-eideus#readme', '_blank')}
+                        onClick={() => window.open('https://github.com/AnastasisConsulting/Final-Dawn#readme', '_blank')}
                         className="w-full bg-cyan-950/30 border border-cyan-800/50 p-2 text-left text-[10px] hover:bg-cyan-900/50 hover:border-cyan-400 transition-all uppercase tracking-widest text-cyan-300"
                     >
                         [SYSTEM_ARCHITECTURE_v1.0]
                     </button>
                     <button
-                        onClick={() => window.open('https://github.com/your-username/final-dawn-of-eideus/blob/main/LICENSE', '_blank')}
+                        onClick={() => window.open('https://github.com/AnastasisConsulting/Final-Dawn/blob/main/LICENSE', '_blank')}
                         className="w-full bg-emerald-950/30 border border-emerald-800/50 p-2 text-left text-[10px] hover:bg-emerald-900/50 hover:border-emerald-400 transition-all uppercase tracking-widest text-emerald-300"
                     >
                         [LICENSING_PROTOCOLS]

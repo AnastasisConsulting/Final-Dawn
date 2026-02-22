@@ -44,6 +44,8 @@ const SENDER_COLORS: Record<ChatSender, string> = {
   gm: 'text-rose-400'
 };
 
+
+
 export const ChatLog: React.FC<ChatLogProps> = ({
   messages,
   isProcessing,
@@ -53,6 +55,18 @@ export const ChatLog: React.FC<ChatLogProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isNearBottom, setIsNearBottom] = React.useState(true);
+  const [copyStatus, setCopyStatus] = React.useState(false);
+
+  const copyAllMessages = async () => {
+    const text = messages.map(m => `[${m.timestamp}] ${SENDER_LABELS[m.sender]}: ${m.content.replace(/<[^>]*>/g, '')}`).join('\n\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyStatus(true);
+      setTimeout(() => setCopyStatus(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy', err);
+    }
+  };
 
   const handleScroll = () => {
     const el = containerRef.current;
@@ -84,19 +98,30 @@ export const ChatLog: React.FC<ChatLogProps> = ({
       className="h-full overflow-y-auto pr-2 space-y-2 pb-6 scroll-smooth custom-scrollbar"
     >
       {/* Target Status Indicators */}
-      <div className="flex gap-2 p-1.5 mb-2 sticky top-0 z-20 bg-black/80 backdrop-blur-md border-b border-white/5">
-        {(['navbot', 'vizzy', 'lyra'] as ChatTarget[]).map(t => (
-          <button
-            key={t}
-            onClick={() => onToggleTarget?.(t)}
-            className={`px-2 py-0.5 text-[8px] tracking-[0.2em] uppercase border transition-all ${activeTargets.includes(t)
-              ? 'bg-cyan-500/10 border-cyan-500/50 text-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.2)]'
-              : 'bg-black/40 border-white/5 text-white/20 hover:border-white/20'
-              }`}
-          >
-            {t}
-          </button>
-        ))}
+      <div className="flex items-center justify-between p-1.5 mb-2 sticky top-0 z-20 bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div className="flex gap-2">
+          {(['navbot', 'vizzy', 'lyra'] as ChatTarget[]).map(t => (
+            <button
+              key={t}
+              onClick={() => onToggleTarget?.(t)}
+              className={`px-2 py-0.5 text-[8px] tracking-[0.2em] uppercase border transition-all ${activeTargets.includes(t)
+                ? 'bg-cyan-500/10 border-cyan-500/50 text-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.2)]'
+                : 'bg-black/40 border-white/5 text-white/20 hover:border-white/20'
+                }`}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={copyAllMessages}
+          className={`px-2 py-0.5 text-[8px] tracking-[0.2em] uppercase border transition-all ${copyStatus
+            ? 'bg-green-500/10 border-green-500/50 text-green-400'
+            : 'bg-black/40 border-white/5 text-white/20 hover:text-white/60 hover:border-white/20'
+            }`}
+        >
+          {copyStatus ? 'Copied!' : 'Copy All'}
+        </button>
       </div>
 
       {messages.map((message) => (
@@ -113,7 +138,7 @@ export const ChatLog: React.FC<ChatLogProps> = ({
           </div>
 
           <div
-            className="text-[11.5px] leading-relaxed text-slate-400 selection:bg-cyan-500/30"
+            className="text-[11.5px] leading-relaxed text-slate-400"
             onDoubleClick={() => handleEdit(message)}
           >
             <ReactMarkdown

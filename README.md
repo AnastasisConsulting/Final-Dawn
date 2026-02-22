@@ -97,8 +97,8 @@ For a deep dive into the code structure, monorepo layout, and AI orchestration, 
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/your-username/final-dawn-of-eideus.git
-    cd final-dawn-of-eideus
+    git clone https://github.com/AnastasisConsulting/Final-Dawn.git
+    cd Final-Dawn
     ```
 
 2.  **Install dependencies**

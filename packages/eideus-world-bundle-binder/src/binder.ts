@@ -430,12 +430,12 @@ function buildBootstrapVoxels(
       spatialKey0,
       temporalKey: { s: 0, b: 0, c: 0, p: p++ },
       faces: {
-        xPlus: "BOOTSTRAP",
-        xMinus: `BOOTSTRAP_LORE_ANCHOR:${meta.label}`,
-        yPlus: [],
-        yMinus: uniq([...meta.tags, `bootstrap:true`, `world:${worldId}`]),
-        zPlus,
-        zMinus: meta.loreKey,
+        "x+": "BOOTSTRAP",
+        "x-": `BOOTSTRAP_LORE_ANCHOR:${meta.label}`,
+        "y+": [],
+        "y-": uniq([...meta.tags, `bootstrap:true`, `world:${worldId}`]),
+        "z+": zPlus,
+        "z-": meta.loreKey,
       },
     });
   }
